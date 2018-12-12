@@ -1,0 +1,16 @@
+# use glob syntax.
+syntax: glob
+
+*~
+*.old
+*.pyc
+*.sobj
+
+# Mac cache files
+.DS_Store
+
+# Temporary swap files
+.*.swp
+
+# Temporary files used by parallel gp runs
+tempfile-*
