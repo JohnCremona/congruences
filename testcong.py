@@ -2,14 +2,12 @@ from sage.all import ZZ, QQ, EllipticCurve, prime_range, prod, Set, cremona_opti
 from sage.schemes.elliptic_curves.isogeny_small_degree import Fricke_polynomial
 
 F7 = Fricke_polynomial(7)
+F5 = Fricke_polynomial(5)
 x = polygen(QQ)
 F7=F7(x)
 
-def isog_pol(E):
-    return F7-x*E.j_invariant()
-
-def isog_pol0(E):
-    return [pol for pol,e in isog_pol(E).factor() if pol.degree()==7][0]
+def isog_pol(E, p=7):
+    return Fricke_polynomial(p)(x)-x*E.j_invariant()
 
 def sagepol(paripol):
     return x.parent()(str(paripol))
@@ -330,10 +328,10 @@ def make_hash(p, N1, N2, np=20):
     print("{} sets of conjugate curves".format(ns))
     return hashtab
 
-def old_test_irred(s):
+def old_test_irred(s, p=7):
     Elist = [EllipticCurve(lab) for lab in s]
     rhos = [E.galois_representation() for E in Elist]
-    r = [rho.is_irreducible(7) for rho in rhos]
+    r = [rho.is_irreducible(p) for rho in rhos]
     if all(r):
         return True
     if not any(r):
@@ -341,8 +339,8 @@ def old_test_irred(s):
     print("Set {} is mixed: {}".format(s,r))
     return None
 
-def test_irred(s):
-    return len(isog_pol(EllipticCurve(s[0])).roots())==0
+def test_irred(s, p=7):
+    return len(isog_pol(EllipticCurve(s[0]),p).roots())==0
 
 def test_set(s, p=7, maxp=20000000):
     E1 = EllipticCurve(s[0])
@@ -493,6 +491,87 @@ def split_class(label, p):
     set2 = [lab for lab in isodict if legendre_symbol(isodict[lab],7)==-1]
     return [set1,set2]
 
+def split_class_red(label, p, ignore_symplectic=False):
+    """given the label of one curve E in a p-reducible isogeny class,
+    return the list of all labels of curves E' in that class,
+    partitioned into 4 parts (or 2 if ignore_symplectic==True),
+    according to the degree m of the isogeny from E to E' as follows:
+
+    0: legendre(m,p)=+1
+    1: legendre(m,p)=-1
+    2: p|m and legendre(m/p,p)=+1
+    3: p|m and legendre(m/p,p)=-1
+
+    When ignore_symplectic==True, parts 0&1 and 2&3 are joined.
+
+    Assumption:  p>=7 so no p^2-isogenies exist.
+
+    If there are no p-isogenies this will still work, but parts 2,3
+    will be empty.  Curves within each part are symplectically
+    isomorphic; between parts 0 and 1 and between parts 2 and 3, they
+    are anti-symplectically isomorphic.  All curves in the class have
+    isomorphic semisimplfications of the mod-p representations.  There
+    are no mod-p isomorphisms between parts 0,1 and parts 2,3 since
+    the two characters which form the common semisimplfication are
+    distinct (since the determinant of the mod-p representation is
+    surjective, its values cannot all be squares mod p) and isogenies
+    of degree divisible by 7 swap the two characters.
+
+    For p=7, parts 0 and 2 will contain either 1 or 2 curves each
+    depending on whether the class admits 2-isogenies.  Parts 1 and 3
+    will be empty unless the class admits 3-isogenies, in which case
+    all four parts will contain a single label.  This is because of
+    the classification of isogeny classes over Q: when there are
+    7-isogenies then the class size is 2 or 4 and in the latter case
+    there are 2- or 3-isogenies but not both.
+
+    Examples:
+
+    Class 26b:    (26b1) --7-- (26b2)
+
+    With ignore_symplectic==False:
+    [['26b1'], [], ['26b2'], []]
+
+    With ignore_symplectic==True:
+    [['26b1'], ['26b2']]
+
+    Class 49a:    (49a1) --2-- (49a2)
+                     |            |
+                     7            7
+                     |            |
+                  (49a3) --2-- (49a4)
+
+    With ignore_symplectic==False:
+    [['49a2', '49a1'], [], ['49a4', '49a3'], []]
+
+    With ignore_symplectic==True:
+    [['49a2', '49a1'], ['49a4', '49a3']]
+
+    Class 162b:   (162b1) --3-- (162b2)
+                     |            |
+                     7            7
+                     |            |
+                  (162b4) --3-- (162b3)
+
+    With ignore_symplectic==False:
+    [['162b1'], ['162b2'], ['162b3'], ['162b4']]
+
+    With ignore_symplectic==True:
+    [['162b1', '162b2'], ['162b3', '162b4']]
+
+    """
+    C = CDB.isogeny_class(label)
+    isodict = {E.label():E.isogeny_degree(C[0]) for E in C}
+    def t(m):
+        if p.divides(m):
+            return 2 + (1-legendre_symbol(m//p,p))//2
+        else:
+            return (1-legendre_symbol(m,p))//2
+    sets = [[] for _ in range(4)]
+    for lab in isodict:
+        sets[t(isodict[lab])].append(lab)
+    return sets
+
 import XE7
 XE7 = reload(XE7)
 
@@ -533,22 +612,28 @@ def test7iso(lcl, verbose=0):
                 symplectics += part
     return [symplectics,antisymplectics]
 
-def isogeny_kernel_field(phi):
+def isogeny_kernel_field(phi, optimize=False):
     pol = phi.kernel_polynomial()
     Fx = pol.splitting_field('b',degree_multiple=pol.degree(), simplify_all=True)
     xP=pol.roots(Fx)[0][0]
     yP=phi.domain().lift_x(xP, extend=True)[1]
     Fxy = yP.parent()
-    return Fxy.absolute_field('c')
+    Fxy = Fxy.absolute_field('c')
+    if optimize:
+        Fxy = Fxy.optimized_representation()[0]
+    return Fxy
 
-def isogeny_star_field_poly(phi):
+def isogeny_star_field(phi, optimize=False):
     p = phi.degree()
     F_pol = Fricke_polynomial(p)
     t = F_pol.parent().gen()
     star_pol = F_pol-t*phi.domain().j_invariant()
     star_pol = (f for f,e in star_pol.factor() if f.degree()==p).next()
     assert star_pol.is_irreducible()
-    return star_pol
+    F = NumberField(star_pol, 's')
+    if optimize:
+        F = F.optimized_representation()[0]
+    return F
 
 def test_field_iso(pol1, pol2):
     if pol1.degree()!=pol2.degree():
@@ -560,15 +645,39 @@ def test_field_iso(pol1, pol2):
 
 def mod_p_iso_red(E1, E2, p, verbose=True):
     """Given curves E1, E2 whose mod-p representations are reducible and
-    isomorphic up to semisimplification, return +1 if the
-    representations are actually isomorphic, -1 if E1[p] is isomorphic
-    to E2'[p] where E2' is p-isogenouos to E2, and 0 otherwise.  We
-    assume that p>2 and that E1 and E2 have unique p-isogenies here.
+    isomorphic up to semisimplification, with p-isogenous curves E1'
+    and E2' respectively (uniquely determined if we assume p>=7),
+    return a list of pairs of curves from {E1,E1',E2,E2'} whose mod-p
+    representations are actually isomorphic.
+
+    Since E1 and E1' do not have isomorphic mod-p representations and
+    neither do E2, E2', the possible outputs are (with labels instead
+    of E1, E2 etc):
+
+    []
+    [(E1,E2)]
+    [(E1,E2')]
+    [(E1',E2)]
+    [(E1',E2')]
+    [(E1,E2), (E1',E2')]
+    [(E1,E2'), (E1',E2)]
+
+    No examples have yet been encountered of the double isomorphisms
+    (the last two lines above) so if one occurs a prominent message is
+    displayed.
+
+    Method: (1) Compute E1' and E2' and the four 7-isogenies between
+    these (including duals).  (2) Compute the kernel fields of the
+    four isogeny characters, and hence set (E3,E3')=(E2,E2') or
+    (E2',E2) so that the two characters for E1,E3 and for E1',E3' are
+    in the same order.  (3) Compute the "star-fields" of degree p for
+    each curve to detect isomorphisms when these coincide.
+
     """
     if verbose:
         print("testing E1[{}]=E2[{}] for E1={}, E2={}".format(p,p,E1.ainvs(),E2.ainvs()))
 
-    flip = +1
+    flip = False
 
     phi1 = E1.isogenies_prime_degree(p)[0]
     phi1hat = phi1.dual()
@@ -586,72 +695,82 @@ def mod_p_iso_red(E1, E2, p, verbose=True):
         if verbose:
             print("isogeny characters do not agree, flipping E2")
         if F1==F2dash or F1.is_isomorphic(F2dash):
-            flip = -1
+            flip = True
             if verbose:
                 print("isogeny characters agree after flipping E2, splitting field of isogeny character is {}".format(F1))
         else:
             print("Warning in mod_p_iso_red: the mod-{} representations of curves {} and {} do not have isomorphic semisimplifications".format(p,E1.ainvs(),E2.ainvs()))
             return 0
 
-    E3, E3dash = (E2dash,E2) if flip else (E2,E2dash)
+    E3,   E3dash  = (E2dash,E2)    if flip else (E2,E2dash)
+    phi3, phi3hat = (phi2hat,phi2) if flip else (phi2,phi2hat)
 
-    # If we are here, the ordered pair of isogeny characters of E1 and
-    # E3 are equal as are those of E1dash and E3dash.  Next we compare
-    # E1, E3 to see if they have the same * and also compare E1dash,
-    # E3dash to see if they do (which is not equivalent).
+    # Now the ordered pair of isogeny characters of E1 and E3 are
+    # equal as are those of E1dash and E3dash.  Next we compare E1, E3
+    # to see if they have the same * and also compare E1dash, E3dash
+    # to see if they do (which is not equivalent).
     if verbose:
         print("continuing with test of * components")
-    F_pol = Fricke_polynomial(p)
-    t = F_pol.parent().gen()
-    star_pol1 = F_pol-t*E1.j_invariant()
-    star_pol1dash = F_pol-t*E1dash.j_invariant()
-    star_pol3 = F_pol-t*E3.j_invariant()
-    star_pol3dash = F_pol-t*E3dash.j_invariant()
-    star_pol1 = (f for f,e in star_pol1.factor() if f.degree()==p).next()
-    star_pol1dash = (f for f,e in star_pol1dash.factor() if f.degree()==p).next()
-    star_pol3 = (f for f,e in star_pol3.factor() if f.degree()==p).next()
-    star_pol3dash = (f for f,e in star_pol3dash.factor() if f.degree()==p).next()
-    assert all(f.is_irreducible() for f in (star_pol1, star_pol1dash, star_pol3, star_pol3dash))
+    star_field1 = isogeny_star_field(phi1)
+    star_field3 = isogeny_star_field(phi3)
+    res1 =  star_field1.is_isomorphic(star_field3)          # True iff E1[p] and E3[p] are isomorphic
+    star_field1dash = isogeny_star_field(phi1hat)
+    star_field3dash = isogeny_star_field(phi3hat)
+    res2 =  star_field1dash.is_isomorphic(star_field3dash)  # True iff E1'[p] and E3'[p] are isomorphic
 
-    res1 =  test_field_iso(star_pol1, star_pol3)                # True iff E1[p] and E3[p] are isomorphic
-    res2 =  test_field_iso(star_pol1dash, star_pol3dash)  # True iff E1'[p] and E3'[p] are isomorphic
-    # return a 4-tuple comparing (E1,E2), (E1, E2'), (E1',E2), (E1',E2')
-    if flip:
-        return [False , res1, res2, False]
-    else:
-        return [res1, False, False, res2]
+    # return a list of up to 2 isomorphic pairs
+    isopairs = []
+    if res1:
+        isopairs.append((E1.label(),E3.label()))
+    if res2:
+        isopairs.append((E1dash.label(),E3dash.label()))
+    if res1 and res2:
+        print("**********double isomorphism between ({},{}) and ({},{})".format(E1.label(),E3.label(),(E1dash.label(),E3dash.label())))
+    return isopairs
+
+    # # return a 4-tuple comparing (E1,E2), (E1, E2'), (E1',E2), (E1',E2')
+    # if flip:
+    #     return [False , res1, res2, False]
+    # else:
+    #     return [res1, False, False, res2]
 
 def mod_p_iso_red_labels(lab1, lab2, p, verbose=True):
     """Given labels lab1, lab2 of non-isogenous curves whose mod-p
     representations are reducible and isomorphic up to
-    semisimplification, return +1 if the representations are actually
-    isomorphic, -1 if E1[p] is isomorphic to E2'[p] where E2' is
-    p-isogenouos to E2, and 0 otherwise.  We assume that p>2 and that
-    E1 and E2 have unique p-isogenies here.
+    semisimplification: return the same as mod_p_iso_red for the
+    curves with these labels.
     """
     return mod_p_iso_red(EllipticCurve(lab1), EllipticCurve(lab2),p,verbose)
 
-def mod_p_iso_red_set(ss, p, verbose=True):
+def mod_p_iso_red_set(ss, p=7, verbose=True):
     """Given a list of labels of non-isogenous curves whose mod-p
     representations are reducible and isomorphic up to
     semisimplification, return a list of disjoint lists of labels
-    whose union is the input list, such that the curves have
-    isomorphic mod-p representations (up to p-isogeny) if and only if
-    they are in the same sublist.
+    whose union is the list of all curves isogenous to the input
+    curves, such that the curves have isomorphic mod-p representations
+    if and only if they are in the same sublist.
     """
     if verbose:
         print("testing {}".format(ss))
-    subsets = [[ss[0]]]
-    for lab in ss[1:]:
-        new = True
-        if verbose:
-            print("testing {}".format(lab))
-        for i,s in enumerate(subsets):
-            if verbose:
-                print(" comparing with {} in subset {}".format(s[0],i))
-            flags = mod_p_iso_red_labels(lab, s[0], p, False)
-            print("isomorphisms detected between classes {} and {}: ".format(lab,s[0]))
-            if flags[0]: print("(E1,E2) ")
-            if flags[1]: print("(E1,E2') ")
-            if flags[2]: print("(E1',E2) ")
-            if flags[3]: print("(E1',E2') ")
+    nss = len(ss)
+
+    base_curves = [EllipticCurve(lab) for lab in ss]
+    isogenies = [E.isogenies_prime_degree(p)[0] for E in base_curves]
+    isog_curves = [phi.codomain() for phi in isogenies]
+
+    kernel_field = isogeny_kernel_field(isogenies[0])
+
+    # Swap the two parts in each class after the first, if necessary,
+    # so that the isogeny characters of the curves in all the first
+    # parts agree.
+
+    for i, E, phi, Edash in zip(range(nss), base_curves, isogenies, isog_curves):
+        if isogeny_kernel_field(phi) != kernel_field):
+            base_curves[i] = Edash
+            isog_curves[i] = E
+            phi = isogenies[i] = phi.dual()
+        assert isogeny_kernel_field(phi) == kernel_field
+
+    print("After sorting, base curves are {}".format([E.label() for E in base_curves]))
+    print("  and {}-isogenous curves are {}".format(p, [E.label() for E in isog_curves]))
+    #return res
