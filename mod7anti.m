@@ -1,4 +1,4 @@
-load "mod7_antipairs_all.m";
+//load "mod7_antipairs_all.m";
 load "IntFrobFunctions.m";
 
 p:=7;
@@ -676,9 +676,11 @@ end if;
 end function;
 
 
-missed:=[];
-wrong:=[];
+function test_pairs(pairs);
 
+missed:=[];
+symplectics:=[];
+antisymplectics:=[];
 
 for i in [1..#pairs] do 
 tps:=[];
@@ -738,10 +740,13 @@ end if;
 
 
 if #tps ne 0 then
-	assert #Set(tps) eq 1; 
-	if Rep(Set(tps)) eq 1 then Append(~wrong,i); end if;
-	//assert Rep(Set(tps)) eq -1;
-	print i, Rep(tps);
+        // check that all test which applied agree:
+        assert #Set(tps) eq 1;
+        sgn := Rep(Set(tps));
+	if sgn eq 1 then Append(~symplectics,i);
+        elif sgn eq -1 then Append(~antisymplectics,i);
+        end if;
+	print i, sgn;
 	print "+++++++++++++++++++++";
 else
 	print i, "no test applied";
@@ -751,10 +756,16 @@ end if;
 end for;
 
 
-// applies test of good reduction onyl to those who missed all the tests
+// applies test of good reduction only to those who missed all the tests
 
 missed2:=[];
 Bound:=1000;
+
+print "After testing ", #pairs, " pairs, ";
+print #symplectics, " pairs were proved to be symplectic, ";
+print #antisymplectics, " pairs were proved to be antisymplectic, and";
+print #missed, " failed (no test applied)";
+print "Now applying the test of good reduction to these";
 
 for i in [1..#missed] do 
 tps:=[];
@@ -777,8 +788,10 @@ end if;
 
 if #tps ne 0 then
 	assert #Set(tps) eq 1; 
-	if Rep(Set(tps)) eq 1 then Append(~wrong,i); end if;
-	//assert Rep(Set(tps)) eq -1;
+        sgn := Rep(Set(tps));
+	if sgn eq 1 then Append(~symplectics,i);
+        elif sgn eq -1 then Append(~antisymplectics,i);
+        end if;
 	print i, Rep(tps);
 	print "+++++++++++++++++++++";
 else
@@ -787,10 +800,11 @@ else
 	print "+++++++++++++++++++++";
 end if;
 
-
-
 end for;
 
+print "After additional tests of ", #missed, " pairs";
+print #symplectics, " pairs were proved to be symplectic, ";
+print #antisymplectics, " pairs were proved to be antisymplectic, and";
+print #missed2, " still failed (no test applied)";
 
-
-
+end function; // test_pairs
