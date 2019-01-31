@@ -1,0 +1,60 @@
+Notes on mod 7 isomorphisms (symplectic or antisymplectic): the
+reducible case
+
+Using (a_p mod 7 | first 30 primes over 400000) we find 255 sets of
+isogeny classes of size >1 such that the mod-7 representations of all
+curves in the classes in each set are reducible and appear to have
+isomorphic semisimplifications.  In all cases this is rigorously
+verified using Kraus's criterion.
+
+Note that since we are working over Q:
+
+(1) For each curve E in each of these isogeny classes there is a
+unique 7-isogenous curve E' in the class; this is because for p>5, the
+image of the mod-p representation is never contained in a split Cartan
+subgroup, hence is contained in at most one Borel subgroup.
+
+(2) the isogeny characters attached to E and E' are different; this is
+because the determinant of the representation maps onto F_p^* so in
+particular is not always a square mod p.
+
+For each such set: we take one curve in each isogeny class and compute
+the isogeny character (in fact, the field it cuts out, which is cyclic
+of degree dividing 6).  If necessary we exchange each curve E with its
+7-isogenous curve E', so that we have a list of curves whose isogeny
+characters are identical.  Now for each curve in the list, the mod-7
+representation has the form [\psi_1, *; 0, \psi_2]  with the same
+characters \psi_j, but possibly different cocycles *.
+
+The cocycles * are characterised as follows: the polynomial of degree
+8 whose roots determine the 8 7-isogenous curves factors over Q as a
+linear factor (corresponding to the isogeny from E to E') times an
+irreducible factor of degree 7.  We have a Lemma which says that
+(given the same characters \psi_1, \psi_2), two curves have the same *
+and hence isomorphic mod-7 representations if and only if the
+irreducible polynomials of degree 7 define isomorphic extensions of Q.
+
+By computing the degree 7 polynomial for each curve E in the list we
+partition the list into sublists such that the curves in each sublist
+have isomorphic mod-7 representations.
+
+Ignoring sublists of size 1,  we have a total of 337 lists of at least
+two curves all of which have the same mod-7 representation.  These
+lists have size 2, 3 or 4 (with multiplicities 276, 52 and 9).
+
+The next step is to partition each of these lists into 2 parts such
+that within each part the isomorphism is symplectic; the second part
+may then be empty.  The possible subdivisions (up to order) are 2=2+0,
+2=1+1; 3=3+0, 3=2+1; 4=4+0, 4=3+1, 4=2+2.  In practice, however the
+only split for size 4 is 3+1.
+
+NB so far we have only considered 2 curves in each isogeny class,
+linked by 7-isogenies.  Several of the isogeny classes also admit 2-
+or 3-isogenies (but not both) giving 4 curves in the class.  Since
+2-isogenies induce symplectic isomorphisms and 3-isogenies admit
+antisymplectic isomorphisms we can add these isogenous curves to the
+lists in the appropriate part.
+
+For comparison testing with Magma we output from this two files, one
+of pairs (E1,E2) which are symplectically isomorphic and one of pairs
+which are antisymplectically isomorphic.
