@@ -312,7 +312,7 @@ def make_hash(p, N1, N2, np=20):
         h = hash1(p,E,plist)
         lab = E.label()
         if nc%1000==0:
-            print lab
+            print(lab)
         #print("{} has hash = {}".format(lab,h))
         if h in hashtab:
             hashtab[h].append(lab)
@@ -623,7 +623,7 @@ def isogeny_kernel_field(phi, optimize=False):
         Fxy = Fxy.optimized_representation()[0]
     return Fxy
 
-def isogeny_star_field(phi, optimize=False):
+def isogeny_star_field(phi, optimize=True):
     p = phi.degree()
     F_pol = Fricke_polynomial(p)
     t = F_pol.parent().gen()
@@ -636,6 +636,8 @@ def isogeny_star_field(phi, optimize=False):
     return F
 
 def test_field_iso(pol1, pol2):
+    if pol1 == pol2:
+        return True
     if pol1.degree()!=pol2.degree():
         return False
     assert pol1.is_irreducible() and pol2.is_irreducible()
@@ -742,7 +744,7 @@ def mod_p_iso_red_labels(lab1, lab2, p, verbose=True):
     """
     return mod_p_iso_red(EllipticCurve(lab1), EllipticCurve(lab2),p,verbose)
 
-def mod_p_iso_red_set(ss, p=7, verbose=True):
+def mod_p_iso_red_set(ss, p=7, Detail=0):
     """Given a list of labels of non-isogenous curves whose mod-p
     representations are reducible and isomorphic up to
     semisimplification, return a list of disjoint lists of labels
@@ -750,7 +752,7 @@ def mod_p_iso_red_set(ss, p=7, verbose=True):
     curves, such that the curves have isomorphic mod-p representations
     if and only if they are in the same sublist.
     """
-    if verbose:
+    if Detail>1:
         print("testing {}".format(ss))
     nss = len(ss)
 
@@ -758,19 +760,41 @@ def mod_p_iso_red_set(ss, p=7, verbose=True):
     isogenies = [E.isogenies_prime_degree(p)[0] for E in base_curves]
     isog_curves = [phi.codomain() for phi in isogenies]
 
-    kernel_field = isogeny_kernel_field(isogenies[0])
+    kernel_field = isogeny_kernel_field(isogenies[0], optimize=True)
+    dual_kernel_field = isogeny_kernel_field(isogenies[0].dual(), optimize=True)
+    if Detail>1:
+        print("Kernel field:      {}".format(kernel_field))
+        print("Dual kernel field: {}".format(dual_kernel_field))
 
     # Swap the two parts in each class after the first, if necessary,
     # so that the isogeny characters of the curves in all the first
     # parts agree.
 
     for i, E, phi, Edash in zip(range(nss), base_curves, isogenies, isog_curves):
-        if isogeny_kernel_field(phi) != kernel_field):
-            base_curves[i] = Edash
-            isog_curves[i] = E
-            phi = isogenies[i] = phi.dual()
-        assert isogeny_kernel_field(phi) == kernel_field
+        this_kernel_field = isogeny_kernel_field(phi, optimize=True)
+        if not this_kernel_field.is_isomorphic(kernel_field):
+            if this_kernel_field.is_isomorphic(dual_kernel_field):
+                if Detail>1:
+                    print("swapping {}!".format(i))
+                base_curves[i] = Edash
+                isog_curves[i] = E
+                phi = isogenies[i] = phi.dual()
+            else:
+                print("problem at i={}: this kernel field = {}, different from both the kernel field and dual kernel field!".format(i,this_kernel_field))
 
-    print("After sorting, base curves are {}".format([E.label() for E in base_curves]))
-    print("  and {}-isogenous curves are {}".format(p, [E.label() for E in isog_curves]))
-    #return res
+    if Detail>1:
+        print("After sorting, base curves are {}".format([E.label() for E in base_curves]))
+        print("  and {}-isogenous curves are {}".format(p, [E.label() for E in isog_curves]))
+
+    # Now the curves in base_curves have the same isogeny characters
+    # in the same order, and we sort them according to their *-fields:
+    star_fields = [isogeny_star_field(phi) for phi in isogenies]
+    maps = dict([(F,[E.label() for E,F1 in zip(base_curves,star_fields) if F1.is_isomorphic(F)]) for F in star_fields])
+    if Detail:
+        print("star field subsets: {}".format(maps.values()))
+    isog_star_fields = [isogeny_star_field(phi.dual()) for phi in isogenies]
+    isog_maps = dict([(F,[E.label() for E,F1 in zip(isog_curves,isog_star_fields) if F1.is_isomorphic(F)]) for F in isog_star_fields])
+    if Detail:
+        print("star-star field subsets: {}".format(isog_maps.values()))
+    return maps.values(), isog_maps.values()
+    #return [E.label() for E in base_curves], [E.label() for E in isog_curves]
