@@ -223,11 +223,16 @@ class XE7(object):
             # try special curves using Kraus-Halberstadt' parametrizations:
             E2list = []
             for KH in [KH1, KH2]:
-                E2 = KH(T).quadratic_twist(d)
-                if E2.j_invariant()==jP:
-                    if self._base==QQ:
-                        E2 = E2.minimal_model()
-                    E2list.append(E2)
+                try:
+                    E2 = KH(T).quadratic_twist(d)
+                    if E2.j_invariant()==jP:
+                        if self._base==QQ:
+                            E2 = E2.minimal_model()
+                        E2list.append(E2)
+                except ArithmeticError:
+                    # e.g. E1='28224fo1', lifting '65088dg2' to P=[1:14:0] gives T=-3 and KH1(-3) is singular 
+                    continue
+                
             if verbose:
                 print("P={} is a special z=0 point, returning {}".format(P,[EE2.ainvs() for EE2 in E2list]))
             self.P2C[tP] = E2list
