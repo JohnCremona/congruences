@@ -1,10 +1,19 @@
-from sage.all import ZZ, QQ, EllipticCurve, prime_range, prod, Set, cremona_optimal_curves, srange, next_prime, CremonaDatabase, polygen, legendre_symbol, PolynomialRing, NumberField
+from sage.all import ZZ, QQ, EllipticCurve, prime_range, prod, Set, cremona_optimal_curves, srange, next_prime, CremonaDatabase, polygen, legendre_symbol, PolynomialRing, NumberField, SteinWatkinsAllData
 from sage.schemes.elliptic_curves.isogeny_small_degree import Fricke_polynomial
 
 F7 = Fricke_polynomial(7)
 F5 = Fricke_polynomial(5)
 x = polygen(QQ)
 F7=F7(x)
+
+def SW_label(E):
+    return ".".join([str(E.conductor()), str(E.ainvs())])
+
+def label(E):
+    try:
+        return E.label()
+    except:
+        return SW_label(E)
 
 def isog_pol(E, p=7):
     return Fricke_polynomial(p)(x)-x*E.j_invariant()
@@ -74,12 +83,12 @@ def test_cong(p, E1, E2, mumax=5000000, semisimp=True, verbose=False):
     mu = M * prod([(ell+1)/ell for ell in M.support()])
     mu6 = ZZ(int(mu/6)) # rounds down
     if mu6>5000000:
-        print("Curves {} and {}: testing ell up to {} mod {}".format(E1.label(),E2.label(),mu6,p))
+        print("Curves {} and {}: testing ell up to {} mod {}".format(label(E1),label(E2),mu6,p))
     actual_mu6 = mu6
     if mu6>mumax:
         mu6 = mumax
     if verbose:
-        print("Curves {} and {}: testing ell up to {} mod {}".format(E1.label(),E2.label(),mu6,p))
+        print("Curves {} and {}: testing ell up to {} mod {}".format(label(E1),label(E2),mu6,p))
     N1N2 = N1*N2
     for ell in prime_range(mu6):
         #print("testing ell = {}".format(ell))
@@ -92,7 +101,7 @@ def test_cong(p, E1, E2, mumax=5000000, semisimp=True, verbose=False):
             if (a1-a2)%p:
                 return False, (ell,a1,a2)
     if mu6<actual_mu6:
-        print("Warning! for curves {} and {}, to test for isomorphic semisimplifications we should have tested ell mod {} up to {}, but we only tested up to {}".format(E1.label(),E2.label(),p,actual_mu6,mu6))
+        print("Warning! for curves {} and {}, to test for isomorphic semisimplifications we should have tested ell mod {} up to {}, but we only tested up to {}".format(label(E1),label(E2),p,actual_mu6,mu6))
     if verbose:
         print("The two mod-{} representations have isomorphic semisimplifications".format(p))
     if semisimp:
@@ -146,7 +155,7 @@ def test_file(f, verbose=False):
     for p, E1, E2 in dat:
         res, info = test_cong(p,E1,E2)
         if verbose or not res:
-            report(res, info, p, E1.label(), E2.label())
+            report(res, info, p, label(E1), label(E2))
 
 def list_j_pairs(f):
     dat = read_cong(f)
@@ -291,14 +300,18 @@ def ssp(e, nssp=5, maxp=10000000):
             pp.append(p)
         if len(pp)==nssp:
             return pp
-    print("{} has only {} supersingular primes up to {}".format(e.label(),len(pp),maxp))
+    print("{} has only {} supersingular primes up to {}".format(label(e),len(pp),maxp))
     return pp
 
 # Hash-based congruence finder
 
-def hash1(p,E,plist):
-    h = [E.ap(ell)%p for ell in plist]
+def hash1(p,E,qlist):
+    h = [E.ap(q)%p for q in qlist]
     return sum(ai*p**i for i,ai in enumerate(h))
+
+def hash1many(plist,E,qlist):
+    aqlist = [E.ap(q) for q in qlist]
+    return dict([(p,sum((ai%p)*p**i for i,ai in enumerate(aqlist))) for p in plist])
 
 def make_hash(p, N1, N2, np=20):
     plist = [next_prime(400000)]
@@ -327,6 +340,63 @@ def make_hash(p, N1, N2, np=20):
             #print s
     print("{} sets of conjugate curves".format(ns))
     return hashtab
+
+def SW_label(E):
+    return ".".join([str(E.conductor()), str(E.ainvs())])
+
+def EC_from_SW_label(lab):
+    N, ainvs = lab.split(".")
+    N = ZZ(N)
+    E = EllipticCurve([ZZ(a) for a in ainvs[1:-1].split(",")])
+    assert E.conductor()==N
+    return N, E
+
+def make_hash_SW(plist, N1=0, N2=999, nq=30, tate=False):
+    """Here N1 and N2 are in [0..999] and refer to the batch number, where
+    batch n has curves of conductor between n*10^5 and (n+1)*10^5
+
+    plist is a list of primes so we can make several hash tables in parallel
+
+    If tate=True then ignore curves unless ord_p(j(E))=-1
+    """
+    # Compute the first nq primes greater than the largest conductor:
+
+    qlist = [next_prime((N2+1)*10**5)]
+    while len(qlist)<nq:
+        qlist.append(next_prime(qlist[-1]))
+
+    # Initialize hash tables for each p:
+
+    hashtabs = dict([(p,dict()) for p in plist])
+    nc = 0
+    for N in range(N1,N2+1):
+      print("Batch {}".format(N))
+      for dat in SteinWatkinsAllData(N):
+        nc +=1
+        NE = dat.conductor
+        E = EllipticCurve(dat.curves[0][0])
+        if tate and all(E.j_invariant().valuation(p)>=0 for p in plist):
+            continue
+        lab = SW_label(E)
+        if nc%10000==0:
+            print(lab)
+        # if nc>10000:
+        #     break
+        h = hash1many(plist,E,qlist)
+        for p in plist:
+            if tate and E.j_invariant().valuation(p)>=0:
+                continue
+            hp = h[p]
+            if hp in hashtabs[p]:
+                hashtabs[p][hp].append(lab)
+                print("p={}, new set {}".format(p,hashtabs[p][hp]))
+            else:
+                hashtabs[p][hp] = [lab]
+
+    ns = dict([(p,len([v for v in hashtabs[p].values() if len(v)>1])) for p in plist])
+    for p in plist:
+        print("p={}: {} nontrivial sets of congruent curves".format(p,ns[p]))
+    return hashtabs
 
 def old_test_irred(s, p=7):
     Elist = [EllipticCurve(lab) for lab in s]
@@ -476,7 +546,7 @@ def all_c(label):
     of all labels of curves in that class.
     """
     C = CDB.isogeny_class(label)
-    return [(E.label(),E.isogeny_degree(C[0])) for E in C]
+    return [(label(E),E.isogeny_degree(C[0])) for E in C]
 
 def split_class(label, p):
     """given the label of one curve E in a p-irreducible isogeny class,
@@ -486,7 +556,7 @@ def split_class(label, p):
     empty) are m-isogenous to E with legendre(m,p)=-1.
     """
     C = CDB.isogeny_class(label)
-    isodict = {E.label():E.isogeny_degree(C[0]) for E in C}
+    isodict = {label(E):E.isogeny_degree(C[0]) for E in C}
     set1 = [lab for lab in isodict if legendre_symbol(isodict[lab],7)==+1]
     set2 = [lab for lab in isodict if legendre_symbol(isodict[lab],7)==-1]
     return [set1,set2]
@@ -561,7 +631,7 @@ def split_class_red(label, p, ignore_symplectic=False):
 
     """
     C = CDB.isogeny_class(label)
-    isodict = {E.label():E.isogeny_degree(C[0]) for E in C}
+    isodict = {label(E):E.isogeny_degree(C[0]) for E in C}
     def t(m):
         if p.divides(m):
             return 2 + (1-legendre_symbol(m//p,p))//2
@@ -723,11 +793,11 @@ def mod_p_iso_red(E1, E2, p, verbose=True):
     # return a list of up to 2 isomorphic pairs
     isopairs = []
     if res1:
-        isopairs.append((E1.label(),E3.label()))
+        isopairs.append((label(E1),label(E3)))
     if res2:
-        isopairs.append((E1dash.label(),E3dash.label()))
+        isopairs.append((label(E1dash),label(E3dash)))
     if res1 and res2:
-        print("**********double isomorphism between ({},{}) and ({},{})".format(E1.label(),E3.label(),(E1dash.label(),E3dash.label())))
+        print("**********double isomorphism between ({},{}) and ({},{})".format(label(E1),label(E3),(label(E1dash),label(E3dash))))
     return isopairs
 
     # # return a 4-tuple comparing (E1,E2), (E1, E2'), (E1',E2), (E1',E2')
@@ -783,18 +853,18 @@ def mod_p_iso_red_set(ss, p=7, Detail=0):
                 print("problem at i={}: this kernel field = {}, different from both the kernel field and dual kernel field!".format(i,this_kernel_field))
 
     if Detail>1:
-        print("After sorting, base curves are {}".format([E.label() for E in base_curves]))
-        print("  and {}-isogenous curves are {}".format(p, [E.label() for E in isog_curves]))
+        print("After sorting, base curves are {}".format([label(E) for E in base_curves]))
+        print("  and {}-isogenous curves are {}".format(p, [label(E) for E in isog_curves]))
 
     # Now the curves in base_curves have the same isogeny characters
     # in the same order, and we sort them according to their *-fields:
     star_fields = [isogeny_star_field(phi) for phi in isogenies]
-    maps = dict([(F,[E.label() for E,F1 in zip(base_curves,star_fields) if F1.is_isomorphic(F)]) for F in star_fields])
+    maps = dict([(F,[label(E) for E,F1 in zip(base_curves,star_fields) if F1.is_isomorphic(F)]) for F in star_fields])
     if Detail:
         print("star field subsets: {}".format(maps.values()))
     isog_star_fields = [isogeny_star_field(phi.dual()) for phi in isogenies]
-    isog_maps = dict([(F,[E.label() for E,F1 in zip(isog_curves,isog_star_fields) if F1.is_isomorphic(F)]) for F in isog_star_fields])
+    isog_maps = dict([(F,[label(E) for E,F1 in zip(isog_curves,isog_star_fields) if F1.is_isomorphic(F)]) for F in isog_star_fields])
     if Detail:
         print("star-star field subsets: {}".format(isog_maps.values()))
     return maps.values(), isog_maps.values()
-    #return [E.label() for E in base_curves], [E.label() for E in isog_curves]
+    #return [label(E) for E in base_curves], [label(E) for E in isog_curves]
