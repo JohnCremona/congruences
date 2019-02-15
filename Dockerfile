@@ -5,11 +5,9 @@ FROM sagemath/sagemath:8.6
 
 RUN sage -pip install jupyterlab
 
-USER root
 RUN apt-get -qq update \
      && apt-get -qq install -y --no-install-recommends make \
      && apt-get -qq clean
-USER sage
 
 RUN sage -i database_cremona_ellcurve
 
