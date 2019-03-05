@@ -7,8 +7,8 @@
 % \usepackage{MnSymbol} % for dashed arrow
 
 %\usepackage{mathabx}
-\usepackage{MnSymbol}
-\usepackage{extarrows}
+%\usepackage{MnSymbol}
+%\usepackage{extarrows}
 %\usepackage{rotating}
 %\usepackage{mathrsfs}
 \usepackage{lscape}
@@ -16,7 +16,7 @@
 
 % This is for resizeable \Sha
 %\usepackage{natbib}
-\usepackage[OT2,T1]{fontenc}
+%\usepackage[OT2,T1]{fontenc}
 %\DeclareSymbolFont{cyrletters}{OT2}{wncyr}{m}{n}
 %\DeclareMathSymbol{\Sha}{\mathalpha}{cyrletters}{"58}
 
@@ -33,6 +33,10 @@
 
 \usepackage{array, booktabs, comment, multirow, todonotes}
 
+% label and link to an elliptic curve /Q:
+\newcommand{\lmfdbec}[3]{\href{http://www.lmfdb.org/EllipticCurve/Q/#1/#2/#3}{{\text{\rm#1.#2#3}}}}
+% label and link to an elliptic curve isogeny class /Q:
+\newcommand{\lmfdbeciso}[2]{\href{http://www.lmfdb.org/EllipticCurve/Q/#1/#2}{\text{\rm#1.#2}}}
 
 
 \newcommand{\defi}[1]{\textsf{#1}} % for defined terms
@@ -270,6 +274,15 @@
 \newcommand{\To}{\longrightarrow}
 \newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
 
+% imported from JC's file
+\DeclareMathOperator{\id}{id}
+\def\w{\omega}
+\def\r3{\sqrt{-3}}
+\def\pibar{\overline{\pi}}
+%\def\legover{\overwithdelims()}
+\def\legendre#1#2{\displaystyle{\frac{#1}{#2}}}
+
+
 \numberwithin{equation}{section}
 
 %\newtheorem{theorem}{Theorem}
@@ -320,7 +333,7 @@
          University of Warwick,
          Coventry CV4 7AL,
          United Kingdom}
-\email{john.cremona@gmail.com}
+\email{j.e.cremona@warwick.ac.uk}
 
 
 \author{Nuno Freitas}
@@ -353,13 +366,16 @@ We apply it to classify all the congruences in LMFDB.
 
 Let $p \geq 3$ be a prime. Write $G_\Q = \Gal(\Qbar/\Q)$ for 
 the absolute Galois group of $\Q$. 
-Let $E$ and $E'$ be elliptic curves over $\Q$ and write 
+Let $E$ and $E'$ be elliptic curves defined over $\Q$, and write 
 $E[p]$ and $E'[p]$ for their $p$-torsion $G_\Q$-modules. 
 
-Let $\phi : E[p] \to E'[p]$ be a $G_\Q$-modules isomorphism.
-There is an element $d(\phi) \in \F_p^\times$ such that,
-for all $P, Q \in E[p]$, the Weil pairings satisfy
-$e_{E',p}(\phi(P), \phi(Q)) = e_{E,p}(P, Q)^{d(\phi)}$.
+Let $\phi : E[p] \to E'[p]$ be an isomorphismof $G_\Q$-modules.
+There is an element $d(\phi) \in \F_p^\times$ such that
+the Weil pairings~$e_{E,p}$ and~$e_{E',p}$ satisfy
+\[
+e_{E',p}(\phi(P), \phi(Q)) = e_{E,p}(P, Q)^{d(\phi)}
+\]
+for all $P, Q \in E[p]$.
 We say that $\phi$ is a {\it symplectic isomorphism} or an
 {\it anti-symplectic isomorphism}
 if $d(\phi)$ is a square or a non-square modulo~$p$, 
@@ -717,10 +733,275 @@ we conclude that $\rhobar_{E_1,p}(\sigma) = A \rhobar_{E_2,p}(\sigma) A^{-1}$, a
 
 
 
-\section{Congruences in the database}
+\section{Congruences in the database}\label{S:statistics}
 
 blah blah
 
+\section{Mod-$7$ isomorphisms between elliptic curves with
+  $j$-invariant~$0$}
+We show that for every elliptic curve~$E$ with $j(E)=0$, there is a
+non-trivial sextic twist of~$E$ which has symplectically isomorphic
+mod-$7$ Galois representation.
+
+\subsection{Introduction}
+In \cite{Halberstadt-Kraus-XE7}, Halberstadt and Kraus give an
+explicit model for the modular curve $X_E(7)$, for any elliptic curve
+$E$ defined over a field~$K$ of characteristic not equal to $2$, $3$
+or~$7$. The $K$-rational points on $X_E(7)$ parametrise pairs
+$(E',\phi)$ where $E'$ is an elliptic curve defined over~$K$ and
+$\phi:E[7]\to E'[7]$ is an isomorphism of symplectic $G_K$-modules.
+Here the symplectic structure on $E[7]$ is given by the Weil pairing,
+and we identify two such isomorphisms~$\phi$ when one is a scalar
+multiple of the other.
+
+The model for $X_E(7)$ given in \cite{Halberstadt-Kraus-XE7} is a
+plane quartic curve (a twist of $X(7)$, which has the classical Klein
+quartic as a model over~$\Q$) given by an explicit ternary quartic
+form~$F_{a,b}(X,Y,Z)$ in $\Z[a,b][X,Y,Z]$ where $E$ has equation
+$Y^2=X^3+aX+b$.  The $24$ flexes on $X_E(7)$ are the cusps; in other
+words they are the poles of the degree~$168$ map to the $j$-line, $j:
+X_E(7)\to X(1)$.  The $28$ bitangents intersect $X_E(7)$ at the 56
+points above $j=0$: these are the intersection points of $X_E(7)$ and
+the curve of degree~$14$ defined by a covariant of~$F_{a,b}$.
+
+The base point $P_E=[0:1:0]\in X_E(7)(K)$ corresponds to the pair
+$(E,\id)$.  The tangent line to $X_E(7)$ at~$P_E$ is $Z=0$.  In
+general, when $a\not=0$, this line intersects $X_E(7)$ in two further
+distinct points $P_{\pm}=[\pm\sqrt{-3a}:a:0]$ which are rational if
+and only if $-3a\in K^{*2}$.  When this holds, the isomorphic curves
+$E'$ may be found using the two parametrized families in the earlier
+paper \cite{Halberstadt-Kraus-YE7} of Halberstadt and Kraus.  However,
+these parametrization fail when $a=0$, that is for curves with
+$j$-invariant~$0$.  The purpose of this note is to fill this gap.
+
+When $a=0$, the second point of intersection of the bitangent $Z=0$
+with $X_E(7)$, in addition to $P_E=[0:1:0]$, is $P_0=[1:0:0]$.  In
+what follows we do not need to use the curve $X_E(7)$, but it is the
+existence of this second rational point on $X_E(7)$ whenever $j(E)=0$
+which led us to the result here.
+
+\subsection{Statement of result}
+Every elliptic curve with $j=0$ has a model of the form
+$E_b:\ Y^2=X^3+b$ with $b$ nonzero, and the isomorphism class of $E_b$
+depends only on $b$ modulo $6$th powers.  Any two such curves are
+sextic twists of each other: the sextic twist of $E_b$ by $u$ is
+$E_{bu}$, which is isomorphic to $E_b$ if and only if $u$ is a $6$th
+power.  Our result is the following:
+
+\begin{theorem}
+For every $b\not=0$, the elliptic curves $E_b$ and $E_{-28/b}$ have
+symplectically isomorphic mod-$7$ Galois representations.
+\end{theorem}
+
+\begin{remark}
+The same method can be used to show that $E_b$ and $E_{-27b}$ have
+antisymplectically isomorphic Galois representations.  However this is
+more easily seen by noting that these curves are $3$-isogenous; since
+$3$ is a non-quadratic residue of~$7$, a $3$-isogeny between them
+induces an antisymplectic isomorphism between their mod-$7$ torsion
+modules.  In case $-3$ is a square, these curves are even isomorphic,
+and the $3$-isogeny is the endomorphism $\pm\r3$, while in
+general the two curves are quadratic twists.
+\end{remark}
+
+For simplicity of notation we take the base field to be $\Q$.  Little
+change would be required in what follows if $\Q$ were to be replaced
+by any field of characteristic different from~$2$, $3$ or $7$ in which
+$-3$ is not a square.  In case $-3$ is a square there is some
+simplification, and the result still holds.
+
+\subsection{Proof: preliminaries}
+Let $K=\Q(\r3)=\Q(\w)$ where $\w$ satisfies
+$\w^2+\w+1=0$, so that $\w$ is a primitive $3$rd root of
+unity and $-\w$ a primitive $6$th root of unity.  The elliptic
+curves $E_b$ have CM by the maximal order $\OO_K=\Z[\w]$ in which
+$7$ splits as $7=\pi\pibar$ where $\pi=3\w+2$.  Set
+$\r3=2w+1$ (to fix the sign).  We denote the nontrivial
+automorphism of $K/\Q$ by $x\mapsto x'$.
+
+Fix $b\in\Q^*$ defining the elliptic curve $E_b: Y^2=X^3+b$.  The
+$2$-dimensional $\F_7$-vector space $E_b[7]$ has two $K$-rational
+one-dimensional subspaces, namely the kernels of the endomorphisms
+$[\pi]$ and $[\pibar]$, which we make explicit.
+
+Define
+\begin{align}
+\alpha&=4b/\pibar,\\
+\beta=\alpha+b&=-\w^2\r3^3b/\pibar,\quad\text{and}\\
+\gamma&=-4\r3^3b/\pibar = -\r3^3\alpha = 4\w\beta.
+\end{align}
+Then for any choice of roots, the point $(\alpha^{1/3},\beta^{1/2})\in
+E_b(\Qbar)$.  We fix one $6$th root $\gamma^{1/6}$ once and for all
+and set
+\begin{align}
+\alpha^{1/3} &= \gamma^{1/3}/\r3,\\
+\beta^{1/2} &= \gamma^{1/2}\w/2
+\end{align}
+(with $\gamma^{1/3}=(\gamma^{1/6})^2$ and $\gamma^{1/2}=(\gamma^{1/6})^3$).  Let
+$P=(\alpha^{1/3},\beta^{1/2})\in E_b(\Qbar)$.
+
+Computing the $7$-division polynomial of~$E_b$, we find that over
+$\Q(b)$ (treating $b$ as an indeterminate) it has factors $X^3-\alpha$
+and $X^3-\alpha'$, the remaining factor of degree~$18$ being
+irreducible.  It follows that $P$ and the conjugate point
+$P'=(\alpha'^{1/3},\beta'^{1/2})$ have order~$7$.  Also, the multiples
+$kP$ for $1\le k\le6$ all have $x(kP)^3=\alpha$ (this can be checked
+by direct calculation, or by observing that $x(2P)^3=\alpha'$ yields a
+contradiction after repeating three times since $8P=P$).
+
+Thus the $7$-division field is
+$L=K(E_b[7])=K(P,P')=K(\gamma^{1/6},\gamma'^{1/6})$.
+
+\begin{lemma}In all cases, $\gamma$ and~$\gamma'$ are independent in
+  $K^*/K^*{}^2$.  They are independent in $K^*/K^*{}^3$ unless
+  $b=2\cdot7^2\cdot c^3$ with~$c\in\Q^*{}^3$, in which case
+  $\gamma\gamma'=(-42c)^3$ and they generate a subgroup of $K^*/K^*{}^3$
+  of order~$3$.
+
+In the first case we have $\Gal(L/K)\cong(\Z/6\Z)^2$.  In the second
+case, $\Gal(L/K)\cong(\Z/6\Z)\times(\Z/2\Z)$.
+\end{lemma}
+\begin{proof}
+Elementary.
+\end{proof}
+Note that $b=98c^3\implies -28/b=98(-7c)^3$, so the situation is
+symmetric between $E_b$ and $E_{-28/b}$.  In this case, the curves
+$E_b$ and $E_{-28/b}$ are not just sextic twists but quadratic twists
+by $-7$, since $-28/b^2=(-7)^3/c^6$.
+
+\subsection{Proof: generic case}
+
+To start with, we assume that we are not in the special case, so that
+$\Gal(L/K)\cong(\Z/6\Z)^2$.  We will define generating
+automorphisms~$\sigma_1$, $\sigma_2\in\Gal(L/K)$, each of order~$6$, together
+with an automorphism~$\tau$ of order~$2$ in $\Gal(L/\Q)$ such that
+$\Gal(L/\Q)=\left<\sigma_1,\sigma_2,\tau\right>$.
+
+Fix one value of $\gamma^{1/6}$ arbitrarily.  Let $\tau\in\Gal(L/\Q)$
+be an element of order~$2$ restricting to the non-trivial element of
+$\Gal(K/\Q)$.  Then $(\tau(\gamma^{1/6}))^6=\tau(\gamma)=\gamma'$, so
+we may fix the value of $\gamma'^{1/6}$ by setting
+$\gamma'^{1/6}=\tau(\gamma)$.  Now by independence of $\gamma^{1/6}$
+and $\gamma'^{1/6}$ there exists $\sigma_1\in\Gal(L/K)$ fixing
+$\gamma'^{1/6}$ and mapping $\gamma^{1/6}\mapsto-w\gamma^{1/6}$ (recall
+that $-w$ is a primitive $6$th root of unity) and also
+$\sigma_2\in\Gal(L/K)$ fixing $\gamma^{1/6}$ and mapping
+$\gamma'^{1/6}\mapsto-w^2\gamma'^{1/6}$.
+
+Both $\sigma_1$ and~$\sigma_2$ multiply $(\gamma/\gamma')^{1/6}$ by
+the same $6$th root of unity, $-w$.  Note that
+$\gamma/\gamma'=-\pi/\pibar$; one may check that
+$K((\gamma/\gamma')^{1/6})=K(\zeta_7)$, and that both $\sigma_1$ and
+$\sigma_2$ map $\zeta_7$ to $\zeta_7^3$.  (The image must be either
+$\zeta_7^3$ or $\zeta_7^5$ since $3$ and $5$ are the primitive roots
+modulo~$7$.)
+
+Recall that $P=(\alpha^{1/3},\beta^{1/2})\in E_b(K(\gamma^{1/6}))$ is
+fixed by our choice of $\gamma^{1/6}$.  We similarly have
+$P'=(\alpha'^{1/3},\beta'^{1/2})\in E_b(K(\gamma'^{1/6}))$, and~$\tau$
+interchanges these.  Hence we have
+\[
+   \rho_{E_b,7}(\tau) = \begin{pmatrix}0&1\\1&0   \end{pmatrix}.
+\]
+
+
+Now $\sigma_1$ fixes~$P'$, while one may see that $\sigma_1(P)=3P$
+(for example the standard formulas for adding points show that
+$-2P=(w^{-5}\alpha^{1/3},\beta^{1/2})=\sigma_1^5(P)$); this also
+follows from the action on the $7$th roots of unity noted above, which
+implies that the determinant of the matrix giving the action of
+$\sigma_1$ on $\left<P,P'\right>$ is $3\pmod7$.  This matrix is
+therefore
+\[
+   \rho_{E_b,7}(\sigma_1) = \begin{pmatrix}3&0\\0&1   \end{pmatrix},
+\]
+and similarly
+\[
+   \rho_{E_b,7}(\sigma_2) = \begin{pmatrix}1&0\\0&3   \end{pmatrix}.
+\]
+
+Now we consider the effect of twisting~$E_b$ by $u=-28/b^2$.
+Replacing $b$ by $ub=-28/b$ changes $\gamma$ into $(2\r3)^6/\gamma'$.
+In fact we started out by looking for a sextic twist~$u$ which induces
+an isomorphism on the $7$-torsion modules, which must have the effect
+of replacing $\gamma$ by $\gamma^{\pm1}$ or~$\gamma'^{\pm1}$, modulo
+$6$th powers.  The only solutions with $u\in\Q^*$ are $u=-27$ and
+$u=-28/b^2$.
+
+Hence the twist leaves the $7$-division field
+$K(\gamma^{1/6},\gamma'^{1/6})$ unchanged, which is certainly
+necessary.
+
+The twisting map~$\tw$ takes $(x,y)\in E_b$ to $(u^{1/3}x,u^{1/2}y)\in
+E_{bu}$.  Again we need to fix the roots.  We set
+$u^{1/6}=2\r3/(\gamma^{1/6}\gamma'^{1/6})$, then
+$u^{1/3}=-12/(\gamma^{1/3}\gamma'^{1/3})$ and
+$u^{1/2}=8\r3^3/(\gamma^{1/2}\gamma'^{1/2})$.  Hence
+\[
+ \tw(P) = (u^{1/3}\alpha^{1/3},u^{1/2}\alpha^{1/2}) =
+(4\r3/\gamma'^{1/3},-4w\r3^3/\gamma'^{1/2}),
+\]
+which is fixed by~$\sigma_1$ and taken to $3$ times itself
+by~$\sigma_2$.  Similarly, $\sigma_2$ fixes $\tw(P')$ and
+multiples~$\tw(P)$ by~$3$.
+
+Now $\tau$ fixes $u^{1/3}$ and negates $u^{1/2}$. A simple calculation
+then gives $\tau(\tw(P)) = -\tw(P')$.
+
+Now define $\phi: E_b[7] \to E_{bu}[7]$ by $P\mapsto\tw(P')$,
+$P'\mapsto-\tw(P)$.  Then $\phi$ commutes with the action of
+$\sigma_1$, $\sigma_2$ and~$\tau$, so is an isomorphism of
+$G_\Q$-modules.  It is also symplectic:  denoting the Weil pairing by
+$e_7$ we have
+\[
+e_7(\phi(P),\phi(P')) = e_7(\tw(P'),-\tw(P)) = e_7(P',-P) =
+e_7(P',P)^{-1} = e_7(P,P'),
+\]
+where we have used the fact that $\tw$, being an isomorphism defined
+over $\overline{\Q}$ preserves the Weil pairing.
+
+This completes the proof that $E_b[7]$ and $E_{-28/b}[7]$ are
+isomorphic as symplectic $G_{\Q}$-modules in the case where $b\notin
+2\cdot7^2\cdot \Q^*{}^3$.
+
+
+\begin{remark}
+The fixed field of $\sigma_1\sigma_2$ is $K(\zeta_7)=\Q(\zeta_{21})$.
+One may check that this is the field of definition of the full set of
+$7$-isogenies of $E_b$: this is consistent with $\sigma_1\sigma_2$
+having trivial image in $\PGL(2,\F_7)$.
+\end{remark}
+
+\subsection{Proof: special case}
+
+Now we take $u=-7^3$ so the sextic twist by~$u$ is just the quadratic
+twist by $-7$.  We fix $\gamma^{1/6}$ and $\gamma'^{1/6}$ with
+$\tau(\gamma^{1/6})=\gamma'^{1/6}$ as before.
+
+Since $\gamma\gamma'\in\Q^*{}^3$, any $\sigma\in\Gal(L/K)$
+maps~$\gamma^{1/6}$ to $\zeta_6^r\gamma^{1/6}$ and~$\gamma'^{1/6}$ to
+$\zeta_6^s\gamma^{1/6}$ where $(r,s)\in(\Z/6\Z)^2$ satisfy
+$r+s\equiv0\pmod3$.  (Here $\zeta_6=-w$.) So $\Gal(L/K)$ is isomorphic
+to a subgroup of index~$3$ in~$(\Z/6\Z)^2$.  As generators we may take
+$\sigma_1$ of order~$6$ mapping to $(1,-1)$, and $\sigma_2$ of
+order~$2$ mapping to $(0,3)$.  Then the computations carried out for
+the generic case give
+\[
+   \rho_{E_b,7}(\sigma_1) = \begin{pmatrix}3&0\\0&3   \end{pmatrix},
+\]
+and
+\[
+   \rho_{E_b,7}(\sigma_2) = \begin{pmatrix}1&0\\0&-1   \end{pmatrix}.
+\]
+
+The twist map takes $(x,y)\mapsto(-7x,\sqrt{-7}^3y)$ and we find that
+all three of $\sigma_1$, $\sigma_2$ and~$\tau$ map $\sqrt{-7}$ to
+$-\sqrt{-7}$.  For this one may use the classical formula
+\[
+   \sqrt{-7} = \sum_{k\pmod7}\legendre{k}{7}\zeta_7^k.
+\]
+The same definition of~$\phi$ as in the generic case gives a
+symplectic Galois isomorphism here, completing the proof.
 
  
 \begin{thebibliography}{999}
@@ -740,6 +1021,15 @@ LMS J.\ Comput.\ Math.\ {\bf 17} (2014), no. 1, 536--564.
 \bibitem{FisherList} T.\ Fisher,
 {\em A table of $11$-congruent elliptic curves over the rationals}, \\
 \url{https://www.dpmms.cam.ac.uk/~taf1000/papers/congr-11}
+
+\bibitem{Halberstadt-Kraus-YE7}
+Emmanuel Halberstadt and Alain Kraus, \emph{On the modular curves {$Y_E(7)$}},
+  Math. Comp. \textbf{69} (2000), no.~231, 1193--1206. \MR{1651758}
+
+\bibitem{Halberstadt-Kraus-XE7}
+\bysame, \emph{Sur la courbe modulaire {$X_E(7)$}}, Experiment. Math.
+  \textbf{12} (2003), no.~1, 27--40. \MR{2002672}
+
 
 \begin{comment}
  

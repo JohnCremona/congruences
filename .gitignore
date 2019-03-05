@@ -14,3 +14,12 @@ syntax: glob
 
 # Temporary files used by parallel gp runs
 tempfile-*
+
+# latex aux files etc:
+tex/*.aux
+tex/*.bbl
+tex/*.blg
+tex/*.brf
+tex/*.log
+tex/*.out
+

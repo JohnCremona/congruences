@@ -1,6 +1,13 @@
 from sage.all import ZZ, QQ, EllipticCurve, prime_range, prod, Set, cremona_optimal_curves, srange, next_prime, CremonaDatabase, polygen, legendre_symbol, PolynomialRing, NumberField, SteinWatkinsAllData
 from sage.schemes.elliptic_curves.isogeny_small_degree import Fricke_polynomial
 
+import XE7
+import importlib
+try:
+    XE7 = reload(XE7)
+except:
+    XE7 = importlib.reload(XE7)
+
 F7 = Fricke_polynomial(7)
 F5 = Fricke_polynomial(5)
 x = polygen(QQ)
@@ -43,7 +50,7 @@ def test_cong(p, E1, E2, mumax=5000000, semisimp=True, verbose=False):
     """mumax: only test a_l for l up to this even if the bound is
     greater, but then output a warning semisimp: if True, output True
     when the two reps have isomorphic semisimplifications, don't try
-    to prove that the representations themselves are isomorphich
+    to prove that the representations themselves are isomorphic
     (which is not fully implemented anyway in the reducible case).
     Note that proving that the semisimplfications are isomorphic only
     depends on the isogeny class, but the condition that the
@@ -82,7 +89,7 @@ def test_cong(p, E1, E2, mumax=5000000, semisimp=True, verbose=False):
     M = N1.lcm(N2) * prod(S,1)
     mu = M * prod([(ell+1)/ell for ell in M.support()])
     mu6 = ZZ(int(mu/6)) # rounds down
-    if mu6>5000000:
+    if verbose and mu6>5000000:
         print("Curves {} and {}: testing ell up to {} mod {}".format(label(E1),label(E2),mu6,p))
     actual_mu6 = mu6
     if mu6>mumax:
@@ -92,6 +99,8 @@ def test_cong(p, E1, E2, mumax=5000000, semisimp=True, verbose=False):
     N1N2 = N1*N2
     for ell in prime_range(mu6):
         #print("testing ell = {}".format(ell))
+        if ell==p:
+            continue
         a1 = E1.ap(ell)
         a2 = E2.ap(ell)
         if ell.divides(N1N2):
@@ -341,9 +350,6 @@ def make_hash(p, N1, N2, np=20):
     print("{} sets of conjugate curves".format(ns))
     return hashtab
 
-def SW_label(E):
-    return ".".join([str(E.conductor()), str(E.ainvs())])
-
 def EC_from_SW_label(lab):
     N, ainvs = lab.split(".")
     N = ZZ(N)
@@ -375,6 +381,7 @@ def make_hash_SW(plist, N1=0, N2=999, nq=30, tate=False):
         nc +=1
         NE = dat.conductor
         E = EllipticCurve(dat.curves[0][0])
+        assert E.conductor()==NE
         if tate and all(E.j_invariant().valuation(p)>=0 for p in plist):
             continue
         lab = SW_label(E)
@@ -642,9 +649,6 @@ def split_class_red(label, p, ignore_symplectic=False):
         sets[t(isodict[lab])].append(lab)
     return sets
 
-import XE7
-XE7 = reload(XE7)
-
 def test7iso(lcl, verbose=0):
     """Given a list of at least 2 isogeny class labels of curves whose mod
     7 representations are irreducible and isomorphic, returns a list
@@ -858,13 +862,30 @@ def mod_p_iso_red_set(ss, p=7, Detail=0):
 
     # Now the curves in base_curves have the same isogeny characters
     # in the same order, and we sort them according to their *-fields:
-    star_fields = [isogeny_star_field(phi) for phi in isogenies]
+    star_fields = [isogeny_star_field(psi) for psi in isogenies]
     maps = dict([(F,[label(E) for E,F1 in zip(base_curves,star_fields) if F1.is_isomorphic(F)]) for F in star_fields])
     if Detail:
         print("star field subsets: {}".format(maps.values()))
-    isog_star_fields = [isogeny_star_field(phi.dual()) for phi in isogenies]
+    isog_star_fields = [isogeny_star_field(psi.dual()) for psi in isogenies]
     isog_maps = dict([(F,[label(E) for E,F1 in zip(isog_curves,isog_star_fields) if F1.is_isomorphic(F)]) for F in isog_star_fields])
     if Detail:
         print("star-star field subsets: {}".format(isog_maps.values()))
     return maps.values(), isog_maps.values()
     #return [label(E) for E in base_curves], [label(E) for E in isog_curves]
+
+#['19327077.(0, 0, 1, 502002, 31437875)', '96635385.(0, 0, 1, 136711878, 321000500520)']
+
+def process_tate_set(p, data, plim=10000):
+    print("processing a set of {} curves for p={}".format(len(data),p))
+    res = []
+    curves = [EC_from_SW_label(lab)[1] for lab in data]
+    pr_curves = [E for E in curves if E.j_invariant().valuation(p) %p ==0]
+    nprc = len(pr_curves)
+    print("Of those, {} are peu ramifie".format(len(pr_curves)))
+    if nprc<2:
+        print("no interesting pairs")
+        return []
+    print("The {} peu ramifie curves are {}".format(len(pr_curves), [E.ainvs() for E in pr_curves]))
+    print([[test_cong(7,E1,E2,plim) for E2 in curves[i+1:]] for i,E1 in enumerate(curves)])
+    return pr_curves
+
