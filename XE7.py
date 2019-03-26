@@ -1,4 +1,5 @@
 from sage.all import PolynomialRing, vector, Matrix, EllipticCurve, QQ
+from eval import EvalHomog
 
 def F_ab(aa,bb):
     R3 = PolynomialRing(aa.parent(),3,'x')
@@ -16,9 +17,13 @@ def Del(F):
     return Hessian(F)/54
 
 # Poonen, Schaeffer, Stoll call this -\(\Psi_6(F)\) (note the minus sign)
+# This is Fisher's H:
 def Psi6(F):
     return - Del(F)
 
+H = Psi6
+
+# This is Fisher's c_4:
 def C_covariant(F):
     M = Hessian_matrix(F)
     v = Del(F).gradient()
@@ -28,8 +33,9 @@ def C_covariant(F):
     return M.det()/9
 
 # Poonen, Schaeffer, Stoll call this \(\Psi_{14}(F)\)
-Psi14 = C_covariant
+Psi14 = c4 = C_covariant
 
+# This is *minus* Fisher's c_6 (his c_6 would have Psi6 instead of Del):
 def K_covariant(F):
     vars = F.parent().gens()
     M = Matrix([[f.derivative(v) for v in vars] for f in [F,Del(F),C_covariant(F)]])
@@ -37,6 +43,9 @@ def K_covariant(F):
 
 # Poonen, Schaeffer, Stoll call this \(\Psi_{21}(F)\)
 Psi21 = K_covariant
+
+def c6(F):
+    return - K_covariant(F)
 
 def intersection_points(F,G):
     """Given F, G homogeneous in 3 variables, returns a list of their
@@ -99,7 +108,12 @@ class XE7(object):
         self._a = a
         self._b = b
         self.Eab = EllipticCurve([0,0,0,a,b])
+        self._DeltaE = -16*(4*a**3+27*b**2)
         self._F = F_ab(a,b)
+        self._Del = Del(self._F)
+        self._K = K_covariant(self._F)
+        self._C = C_covariant(self._F)
+
         self.P2C = {}    # P2C is a dict with keys points on XE(7) and values the curve associated with that point
 
         # NB in two special cases we cannot yet distinguish between 2
@@ -119,38 +133,19 @@ class XE7(object):
         return self._F
 
     def Del(self, P=None):
-        try:
-            D = self._Del
-        except AttributeError:
-            D = self._Del = Del(self._F)
-        if P == None:
-            return D
-        return D(P)
+        D = self._Del
+        return D(P) if P else D
 
     def C(self, P=None):
-        try:
-            C = self._C
-        except AttributeError:
-            C = self._C = C_covariant(self._F)
-        if P == None:
-            return C
-        return C(P)
+        C = self._C
+        return C(P) if P else C
 
     def K(self, P=None):
-        try:
-            K = self._K
-        except AttributeError:
-            K = self._K = K_covariant(self._F)
-        if P == None:
-            return K
-        return K(P)
+        K = self._K
+        return K(P) if P else K
 
     def DeltaE(self):
-        try:
-            return self._DeltaE
-        except AttributeError:
-            self._DeltaE = -16*(4*self._a**3+27*self._b**2)
-            return self._DeltaE
+        return self._DeltaE
 
     def G(self, jdash):
         return jdash*self.DeltaE()*self.Del()**7+4*self.C()**3
@@ -163,6 +158,27 @@ class XE7(object):
         a = self._a
         b = self._b
         return a*x**2 + 3*b*x*z + 2*a*y*z + 3*y**2
+
+    # See Fisher p.27 for the d_ij
+    def d11(self):
+        x,y,z = self._F.parent().gens()
+        return -2 * z * self.V()
+
+    def d12(self):
+        x,y,z = self._F.parent().gens()
+        return 2 * x * self.V()
+
+    def d13(self):
+        x,y,z = self._F.parent().gens()
+        a = self._a
+        b = self._b
+        return 4 * z * (3*b*x**2 - 2*a*x*y - 2*a**2*x*z - 3*b*y*z - 2*a*b*z**2)
+
+    def d14(self):
+        x,y,z = self._F.parent().gens()
+        a = self._a
+        b = self._b
+        return 4 * z * (a**2*x**2 + 3*b*x*y + 4*a*b*x*z + a*y**2 + 3*b**2*z**2)
 
     def curve(self, P=None, verbose=False):
         # Given a point on X_E(7), return the symplectically isomorphic curve.
@@ -185,82 +201,100 @@ class XE7(object):
                 print("P={} is the base point, returning {}".format(P,E2.ainvs()))
             return [E2]
 
-        a = self._a
-        b = self._b
-
-        if P==[1,0,0]: # only when j=0, i.e. a=0
-            E2 = EllipticCurve([0,0,0,0,-28/b])
-            if self._base==QQ:
-                E2 = E2.minimal_model()
-            self.P2C[tP] = [E2]
+        d = self.d11()(P)
+        x,y,z = self._F.parent().gens()
+        v = x if P[0] else y if P[1] else z
+        if verbose:
+            print("d = {} via d11".format(d))
+        if d==0:
+            d = EvalHomog(self.F(), [self.d12()**2,self.d11()*v**3], P)
             if verbose:
-                print("P={} is a special j=0 point, returning {}".format(P,E2.ainvs()))
-            return [E2]
-
-        jP = self.j(P)
-        x,y,z = P = list(P)
-
-        if z==0: # j nonzero,  one of the two special points
-            #print("P={}".format(P))
-            assert (-3*a).is_square()
-            j = self.Eab.j_invariant()
-            #print("j = {}".format(j))
-            u2 = (j-1728)/j
-            assert u2.is_square()
-            u = u2.sqrt()
-            if u==-1: u=-u
-            #print("u = {}".format(u))
-            T = -49*(1+u)/54
-            #print("T = {}".format(T))
-            ET = KH0(T)
-            assert ET.j_invariant()==j
-            d = ET.is_quadratic_twist(self.Eab)
-            if not d:
-                print("Failure in computation of z=0 curves when j=0")
-                return []
-            #print("d = {}".format(d))
-
-            # try special curves using Kraus-Halberstadt' parametrizations:
-            E2list = []
-            for KH in [KH1, KH2]:
-                try:
-                    E2 = KH(T).quadratic_twist(d)
-                    if E2.j_invariant()==jP:
-                        if self._base==QQ:
-                            E2 = E2.minimal_model()
-                        E2list.append(E2)
-                except ArithmeticError:
-                    # e.g. E1='28224fo1', lifting '65088dg2' to P=[1:14:0] gives T=-3 and KH1(-3) is singular 
-                    continue
-                
+                print("d = {} via d12".format(d))
+        if d==0:
+            d = EvalHomog(self.F(), [self.d13()**2,self.d11()*v**3], P)
             if verbose:
-                print("P={} is a special z=0 point, returning {}".format(P,[EE2.ainvs() for EE2 in E2list]))
-            self.P2C[tP] = E2list
-            return E2list
-
-        VP = self.V()(P)
-        if VP==0: # a 2-isogeny point
-            E2list = [phi.codomain() for phi in self.Eab.isogenies_prime_degree(2)]
-            E2list = [EE2 for EE2 in E2list if EE2.j_invariant()==jP]
-            if self._base==QQ:
-                E2list = [EE2.minimal_model() for EE2 in E2list]
-            self.P2C[tP] = E2list
+                print("d = {} via d12".format(d))
+        if d==0:
+            d = EvalHomog(self.F(), [self.d14()**2,self.d11()*v**3], P)
             if verbose:
-                print("P={} is a special V=0 point, returning {}".format(P,[EE2.ainvs() for EE2 in E2list]))
-            return E2list
+                print("d = {} via d12".format(d))
 
-        # Generic case
-        d = 2*z*VP
         assert d!=0
         c4 = self.C(P)*d**2
-        c6 = self.K(P)*d**3
+        c6 = -self.K(P)*d**3
         E2 = EllipticCurve([0,0,0,-c4/48,-c6/864])
+        assert E2.j_invariant()==self.j(P)
         if self._base==QQ:
             E2 = E2.minimal_model()
         self.P2C[tP] = [E2]
         if verbose:
             print("P={} is a general point, returning {}".format(P,E2.ainvs()))
         return [E2]
+
+        # jP = self.j(P)
+        # x,y,z = P = list(P)
+
+        # if z==0: # j nonzero,  one of the two special points
+        #     #print("P={}".format(P))
+        #     assert (-3*a).is_square()
+        #     j = self.Eab.j_invariant()
+        #     #print("j = {}".format(j))
+        #     u2 = (j-1728)/j
+        #     assert u2.is_square()
+        #     u = u2.sqrt()
+        #     if u==-1: u=-u
+        #     #print("u = {}".format(u))
+        #     T = -49*(1+u)/54
+        #     #print("T = {}".format(T))
+        #     ET = KH0(T)
+        #     assert ET.j_invariant()==j
+        #     d = ET.is_quadratic_twist(self.Eab)
+        #     if not d:
+        #         print("Failure in computation of z=0 curves when j=0")
+        #         return []
+        #     #print("d = {}".format(d))
+
+        #     # try special curves using Kraus-Halberstadt' parametrizations:
+        #     E2list = []
+        #     for KH in [KH1, KH2]:
+        #         try:
+        #             E2 = KH(T).quadratic_twist(d)
+        #             if E2.j_invariant()==jP:
+        #                 if self._base==QQ:
+        #                     E2 = E2.minimal_model()
+        #                 E2list.append(E2)
+        #         except ArithmeticError:
+        #             # e.g. E1='28224fo1', lifting '65088dg2' to P=[1:14:0] gives T=-3 and KH1(-3) is singular 
+        #             continue
+                
+        #     if verbose:
+        #         print("P={} is a special z=0 point, returning {}".format(P,[EE2.ainvs() for EE2 in E2list]))
+        #     self.P2C[tP] = E2list
+        #     return E2list
+
+        # VP = self.V()(P)
+        # if VP==0: # a 2-isogeny point
+        #     E2list = [phi.codomain() for phi in self.Eab.isogenies_prime_degree(2)]
+        #     E2list = [EE2 for EE2 in E2list if EE2.j_invariant()==jP]
+        #     if self._base==QQ:
+        #         E2list = [EE2.minimal_model() for EE2 in E2list]
+        #     self.P2C[tP] = E2list
+        #     if verbose:
+        #         print("P={} is a special V=0 point, returning {}".format(P,[EE2.ainvs() for EE2 in E2list]))
+        #     return E2list
+
+        # # Generic case
+        # d = 2*z*VP
+        # assert d!=0
+        # c4 = self.C(P)*d**2
+        # c6 = self.K(P)*d**3
+        # E2 = EllipticCurve([0,0,0,-c4/48,-c6/864])
+        # if self._base==QQ:
+        #     E2 = E2.minimal_model()
+        # self.P2C[tP] = [E2]
+        # if verbose:
+        #     print("P={} is a general point, returning {}".format(P,E2.ainvs()))
+        # return [E2]
 
     def lift_curve(self, Edash, verbose=False):
         for P in self.lift_j(Edash.j_invariant()):
