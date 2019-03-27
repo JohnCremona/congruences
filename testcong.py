@@ -16,7 +16,7 @@ F7=F7(x)
 def SW_label(E):
     return ".".join([str(E.conductor()), str(E.ainvs())])
 
-def label(E):
+def Elabel(E):
     try:
         return E.label()
     except:
@@ -90,12 +90,12 @@ def test_cong(p, E1, E2, mumax=5000000, semisimp=True, verbose=False):
     mu = M * prod([(ell+1)/ell for ell in M.support()])
     mu6 = ZZ(int(mu/6)) # rounds down
     if verbose and mu6>5000000:
-        print("Curves {} and {}: testing ell up to {} mod {}".format(label(E1),label(E2),mu6,p))
+        print("Curves {} and {}: testing ell up to {} mod {}".format(Elabel(E1),Elabel(E2),mu6,p))
     actual_mu6 = mu6
     if mu6>mumax:
         mu6 = mumax
     if verbose:
-        print("Curves {} and {}: testing ell up to {} mod {}".format(label(E1),label(E2),mu6,p))
+        print("Curves {} and {}: testing ell up to {} mod {}".format(Elabel(E1),Elabel(E2),mu6,p))
     N1N2 = N1*N2
     for ell in prime_range(mu6):
         #print("testing ell = {}".format(ell))
@@ -110,7 +110,7 @@ def test_cong(p, E1, E2, mumax=5000000, semisimp=True, verbose=False):
             if (a1-a2)%p:
                 return False, (ell,a1,a2)
     if mu6<actual_mu6:
-        print("Warning! for curves {} and {}, to test for isomorphic semisimplifications we should have tested ell mod {} up to {}, but we only tested up to {}".format(label(E1),label(E2),p,actual_mu6,mu6))
+        print("Warning! for curves {} and {}, to test for isomorphic semisimplifications we should have tested ell mod {} up to {}, but we only tested up to {}".format(Elabel(E1),Elabel(E2),p,actual_mu6,mu6))
     if verbose:
         print("The two mod-{} representations have isomorphic semisimplifications".format(p))
     if semisimp:
@@ -164,7 +164,7 @@ def test_file(f, verbose=False):
     for p, E1, E2 in dat:
         res, info = test_cong(p,E1,E2)
         if verbose or not res:
-            report(res, info, p, label(E1), label(E2))
+            report(res, info, p, Elabel(E1), Elabel(E2))
 
 def list_j_pairs(f):
     dat = read_cong(f)
@@ -309,7 +309,7 @@ def ssp(e, nssp=5, maxp=10000000):
             pp.append(p)
         if len(pp)==nssp:
             return pp
-    print("{} has only {} supersingular primes up to {}".format(label(e),len(pp),maxp))
+    print("{} has only {} supersingular primes up to {}".format(Elabel(e),len(pp),maxp))
     return pp
 
 # Hash-based congruence finder
@@ -548,12 +548,12 @@ len([s for s in hashtab17_30.values() if len(s)>1])
  ['11025bi1', '143325be1']]
 """
 
-def all_c(label):
+def all_c(lab):
     """given the label of one curve in an isogeny class, return the list
     of all labels of curves in that class.
     """
-    C = CDB.isogeny_class(label)
-    return [(label(E),E.isogeny_degree(C[0])) for E in C]
+    C = CDB.isogeny_class(lab)
+    return [(Elabel(E),E.isogeny_degree(C[0])) for E in C]
 
 def split_class(label, p):
     """given the label of one curve E in a p-irreducible isogeny class,
@@ -563,7 +563,7 @@ def split_class(label, p):
     empty) are m-isogenous to E with legendre(m,p)=-1.
     """
     C = CDB.isogeny_class(label)
-    isodict = {label(E):E.isogeny_degree(C[0]) for E in C}
+    isodict = {Elabel(E):E.isogeny_degree(C[0]) for E in C}
     set1 = [lab for lab in isodict if legendre_symbol(isodict[lab],7)==+1]
     set2 = [lab for lab in isodict if legendre_symbol(isodict[lab],7)==-1]
     return [set1,set2]
@@ -638,7 +638,7 @@ def split_class_red(label, p, ignore_symplectic=False):
 
     """
     C = CDB.isogeny_class(label)
-    isodict = {label(E):E.isogeny_degree(C[0]) for E in C}
+    isodict = {Elabel(E):E.isogeny_degree(C[0]) for E in C}
     def t(m):
         if p.divides(m):
             return 2 + (1-legendre_symbol(m//p,p))//2
@@ -797,11 +797,11 @@ def mod_p_iso_red(E1, E2, p, verbose=True):
     # return a list of up to 2 isomorphic pairs
     isopairs = []
     if res1:
-        isopairs.append((label(E1),label(E3)))
+        isopairs.append((Elabel(E1),Elabel(E3)))
     if res2:
-        isopairs.append((label(E1dash),label(E3dash)))
+        isopairs.append((Elabel(E1dash),Elabel(E3dash)))
     if res1 and res2:
-        print("**********double isomorphism between ({},{}) and ({},{})".format(label(E1),label(E3),(label(E1dash),label(E3dash))))
+        print("**********double isomorphism between ({},{}) and ({},{})".format(Elabel(E1),Elabel(E3),(Elabel(E1dash),Elabel(E3dash))))
     return isopairs
 
     # # return a 4-tuple comparing (E1,E2), (E1, E2'), (E1',E2), (E1',E2')
@@ -857,21 +857,21 @@ def mod_p_iso_red_set(ss, p=7, Detail=0):
                 print("problem at i={}: this kernel field = {}, different from both the kernel field and dual kernel field!".format(i,this_kernel_field))
 
     if Detail>1:
-        print("After sorting, base curves are {}".format([label(E) for E in base_curves]))
-        print("  and {}-isogenous curves are {}".format(p, [label(E) for E in isog_curves]))
+        print("After sorting, base curves are {}".format([Elabel(E) for E in base_curves]))
+        print("  and {}-isogenous curves are {}".format(p, [Elabel(E) for E in isog_curves]))
 
     # Now the curves in base_curves have the same isogeny characters
     # in the same order, and we sort them according to their *-fields:
     star_fields = [isogeny_star_field(psi) for psi in isogenies]
-    maps = dict([(F,[label(E) for E,F1 in zip(base_curves,star_fields) if F1.is_isomorphic(F)]) for F in star_fields])
+    maps = dict([(F,[Elabel(E) for E,F1 in zip(base_curves,star_fields) if F1.is_isomorphic(F)]) for F in star_fields])
     if Detail:
         print("star field subsets: {}".format(maps.values()))
     isog_star_fields = [isogeny_star_field(psi.dual()) for psi in isogenies]
-    isog_maps = dict([(F,[label(E) for E,F1 in zip(isog_curves,isog_star_fields) if F1.is_isomorphic(F)]) for F in isog_star_fields])
+    isog_maps = dict([(F,[Elabel(E) for E,F1 in zip(isog_curves,isog_star_fields) if F1.is_isomorphic(F)]) for F in isog_star_fields])
     if Detail:
         print("star-star field subsets: {}".format(isog_maps.values()))
     return maps.values(), isog_maps.values()
-    #return [label(E) for E in base_curves], [label(E) for E in isog_curves]
+    #return [Elabel(E) for E in base_curves], [Elabel(E) for E in isog_curves]
 
 #['19327077.(0, 0, 1, 502002, 31437875)', '96635385.(0, 0, 1, 136711878, 321000500520)']
 

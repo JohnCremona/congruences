@@ -1,10 +1,24 @@
-from sage.all import PolynomialRing, vector, Matrix, EllipticCurve, QQ
-from eval import EvalHomog
+from sage.all import PolynomialRing, vector, Matrix, EllipticCurve, QQ#, Infinity
+#from eval import EvalHomog
 
 def F_ab(aa,bb):
-    R3 = PolynomialRing(aa.parent(),3,'x')
-    X,Y,Z = R3.gens()
+    """
+    Ternary quartic defining the curve X_E(7) for E: Y^2=X^3+a*X+b
+    """
+    X,Y,Z = PolynomialRing(aa.parent(),3,'x').gens()
     return (aa*X**4+7*bb*X**3 + 3*(Y**2-aa**2)*X**2 -bb*(6*Y+5*aa)*X +(2*Y**3+3*aa*Y**2+2*aa**2*Y-4*bb**2)).homogenize(Z)
+
+def G_ab(aa,bb):
+    """
+    Ternary quartic defining the curve X_E^-(7) for E: Y^2=X^3+a*X+b
+    """
+    X,Y,Z = PolynomialRing(aa.parent(),3,'x').gens()
+    # cut-and-pasted from Tom Fisher's https://www.dpmms.cam.ac.uk/~taf1000/papers/congr-check.m
+    G = (-aa**2*X**4 + 2*aa*bb*X**3*Y - 12*bb*X**3*Z - (6*aa**3 + 36*bb**2)*X**2*Y**2
+            + 6*aa*X**2*Z**2 + 2*aa**2*bb*X*Y**3 - 12*aa*bb*X*Y**2*Z + 18*bb*X*Y*Z**2
+            + (3*aa**4 + 19*aa*bb**2)*Y**4 - (8*aa**3 + 42*bb**2)*Y**3*Z + 6*aa**2*Y**2*Z**2
+            - 8*aa*Y*Z**3 + 3*Z**4)
+    return G
 
 def Hessian_matrix(F):
     vars = F.parent().gens()
@@ -89,6 +103,11 @@ def intersection_points(F,G):
             sols.append([s,r,1])
     return sols
 
+# The following three families are the ones in the first
+# Kraus-Halberstad paper and were originally used to cater for some of
+# the special points on X_E(7), before we implemented Fisher's
+# formulas.  No longer needed.
+
 def KH0(T):
     return EllipticCurve([0,7,0,0,28*T])
 
@@ -102,18 +121,30 @@ def KH2(T):
     a6 = -(531441*T**5 + 12262509*T**4 + 39287997*T**3 + 43008840*T**2 + 8670080*T - 102675)
     return EllipticCurve([0,1,0,a4,a6])
 
+# Class for the curves X_E(7) and X_E^-(7).  Constructed either from a
+# curve E using XE7.from_elliptic_curve(E) or from a label using
+# XE7.from_label(lab).  By default constructs the symplectic version
+# X_E(7); use symplectic=False for X_E^-(7).
+
 class XE7(object):
-    def __init__(self, a, b):
+    def __init__(self, a, b, symplectic=True):
         self._base = a.parent()
+        self._symplectic = symplectic
         self._a = a
         self._b = b
         self.Eab = EllipticCurve([0,0,0,a,b])
         self._DeltaE = -16*(4*a**3+27*b**2)
-        self._F = F_ab(a,b)
+        if symplectic:
+            self._F = F_ab(a,b)
+        else:
+            self._F = G_ab(a,b)
         self._Del = Del(self._F)
         self._K = K_covariant(self._F)
         self._C = C_covariant(self._F)
-
+        if symplectic:
+            assert self.j([0,1,0])==self.Eab.j_invariant()
+        # else there is no base-point since E is normally not
+        # antisymplectically isomorphic to itself!
         self.P2C = {}    # P2C is a dict with keys points on XE(7) and values the curve associated with that point
 
         # NB in two special cases we cannot yet distinguish between 2
@@ -121,13 +152,13 @@ class XE7(object):
         # with only one time in the list but occasionally 2 or 3
 
     @staticmethod
-    def from_elliptic_curve(E):
+    def from_elliptic_curve(E, symplectic=True):
         _,_,_,a,b = E.short_weierstrass_model().ainvs()
-        return XE7(a,b)
+        return XE7(a,b,symplectic=symplectic)
 
     @staticmethod
-    def from_label(lab):
-        return XE7.from_elliptic_curve(EllipticCurve(lab))
+    def from_label(lab, symplectic=True):
+        return XE7.from_elliptic_curve(EllipticCurve(lab),symplectic=symplectic)
 
     def F(self):
         return self._F
@@ -147,11 +178,15 @@ class XE7(object):
     def DeltaE(self):
         return self._DeltaE
 
-    def G(self, jdash):
-        return jdash*self.DeltaE()*self.Del()**7+4*self.C()**3
+    def Psi(self):
+        D = self._DeltaE / 4
+        return D if self._symplectic else D**2
 
     def j(self,P):
-        return -4*self.C(P)**3/(self.DeltaE()*self.Del(P)**7)
+        return -self.C(P)**3/(self.Psi()*self.Del(P)**7)
+
+    def j_poly(self, jdash):
+        return jdash*self.Psi()*self.Del()**7+self.C()**3
 
     def V(self):
         x,y,z = self._F.parent().gens()
@@ -159,26 +194,71 @@ class XE7(object):
         b = self._b
         return a*x**2 + 3*b*x*z + 2*a*y*z + 3*y**2
 
-    # See Fisher p.27 for the d_ij
-    def d11(self):
-        x,y,z = self._F.parent().gens()
-        return -2 * z * self.V()
-
-    def d12(self):
-        x,y,z = self._F.parent().gens()
-        return 2 * x * self.V()
-
-    def d13(self):
-        x,y,z = self._F.parent().gens()
+    # See Fisher p.27 for the d_1j; cut-and-pasted from Tom Fisher's
+    # https://www.dpmms.cam.ac.uk/~taf1000/papers/congr-check.m
+    # for d22, d33, d44
+    def d11(self, P=None):
+        x,y,z = P if P else self._F.parent().gens()
         a = self._a
         b = self._b
-        return 4 * z * (3*b*x**2 - 2*a*x*y - 2*a**2*x*z - 3*b*y*z - 2*a*b*z**2)
+        if self._symplectic:
+            return -2*a*x**2*z - 6*b*x*z**2 - 6*y**2*z - 4*a*y*z**2
+        else:
+            return -7*a*x**2*y + 6*x**2*z + 3*a**2*y**3 - 8*a*y**2*z + 3*y*z**2
 
-    def d14(self):
-        x,y,z = self._F.parent().gens()
+    def d12(self, P=None):
+        x,y,z = P if P else self._F.parent().gens()
         a = self._a
         b = self._b
-        return 4 * z * (a**2*x**2 + 3*b*x*y + 4*a*b*x*z + a*y**2 + 3*b**2*z**2)
+        if self._symplectic:
+            return 2 * x * self.V()
+        else:
+            return 2*a*x**3 + 12*b*x**2*y - 2*a*x*y*z - 3*a*b*y**3 + 6*b*y**2*z
+
+    def d13(self, P=None):
+        x,y,z = P if P else self._F.parent().gens()
+        a = self._a
+        b = self._b
+        if self._symplectic:
+            return 4 * z * (3*b*x**2 - 2*a*x*y - 2*a**2*x*z - 3*b*y*z - 2*a*b*z**2)
+        else:
+            return 2*a**2*x*y**2 - 10*a*x*y*z + 6*x*z**2 + 5*a*b*y**3 - 12*b*y**2*z
+
+    def d14(self, P=None):
+        x,y,z = P if P else self._F.parent().gens()
+        a = self._a
+        b = self._b
+        if self._symplectic:
+            return 4 * z * (a**2*x**2 + 3*b*x*y + 4*a*b*x*z + a*y**2 + 3*b**2*z**2)
+        else:
+            return 2*a**2*x**2*y - 3*a*x**2*z + 5*a*b*x*y**2 - 12*b*x*y*z - 3*a**2*y**2*z + 8*a*y*z**2 - 3*z**3
+
+    def d22(self, P=None):
+        x,y,z = P if P else self._F.parent().gens()
+        a = self._a
+        b = self._b
+        if self._symplectic:
+            return 8*b*x**3 - 4*a*x**2*y - 6*a**2*x**2*z - 12*b*x*y*z - 10*a*b*x*z**2 + 4*y**3 +   6*a*y**2*z + 4*a**2*y*z**2 - 8*b**2*z**3
+        else:
+            return -8*b*x**3 + 3*a**2*x**2*y + 4*a*x**2*z - 2*a*b*x*y**2 + 12*b*x*y*z   + (-3*a**3 - 16*b**2)*y**3 + 2*a**2*y**2*z - 3*a*y*z**2 + 2*z**3
+
+    def d33(self, P=None):
+        x,y,z = P if P else self._F.parent().gens()
+        a = self._a
+        b = self._b
+        if self._symplectic:
+            return 18*b*x**3 - 12*a*x**2*y - 8*a**2*x**2*z + 12*b*x*y*z + 10*a*b*x*z**2 -   8*a*y**2*z - 12*a**2*y*z**2 + (-8*a**3 - 24*b**2)*z**3
+        else:
+            return -a**2*x**2*y + 2*a*b*x*y**2 - 12*b*x*y*z + (-7*a**3 - 36*b**2)*y**3 + 6*a**2*y**2*z - 7*a*y*z**2 + 6*z**3
+
+    def d44(self, P=None):
+        x,y,z = P if P else self._F.parent().gens()
+        a = self._a
+        b = self._b
+        if self._symplectic:
+            return -6*a*b*x**3 + 4*a**2*x**2*y + (-8*a**3 - 42*b**2)*x**2*z - 20*a*b*x*y*z -   22*a**2*b*x*z**2 + (4*a**3 - 12*b**2)*y*z**2 - 26*a*b**2*z**3
+        else:
+            return -a**3*x**2*y + 2*a**2*x**2*z - 2*a**2*b*x*y**2 + 2*a*b*x*y*z + 6*b*x*z**2 + (-3*a**4 - 19*a*b**2)*y**3 + (8*a**3 + 42*b**2)*y**2*z - 3*a**2*y*z**2
 
     def curve(self, P=None, verbose=False):
         # Given a point on X_E(7), return the symplectically isomorphic curve.
@@ -192,7 +272,7 @@ class XE7(object):
 
         if verbose:
             print("mapping P={} to its curve".format(P))
-        if P==[0,1,0]:
+        if self._symplectic and P==[0,1,0]:
             E2 = self.Eab
             if self._base==QQ:
                 E2 = E2.minimal_model()
@@ -201,27 +281,41 @@ class XE7(object):
                 print("P={} is the base point, returning {}".format(P,E2.ainvs()))
             return [E2]
 
-        d = self.d11()(P)
-        x,y,z = self._F.parent().gens()
-        v = x if P[0] else y if P[1] else z
-        if verbose:
-            print("d = {} via d11".format(d))
-        if d==0:
-            d = EvalHomog(self.F(), [self.d12()**2,self.d11()*v**3], P)
-            if verbose:
-                print("d = {} via d12".format(d))
-        if d==0:
-            d = EvalHomog(self.F(), [self.d13()**2,self.d11()*v**3], P)
-            if verbose:
-                print("d = {} via d12".format(d))
-        if d==0:
-            d = EvalHomog(self.F(), [self.d14()**2,self.d11()*v**3], P)
-            if verbose:
-                print("d = {} via d12".format(d))
+        ds = (d for d in (self.d11(P), self.d22(P), self.d33(P), self.d44(P)))
+        # print("d's: {}".format(list(ds)))
+        # ds = (d for d in (self.d11(P), self.d22(P), self.d33(P), self.d44(P)))
+        # print("factored d's: {}".format([d.factor() for d in ds if d]))
+        # ds = (d for d in (self.d11(P), self.d22(P), self.d33(P), self.d44(P)))
+        # print("square-free parts: {}".format([d.squarefree_part() for d in ds if d]))
+        # ds = (d for d in (self.d11(P), self.d22(P), self.d33(P), self.d44(P)))
 
-        assert d!=0
-        c4 = self.C(P)*d**2
-        c6 = -self.K(P)*d**3
+        d = 0
+        while d==0:
+            d = ds.next()
+            if verbose: print("d={}".format(d))
+        # The next step should not be needed according to TAF but it makes things work for me:
+        if not self._symplectic:
+            d *= self.DeltaE()
+        c4 = self.C(P) * d**2
+        c6 = -self.K(P) * d**3
+
+        # x,y,z = self._F.parent().gens()
+        # v = x if P[0] else y if P[1] else z
+        # d11 = self.d11()
+        # C4 = self.C()
+        # C6 = -self.K()
+        # c4 = EvalHomog(self.F(), [C4*d11**2,v**20], P)
+        # c6 = EvalHomog(self.F(), [C6*d11**3,v**30], P)
+
+        # d1js = (dij for dij in (self.d12(), self.d13(), self.d14()))
+
+        # while c4==Infinity or c6==Infinity or [c4,c6]==[0,0]:
+        #     d1j = d1js.next()
+        #     c4 = EvalHomog(self.F(), [C4*d1j**4, d11**2 * v**20], P)
+        #     c6 = EvalHomog(self.F(), [C6*d1j**6, d11**3 * v**30], P)
+
+        # assert not (c4==Infinity or c6==Infinity or [c4,c6]==[0,0])
+
         E2 = EllipticCurve([0,0,0,-c4/48,-c6/864])
         assert E2.j_invariant()==self.j(P)
         if self._base==QQ:
@@ -309,26 +403,27 @@ class XE7(object):
                     return P
                 else:
                     if verbose:
-                        print("E2 fails")
+                        print("E2 candidate fails")
+                        print(" (twist factor = {})".format(E2.is_quadratic_twist(Edash)))
         return None
 
     def lift_j(self, jdash):
-        return intersection_points(self._F,self.G(jdash))
+        return intersection_points(self._F,self.j_poly(jdash))
 
-def test_isom(E1,E2, verbose=False):
-    X = XE7.from_elliptic_curve(E1)
+def test_isom(E1,E2, symplectic=True, verbose=False):
+    X = XE7.from_elliptic_curve(E1, symplectic=symplectic)
     P2 = X.lift_curve(E2, verbose=verbose)
     if P2==None:
         if verbose:
-            print("No lifts of  E2 to X_E(7)")
+            print("No lifts of  E2 to X_E{}(7)".format("" if symplectic else "^-"))
         return False
     if verbose:
-        print("Success! curves E1={} and E2={} and are symplectically isomorphic: P={} on X_E1(7) maps to E2".format(E1.ainvs(),E2.ainvs(),P2))
+        print("Success! curves E1={} and E2={} and are {}symplectically isomorphic: P={} on X_E1(7) maps to E2".format("" if symplectic else "anti-",E1.ainvs(),E2.ainvs(),P2))
     return True
 
-def test_isom_labels(lab1,lab2, verbose=False):
+def test_isom_labels(lab1,lab2, symplectic=True, verbose=False):
     E1 = EllipticCurve(lab1)
     E2 = EllipticCurve(lab2)
     if verbose:
         print("Testing {} ={} and {} = {}".format(lab1,E1.ainvs(),lab2,E2.ainvs()))
-    return test_isom(E1, E2, verbose=verbose)
+    return test_isom(E1, E2, symplectic=symplectic, verbose=verbose)
