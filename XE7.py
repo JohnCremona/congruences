@@ -282,39 +282,16 @@ class XE7(object):
             return [E2]
 
         ds = (d for d in (self.d11(P), self.d22(P), self.d33(P), self.d44(P)))
-        # print("d's: {}".format(list(ds)))
-        # ds = (d for d in (self.d11(P), self.d22(P), self.d33(P), self.d44(P)))
-        # print("factored d's: {}".format([d.factor() for d in ds if d]))
-        # ds = (d for d in (self.d11(P), self.d22(P), self.d33(P), self.d44(P)))
-        # print("square-free parts: {}".format([d.squarefree_part() for d in ds if d]))
-        # ds = (d for d in (self.d11(P), self.d22(P), self.d33(P), self.d44(P)))
 
         d = 0
         while d==0:
             d = ds.next()
             if verbose: print("d={}".format(d))
-        # The next step should not be needed according to TAF but it makes things work for me:
+
         if not self._symplectic:
             d *= self.DeltaE()
         c4 = self.C(P) * d**2
         c6 = -self.K(P) * d**3
-
-        # x,y,z = self._F.parent().gens()
-        # v = x if P[0] else y if P[1] else z
-        # d11 = self.d11()
-        # C4 = self.C()
-        # C6 = -self.K()
-        # c4 = EvalHomog(self.F(), [C4*d11**2,v**20], P)
-        # c6 = EvalHomog(self.F(), [C6*d11**3,v**30], P)
-
-        # d1js = (dij for dij in (self.d12(), self.d13(), self.d14()))
-
-        # while c4==Infinity or c6==Infinity or [c4,c6]==[0,0]:
-        #     d1j = d1js.next()
-        #     c4 = EvalHomog(self.F(), [C4*d1j**4, d11**2 * v**20], P)
-        #     c6 = EvalHomog(self.F(), [C6*d1j**6, d11**3 * v**30], P)
-
-        # assert not (c4==Infinity or c6==Infinity or [c4,c6]==[0,0])
 
         E2 = EllipticCurve([0,0,0,-c4/48,-c6/864])
         assert E2.j_invariant()==self.j(P)
