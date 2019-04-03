@@ -34,7 +34,10 @@
 \usepackage{array, booktabs, comment, multirow, todonotes}
 
 % label and link to an elliptic curve /Q:
-\newcommand{\lmfdbec}[3]{\href{http://www.lmfdb.org/EllipticCurve/Q/#1/#2/#3}{{\text{\rm#1.#2#3}}}}
+% version using Cremona labels:
+\newcommand{\lmfdbec}[3]{\href{http://www.lmfdb.org/EllipticCurve/Q/#1#2#3}{{\text{\rm#1#2#3}}}}
+% version using LMFDB labels:
+%\newcommand{\lmfdbec}[3]{\href{http://www.lmfdb.org/EllipticCurve/Q/#1/#2/#3}{{\text{\rm#1.#2#3}}}}
 % label and link to an elliptic curve isogeny class /Q:
 \newcommand{\lmfdbeciso}[2]{\href{http://www.lmfdb.org/EllipticCurve/Q/#1/#2}{\text{\rm#1.#2}}}
 
@@ -196,6 +199,7 @@
 \DeclareMathOperator{\Spec}{Spec}
 \DeclareMathOperator{\SPEC}{\bf Spec}
 \DeclareMathOperator{\Spf}{Spf}
+\DeclareMathOperator{\sss}{ss}
 \DeclareMathOperator{\supp}{supp}
 \DeclareMathOperator{\Sym}{Sym}
 \DeclareMathOperator{\tr}{tr}
@@ -779,13 +783,20 @@ In this section we report on our systematic study of $\mod{p}$
 congruences between elliptic curves in the LMFDB database.  We divide
 this into a number of steps, given a fixed prime~$p$. Recall first
 that isogenous curves have $\mod{p}$ representations which are
-isomorphic up to semisimplication, and are even isomorphic if the
+isomorphic up to semisimplification, and are even isomorphic if the
 degree of the isogeny is not divisible by~$p$.  Secondly, two
-representations have isomorphic semisimplications if and only if they
+representations have isomorphic semisimplification if and only if they
 have the same traces, so that we can test this condition by testing
 whether $a_{\ell}(E)\equiv a_{\ell}(E')\pmod{p}$ for all primes~$\ell$
 not dividing $pNN'$ where $N$ and $N'$ are the conductors of $E$
-and~$'$ respectively.
+and~$'$ respectively.  This test can very quickly establish rigorously
+that two curves do \emph{not} have isomorphic $p$-torsion up to
+semisimplification, since this is implied by the existence of a single
+prime~$\ell$ such that $a_{\ell}(E)\not\equiv a_{\ell}(E')\pmod{p}$.
+It is also possible to prove positive results this way using only a
+finite number of primes~$\ell$, but this takes some care.
+
+We first outline the steps briefly, and then consider each in more detail.
 \begin{enumerate}
 \item Partition the isogeny classes into subsets~$S$ such that curves
   whose $\mod{p}$ representations have isomorphic semisimplifications
@@ -794,20 +805,21 @@ and~$'$ respectively.
   do have isomorphic $\mod{p}$-representations up to
   semisimplification, if necessary further partitioning the subsets.
 \item Separate the (non-trivial) subsets resulting in the previous
-  step into those which have irreducible representations and the
-  reducible ones.
+  step into those which have irreducible $\mod{p}$-representations and
+  the reducible ones.
 \item For each irreducible subset~$S$, and each pair of isogeny
   classes in~$S$, pick curves $E$ and~$E'$, one from each class in the
-  pair; determine whether triple~$(E,E',p)$ is symplectic or
+  pair; determine whether the triple~$(E,E',p)$ is symplectic or
   antisymplectic; then use the isogeny criterion to partition the set
-  of all the curves in the isogeny classes in~$S$ into (at most) two
-  parts such that curves in the same part are symbplectically
+  of all the curves in the isogeny classes in~$S$ into one or two
+  parts such that curves in the same part are symplectically
   isomorphic while those in different parts are antisymplectically
   isomorphic.
 \item For each reducible subset~$S$, determine whether, for each pair
-  $E$, $E'$ chosen as before, there is and isomorphism between $E[p]$
-  and $E'[p]$ (and not just between their semisimplfications).  If so,
-  process as in the previous step.
+  $E$, $E'$ chosen as before, there is an isomorphism between $E[p]$
+  and $E'[p]$ (and not just between their semisimplifications), if
+  necessary replacing one of $E$, $E'$ with another curve
+  $p$-isogenous to it.  If so, process as in the previous step.
 \end{enumerate}
 We now explain each step in further detail.  For the first three
 steps, $p$ is arbitrary while for the last two we restrict to $p=7$.
@@ -821,21 +833,22 @@ In order that $E[p]\cong E'[p]$ (up to semisimplification) it is
 necessary and sufficient that for all primes~$\ell$ not dividing
 $pNN'$ we have $a_{\ell}(E)\equiv a_{\ell}(E')\pmod{p}$.  In this step
 we may take one curve from each isogeny class, since isogenous curves
-have $\mod{p}$-representations with isomorphic semisimplifcations.
+have $\mod{p}$-representations with isomorphic semisimplifications.
 
-For and integer~$B\ge1$, let $\calL_B$ be the set of the smallest~$B$
+For an integer~$B\ge1$, let $\calL_B$ be the set of the smallest~$B$
 primes greater than $400,000$. All curves in the database have good
 reduction at each prime in~$\calL$.  We also assume that
 $p\notin\calL$.
 
 To each curve $E$ in the database we assign a ``hash value'' which is
-a simple function of $\{a_{\ell}(E)\pmod{p}\mid \ell\in\calL\}$.  For
-example we may enumerate $\calL=\{\ell_0,\ell_1,\dots,\ell_{B-1}\}$
-and use the value $\sum_{i=0}^{B-1}\overline{a}_{\ell_i}(E)p^i$, where
-for $a\in\Z$, $\overline{a}$ denotes the reduction of $a$ which lies
-in $\{0,1,\dots,p-1\}$.  Curves whose $\mod{p}$-representations are
-isomorphic up to semisimplfication will have the same hash, and we may
-hope that clashes will be rare if $B$ is not too small.
+a simple function of the set $\{a_{\ell}(E)\pmod{p}\mid
+\ell\in\calL\}$.  For example we may enumerate
+$\calL=\{\ell_0,\ell_1,\dots,\ell_{B-1}\}$ and use the value
+$\sum_{i=0}^{B-1}\overline{a}_{\ell_i}(E)p^i$, where for $a\in\Z$,
+$\overline{a}$ denotes the reduction of $a$ which lies in
+$\{0,1,\dots,p-1\}$.  Curves whose $\mod{p}$-representations are
+isomorphic up to semisimplification will have the same hash, and we
+may hope that clashes will be rare if $B$ is not too small.
 
 We proceed to compute this hash value for one curve in each isogeny
 class in the database, recording the curve's label in a list indexed
@@ -859,15 +872,22 @@ for all~$\ell\in\calL_B$.
 
 Example: after running step 1 using $B=30$ for $p=7$, of the $20138$
 nontrivial subsets found there is only one ``false positive''.  One of
-the subsets found in Step~1 is $\{{\tt 25921a1}, {\tt 78400gw1}, {\tt
-336973z1}, {\tt 336973ba1}\}$; however, curve {\tt 25921a1} is not
-in fact $\mod{7}$-isomorphic to the other three, while $\{{\tt
-  78400gw1}, {\tt 336973z1}, {\tt 336973ba1}\}$ is a genuine triple
-of curves which have mutually isomorphic $\mod{7}$-representations.
+the subsets found in Step~1 is
+\[
+\{ \lmfdbec{25921}{a}{1},
+\lmfdbec{78400}{gw}{1},
+\lmfdbec{336973}{z}{1},
+\lmfdbec{336973}{ba}{1}
+\};
+\]
+however, curve \lmfdbec{25921}{a}{1} is not in fact
+$\mod{7}$-isomorphic to the other three, while the others do form a
+genuine triple of curves which have mutually isomorphic
+$\mod{7}$-representations.
 
-This false postive arose since {\tt 25921a1} and {\tt 78400gw1}
-have $a_{\ell}$ which are congruent modulo~$7$ for
-all~$\ell\in\calL_{30}$.  In this case, using $\calL_{40}$ instead
+This false positive arises since \lmfdbec{25921}{a}{1} and
+\lmfdbec{78400}{gw}{1} have $a_{\ell}$ which are congruent modulo~$7$
+for all~$\ell\in\calL_{30}$.  In this case, using $\calL_{40}$ instead
 would have eliminated this, but then Step~1 would have taken longer.
 
 \subsection{Testing reducibility}
@@ -879,31 +899,194 @@ rational $p$-isogeny.  For the curves in the database this information
 is already known.
 
 Example: of the 20138 nontrivial sets from Step~2 we find that 19883
-are irreducible ({\it i.e.,} conssist of curves whose
+are irreducible ({\it i.e.,} consist of curves whose
 $\mod{7}$-representations are irreducible, while 255 are reducible.
 
 The sizes of these sets are as follows.  The irreducible sets have
 size at most~$5$;  most (18334) have size~$2$.  The reducible sets
 have size up to~$76$.
 
+
+
 [I could include a table of all these sizes if we think it is
-  sufficiently interesting.]
+  sufficiently interesting.  The frequencies for each size are
+
+Irreducible  {2:  18334, 3: 1297, 4: 246, 5: 6}
+
+Reducible {2: 86, 3: 67, 4: 31, 5: 26, 7: 7, 10: 6, 6: 5, 8: 5, 9: 4, 19: 4, 11:
+  3, 16: 2, 18: 2, 32: 1, 35: 1, 76: 1, 13: 1, 14: 1, 45: 1, 36: 1}
+
+]
 
 \subsection{Distinguishing symplectic from antisymplectic: irreducible
   case}
 
 After the previous step we have a collection of pairs of isogeny
-classes of curves $E$. $E'$ such that $E[p]\cong E'[p]$ with $E[p]$
-irreducible as $G_{\Q}$-module, and wish to determine whether this is
-a symplectic or anti-symplectic triple.  For all odd~$p$ we apply the
-local criteria of \cite{FKsyn}, while for $p=7$ we use the modular
-parametrizations and explicit formulae of Kraus and Halberstad,
-Poonen, Schaefer and Stoll, as extended and completed by Fisher in 
-  \cite{Fisher}.
- 
+classes of curves $E,E'$ such that $E[p]\cong E'[p]$ with $E[p]$
+irreducible as $G_{\Q}$-module, and wish to determine whether this
+isomorphism is symplectic or anti-symplectic.  For all odd~$p$ we may
+apply the local criteria of \cite{FKsym}, while for $p=7$ we use the
+modular parametrizations and explicit formulae of Kraus and
+Halberstadt in \cite{Halberstadt-Kraus-XE7}, Poonen, Schaefer and
+Stoll in \cite{PSS}, and as extended and completed by Fisher in
+\cite{Fisher}.
+
+In \cite{Halberstadt-Kraus-XE7}, Halberstadt and Kraus give an
+explicit model for the modular curve $X_E(7)$, for any elliptic curve
+$E$ defined over a field~$K$ of characteristic not equal to $2$, $3$
+or~$7$. The $K$-rational points on $X_E(7)$ parameterise pairs
+$(E',\phi)$ where $E'$ is an elliptic curve defined over~$K$ and
+$\phi:E[7]\to E'[7]$ is an isomorphism of symplectic $G_K$-modules; we
+identify two such isomorphisms~$\phi$ when one is a scalar multiple of
+the other.
+
+The model for $X_E(7)$ given in \cite{Halberstadt-Kraus-XE7} is a
+plane quartic curve, a twist of the classical Klein quartic $X(7)$,
+given by an explicit ternary quartic form~$F_{a,b}(X,Y,Z)$ in
+$\Z[a,b][X,Y,Z]$ where $E$ has equation $Y^2=X^3+aX+b$.  The $24$
+flexes on $X_E(7)$ are the cusps, that is, they are the poles of the
+degree~$168$ map to the $j$-line.
+%% The $28$ bitangents intersect $X_E(7)$ at the 56
+%% points above $j=0$: these are the intersection points of $X_E(7)$ and
+%% the curve of degree~$14$ defined by a covariant of~$F_{a,b}$.
+
+The base point $P_E=[0:1:0]\in X_E(7)(K)$ corresponds to the pair
+$(E,\id)$.  In \cite{Halberstadt-Kraus-XE7} one can find an explicit
+formula for the rational function $j:X_E(7)\to X(1)$, and also
+polynomials $c_4,c_6\in\Z[a,b][X,Y,Z]$ of degree~$20$ and~$30$
+respectively such that for all but finitely many points $P=(x:y:z)\in
+X_E(7)$ the associated curve $E'$ has model
+$Y^2=X^3-27c_4(P)X-54c_6(P)$.  The finitely many common zeros of $c_4$
+and $c_6$ are the exceptions, which Kraus and Halberstadt treat only
+incompletely.  However, in \cite{Fisher} one may find formulas for
+four such pairs $(c_4,c_6)$, of which the first is the pair in
+\cite{Halberstadt-Kraus-XE7}, and such that at each point $P\in
+X_E(7)$ at least one pair $(c_4(P),c_6(P))\not=(0,0)$, thus supplying
+us with a model for the isomorphic curve $E'$ at each point~$P$.
+
+We make use of this model and formulas as follows, given a pair of
+curves $E,E'$ with $E[7]\cong E'[7]$.  Using one curve~$E$ we write
+down the model for $X_E(7)$.  Then we find all preimages (if any) of
+$j(E')$ under the map $j:X_E(7)\to X(1)$.  While in principal (over an
+algebraically closed field) there may be as many as $168$ preimages,
+over $\Q$ there is never more than one (assuming that $E'[7]$ is
+irreducible). If there are no preimages we conclude that the
+isomorphism $E[7]\cong E'[7]$ is not symplectic.  Otherwise, for each
+preimage $P\in X_E(7)(\Q)$ we compute the curve associated to~$P$,
+which is certainly a twist of~$E'$, and test whether it is actually
+isomorphic to $E'$.  If this holds for one such point~$P$ in the
+preimage of $j(E')$, then we conclude that the isomorphism between
+$E[7]$ and $E'[7]$ is symplectic.
+
+A similar method may be applied to test for antisymplectic
+isomorphisms, using another twist of $X(7)$ denoted $X_E^-(7)$, first
+written down explicitly in \cite{PSS}, for which Fisher provides
+explicit formulae for the $j$-map and $c_4,c_6$ as above in this case
+in \cite{Fisher}.
+
+The reader will have observed that it is not necessary to apply both
+the symplectic and antisymplectic tests to a pair $(E,E')$ if we know
+already that $E[7]\cong E'[7]$, since (in this current irreducible
+case) one will succeed if and only if the other fails.  However we did
+apply both tests in our computations with the curves in the database
+as a test of our implementation, verifying that precisely one test
+passes for each pair.  We also checked that the results obtained for
+each pair using the local criteria are the same, so that we can be
+confident in the correctness of the results.
+
+These tests have only been carried out using a single curve in each
+isogeny class, since we know how to distinguish symplectic from
+antisymplectic isogenies.  As a last step, we include all the
+isogenous curves to obtain, for each elliptic curve~$E$ in the
+database the complete sets of other curves~$E'$ which have
+symplectically (respectively anti-symplectically) isomorphic
+$7$-torsion modules.
+
 \subsection{Distinguishing symplectic from antisymplectic: reducible
   case}
 
+One additional complication arises in this case.  Recall that $E[7]$
+is reducible if and only if $E$ admits a rational $7$-isogeny.  Over
+$\Q$ there is only ever at most one $7$-isogeny, since otherwise the
+image of the $\mod{7}$ representation~$\rho_{E,7}$ attached to~$E$ is contained in
+a split Cartan subgroup of $GL(2,\F_7)$, and this cannot occur
+over~$\Q$ (see \cite{Sutherland}).  The size of the isogeny class of
+$E$ is (over $\Q$) either $2$, consisting of two $7$-isogenous curves,
+or $4$, consisting of two pairs of $7$-isogenous curves linked by
+$2$-{} or $3$-isogenies.  (Examples of these are furnished by the
+isogeny classes \lmfdbeciso{26}{b}, \lmfdbeciso{49}{a}, and
+\lmfdbeciso{162}{b} respectively.)
+
+Fix one such curve $E$ with $E[7]$ reducible.  The image
+of~$\rho_{E,7}$ has the form
+\[
+  \begin{pmatrix}\chi_1&*\\0&\chi_2  \end{pmatrix},
+\]
+where~$\chi_1$, $\chi_2$ are characters $\G_{\Q}\to\F_7^*$ and the $*$
+component is nontrivial.  Moreover $\chi_1\chi_2$ is the cyclotomic
+character, so in particular $\chi_1\not=\chi_2$ (this observation
+being valid over any field not containing $\sqrt{-7}$, so that the
+determinant is not always a square).
+
+Now let $E'$ be a second curve such that $E[7]^{\sss}\cong
+E'[7]^{\sss}$.  The image of $\rho_{E',7}$ has the form
+\[
+  \begin{pmatrix}\chi_1'&*'\\0&\chi_2'  \end{pmatrix},
+  \]
+where $\{\chi_1,\chi_2\}=\{\chi_1',\chi_2'\}$.  The first step in
+comparing $E[7]$ and $E'[7]$ is to determine these characters: for
+example, the kernel of $\chi_1$ cuts out the cyclic extension of~$\Q$
+of degree dividing~$6$ generated by the coordinates of a point in the
+kernel of the unique $7$-isogeny from~$E$.  In this way we can
+determine whether $\chi_1=\chi_1'$ and $\chi_2=\chi_2'$ or vice versa.
+In the second case, we replace $E'$ with its $7$-isogenous curve,
+which has the effect of interchanging $\chi_1'$ and $\chi_2'$ (as well
+as changing $*'$).  Now the image of $\rho_{E',7}$ has the form
+\[
+\begin{pmatrix}\chi_1&*'\\0&\chi_2  \end{pmatrix},
+\]
+with the same characters, in the same order as for $\rho_{E,7}$, and
+to determine whether $E[7]\cong E'[7]$ we must test whether $*=*'$.
+
+[We have some more detailed notes about the next step; I will be brief
+  for now.]
+
+Although the maps $*,*':G_{\Q}\to\F_7$ are not homomorphisms, it is
+easy to check that they are both surjective and that the subsets of
+$G_{\Q}$ which map to~$0$ under each (which by abuse of language we
+will call the \emph{kernels} of~$*$ and~$*'$) are subgroups, of
+index~$7$ and cutting out cyclic extensions of~$\Q$ of degree~$7$.
+One way to determine the field cut out by~$*$ is as follows.  It is
+the field of definition of the other seven $7$-isogenies from~$E$.
+The map from $X_0(7)$ to the $j$-line is given by the classical
+rational function (see Fricke)
+\[
+   j = \frac{(t^{2} + 13t + 49) \cdot (t^{2} + 5t + 1)^{3}}{t}.
+   \]
+Hence the roots of the degree~$8$ polynomial~$(t^{2} + 13t + 49) \cdot
+(t^{2} + 5t + 1)^{3} -t\cdot j(E)$ determine the fields of definition
+of the eight $7$-isogenies from~$E$.  In this case, it has a single
+root (giving the unique $7$-isogeny from~$E$) and an irreducible
+factor of degree~$7$, which defines the desired extension of the base
+field~$\Q$, which in turn uniquely identifies the $*$ component of the
+representation.
+
+In this way, for each pair $(E,E')$ whose $\mod{7}$-representations
+are reducible with isomorphic semisimplifications, we may determine
+whether or not we do in fact have an isomorphism $E[7]\cong E'[7]$,
+possibly after replacing $E'$ by its unique $7$-isogenous curve.
+
+In most of the reducible cases encountered in the database, we found
+that there was no isomorphism between the $7$-torsion modules
+themselves.  In those cases where there is such an isomorphism, we can
+determine whether or not is is symplectic using the same methods as in
+the previous step, noting that the test using the parametrizing curves
+$X_E(7)$ and $X_E^-(7)$ do not at any point rely on the irreducibility
+or otherwise of the representations.  Finally, if there are also
+$2$-{} or $3$-isogenies present we can include these appropriately,
+since the former are symplectic and the latter antisymplectic.
+
+Results: 262 symplectic pairs of curves, 159 antisymplectic pairs.
 
 \section{Mod-$7$ isomorphisms between elliptic curves with
   $j$-invariant~$0$}
