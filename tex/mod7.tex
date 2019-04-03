@@ -318,6 +318,8 @@
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{remarks}[theorem]{Remarks}
 
+\newcommand{\Sage}{{\tt Sage}}
+\newcommand{\Magma}{{\sc Magma}}
 
 \definecolor{darkgreen}{rgb}{0,0.5,0}
 
@@ -349,37 +351,46 @@
 \keywords{Elliptic curves, Weil pairing, symplectic isomorphisms}
 %\subjclass[2010]{Primary 11D41; Secondary 11G10, 11F80.}
 
-\thanks{The second-named author is
-supported by the
-European Union's Horizon 2020 research and innovation programme under the Marie Sk\l{l}odowska-Curie grant 
-agreement No.\ 747808}
+\thanks{The second-named author is supported by the European Union's
+  Horizon 2020 research and innovation programme under the Marie
+  Sk\l{l}odowska-Curie grant agreement No.\ 747808}
 
 
 \maketitle
 
 \begin{abstract} 
-We describe a procedure to determine the symplectic type of isomorphisms between the $7$-torsion modules of elliptic curves.
-We apply it to classify all the congruences in LMFDB.
+We describe a procedure to determine the symplectic type of
+isomorphisms between the $7$-torsion modules of elliptic curves.  We
+apply it to classify all the congruences in LMFDB.
 \end{abstract}
 
 \section{Introduction}
 
-Let $p \geq 3$ be a prime. Write $G_\Q = \Gal(\Qbar/\Q)$ for 
-the absolute Galois group of $\Q$. 
-Let $E$ and $E'$ be elliptic curves defined over $\Q$, and write 
-$E[p]$ and $E'[p]$ for their $p$-torsion $G_\Q$-modules. 
+Let $p \geq 3$ be a prime. Write $G_\Q = \Gal(\Qbar/\Q)$ for the
+absolute Galois group of $\Q$.  Let $E$ and $E'$ be elliptic curves
+defined over $\Q$, and write $E[p]$ and $E'[p]$ for their $p$-torsion
+$G_\Q$-modules.
 
-Let $\phi : E[p] \to E'[p]$ be an isomorphismof $G_\Q$-modules.
-There is an element $d(\phi) \in \F_p^\times$ such that
-the Weil pairings~$e_{E,p}$ and~$e_{E',p}$ satisfy
+Let $\phi : E[p] \to E'[p]$ be an isomorphism of $G_\Q$-modules.
+There is an element $d(\phi) \in \F_p^\times$ such that the Weil
+pairings~$e_{E,p}$ and~$e_{E',p}$ satisfy
 \[
 e_{E',p}(\phi(P), \phi(Q)) = e_{E,p}(P, Q)^{d(\phi)}
 \]
-for all $P, Q \in E[p]$.
-We say that $\phi$ is a {\it symplectic isomorphism} or an
-{\it anti-symplectic isomorphism}
-if $d(\phi)$ is a square or a non-square modulo~$p$, 
-respectively.
+for all $P, Q \in E[p]$.  We say that $\phi$ is a {\it symplectic
+  isomorphism} or an {\it anti-symplectic isomorphism} if $d(\phi)$ is
+a square or a non-square modulo~$p$, respectively.
+
+For example, suppose that~$\phi$ is induced by an isogeny (also
+denoted~$\phi$) from $E$ to $E'$, of degree $\deg(\phi)$ coprime
+to~$p$.  Then it is easy to see (see also \cite[Corollary~1]{FKSym}),
+using Weil reciprocity, that $d(\phi)=\deg\phi\pmod{p}$:
+\[
+  e_{E',p}(\phi(P), \phi(Q)) = e_{E,p}(P, \hat\phi\phi(Q)) =
+  e_{E,p}(P, \deg(\phi)(Q)) = e_{E,p}(P, Q)^{\deg(\phi)}.
+  \]
+Hence $\phi$ is symplectic or antisymplectic according as $\deg\phi$
+is a quadratic residue or nonresidue respectively.
 
 %Let us briefly mention our main sources of Galois isomorphisms $\phi : E[p] \to E'[p]$. 
 %Any $\Q$-isogeny $h \; \colon \; E \to E'$ of degree~$n$ coprime to~$p$ restricts
@@ -395,65 +406,80 @@ respectively.
 %as it arises in the study of Diophantine equations, as explained 
 %in Section~\ref{S:modularmethod}.
 
-Given $G_\Q$-isomorphic $E[p]$ and~$E'[p]$,
-it is possible that isomorphisms with both symplectic types exist; this occurs if and only if $E[p]$ admits 
-an anti-symplectic automorphism. 
-For example, take $p=5$ and $E$, $E'$ to be the curves 
-with Cremona labels $11a1$ and $1342c2$, respectively; 
-both have $5$-torsion module isomorphic to $\mu_5 \times \Z/5\Z$.
-Now let $P,Q \in E[5]$ and $P',Q' \in E'[5]$ be basis such that $P$, $P'$ are defined over~$\Q$.
-The map defined by $P \mapsto P'$ and $Q \mapsto n\cdot Q'$ (with $5 \nmid n$)
-is a symplectic $G_\Q$-isomorphism if and only if $n$ is a square mod~$5$.  
-Moreover, the automorphism $\alpha$ of $E[5]$ given by $\alpha(P) = P$ and $\alpha(Q) = 2Q$ 
-is anti-symplectic because $2$ is not a square modulo~$5$.
+Given $G_\Q$-isomorphic $E[p]$ and~$E'[p]$, it is possible that
+isomorphisms with both symplectic types exist; this occurs if and only
+if $E[p]$ admits an anti-symplectic automorphism.  Note that this can
+only occur when $E[p]$ is reducible as $G_{\Q}$-module, since
+otherwise (by Schur's Lemma) all automorphisms are scalar and hence
+symplectic.  As an example of the phenomenon, take $p=5$ and $E$, $E'$
+to be the curves with Cremona labels $11a1$ and $1342c2$,
+respectively; both have $5$-torsion Galois module isomorphic to $\mu_5
+\times \Z/5\Z$.  Now let $P,Q \in E[5]$ and $P',Q' \in E'[5]$ be bases
+such that $P$, $P'$ are defined over~$\Q$.  The map defined by $P
+\mapsto P'$ and $Q \mapsto n\cdot Q'$ (with $5 \nmid n$) is a
+$G_\Q$-isomorphism which is symplectic if and only if $n$ is a square
+mod~$5$.  Moreover, the automorphism $\alpha$ of $E[5]$ given by
+$\alpha(P) = P$ and $\alpha(Q) = 2Q$ is anti-symplectic because $2$ is
+not a square modulo~$5$.
 
-However, despite of the example above, when a $G_\Q$-isomorphism $\phi : E[p] \simeq E'[p]$
-exists, most of the time there is only one possible symplectic 
-type for any such~$\phi$.
-This is the case when the mod~$p$ representation 
-$\rhobar_{E,p} : G_\Q \to \GL_2(\F_p)$ attached to~$E/\Q$ 
-is irreducible and
-also when it is reducible if $p \geq 7$; 
-this follows from Corollary~3 and Proposition~2 in \cite{FKSym}.
+However, despite the existence of examples such as this, normally when
+a $G_\Q$-isomorphism $\phi : E[p] \simeq E'[p]$ exists, there is only
+one possible symplectic type for any such~$\phi$.  This is certainly
+the case when the mod~$p$ representation $\rhobar_{E,p} : G_\Q \to
+\GL_2(\F_p)$ attached to~$E/\Q$ is irreducible (as remarked above),
+and also when it is reducible for $p \geq 7$; this follows from
+Corollary~3 and Proposition~2 in \cite{FKSym}.
 
-It is then natural to consider triples $(E,E',p)$ where $E/\Q$ and $E'/\Q$ are elliptic curves with 
-isomorphic $p$-torsion such that the $G_\Q$-modules 
-isomorphisms $\phi \; : \; E[p] \rightarrow E'[p]$ are either all symplectic or all anti-symplectic. 
-In this case, we will say that the {\it symplectic type} of $(E,E',p)$
-is respectively symplectic or anti-symplectic.
-In \cite{FKSym} the second author and Alain Kraus 
-addressed the following problem.
+It is then natural to consider triples $(E,E',p)$ where $E/\Q$ and
+$E'/\Q$ are elliptic curves with isomorphic $p$-torsion such that the
+$G_\Q$-modules isomorphisms $\phi \; : \; E[p] \rightarrow E'[p]$ are
+either all symplectic or all anti-symplectic.  In this case, we will
+say that the {\it symplectic type} of $(E,E',p)$ is respectively
+symplectic or anti-symplectic.  In \cite{FKSym} the second author and
+Alain Kraus addressed the following problem.
 
-\noindent {\bf Problem A:} 
+\noindent {\bf Problem A:}
 Given a triple $(E,E',p)$ as above, how do we determine its symplectic type?
 
-Problem A has an easy solution when 
-$(E,E',p)$ arises from an isogeny $h \; \colon \; E \to E'$ of degree~$n$ coprime to~$p$. Indeed, 
-in such cases $d(h|_{E[p]}) = n$ and the symplectic type of $(E,E',p)$ is 
-symplectic if $n$ is a square mod~$p$ and anti-symplectic otherwise (see \cite[Corollary~1]{FKSym}). 
+As already observed, Problem A has an easy solution when $(E,E',p)$
+arises from an isogeny $h \; \colon \; E \to E'$ of degree~$n$ coprime
+to~$p$, since in such cases $d(h|_{E[p]}) = n$ and the symplectic type
+of $(E,E',p)$ is symplectic if $n$ is a square mod~$p$ and
+anti-symplectic otherwise.
 
-In general, given a triple $(E, E', p)$ as above, in principle,  one could compute 
-the $p$-torsion fields of $E$ and $E'$, write down the Galois action on $E[p]$ and $E'[p]$ and check if they are symplectically or
-anti-symplectically isomorphic. However, the degree of the $p$-torsion fields grows very fast with~$p$ making this method 
-not practical already for $p = 5$. 
+In general, given a triple $(E, E', p)$ as above, in principle, one
+could in principle compute the $p$-torsion fields of $E$ and $E'$,
+write down the Galois action on $E[p]$ and $E'[p]$ and check if they
+are symplectically or anti-symplectically isomorphic. However, the
+degree of the $p$-torsion fields grows very fast with~$p$ making this
+method not practical already for $p = 5$.
 
-This computational problem is circumnvented by the methods 
-in~\cite{FKSym}. Indeed, one of the main objectives of {\it loc. cit.} was to 
-establish several {\it local symplectic criteria}, allowing
-to determine the symplectic type of $(E,E',p)$
-using only easy standard information about the local curves 
-$E/\Q_\ell$ and $E'/\Q_\ell$ at a single prime $\ell \neq p$
-and congruence conditions on~$p$. Furthermore, the authors also proved that if the symplectic type of~$(E,E',p)$ is encoded in local information at a single prime $\ell \neq p$, 
-then their local criteria will successfuly determine it. 
-However, there are cases where the local methods are insufficient, but this can occur only when $\rhobar_{E,p}$ has image the normalizar of a Cartan subgroup; 
-see \cite[Proposition~12]{FKSym} for an example.  
+One way to circumvent this computational problem is to use the methods
+presented in~\cite{FKSym}. Indeed, one of the main objectives of {\it
+  loc. cit.}  was to establish several {\it local symplectic
+  criteria}, allowing one to determine the symplectic type of
+$(E,E',p)$ using only easy standard information about the local curves
+$E/\Q_\ell$ and $E'/\Q_\ell$ at a single prime $\ell \neq p$ and
+congruence conditions on~$p$. Furthermore, the authors of~\cite{FKSym}
+also proved that if the symplectic type of~$(E,E',p)$ is encoded in
+local information at a single prime $\ell \neq p$, then their local
+criteria will successfully determine it.  There are cases where the
+local methods are insufficient: however, this can occur only when
+$\rhobar_{E,p}$ has image the normaliser of a Cartan subgroup; see
+\cite[Proposition~12]{FKSym} for an example.
 
-The main objective of this paper is to give a complete resolution of Problem~A when $p=7$ by describing a practical procedure that works independently of the type of 
-image of $\rhobar_{E,p}$.
+The main objective of this paper is to give a complete resolution of
+Problem~A when $p=7$ by describing a practical procedure that works
+independently of the type of image of $\rhobar_{E,p}$.  We also recall
+how to determine whether $E[p]$ and~$E'[p]$ are isomorphic (ignoring
+the symplectic structure).
 
-We also implemented in {\tt Magma} code the method from this paper together with those from~\cite{FKSym}. We have used it
-to classify the symplectic types 
-of congruences between curves available at LMFDB \cite{lmfdb}; the results obtained are described in Section~\ref{S:statistics}
+We have implemented in {\Magma} and {\Sage} the methods from this paper
+together with those from~\cite{FKSym}. We have used our code to
+classify the symplectic types of congruences between curves in the
+LMFDB (see \cite{lmfdb}), namely all elliptic curves defined over~$\Q$
+of conductor less than~$400,000$; we report on the results obtained in
+Section~\ref{S:statistics}.
 
 
 We finish this introduction with a discussion of why the case $p=7$ is particularly interesting. 
@@ -461,12 +487,22 @@ We finish this introduction with a discussion of why the case $p=7$ is particula
 Recall that the modular curves $X_E(p)$ and $X_E^-(p)$ parameterize, respectively, elliptic curves with $p$-torsion modules symplectically and anti-symplectically isomorphic to~$E[p]$; thus triples $(E,E',p)$ as above give rise to $\Q$-points on them. The modular curves $X(p)$ for $p=3,5$ have genus~0, equations for $X_E(p)$ are well known and from them we can obtain infinitely many triples $(E,E',p)$ with each symplectic type.
 
 
-The Frey-Mazur conjecture states there is a constant $C \geq 18$ such that, if $E/\Q$ and $E'/\Q$ satisfy $E[p] \simeq E'[p]$ as $G_\Q$-modules for some prime $p > C$, then $E$ and $E'$ are $\Q$-isogenous. In view of this conjecture, any~$(E,E',p)$ with $p > C$ arises from an isogeny, hence its symplectic type is easy 
-to determine. On the other hand, as mentioned above, if no local symplectic criterion from \cite{FKSym} applies to~$(E,E',p)$
-then the image of $\rhobar_{E,p}$ is the normalizer of a Cartan subgroup. In such case, Serre's uniformity conjecture predicts that either both $E$ and $E'$ have CM or $p \le 11$.
-Since the CM curves are amenable to the local methods, 
-we are left with the cases $p=7,11$ for which there are interesting congruences whose symplectic type cannot be determined by the methods in~\cite{FKSym}. 
-The modular curves $X(7)$ and $X(11)$ have genus 3 and 26, respectively, and, in practice, we find plenty more mod~$7$ than mod~$11$ congruences, making $p=7$ the most interesting case to complete the solution of Problem~A. 
+The Frey-Mazur conjecture states there is a constant $C \geq 18$ such
+that, if $E/\Q$ and $E'/\Q$ satisfy $E[p] \simeq E'[p]$ as
+$G_\Q$-modules for some prime $p > C$, then $E$ and $E'$ are
+$\Q$-isogenous. In view of this conjecture, any~$(E,E',p)$ with $p >
+C$ arises from an isogeny, hence its symplectic type is easy to
+determine. On the other hand, as mentioned above, if no local
+symplectic criterion from \cite{FKSym} applies to~$(E,E',p)$ then the
+image of $\rhobar_{E,p}$ is the normaliser of a Cartan subgroup. In
+such case, Serre's uniformity conjecture predicts that either both $E$
+and $E'$ have CM or $p \le 11$.  Since CM curves are amenable to the
+local methods of~\cite{FKSym}, we are left with the cases $p=7,11$ for
+which there are interesting congruences whose symplectic type cannot
+be determined by the methods in~\cite{FKSym}.  The modular curves
+$X(7)$ and $X(11)$ have genus 3 and 26, respectively, and, in
+practice, we find many more mod~$7$ than mod~$11$ congruences, making
+$p=7$ the most interesting case to complete the solution of Problem~A.
 
 
 \begin{remark}
@@ -474,43 +510,43 @@ A similar method to the one in this paper but using the equations of $X_E(11)$ g
 could in principle be applied to Problem~A for $p=11$. 
 \end{remark}
 
-\section{The case of image equal to normalizer of Cartan}
+\section{The case of image equal to normaliser of Cartan}
 
-Let $p$ be a prime. Fix $\zeta_p. \in \Qbar$ a $p$-th primitive root of unity.
-Given an elliptic curve $E$ over a number field $K \subset \Qbar$ 
-write $E[p]$ for its $p$-torsion $G_K$-module. Let $e_{E,p}$ denote 
-the Weil pairing in $E[p]$
-and $\rhobar_{E,p} : G_K \to \GL_2(\F_p)$ the Galois representation
-arising from $E[p]$.
+Let $p$ be a prime. Fix $\zeta_p \in \Qbar$ a $p$-th primitive root of
+unity.  Given an elliptic curve $E$ over a number field $K$, write
+$E[p]$ for its $p$-torsion $G_K$-module. Let $e_{E,p}$ denote the Weil
+pairing in $E[p]$ and $\rhobar_{E,p} : G_K \to \GL_2(\F_p)$ the Galois
+representation arising from $E[p]$.
 
-When $\rhobar_{E,p}$ has image $N \subset \GL_2(\F_p)$ the 
-normalizer of a Cartan subgroup~$C$ it defines a non-trivial 
-quadratic character
+When $\rhobar_{E,p}$ has image $N \subset \GL_2(\F_p)$, the normaliser
+of a Cartan subgroup~$C$ (either split or non-split), it induces a
+non-trivial quadratic character
 \[
  \eps \; : G_K \to N \twoheadrightarrow N/C \simeq \{\pm 1 \}
 \]
-and we write $K(\sqrt{d})$ for the quadratic extension cut 
-out by~$\eps$.
+and we write $K(\sqrt{d})$ for the quadratic extension cut out
+by~$\eps$.
 
 \begin{theorem} Let $p > 2$ be a prime. Let $E/K$ be an elliptic curve 
-over a number field $K$. Assume that $\rhobar_{E,p}$ has image~$N \supset C$ 
-as above. Let $E^d$ be the quadratic twist of $E$ by~$d$.
+over a number field $K$. Assume that $\rhobar_{E,p}$ has image~$N
+\supset C$ as above, and let $E^d$ be the quadratic twist of $E$
+by~$d$.
 
-Then, $E[p]$ and $E^d[p]$ are isomorphic $G_K$-modules. Moreover, 
-any such isomorphism is symplectic if and only if $C$ is split and $p \equiv 1 \pmod{4}$ or 
-$C$ is non-split and $p \equiv 3 \pmod{4}$ and anti-symplectic 
-otherwise. 
+Then $E[p]$ and $E^d[p]$ are isomorphic $G_K$-modules. Moreover, any
+such isomorphism is symplectic if and only if $C$ is split and $p
+\equiv 1 \pmod{4}$, or $C$ is non-split and $p \equiv 3 \pmod{4}$; and
+anti-symplectic otherwise.
 \end{theorem}
 
 \begin{proof} We first prove that $E[p] \simeq E^d[p]$ as $G_K$-modules. 
-Note that $\rhobar_{{E^d}, p} = \rhobar_{E, p} \otimes \eps$ hence,
-for all $\sigma \in G_K$, we have 
+Note that $\rhobar_{{E^d}, p} = \rhobar_{E, p} \otimes \eps$, and
+hence for all $\sigma \in G_K$ we have
 \[\Tr \rhobar_{{E^d},p}(\sigma) = \eps(\sigma) \cdot \Tr \rhobar_{E,p}(\sigma).\]
 
 Note that, if $\eps(\sigma) = -1$ then $\rhobar_{E,p}(\sigma) \in N\backslash C$ and $\Tr \rhobar_{E,p}(\sigma) = 0$, so also $\Tr \rhobar_{E^d,p}(\sigma) = 0$;
 therefore, $\Tr \rhobar_{E,p}(\sigma) = \Tr \rhobar_{E^d,p}(\sigma)$ 
 for all $\sigma \in G_K$. Since these representations are irreducible and have
-the same traces it follows they are isomorphic.
+the same traces it follows that they are isomorphic.
 
 From the hypothesis on the image of $\rhobar_{E,p}$ we can 
 choose a basis $P_1, P_2$ of $E[p]$ such that $\rhobar_{E,p}$ has image 
@@ -526,8 +562,9 @@ a & b\delta \\
 -b & -a
 \end{pmatrix}  \; : a, b \in \F_p, \; a^2 - \delta b^2 \neq 0 \right\},
 \]
-where $\delta \in \F_p^*$ is a (fixed) square if $C$ is split and 
-a non-square if $C$ is non-split. Furthermore, for $\sigma \in G_K$, we have 
+where $\delta \in \F_p^*$ is a (fixed) square if $C$ is split and a
+non-square if $C$ is non-split. Furthermore, for $\sigma \in G_K$, we
+have
 \[
  \rhobar_{E,p}(\sigma) = \begin{cases} 
                             \begin{pmatrix}
@@ -550,9 +587,10 @@ so that  $\tau(P_1) = P_1$, $\tau(P_2) = -P_2$ and
 $\rhobar_{E,p}(G_K) = N = \langle C,\rhobar_{E,p}(\tau) \rangle$.
 
 
-Let $\tw : E[p](\Qbar) \to E^d[p](\Qbar)$ be the map on $p$-torsion points induced by the isomorphism defined over $K(\sqrt{d})$. On short Weierstrass models, 
-it is given by $\tw(x,y) = (x,y\sqrt{d})$ and a direct calculation shows 
-that
+Let $\tw : E[p](\Qbar) \to E^d[p](\Qbar)$ be the map on $p$-torsion
+points induced by the isomorphism $E\to E'$ defined over
+$K(\sqrt{d})$. On short Weierstrass models, it is given by $\tw(x,y) =
+(x,y\sqrt{d})$ and a direct calculation shows that
 \begin{equation} \label{E:eps}
  \tw(\sigma(P)) = \eps(\sigma)\cdot\sigma(\tw(P)) \quad \text{ for all } \sigma \in G_K 
  \text{ and all } P \in E[P]. 
@@ -560,14 +598,15 @@ that
 We now consider the linear
 map $\phi : E[p] \to E^d[p]$ defined on the basis by
 \[
- \phi(P_1) = \tw (P_2) \quad \text{ and } \quad   \phi(P_2) = \delta \tw (P_1)
+ \phi(P_1) = \tw (P_2) \quad \text{ and } \quad   \phi(P_2) = \delta \tw (P_1),
 \]
-and will 
-show it is $G_K$-equivariant, i.e. $\sigma(\phi(P)) = \phi(\sigma(P))$ for all $\sigma \in G_K$ and $P \in E[P]$. Write $P_i = (x_i,y_i)$ and note that $\eps(\tau) = -1$. We have
+and will show it is $G_K$-equivariant, i.e. $\sigma(\phi(P)) =
+\phi(\sigma(P))$ for all $\sigma \in G_K$ and $P \in E[P]$. Write $P_i
+= (x_i,y_i)$. Since $\eps(\tau) = -1$, we have
 \[
  \tau(\phi(P_1)) = \tau(\tw(P_2)) = -\tw(\tau(P_2)) = -\tw (-P_2) = \phi(P_1) = \phi(\tau(P_1)),
 \]
-where in the second inequality we used~\eqref{E:eps} and, moreover,
+where in the second inequality we used~\eqref{E:eps}; also,
 \[
  \tau(\phi(P_2)) = \tau(\delta \tw(P_1)) = -\delta \tw(\tau(P_1)) = 
   -\delta \tw(P_1) = -\phi (P_2) = \phi(\tau(P_2)).
@@ -608,7 +647,7 @@ $U$ is cyclic generated by $\left(\begin{smallmatrix}
                             1 & 1 \\
                             0 & 1
                             \end{smallmatrix} \right)$.   
-Morever, $U$ a normal subgroup of~$H$ 
+Moreover, $U$ a normal subgroup of~$H$ 
 and we write $\pi : H \to H/U \simeq D$ for the quotient map.
 
 \begin{proposition} \label{P:inner}
@@ -631,7 +670,7 @@ Since $d, \phi(d) \in D$ we have $d\phi(d)^{-1} \in D \cap U = \{ I_2\}$ therefo
 Thus $d = \phi(d)$ and we conclude that any $\phi$ 
 as in the statement is the same as an automorphism of~$U$ (extended to~$H$ by $\phi(d)=d$ for all $d\in D$). 
 
-Write $N_B(U)$  for the normalizer of $U$ in $B$ and $C_B(U)$ for its centralizer. 
+Write $N_B(U)$  for the normaliser of $U$ in $B$ and $C_B(U)$ for its centralizer. 
 We have $N_B(U) = B$ 
 and $C_B(U)$ are the matrices of the form $\left(\begin{smallmatrix}
                             \lambda & b \\
@@ -650,7 +689,7 @@ Let $p > 2$ be a prime. Let $E/K$ be an elliptic curve such that
 $\rhobar_{E,p}$ is reducible. Assume there is an element of order~$p$ 
 in the image of~$\rhobar_{E,p}$. 
 
-Then, there is a field $F \supset K$ such that $[F : K] = p$ and $E$ aquires a 
+Then, there is a field $F \supset K$ such that $[F : K] = p$ and $E$ acquires a 
 second isogeny over~$F$.
 \end{proposition}
 \begin{proof} We can choose a basis of $E[p]$ where
@@ -679,7 +718,7 @@ over~$K$ such that
 \end{itemize}
 If $F_1 \simeq F_2$ then $\rhobar_{E_1,p} \simeq \rhobar_{E_2,p}$ 
 after replacing $E_2$ by a $p$-isogenous curve if necessary, 
-where $F_i/K$ is a degree~$p$ extension where $E_i$ aquires a second isogeny
+where $F_i/K$ is a degree~$p$ extension where $E_i$ acquires a second isogeny
 as given by Proposition~\ref{P:fieldF}.
 
 
@@ -714,7 +753,7 @@ Write $G = \Gal(K_p / K)$.
 From now on we think of $\rhobar_{E_i,p}$ as an injective representation of~$G$. Note that the images of $\rhobar_{E_1,p}$ and $\rhobar_{E_2,p}$
 is the same subgroup~$H$ of the Borel.
 
-All the elments in $H$ are of the form $\rhobar_{E_2,p}(\sigma)$ for $\sigma \in G$, so we can consider the map $\phi = \rhobar_{E_1,p} \circ \rhobar_{E_2,p}^{-1} : H \to H$. It is an automorphism of~$H = D\cdot U$ satisfying the hypothesis of Proposition~\ref{P:inner}, where $D$ are 
+All the elements in $H$ are of the form $\rhobar_{E_2,p}(\sigma)$ for $\sigma \in G$, so we can consider the map $\phi = \rhobar_{E_1,p} \circ \rhobar_{E_2,p}^{-1} : H \to H$. It is an automorphism of~$H = D\cdot U$ satisfying the hypothesis of Proposition~\ref{P:inner}, where $D$ are 
 the matrices $\left(\begin{smallmatrix}
                             \chi & 0 \\
                             0 & \chi'
@@ -735,7 +774,126 @@ we conclude that $\rhobar_{E_1,p}(\sigma) = A \rhobar_{E_2,p}(\sigma) A^{-1}$, a
 
 \section{Congruences in the database}\label{S:statistics}
 
-blah blah
+In this section we report on our systematic study of $\mod{p}$
+congruences between elliptic curves in the LMFDB database.  We divide
+this into a number of steps, given a fixed prime~$p$. Recall first
+that isogenous curves have $\mod{p}$ representations which are
+isomorphic up to semisimplication, and are even isomorphic if the
+degree of the isogeny is not divisible by~$p$.  Secondly, two
+representations have isomorphic semisimplications if and only if they
+have the same traces, so that we can test this condition by testing
+whether $a_{\ell}(E)\equiv a_{\ell}(E')\pmod{p}$ for all primes~$\ell$
+not dividing $pNN'$ where $N$ and $N'$ are the conductors of $E$
+and~$'$ respectively.
+\begin{enumerate}
+\item Partition the isogeny classes into subsets~$S$ such that curves
+  whose $\mod{p}$ representations have isomorphic semisimplifications
+  are in the same subset; discard all subsets of size~$1$.
+\item For each subset~$S$ either prove that the curves in~$S$ really
+  do have isomorphic $\mod{p}$-representations up to
+  semisimplification, if necessary further partitioning the subsets.
+\item Separate the (non-trivial) subsets resulting in the previous
+  step into those which have irreducible representations and the
+  reducible ones.
+\item For each irreducible subset~$S$, and each pair of isogeny
+  classes in~$S$, pick curves $E$ and~$E'$, one from each class in the
+  pair; determine whether triple~$(E,E',p)$ is symplectic or
+  antisymplectic; then use the isogeny criterion to partition the set
+  of all the curves in the isogeny classes in~$S$ into (at most) two
+  parts such that curves in the same part are symbplectically
+  isomorphic while those in different parts are antisymplectically
+  isomorphic.
+\item For each reducible subset~$S$, determine whether, for each pair
+  $E$, $E'$ chosen as before, there is and isomorphism between $E[p]$
+  and $E'[p]$ (and not just between their semisimplfications).  If so,
+  process as in the previous step.
+\end{enumerate}
+We now explain each step in further detail.  For the first three
+steps, $p$ is arbitrary while for the last two we restrict to $p=7$.
+
+The LMFDB database (as of April 2019) contains all elliptic curves
+defined over~$\Q$ of conductor~$N\le400,000$; there are $2,483,649$
+curves, in $1,741,002$ isogeny classes.
+
+\subsection{Sieving}
+In order that $E[p]\cong E'[p]$ (up to semisimplification) it is
+necessary and sufficient that for all primes~$\ell$ not dividing
+$pNN'$ we have $a_{\ell}(E)\equiv a_{\ell}(E')\pmod{p}$.  In this step
+we may take one curve from each isogeny class, since isogenous curves
+have $\mod{p}$-representations with isomorphic semisimplifcations.
+
+For and integer~$B\ge1$, let $\calL_B$ be the set of the smallest~$B$
+primes greater than $400,000$. All curves in the database have good
+reduction at each prime in~$\calL$.  We also assume that
+$p\notin\calL$.
+
+To each curve $E$ in the database we assign a ``hash value'' which is
+a simple function of $\{a_{\ell}(E)\pmod{p}\mid \ell\in\calL\}$.  For
+example we may enumerate $\calL=\{\ell_0,\ell_1,\dots,\ell_{B-1}\}$
+and use the value $\sum_{i=0}^{B-1}\overline{a}_{\ell_i}(E)p^i$, where
+for $a\in\Z$, $\overline{a}$ denotes the reduction of $a$ which lies
+in $\{0,1,\dots,p-1\}$.  Curves whose $\mod{p}$-representations are
+isomorphic up to semisimplfication will have the same hash, and we may
+hope that clashes will be rare if $B$ is not too small.
+
+We proceed to compute this hash value for one curve in each isogeny
+class in the database, recording the curve's label in a list indexed
+by the different hash values encountered.  At the end of this step we
+can easily form a partition of the set of isogeny classes by taking
+these lists for each hash value.  We then discard any such lists which
+are singletons.
+
+Example: with $p=7$ and $B=30$, it take approximately 30 minutes to
+compute the hash of one curve in each isogeny class in the database.
+The result consists of $20138$ nontrivial subsets.  
+
+\subsection{Proving isomorphism up to semisimplification}
+
+For each of the pairs of isogeny classes obtained in the previous step
+we use a criterion of Kraus (\cite{?}) based on the Sturm bound to
+either prove isomorphism up to semisimplification, or reveal a ``false
+positive''.  The latter happens when two curves which are not
+$\mod{p}$-isomorphic have $a_{\ell}$ which are congruent modulo~$p$
+for all~$\ell\in\canL_B$.
+
+Example: after running step 1 using $B=30$ for $p=7$, of the $20138$
+nontrivial subsets found there is only one ``false positive''.  One of
+the subsets found in Step~1 is $\{{\tt 25921a1}, {\tt 78400gw1}, {\tt
+  '336973z1}, {\tt 336973ba1}\}$; however, curve {\tt 25921a1} is not
+in fact $\mod{7}$-isomorphic to the other three, while $\{{\tt
+  78400gw1}, {\tt '336973z1}, {\tt 336973ba1}\}$ is a genuine triple
+of curves which have mutually isonorphic $\mod{7}$-representations.
+
+This false postive arose since {\tt 25921a1} and {\tt 78400gw1}\}$
+have $a_{\ell}$ which are congruent modulo~$7$ for
+all~$\ell\in\calL_{30}$.  In this case, using $\canL_{40}$ instead
+would have eliminated this, but then Step~1 would have taken longer.
+
+\subsection{Testing reducibility}
+For each set (of size greater than one) of isogeny classes of curves
+obtained in the previous step, we determine whether the curves in the
+set have irreducible or reducible $\mod{p}$-representations.  To do
+this we apply a standard test of whether an elliptic curve admits a
+rational $p$-isogeny.  For the curves in the database this information
+is already known.
+
+Example: of the 20138 nontrivial sets from Step~2 we find that 19883
+are irreducible ({\it i.e.,} conssist of curves whose
+$\mod{7}$-representations are irreducible, while 255 are reducible.
+
+The sizes of these sets are as follows.  The irreducible sets have
+size at most~$5$;  most (18334) have size~$2$.  The reducible sets
+have size up to~$76$.
+
+[I could include a table of all these sizes if we think it is
+  sufficiently interesting.]
+
+\subsection{Distinguishing symplectic from antisymplectic: irreducible
+  case}
+
+\subsection{Distinguishing symplectic from antisymplectic: reducible
+  case}
+
 
 \section{Mod-$7$ isomorphisms between elliptic curves with
   $j$-invariant~$0$}
@@ -747,7 +905,7 @@ mod-$7$ Galois representation.
 In \cite{Halberstadt-Kraus-XE7}, Halberstadt and Kraus give an
 explicit model for the modular curve $X_E(7)$, for any elliptic curve
 $E$ defined over a field~$K$ of characteristic not equal to $2$, $3$
-or~$7$. The $K$-rational points on $X_E(7)$ parametrise pairs
+or~$7$. The $K$-rational points on $X_E(7)$ parameterise pairs
 $(E',\phi)$ where $E'$ is an elliptic curve defined over~$K$ and
 $\phi:E[7]\to E'[7]$ is an isomorphism of symplectic $G_K$-modules.
 Here the symplectic structure on $E[7]$ is given by the Weil pairing,
@@ -1053,7 +1211,7 @@ Emmanuel Halberstadt and Alain Kraus, \emph{On the modular curves {$Y_E(7)$}},
 %Mathematics of Computation {\bf 79} (2010), no. 286, 535--544.
 
 \bibitem{programs} N. Billerey, I. Chen, L. Demb\'el\'e, L. Dieulefait, and N. Freitas, 
-{\em Supporting {{\tt Magma}} program files for this paper},
+{\em Supporting {{\Magma}} program files for this paper},
 \url{http://math.univ-bpclermont.fr/~billerey/Research/BCDDF/}
 
 \bibitem{BCDF} N. Billerey, I. Chen. L. Dieulefait, and N. Freitas, 
