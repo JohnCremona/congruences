@@ -356,13 +356,14 @@
   Sk\l{l}odowska-Curie grant agreement No.\ 747808}
 
 
-\maketitle
-
 \begin{abstract} 
 We describe a procedure to determine the symplectic type of
 isomorphisms between the $7$-torsion modules of elliptic curves.  We
 apply it to classify all the congruences in LMFDB.
 \end{abstract}
+
+\maketitle
+
 
 \section{Introduction}
 
@@ -854,19 +855,19 @@ we use a criterion of Kraus (\cite{?}) based on the Sturm bound to
 either prove isomorphism up to semisimplification, or reveal a ``false
 positive''.  The latter happens when two curves which are not
 $\mod{p}$-isomorphic have $a_{\ell}$ which are congruent modulo~$p$
-for all~$\ell\in\canL_B$.
+for all~$\ell\in\calL_B$.
 
 Example: after running step 1 using $B=30$ for $p=7$, of the $20138$
 nontrivial subsets found there is only one ``false positive''.  One of
 the subsets found in Step~1 is $\{{\tt 25921a1}, {\tt 78400gw1}, {\tt
-  '336973z1}, {\tt 336973ba1}\}$; however, curve {\tt 25921a1} is not
+336973z1}, {\tt 336973ba1}\}$; however, curve {\tt 25921a1} is not
 in fact $\mod{7}$-isomorphic to the other three, while $\{{\tt
-  78400gw1}, {\tt '336973z1}, {\tt 336973ba1}\}$ is a genuine triple
-of curves which have mutually isonorphic $\mod{7}$-representations.
+  78400gw1}, {\tt 336973z1}, {\tt 336973ba1}\}$ is a genuine triple
+of curves which have mutually isomorphic $\mod{7}$-representations.
 
-This false postive arose since {\tt 25921a1} and {\tt 78400gw1}\}$
+This false postive arose since {\tt 25921a1} and {\tt 78400gw1}
 have $a_{\ell}$ which are congruent modulo~$7$ for
-all~$\ell\in\calL_{30}$.  In this case, using $\canL_{40}$ instead
+all~$\ell\in\calL_{30}$.  In this case, using $\calL_{40}$ instead
 would have eliminated this, but then Step~1 would have taken longer.
 
 \subsection{Testing reducibility}
@@ -891,6 +892,15 @@ have size up to~$76$.
 \subsection{Distinguishing symplectic from antisymplectic: irreducible
   case}
 
+After the previous step we have a collection of pairs of isogeny
+classes of curves $E$. $E'$ such that $E[p]\cong E'[p]$ with $E[p]$
+irreducible as $G_{\Q}$-module, and wish to determine whether this is
+a symplectic or anti-symplectic triple.  For all odd~$p$ we apply the
+local criteria of \cite{FKsyn}, while for $p=7$ we use the modular
+parametrizations and explicit formulae of Kraus and Halberstad,
+Poonen, Schaefer and Stoll, as extended and completed by Fisher in 
+  \cite{Fisher}.
+ 
 \subsection{Distinguishing symplectic from antisymplectic: reducible
   case}
 
