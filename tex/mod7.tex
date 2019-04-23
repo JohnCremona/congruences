@@ -322,7 +322,7 @@
 \newtheorem{remark}[theorem]{Remark}
 \newtheorem{remarks}[theorem]{Remarks}
 
-\newcommand{\Sage}{{\tt Sage}}
+\newcommand{\Sage}{{\sc SageMath}}
 \newcommand{\Magma}{{\sc Magma}}
 
 \definecolor{darkgreen}{rgb}{0,0.5,0}
@@ -394,7 +394,8 @@ using Weil reciprocity, that $d(\phi)=\deg\phi\pmod{p}$:
   \]
   where $\hat{\phi}$ denotes the dual isogeny.
 Hence $\phi$ is symplectic or antisymplectic according as $\deg\phi$
-is a quadratic residue or nonresidue respectively.
+is a quadratic residue or nonresidue respectively.  We will refer to
+this condition as the \emph{isogeny criterion}.
 
 Given $G_\Q$-isomorphic $E[p]$ and~$E'[p]$, it is possible that
 isomorphisms with both symplectic types exist; this occurs if and only
@@ -462,12 +463,12 @@ The main objective of this paper is to give a complete resolution of
 Problem~A when $p=7,11$ by describing a practical procedure that works
 independently of the type of image of $\rhobar_{E,p}$.  
 
-{\bf We have implemented in {\Magma} and {\Sage} the methods from this paper}
-together with those from~\cite{FKSym}. We have used our code to
-classify the symplectic types of congruences between curves in the
-LMFDB (see \cite{lmfdb}), namely all elliptic curves defined over~$\Q$
-of conductor less than~$400,000$; we report on the results obtained in
-Section~\ref{S:statistics}.
+We have implemented in {\Magma} \cite{magma} and {\Sage} \cite{sage} the methods
+from this paper together with those from~\cite{FKSym}. We have used
+our code to classify the symplectic types of congruences between
+curves in the LMFDB (see \cite{lmfdb}), namely all elliptic curves
+defined over~$\Q$ of conductor less than~$400,000$; we report on the
+results obtained in Section~\ref{S:statistics}.
 
 The description of our method also includes a discussion on how to determine whether $E[p]$ and~$E'[p]$ are isomorphic (ignoring the symplectic structure) in both the irreducible and reducible cases. Moreover, we give two global symplectic criteria for particular types of congruences: Theorem~\ref{T:Cartan} covers congruences between an ellptic curve~$E$ with mod~$p$ image in the normalizer of a Cartan subgroup and a certain quadratic twist of~$E$ and Theorem~\ref{T:j=0} covers a mod~$7$ congruence between 
 elliptic curves~$E$ with $j(E)=0$ and a sextic twist of~$E$.
@@ -692,7 +693,7 @@ finite number of primes~$\ell$, but this takes some care.
 \item For each irreducible subset~$S$, and each pair of isogeny
   classes in~$S$, pick curves $E$ and~$E'$, one from each class in the
   pair; determine whether the triple~$(E,E',p)$ is symplectic or
-  antisymplectic; then use the {\bf isogeny criterion} to partition the set
+  antisymplectic; then use the  isogeny criterion to partition the set
   of all the curves in the isogeny classes in~$S$ into one or two
   parts such that curves in the same part are symplectically
   isomorphic while those in different parts are antisymplectically
@@ -704,7 +705,8 @@ finite number of primes~$\ell$, but this takes some care.
   $p$-isogenous to it.  If so, proceed as in the previous step.
 \end{enumerate}
 We now explain each step in further detail.  For the first three
-steps, $p$ is arbitrary {\bf while for the last two we restrict to $p=7$}.
+steps, $p$ is arbitrary while for the last two we restrict to $p=7$
+and~$p=11$.
 
 The LMFDB database (as of April 2019) contains all elliptic curves
 defined over~$\Q$ of conductor~$N\le400,000$; there are $2,483,649$
@@ -743,7 +745,8 @@ are singletons.
 
 {\bf Example.} With $p=7$ and $B=30$, it take approximately 30 minutes to
 compute the hash of one curve in each isogeny class in the database.
-The result consists of $20138$ nontrivial subsets.  
+The result consists of $20138$ nontrivial subsets.  With $p=11$ andn
+$B=30$ there are $636$ nontrivial subsets.
 
 \subsection{Proving isomorphism up to semisimplification}
 
@@ -782,6 +785,13 @@ This false positive arises since \lmfdbec{25921}{a}{1} and
 for all~$\ell\in\calL_{30}$.  In this case, using $\calL_{40}$ instead
 would have eliminated this, but then Step~1 would have taken longer. 
 
+For $p=11$ and $B=30$, there is also just one false positive
+nontrivial subset, namely $\{\text{\rm 25921a}, \text{\rm
+  78400gw1}\}$.  So there are $635$ genuine nontrivial subsets, each
+consisting of just two isogeny classes, all of which have irreducible
+mod~$11$ representations.  Up to twist, there are only $89$ distinct
+subsets.
+
 \subsection{Testing reducibility}
 For each set (of size greater than one) of isogeny classes of curves
 obtained in the previous step, we determine whether the curves in the
@@ -810,24 +820,26 @@ In which sense are twists being considered here? For the moment I don't think it
 
 \subsection{Distinguishing symplectic from antisymplectic: irreducible case}
 After the previous step we have a collection of pairs of isogeny
-classes of curves $E$, $E'$ such that 
-the $G_{\Q}$-modules $E[p]$ and $E'[p]$ are isomorphic and irreducible. Moreover, from \cite[Corollary~3]{FKSym} we know that all isomorphisms $\phi : E[p] \simeq E'[p]$ have the same symplectic type. We wish to determine whether this type is symplectic or anti-symplectic.  
+classes of curves $E$, $E'$ such that the $G_{\Q}$-modules $E[p]$ and
+$E'[p]$ are isomorphic and irreducible. Moreover, from
+\cite[Corollary~3]{FKSym} we know that all isomorphisms $\phi : E[p]
+\simeq E'[p]$ have the same symplectic type. We wish to determine
+whether this type is symplectic or anti-symplectic.
 
-{\bf For all odd~$p$ we may
-apply the local criteria of \cite{FKSym}}, while for $p=7$ we use the
+The local criteria of \cite{FKSym} suffice to distinguish symplectic
+congruences from antisymplectic ones for all the congruences found in
+the database, for both $p=7$ and $p=11$.  For $p=7$, we also used
 modular parametrizations and explicit formulae of Kraus and
 Halberstadt in \cite{Halberstadt-Kraus-XE7}, Poonen, Schaefer and
 Stoll in \cite{PSS}, and as extended and completed by Fisher in
-\cite{Fisher}.
-
-In \cite{Halberstadt-Kraus-XE7}, Halberstadt and Kraus give an
-explicit model for the modular curve $X_E(7)$, for any elliptic curve
-$E$ defined over a field~$K$ of characteristic not equal to $2$, $3$
-or~$7$. The $K$-rational points on $X_E(7)$ parameterise pairs
-$(E',\phi)$ where $E'$ is an elliptic curve defined over~$K$ and
-$\phi:E[7]\to E'[7]$ is a symplectic isomorphism of $G_K$-modules; we
-{\bf identify two such isomorphisms~$\phi$ when one is a scalar multiple of
-the other.}
+\cite{Fisher}.  In \cite{Halberstadt-Kraus-XE7}, Halberstadt and Kraus
+give an explicit model for the modular curve $X_E(7)$, for any
+elliptic curve $E$ defined over a field~$K$ of characteristic not
+equal to $2$, $3$ or~$7$. The $K$-rational points on $X_E(7)$
+parameterise pairs $(E',\phi)$ where $E'$ is an elliptic curve defined
+over~$K$ and $\phi:E[7]\to E'[7]$ is a symplectic isomorphism of
+$G_K$-modules; we {\bf identify two such isomorphisms~$\phi$ when one
+  is a scalar multiple of the other.}
 
 The model for $X_E(7)$ given in \cite{Halberstadt-Kraus-XE7} is a
 plane quartic curve, a twist of the classical Klein quartic~$X(7)$,
@@ -1396,6 +1408,12 @@ Jennifer~S. Balakrishnan, Netan Dogra, J.~Steffen M\"uller, Jan Tuitman, and
 {\em Tetrahedral Elliptic Curves and the local-to-global principle for Isogenies}
 Algebra \& Number Theory {\bf 8} (2014), no. 5, 1201--1229.
 
+\bibitem[BCP97]{magma}
+Wieb Bosma, John Cannon, and Catherine Playoust.
+\newblock The {M}agma algebra system. {I}. {T}he user language.
+\newblock {\em J. Symbolic Comput.}, 24(3-4):235--265, 1997.
+\newblock Computational algebra and number theory (London, 1993).
+
 \bibitem{BPR2013}
 Yuri Bilu, Pierre Parent, and Marusia Rebolledo.
 \newblock Rational points on {$X^+_0(p^r)$}.
@@ -1439,6 +1457,12 @@ A.~Kraus and J.~Oesterl\'{e}.
 Bjorn Poonen, Edward~F. Schaefer, and Michael Stoll.
 \newblock Twists of {$X(7)$} and primitive solutions to {$x^2+y^3=z^7$}.
 \newblock {\em Duke Math. J.}, 137(1):103--158, 2007.
+
+\bibitem{sage}
+W.\thinspace{}A. Stein et~al.
+\newblock {\em {S}age {M}athematics {S}oftware ({V}ersion 8.7)}.
+\newblock The Sage Development Team, 2019.
+\newblock {\tt http://www.sagemath.org}.
 
 \bibitem{Sutherland}
 Andrew V. Sutherland.
