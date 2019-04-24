@@ -1,5 +1,5 @@
 \documentclass[12pt]{amsart}
-\usepackage{fullpage,url,amssymb,enumerate,colonequals}
+\usepackage{fullpage,url,amssymb,enumerate,colonequals, numprint}
 
 % \usepackage{amscd}   % for commutative diagrams
 %\usepackage[all]{xy} % for complicated commutative diagrams, use pdf driver
@@ -467,7 +467,7 @@ We have implemented in {\Magma} \cite{magma} and {\Sage} \cite{sage} the methods
 from this paper together with those from~\cite{FKSym}. We have used
 our code to classify the symplectic types of congruences between
 curves in the LMFDB (see \cite{lmfdb}), namely all elliptic curves
-defined over~$\Q$ of conductor less than~$400,000$; we report on the
+defined over~$\Q$ of conductor less than~$\numprint{400000}$; we report on the
 results obtained in Section~\ref{S:statistics}.
 
 The description of our method also includes a discussion on how to determine whether $E[p]$ and~$E'[p]$ are isomorphic (ignoring the symplectic structure) in both the irreducible and reducible cases. Moreover, we give two global symplectic criteria for particular types of congruences: Theorem~\ref{T:Cartan} covers congruences between an ellptic curve~$E$ with mod~$p$ image in the normalizer of a Cartan subgroup and a certain quadratic twist of~$E$ and Theorem~\ref{T:j=0} covers a mod~$7$ congruence between 
@@ -511,10 +511,6 @@ see \cite[Example~31.2]{FKSym} for such an example with $p=7$.
 
 The procedures we describe in this work applies uniformly in all cases.
 
-%\begin{remark}
-%A similar method to the one in this paper but using the equations of $X_E(11)$ given by Fisher~\cite{Fisher} 
-%could in principle be applied to Problem~A for $p=11$. 
-%\end{remark}
 
 
 \section{Preliminaries for the reducible case}
@@ -662,8 +658,9 @@ we conclude that $\rhobar_{E_1,p}(\sigma) = A \rhobar_{E_2,p}(\sigma) A^{-1}$, a
 \section{Congruences in the database}\label{S:statistics}
 
 In this section we report on our systematic study of mod~$p$
-congruences between elliptic curves in the LMFDB database.  We divide
-this into a number of steps, given a fixed prime~$p$. Recall first
+congruences between elliptic curves in the LMFDB database.
+
+Recall first
 that isogenous curves have mod~$p$ representations which are
 isomorphic up to semisimplification, and are even isomorphic if the
 degree of the isogeny is not divisible by~$p$.  Secondly, two
@@ -678,16 +675,22 @@ and~$E'$ respectively.  This test can very quickly establish rigorously
 that two curves do \emph{not} have isomorphic $p$-torsion up to
 semisimplification, since this is implied by the existence of a single
 prime~$\ell$ such that $a_{\ell}(E)\not\equiv a_{\ell}(E')\pmod{p}$.
-It is also possible to prove positive results this way using only a
-finite number of primes~$\ell$, but this takes some care.
+Moreover, it is possible to prove that two curves have isomorphic $p$-torsion up to
+semisimplification using this test for a finite number of
+primes~$\ell$, as we explain in Step 2 below.
 
-{\bf We first outline the steps briefly, and then consider each in more detail.}
+We divide our procedure, given a fixed prime~$p$, into a number of
+steps.  We first outline these steps, and then consider each in more detail.
 \begin{enumerate}[1.]
-\item Partition the set of isogeny classes of elliptic curves in LMFDB into subsets~$S$ such that curves whose mod~$p$ representations have  isomorphic semisimplifications belong to isogeny classes in the same subset~$S$; {\bf discard all subsets of size~$1$.}
-\item For each subset~$S$ prove that the curves in~$S$ really
+\item Partition the set of isogeny classes of elliptic curves in LMFDB
+  into subsets~$S$ such that curves whose mod~$p$ representations have
+  isomorphic semisimplifications belong to isogeny classes in the same
+  subset~$S$.
+\item For each subset~$S$ prove that the curves in each isogeny class in~$S$ really
   do have isomorphic mod~$p$ representations up to
   semisimplification, if necessary further partitioning the subsets.
-\item Separate the (non-trivial) subsets resulting in the previous
+  Discard all ``trivial'' subsets of size~$1$.
+\item Separate the remaining subsets resulting in the previous
   step into those which have irreducible mod~$p$ representations and
   the reducible ones.
 \item For each irreducible subset~$S$, and each pair of isogeny
@@ -699,18 +702,22 @@ finite number of primes~$\ell$, but this takes some care.
   isomorphic while those in different parts are antisymplectically
   isomorphic.
 \item For each reducible subset~$S$, determine whether, for each pair
-  $E$, $E'$ chosen as before, there is an isomorphism between $E[p]$
-  and $E'[p]$ (and not just between their semisimplifications), if
-  necessary replacing one of $E$, $E'$ with another curve
-  $p$-isogenous to it.  If so, proceed as in the previous step.
+  $E$, $E'$ chosen as in Step 4, there is an isomorphism between
+  $E[p]$ and $E'[p]$ (and not just between their semisimplifications),
+  if necessary replacing one of $E$, $E'$ with another curve
+  $p$-isogenous to it.  If so, proceed as in the previous step.  If
+  not, this means that $E[p]$ and $E'[p]$ are not in fact isomorphic.
+  During this step we will further partition each reducible set $S$
+  into subsets of isogeny classes of curves whose mod~$p$
+  representations are isomorphic, not just up to semisimplification.
 \end{enumerate}
 We now explain each step in further detail.  For the first three
 steps, $p$ is arbitrary while for the last two we restrict to $p=7$
 and~$p=11$.
 
 The LMFDB database (as of April 2019) contains all elliptic curves
-defined over~$\Q$ of conductor~$N\le400,000$; there are $2,483,649$
-curves, in $1,741,002$ isogeny classes.
+defined over~$\Q$ of conductor~$N\le\numprint{400000}$; there are $\numprint{2483649}$
+curves, in $\numprint{1741002}$ isogeny classes.
 
 \subsection{Sieving}
 In order that $E[p]\cong E'[p]$ (up to semisimplification) it is
@@ -719,8 +726,8 @@ $pNN'$ we have $a_{\ell}(E)\equiv a_{\ell}(E')\pmod{p}$.  In this step
 we may take one curve from each isogeny class, since isogenous curves
 have mod~$p$ representations with isomorphic semisimplifications.
 
-For an integer~$B\ge1$, let $\calL_B$ be the set of the smallest~$B$
-primes greater than $400,000$. All curves in the database have good
+For an integer~$B\ge1$, let $\calL_B$ be the set of the $B$ smallest
+primes greater than $\numprint{400000}$. All curves in the database have good
 reduction at each prime in~$\calL_B$. 
 Assume also that
 $p\notin\calL_B$.
@@ -745,18 +752,20 @@ are singletons.
 
 {\bf Example.} With $p=7$ and $B=30$, it take approximately 30 minutes to
 compute the hash of one curve in each isogeny class in the database.
-The result consists of $20138$ nontrivial subsets.  With $p=11$ andn
+The result consists of $20138$ nontrivial subsets.  With $p=11$ and
 $B=30$ there are $636$ nontrivial subsets.
 
 \subsection{Proving isomorphism up to semisimplification}
 
 For each of the pairs of isogeny classes obtained in the previous step
-we use a criterion of Kraus--Osterl\'e (\cite[Proposition~4]{KO}) based on the Sturm bound to
-either prove isomorphism up to semisimplification, or reveal a ``false
-positive''.  The latter happens when two curves which are not  mod~$p$ isomorphic have traces of Frobenius~$a_{\ell}$ which are congruent modulo~$p$
-for all~$\ell\in\calL_B$.
+we use a criterion of Kraus--Oesterl\'e (\cite[Proposition~4]{KO})
+based on the Sturm bound to either prove isomorphism up to
+semisimplification, or reveal a ``false positive''.  The latter
+happens when two curves which are not congruent mod~$p$ have traces of
+Frobenius~$a_{\ell}$ which are congruent modulo~$p$ for
+all~$\ell\in\calL_B$.
 
-{\bf Example.} After running Step~1 using $B=30$ for $p=7$, of the $20138$
+{\bf Example (continued).} After running Step~1 using $B=30$ for $p=7$, of the $20138$
 nontrivial subsets found there is only one ``false positive''.  One of
 the subsets found in Step~1 is
 \[
@@ -778,53 +787,65 @@ Thus, we subdivide the set $S$ above into
 \lmfdbec{336973}{ba}{1}
 \}
 \]
-and discard the first one as it became a singleton.
-
-This false positive arises since \lmfdbec{25921}{a}{1} and
-\lmfdbec{78400}{gw}{1} have $a_{\ell}$ which are congruent modulo~$7$
-for all~$\ell\in\calL_{30}$.  In this case, using $\calL_{40}$ instead
-would have eliminated this, but then Step~1 would have taken longer. 
+and discard the first one as it is a singleton.
 
 For $p=11$ and $B=30$, there is also just one false positive
-nontrivial subset, namely $\{\text{\rm 25921a}, \text{\rm
-  78400gw1}\}$.  So there are $635$ genuine nontrivial subsets, each
-consisting of just two isogeny classes, all of which have irreducible
-mod~$11$ representations.  Up to twist, there are only $89$ distinct
-subsets.
+nontrivial subset, namely $\{ \lmfdbec{25921}{a}{1} ,
+\lmfdbec{78400}{gw}{1}\}$.  So there are $635$ genuine nontrivial
+subsets, each consisting of just two isogeny classes, all of which
+have irreducible mod~$11$ representations.  Up to twist, there are
+only $89$ distinct subsets.
+
+\begin{remark}
+Note that the false positive pairs for $p=7$ and $p=11$ are the same.
+These false positives arise since \lmfdbec{25921}{a}{1} and
+\lmfdbec{78400}{gw}{1} have $a_{\ell}$ which are \emph{equal} for
+all~$\ell\in\calL_{30}$, and even all~$\ell\in\calL_{35}$.
+In this case, using any $B\ge36$ instead would have eliminated the
+false positives, but then Step~1 would have taken longer.  In fact,
+even for the small prime $\ell=29$ the values of $a_{\ell}$ are $+2$
+and~$-2$, which are not congruent mod~$7$ or mod~$11$.
+
+\end{remark}
+
 
 \subsection{Testing reducibility}
-For each set (of size greater than one) of isogeny classes of curves
+For each set  of isogeny classes of curves
 obtained in the previous step, we determine whether the curves in the
 set have irreducible or reducible mod~$p$ representations.  To do
 this we apply a standard test of whether an elliptic curve admits a
 rational $p$-isogeny.  For the curves in the database this information
 is already known.
 
-{\bf Example.} Of the 20138 nontrivial sets from Step~2 we find that 19883
-are irreducible, {\it i.e.} consist of curves whose
+{\bf Example (continued).} For $p=7$, of the 20138 nontrivial sets from Step~2, we
+find that 19883 are irreducible, {\it i.e.} consist of curves whose
 mod~$7$ representations are irreducible, while 255 are reducible.
 
-The sizes of these sets are as follows:  the irreducible sets have size at most~$5$ and  most (18334) have size~$2$; the reducible sets
-have size up to~$76$.
+The irreducible sets have size at most~$5$.  In detail, there are
+18334 sets of size~2; 1297 sets of size~3; 246 sets of size~4; and 6
+sets of size~5.
 
-[I could include a table of all these sizes if we think it is
-  sufficiently interesting.  The frequencies for each size are
+The reducible sets have size up to~$76$.  In Step~5 below we will
+further partition these sets after testing whether the curves are
+actually congruent mod~7 (not just up to semisimplification).
 
-Irreducible  {2:  18334, 3: 1297, 4: 246, 5: 6}
+%% Reducible {2: 86, 3: 67, 4: 31, 5: 26, 7: 7, 10: 6, 6: 5, 8: 5, 9: 4, 19: 4, 11:
+%%   3, 16: 2, 18: 2, 32: 1, 35: 1, 76: 1, 13: 1, 14: 1, 45: 1, 36: 1}
 
-Reducible {2: 86, 3: 67, 4: 31, 5: 26, 7: 7, 10: 6, 6: 5, 8: 5, 9: 4, 19: 4, 11:
-  3, 16: 2, 18: 2, 32: 1, 35: 1, 76: 1, 13: 1, 14: 1, 45: 1, 36: 1}
+For $p=11$, the 635 nontrivial subsets are all of size~2, and
+all are irreducible.
 
-In which sense are twists being considered here? For the moment I don't think it is interesting enough to include tables.
-]
 
 \subsection{Distinguishing symplectic from antisymplectic: irreducible case}
-After the previous step we have a collection of pairs of isogeny
-classes of curves $E$, $E'$ such that the $G_{\Q}$-modules $E[p]$ and
-$E'[p]$ are isomorphic and irreducible. Moreover, from
+After the previous step we have a collection of sets of isogeny
+classes, such that for each pair of curves $E$, $E'$ taken from
+isogeny classes in each set, the $G_{\Q}$-modules $E[p]$ and $E'[p]$
+are isomorphic and irreducible. Moreover, from
 \cite[Corollary~3]{FKSym} we know that all isomorphisms $\phi : E[p]
 \simeq E'[p]$ have the same symplectic type. We wish to determine
-whether this type is symplectic or anti-symplectic.
+whether this type is symplectic or anti-symplectic.  We may assume
+that $E$ and~$E'$ are not isogenous, as otherwise we may simply apply
+the isogeny criterion.
 
 The local criteria of \cite{FKSym} suffice to distinguish symplectic
 congruences from antisymplectic ones for all the congruences found in
@@ -838,8 +859,8 @@ elliptic curve $E$ defined over a field~$K$ of characteristic not
 equal to $2$, $3$ or~$7$. The $K$-rational points on $X_E(7)$
 parameterise pairs $(E',\phi)$ where $E'$ is an elliptic curve defined
 over~$K$ and $\phi:E[7]\to E'[7]$ is a symplectic isomorphism of
-$G_K$-modules; we {\bf identify two such isomorphisms~$\phi$ when one
-  is a scalar multiple of the other.}
+$G_K$-modules; we  identify two such isomorphisms~$\phi$ when one
+  is a scalar multiple of the other.
 
 The model for $X_E(7)$ given in \cite{Halberstadt-Kraus-XE7} is a
 plane quartic curve, a twist of the classical Klein quartic~$X(7)$,
@@ -891,15 +912,15 @@ written down explicitly in \cite{PSS}, for which Fisher provides
 explicit formulae for the $j$-map and $c_4,c_6$ as above
 in~\cite{Fisher}.
 
-We note that it is not necessary to apply both
-the symplectic and antisymplectic tests to a pair $(E,E')$ if we know
-already that $E[7]\cong E'[7]$, since {\bf (in this current irreducible
-case)} one will succeed if and only if the other fails.  However we did
-apply both tests in our computations with the curves in the database
-as a test of our implementation, verifying that precisely one test
-passes for each pair.  We also checked that the results obtained for
-each pair using the local criteria are the same, so that we can be
-confident in the correctness of the results.
+We note that it is not necessary to apply both the symplectic and
+antisymplectic tests to a pair $(E,E')$ if we know already that
+$E[7]\cong E'[7]$, since one will succeed if and only if the other
+fails (by remarks made in the Introduction).  However we did apply both
+tests in our computations with the curves in the database as a test of
+our implementation, verifying that precisely one test passes for each
+pair.  We also checked that the results obtained for each pair using
+the local criteria are the same, so that we can be confident in the
+correctness of the results.
 
 These tests have only been carried out using a single curve in each
 isogeny class, since we know how to distinguish symplectic from
@@ -908,6 +929,38 @@ isogenous curves to obtain, for each elliptic curve~$E$ in the
 database the complete sets of other curves~$E'$ which have
 symplectically (respectively anti-symplectically) isomorphic
 $7$-torsion modules.
+
+The output of this step consists of, for each of the subsets resulting
+from Steps~1--3, one or two sets of curves whose union is the set of
+all curves in the isogeny classes in the subset.  All curves in the
+same set have symplectically isomorphic 7-torsion modules; when there
+are two sets, curves in different sets have antisymplectically
+isomorphic 7-torsion.
+
+\begin{example}
+One of the subsets resulting from Steps 1--3 consists of the pair of
+isogeny classes $\{344025bc1, 344025bd1\}$.  Our test shows that
+344025bc1 and 344025bd1 are symplectically isomorphic.  The isogeny
+class 344025bc contains two $2$-isogenous curves, while class 344025bd
+contains only one curve.  Since $2$ is a quadratic residue mod~7, all
+three curves have symmplectally isomorphic 7-torsion, and hence Step~4
+returns a single set: $\{344025bc1, 344025bc2, 344025bd1\}$.
+
+ A second example starts from the subset $\{100800gw1, 100800hc1\}$.
+The same procedure results in the output of two sets of curves
+\[
+\{100800gw1\}, \qquad \{100800hc1, 100800hc2\},
+\]
+since our tests show that 100800gw1 and 100800hc1 are
+antisymplectically isomorphic, and the last two curves are
+$2$-isogenous.
+\end{example}
+
+\begin{remark}
+A similar method to the one just described but using the equations of
+$X_E(11)$ given by Fisher~\cite{Fisher} could in principle be applied
+for $p=11$.
+\end{remark}
 
 \subsection{Distinguishing symplectic from antisymplectic: reducible
   case}
@@ -970,15 +1023,16 @@ the field of definition of the other seven $7$-isogenies from~$E$.
 The map from $X_0(7)$ to the $j$-line is given by the classical
 rational function (see Fricke)
 \[
-   j = \frac{(t^{2} + 13t + 49) \cdot (t^{2} + 5t + 1)^{3}}{t}.
+   j = \frac{(t^{2} + 13t + 49) \cdot (t^{2} + 5t + 1)^{3}}{t}
    \]
-{\bf Hence the roots of the degree~$8$ polynomial~$(t^{2} + 13t + 49) \cdot
+where $t$ is a choice of Hauptmodul for the genus~$0$ curve $X_0(7)$.
+Hence the roots of the degree~$8$ polynomial~$(t^{2} + 13t + 49) \cdot
 (t^{2} + 5t + 1)^{3} -t\cdot j(E)$ determine the fields of definition
-of the eight $7$-isogenies from~$E$.}  In our setting, it has a single
+of the eight $7$-isogenies from~$E$.  In our setting, it has a single
 root (giving the unique $7$-isogeny from~$E$) and an irreducible
 factor of degree~$7$, which defines the desired extension of the base
-field~$\Q$, which in turn {\bf uniquely identifies the $*$ component of the
-representation.}
+field~$\Q$, which in turn  uniquely identifies the $*$ component of the
+representation, by Theorem~\ref{T:reducible}.
 
 In this way, for each pair $(E,E')$ whose 
 mod~$7$ representations
@@ -1128,6 +1182,21 @@ as desired. Finally, we note that
 where the last equality holds since $\tw$ preserves the Weil pairing.
 Thus $\phi$ is symplectic if and only if $(-\delta/p) = 1$.
 \end{proof}
+
+\begin{remark}
+The hypotheses of the theorem hold when $K=\Q$, $E$ has CM, and $p$ is
+unramified in the CM field~$\Q(\sqrt{d})$.  In this case, $\eps$ is
+the quadratic character associated to the CM field.  The twist $E^d$
+is isogenous to~$E$ by an isogeny of degree~$|d|=-d$, and it is easy to
+see that the conclusion of the theorem holds in this case since $C$ is
+split or nonsplit according to whether $(d/p)=+1$ or $-1$ respectively.
+
+Over~$\Q$, in most cases we do not see such isomorphisms in our
+computed data since (apart from the CM fields where quartic or sextic
+twists occur) all such mod~$p$ isomorphisms occur within an isogeny
+class, and we have omitted these from consideration.  The sextic twist
+case is treated in detail in the next section.
+\end{remark}
 
 
 \section{Mod-$7$ isomorphisms between elliptic curves with
@@ -1395,6 +1464,27 @@ $-\sqrt{-7}$.  For this one may use the classical formula
 \]
 The same definition of~$\phi$ as in the generic case gives a
 symplectic Galois isomorphism here, completing the proof.
+
+\section{Summary and further examples}
+
+\begin{example}
+Consider the set of six elliptic curves
+\[\{9225a1, 9225e1, 225a1, 225a2, 11025c1, 11025c2\}\] which form four
+complete isogeny classes.  All have isomorphic mod~7 representations
+with image the normaliser of a split Cartan subgroup.  The last four
+curves all have $j$-invariant~$0$ and CM by $-3$.  The first two are
+$-3$-twists of each other.
+
+The general methods of Step~4 of the section~3 split this set into two
+subsets:
+\[
+  \{9225a1, 225a1, 11025c1\},\qquad \{9225e1, 225a2, 11025c2\}
+\]
+Curves 9225a1 and 9225e1 give a non-CM example of
+Theorem~\ref{T:Cartan}.  Curves 225a1 and 11025c1 are sextic (but not
+quadratic or cubic) twists and illustrate Theorem~\ref{T:j=0}.
+\end{example}
+
 
  
 \begin{thebibliography}{999}
