@@ -469,7 +469,7 @@ curves in the LMFDB (see \cite{lmfdb}), namely all elliptic curves
 defined over~$\Q$ of conductor less than~$\numprint{400000}$. 
 We found, for $p$ in the range $7 \leq p \leq 17$, all the congruences in the database up to twist; we report on the results obtained in Sections~\ref{S:statistics}~and~\ref{S:summary}.
 
-The description of our method also includes a discussion on how to determine whether $E[p]$ and~$E'[p]$ are isomorphic (ignoring the symplectic structure) in both the irreducible and reducible cases. Moreover, we give two global symplectic criteria for particular types of congruences: Theorem~\ref{T:Cartan} covers congruences between an ellptic curve~$E$ with mod~$p$ image in the normalizer of a Cartan subgroup and a certain quadratic twist of~$E$ and Theorem~\ref{T:j=0} covers a mod~$7$ congruence between 
+The description of our method also includes a discussion on how to determine whether $E[p]$ and~$E'[p]$ are isomorphic (ignoring the symplectic structure) in both the irreducible and reducible cases. Moreover, we give two global symplectic criteria for particular types of congruences: Theorem~\ref{T:Cartan} covers congruences between an elliptic curve~$E$ with mod~$p$ image in the normalizer of a Cartan subgroup and a certain quadratic twist of~$E$ and Theorem~\ref{T:j=0} covers a mod~$7$ congruence between 
 elliptic curves~$E$ with $j(E)=0$ and a sextic twist of~$E$.
 
 \begin{remark} There are many mod~$3$ and mod~$5$ congruences in the database but we have not searched for them. Since the modular curves $X_E(3)$ and $X_E(5)$ have genus~0, for each 
@@ -479,9 +479,13 @@ fixed~$E$, there will always be congruences that are not part of the database in
 
 \subsection{Further motivation} \label{S:motivation}
 We finish this introduction with a discussion 
-on how the methos of this paper complement the local methods in~\cite{FKSym}.
+on how the methods of this paper complement the local methods in~\cite{FKSym}.
 
-Recall that, loosely speaking, the modular curves $X_E(p)$ and $X_E^-(p)$ parameterize, respectively, elliptic curves with $p$-torsion modules symplectically and anti-symplectically isomorphic to~$E[p]$; thus triples $(E,E',p)$ as above give rise to $\Q$-points on them. 
+Recall that, loosely speaking, the modular curves $X_E(p)$ and
+$X_E^-(p)$ parametrize, respectively, elliptic curves with
+$p$-torsion modules symplectically and anti-symplectically isomorphic
+to~$E[p]$; thus triples $(E,E',p)$ as above give rise to $\Q$-points
+on at least one of these curves. 
 
 The Frey-Mazur conjecture states there is a constant $C \geq 18$ such that, if $E/\Q$ and $E'/\Q$ satisfy $E[p] \simeq E'[p]$ as
 $G_\Q$-modules for some prime $p > C$, then $E$ and $E'$ are
@@ -509,10 +513,10 @@ The elliptic curves satisfying (iv)
 have recently been shown (see~??) to have $j$-invariant listed in \cite[Corollary~1.9]{BarinderCrem}. {\bf None of these curves are mod~$13$ congruent to a quadratic twist of another of them (including itself); the same is true for the curves and values of~$p$ in (v).}
 
 Our method, described in Section~\ref{S:statistics} for $p=7$, can be adapted by replacing the modular curves~$X_E(7)$ by $X_E(p)$
-when explicit equations for the latter are known, which is the case for $p=3,5$ and~$11$. Since the method works independeently of the image of~$\rhobar_{E,p}$, in particular, it also covers (i) and (ii).
+when explicit equations for the latter are known, which is the case for $p=3,5$ and~$11$. Since the method works independently of the image of~$\rhobar_{E,p}$, in particular, it also covers (i) and (ii).
 
 The remaining case~(iii) are the infinitely many curves
-with $\rhobar_{E,13}$ reducible (recall that $X_0(13)$ has genus~0). In spite of the lack of helpful bounds as mentioned above, a congruence between such curves will often be  addressed by local methods in practice. Indeed, the bounds are very large as they depend on Tchebotarev densitiy theorem to predict a prime~$\ell$ of good reduction for~$E$ where Frobenius has order multiple of~$p$ but, in practice, it is usually easy to find such a prime~$\ell$ after trying a few small primes. 
+with $\rhobar_{E,13}$ reducible (recall that $X_0(13)$ has genus~0). In spite of the lack of helpful bounds as mentioned above, a congruence between such curves will often be  addressed by local methods in practice. Indeed, the bounds are very large as they depend on Tchebotarev density theorem to predict a prime~$\ell$ of good reduction for~$E$ where Frobenius has order multiple of~$p$ but, in practice, it is usually easy to find such a prime~$\ell$ after trying a few small primes. 
 There are no such mod~$13$ examples in the LMFDB database, instead we refer to \cite[Example~31.2]{FKSym} for such an example with $p=7$.
 
 
@@ -719,7 +723,7 @@ steps.  We first outline the steps, and then consider each in detail.
   representations are isomorphic, not just up to semisimplification.
 \end{enumerate}
 Next we will explain each step in further detail.  For the first three steps, $p$ is arbitrary while for the last two we restrict to $p=7$. This is the more interesting case as there is a considerable amount of congruences 
-in both the reducible and irreducible case; nevertheless, a similar method to the one we describe below, using istead the
+in both the reducible and irreducible case; nevertheless, a similar method to the one we describe below, using instead the
 classical equations for $X_E(3)$ or~$X_E(5)$ or the recent equations for $X_E(11)$ given by Fisher~\cite{Fisher}, 
 could be used to determine the symplectic type of congruences modulo~$3$, $5$ or~$11$, respectively.
 
@@ -866,7 +870,7 @@ In~\cite{Halberstadt-Kraus-XE7}, Halberstadt and Kraus
 give an explicit model for the modular curve $X_E(7)$, for any
 elliptic curve $E$ defined over a field~$K$ of characteristic not
 equal to $2$, $3$ or~$7$. The $K$-rational points on $X_E(7)$
-parameterise pairs $(E',\phi)$ where $E'$ is an elliptic curve defined
+parametrize pairs $(E',\phi)$ where $E'$ is an elliptic curve defined
 over~$K$ and $\phi:E[7]\to E'[7]$ is a symplectic isomorphism of
 $G_K$-modules; we  identify two such isomorphisms~$\phi$ when one
   is a scalar multiple of the other.
@@ -946,22 +950,25 @@ isomorphic 7-torsion.
 
 \begin{example}
 One of the subsets resulting from Steps 1--3 consists of the pair of
-isogeny classes $\{344025bc1, 344025bd1\}$.  Our test shows that
-344025bc1 and 344025bd1 are symplectically isomorphic.  The isogeny
-class 344025bc contains two $2$-isogenous curves, while class 344025bd
-contains only one curve.  Since $2$ is a quadratic residue mod~7, all
-three curves have symmplectally isomorphic 7-torsion, and hence Step~4
-returns a single set 
-\[\{344025bc1, 344025bc2, 344025bd1\}.\]
-Another subset resulting from Steps 1--3
-is $\{100800gw1, 100800hc1\}$.
-The same procedure results in the output of two sets of curves
+isogeny classes $\{\lmfdbec{344025}{bc}{1},
+\lmfdbec{344025}{bd}{1}\}$.  Our test shows that
+$\lmfdbec{344025}{bc}{1}$ and $\lmfdbec{344025}{bd}{1}$ are
+symplectically isomorphic.  The isogeny class
+$\lmfdbeciso{344025}{bc}$ contains two $2$-isogenous curves, while
+class $\lmfdbeciso{344025}{bd}$ contains only one curve.  Since $2$ is
+a quadratic residue mod~7, all three curves have symplectically
+isomorphic 7-torsion, and hence Step~4 returns a single set
+\[\{\lmfdbec{344025}{bc}{1}, \lmfdbec{344025}{bc}{2}, \lmfdbec{344025}{bd}{1}\}.\]
+Another subset resulting from Steps 1--3 is
+$\{\lmfdbec{100800}{gw}{1}, \lmfdbec{100800}{hc}{1}\}$.  The same
+procedure results in the output of two sets of curves
 \[
-\{100800gw1\}, \qquad \{100800hc1, 100800hc2\},
+\{\lmfdbec{100800}{gw}{1}\}, \qquad \{\lmfdbec{100800}{hc}{1},
+\lmfdbec{100800}{hc}{2}\},
 \]
-since our tests show that 100800gw1 and 100800hc1 are
-antisymplectically isomorphic, and the last two curves are
-$2$-isogenous.
+since our tests show that $\lmfdbec{100800}{gw}{1}$ and
+$\lmfdbec{100800}{hc}{1}$ are antisymplectically isomorphic, and the
+last two curves are $2$-isogenous.
 \end{example}
 
 \begin{remark}
@@ -976,7 +983,7 @@ congruences modulo~$3$, $5$ or~$11$, respectively.
 
 One additional complication arises in this case.  
 Indeed, from Steps 1--3 we have 
-$E[7]^{\sss} \simeq E'[7]^{\sss}$ but this is insufficient to conlcude $E[7] \simeq E'[7]$ as when these are reducible $G_\Q$-modules . 
+$E[7]^{\sss} \simeq E'[7]^{\sss}$ but this is insufficient to conclude $E[7] \simeq E'[7]$ as when these are reducible $G_\Q$-modules . 
 To achieve this we will apply Theorem~\ref{T:reducible} and its proof.
 
 Recall that $E[7]$
@@ -1066,7 +1073,7 @@ since the former are symplectic and the latter antisymplectic.
 
 {\bf Example (continued).} For $p=7$, after Steps 1--3, there are~?? reducible pairs with isomorphic semisimplification. Out of these, after Step~5, we get~?? pairs which admit
 an isomorphism of the whole $7$-torsion modules. 
-Finally, after consiering all the isogenous curves (as in Step~4) there are 421 congruent pairs: 
+Finally, after considering all the isogenous curves (as in Step~4) there are 421 congruent pairs: 
 262 symplectic and 159 antisymplectic. 
 
 For $p=11$ there are no reducible pairs to consider.
@@ -1464,7 +1471,9 @@ from Theorem~\ref{T:Cartan} and Remark~\ref{R:CM}.
 
 \begin{example}
 Consider the set of six elliptic curves
-\[\{9225a1, 9225e1, 225a1, 225a2, 11025c1, 11025c2\}\] which form four
+\[\{\lmfdbec{9225}{a}{1}, \lmfdbec{9225}{e}{1}, \lmfdbec{225}{a}{1},
+\lmfdbec{225}{a}{2}, \lmfdbec{11025}{c}{1}, \lmfdbec{11025}{c}{2}\}\]
+which form four
 complete isogeny classes.  All have isomorphic mod~7 representations
 with image the normaliser of a split Cartan subgroup.  The last four
 curves all have $j$-invariant~$0$ and CM by $-3$.  The first two are
@@ -1473,11 +1482,14 @@ $-3$-twists of each other.
 The general methods of Step~4 of the section~3 split this set into two
 subsets:
 \[
-  \{9225a1, 225a1, 11025c1\},\qquad \{9225e1, 225a2, 11025c2\}
+  \{\lmfdbec{9225}{a}{1}, \lmfdbec{225}{a}{1},
+  \lmfdbec{11025}{c}{1}\},\qquad \{\lmfdbec{9225}{e}{1},
+  \lmfdbec{225}{a}{2}, \lmfdbec{11025}{c}{2}\}
 \]
-Curves 9225a1 and 9225e1 give a non-CM example of
-Theorem~\ref{T:Cartan}.  Curves 225a1 and 11025c1 are sextic (but not
-quadratic or cubic) twists and illustrate Theorem~\ref{T:j=0}.
+Curves $\lmfdbec{9225}{a}{1}$ and $\lmfdbec{9225}{e}{1}$ give a non-CM
+example of  Theorem~\ref{T:Cartan}.  Curves  $\lmfdbec{225}{a}{1}$ and
+$\lmfdbec{11025}{c}{1}$ are sextic (but  not quadratic or cubic) twists
+and illustrate Theorem~\ref{T:j=0}.
 \end{example}
 
 
@@ -1487,7 +1499,7 @@ quadratic or cubic) twists and illustrate Theorem~\ref{T:j=0}.
 \bibitem{BDMTV}
 Jennifer~S. Balakrishnan, Netan Dogra, J.~Steffen M\"uller, Jan Tuitman, and
   Jan Vonk.
-\newblock Explicit {C}habauty-{K}im for the split cartan modular curve of level 13, Annals of Math. (to appear).
+\newblock Explicit {C}habauty-{K}im for the split Cartan modular curve of level 13, Annals of Math. (to appear).
 
 \bibitem{BarinderCrem} B.\ Banwait and J.\ Cremona, 
 {\em Tetrahedral Elliptic Curves and the local-to-global principle for Isogenies}
