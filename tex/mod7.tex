@@ -403,10 +403,16 @@ is a quadratic residue or nonresidue mod~$p$, respectively.  We will refer to
 this condition as the \emph{isogeny criterion}.
 
 Given $G_\Q$-isomorphic modules $E[p]$ and~$E'[p]$, it is possible
-that isomorphisms with both symplectic types exist; this occurs if and
-only if $E[p]$ admits an anti-symplectic automorphism.  Let the
-mod~$p$ representation attached to~$E/\Q$ be $\rhobar_{E,p} : G_\Q \to
-\GL_2(\F_p)$.
+they admit isomorphisms with both symplectic types; this occurs if and only if $E[p]$ admits an anti-symplectic automorphism. 
+The following proposition shows this phenomenon can occur only 
+for $p < 7$ hence, when a $G_\Q$-isomorphism $\phi : E[p] \simeq E'[p]$ exists, normally there is only one possible symplectic type for any such~$\phi$; in particular, this will be the case for all the isomorphisms we consider in this work. 
+For an example where both types exist, take $p=5$ and
+$E$, $E'$ to be the curves\footnote{Throughout the paper we use
+Cremona labels for elliptic curves over~$\Q$; these curves may be
+found in the LMFDB (see \cite{lmfdb}).} $\lmfdbec{11}{a}{1}$ and
+$\lmfdbec{1342}{c}{2}$, respectively (see~\cite[Example~5.2]{FKSym}
+for more details).
+
 \begin{proposition}\label{P:auto}
   Let $E$ and~$E'$ be elliptic curves defined over~$\Q$ such that
   $E[p]\cong E'[p]$ as $G_\Q$-modules.
@@ -418,6 +424,9 @@ mod~$p$ representation attached to~$E/\Q$ be $\rhobar_{E,p} : G_\Q \to
         $E[p]$ is reducible.
   \end{enumerate}
 \end{proposition}
+\begin{proof} See~\cite[Corollary~3 and Proposition~2]{FKSym}
+\end{proof}
+\begin{comment}
 \begin{proof}
 In the first case, the result follows from Schur's Lemma and the
 trivial observation that scalar matrices have square determinant.
@@ -429,13 +438,7 @@ scalar matrices.
 
 ``This follows from Corollary~3 and Proposition~2 in~\cite{FKSym}.'' ? 
 \end{proof}
-
-For an example where both types of isomorphism exist, take $p=5$ and
-$E$, $E'$ to be the curves\footnote{Throughout the paper we use
-  Cremona labels for elliptic curves over~$\Q$; these curves may be
-  found in the LMFDB (see \cite{lmfdb}).} $\lmfdbec{11}{a}{1}$ and
-$\lmfdbec{1342}{c}{2}$, respectively (see~\cite[Example~5.2]{FKSym}
-for more details).
+\end{comment}
 
 \begin{comment}
 both have $5$-torsion Galois module isomorphic to $\mu_5
@@ -448,10 +451,7 @@ $\alpha(P) = P$ and $\alpha(Q) = 2Q$ is anti-symplectic because $2$ is
 not a square modulo~$5$.
 \end{comment}
 
-Despite the existence of examples such as this, normally when a
-$G_\Q$-isomorphism $\phi : E[p] \simeq E'[p]$ exists, there is only
-one possible symplectic type for any such~$\phi$.  It is then natural
-to consider triples $(E,E',p)$ where $E/\Q$ and $E'/\Q$ are elliptic
+It is then natural to consider triples $(E,E',p)$ where $E/\Q$ and $E'/\Q$ are elliptic
 curves with isomorphic $p$-torsion such that the $G_\Q$-modules
 isomorphisms $\phi : E[p] \rightarrow E'[p]$ are either all symplectic
 or all anti-symplectic.  In this case, we will say that the {\it
@@ -482,21 +482,19 @@ $E'/\Q_\ell$ at a single prime $\ell \neq p$ and congruence conditions
 on~$p$. Furthermore, in~\cite{FKSym} it is also proved that if the
 symplectic type of~$(E,E',p)$ is encoded in local information at a
 single prime $\ell \neq p$, then one of the local criteria will
-successfully determine it.  There are cases where the local methods
+successfully determine it.  
+There are cases where the local methods
 are insufficient: however, this can occur only when the image
-of~$\rhobar_{E,p}$ contains no elements of order~$p$; see
-\cite[Proposition~16]{FKSym} for such an example.
+of the $p$-torsion representation~$\rhobar_{E,p} : G_\Q \to \GL_2(\F_p)$ attached to~$E$ contains no elements of order~$p$;
+see \cite[Proposition~16]{FKSym} for such an example.
 
 The main objective of this paper is to give a uniform procedure to
 determine, for a few small~$p$, the symplectic type of
 triples~$(E,E',p)$ independently of the image of~$\rhobar_{E,p}$.
 
 We have implemented in {\Magma} \cite{magma} and {\Sage} \cite{sage}
-the methods from this paper together with those from~\cite{FKSym}. We
-have used our code to classify the symplectic types of congruences
-between curves in the LMFDB (see \cite{lmfdb}), namely all elliptic
-curves defined over~$\Q$ of conductor less than~$\numprint{400000}$.
-We found, for $p$ in the range $7 \leq p \leq 17$, all the congruences
+the methods from this paper together with those from~\cite{FKSym}. We have used our code to classify the symplectic types of congruences between curves in the LMFDB (see \cite{lmfdb}), namely all elliptic curves defined over~$\Q$ of conductor less than~$\numprint{400000}$. More precisely, Theorem~\ref{T:cong19} shows there are no mod~$p$ congruences in LMFDB for $p \geq 19$ and 
+we found, for $p$ in the range $7 \leq p \leq 17$, all the congruences
 in the database up to twist; we report on the results obtained in
 Sections~\ref{S:statistics}~and~\ref{S:summary}.
 
@@ -510,103 +508,30 @@ a Cartan subgroup and a certain quadratic twist of~$E$ and
 Theorem~\ref{T:j=0} covers a mod~$7$ congruence between elliptic
 curves~$E$ with $j(E)=0$ and a sextic twist of~$E$.
 
-Triples~$(E,E',p)$ such that $E'$ is a twist of~$E$ arise in a number
-of contexts in our study.  The following result characterizes this
-situation.
-
-\begin{proposition}\label{P:twist}
-Let $E$ and~$E'$ be non-isomorphic elliptic curves over~$\Q$ with
-$j(E)=j(E')$, such that $E[p]\cong E'[p]$ with $p\ge3$.
-\begin{enumerate}
-  \item If $E'=E^d$ is the quadratic twist of~$E$ by~$d\in\Q^*$ (which
-    is always the case unless $j(E)\in\{0,1728\}$) then the image
-    of~$\rhobar_{E,p}$ is contained in the normaliser of a split
-    Cartan subgroup of $\GL_2(\F_p)$ but not in the subgroup itself.
-    When $p\ge7$, the twist~$d$ is uniquely determined by~$E$ unless
-    $j(E)=0$ in which case there are three such twists.
-   \item If $j(E)=0$ and $E'$ is a sextic twist of~$E$ (but not a
-     quadratic twist), then...
-   \item If $j(E)=1728$ and $E'$ is a quartic twist of~$E$ (but not a
-     quadratic twist), then...
-\end{enumerate}
-\end{proposition}
-\begin{proof}
-(1) Let $\chi$ be the quadratic character associated to the
-  extension $\Q(\sqrt{d})/\Q$.  For almost all primes~$\ell$ we have
-  on the one hand, since $E'=E^d$,
-  \[
-  a_\ell(E') = \chi(\ell) a_\ell(E),
-  \]
-  (where $a_\ell(E)$ denotes the trace of Frobenius of $E\mod\ell$),
-  and on the other hand, since $E'[p]\cong E[p]$,
-  \[
-  a_\ell(E') \equiv a_\ell(E) \mod{p}.
-  \]
-  Hence for all primes~$\ell$ which are inert in~$\Q(\sqrt{d})$ we have
-  \[
-  a_\ell(E') \equiv a_\ell(E) \equiv0 \mod{p}.
-  \]
-  So the image $H=\rhobar_{E,p}(G_\Q)$ has a subgroup~$H^+$ of
-  index~$2$ such that all elements of~$H\setminus H^+$ have trace~$0$.
-  Such elements have order~$2$ in $\PGL_2(\F_p)$.  From the
-  classification of subgroups of $\PGL_2(\F_p)$ it follows that $H$ is
-  contained in the normaliser of a Cartan subgroup~$C$ and $H^+=H\cap
-  C$.
-
-Consulting Table~3 of \cite{Sutherland} we find that conjecturally we
-have $p\le11$.  For $p=7$ the only images are (in the notation of
-\cite{Sutherland}) $7Ns$ (the full normaliser of a split Cartan),
-$7Nn$ (the full normaliser of a nonsplit Cartan), and in addition
-$7Ns.2.1$ and $7Ns.3.1$ which only occur for $j=2268945/128$ and
-$7Ns.6.1.2$ which only occurs for $j=0$.  Each of these images
-contains a unique subgroup of index~$2$, except the last.  In that
-case (which occurs for example for the curve $\lmfdbec{441}{a}{1}$)
-the twists by $-3$, $-7$ and~$21$ all have isomorphic $7$-torsion
-modules.
-
-For $p=11$, as well as images $11Nn$ and $11Ns$ we find $11Nn.1.4$
-which only occurs for $j=0$; each of these has a unique index~$2$
-subgroup.
-
-  (2)
-
-  (3)
-
-\end{proof}
-
 \subsection{Modular parametrizations}
 The modular curve $X(p)$ parametrizes elliptic curves with full
-level~$p$ structure.  It has genus~$0$ for $p=2,3,5$, genus~$3$ for
-$p=7$ and genus ${}\ge26$ for $p\ge11$.  Fixing an elliptic
+level~$p$ structure. It has genus~$0$ for $p=2,3,5$, genus~$3$ for
+$p=7$ and genus~$\ge26$ for $p\ge11$.  Fixing an elliptic
 curve~$E/\Q$, the curve $X_E(p)$, which is a twist of~$X(p)$ (and
-hence has the same genus) parametrizes pairs $(E',\phi)$ such that
+hence has the same genus), parametrizes pairs $(E',\phi)$ such that
 $\phi$ is a symplectic isomorphism~$E[p]\cong E'[p]$; similarly
-$X_E^-(p)$ parametrizes antisymplectic isomorphisms.  In the
-symplectic case, $E$ itself (together with the identity map) gives a
-base point on $X_E(p)$, while $X_E^-(p)$ may have no rational points.
+$X_E^-(p)$ parametrizes antisymplectic isomorphisms. Note that the pair $(E,\id)$ constituted by $E$ itself and the identiy map
+gives a base point defined over~$\Q$ on~$X_E(p)$, while $X_E^-(p)$ may have no rational points.
 
-It follows that congruences modulo~$p$ for $p\ge5$ are common.  There
+It follows that congruences modulo~$p$ for $p\le 5$ are common.  There
 are certainly many mod~$3$ and mod~$5$ congruences in the database,
 but we have not searched for these systematically. Indeed, since
 $X_E(3)$ and $X_E(5)$ have genus~0, for each fixed~$E$, there will
 always be congruences that are not part of the database independently
 of its range. In contrast, for primes~$p \geq 7$, the curve $X_E(p)$
 has genus~$\geq 3$ and so for each~$E$ there are only finitely many
-mod~$p$ congruences with~$E$, and moreover up to twist we expect only
-finitely many congruence triples $(E,E',\phi)$.  Hence the database
+mod~$p$ congruences with~$E$, hence the database
 might contain all such congruences; however proving this fact for a
 fixed~$E$ is a hard problem.
 
-Below we will study congruences modulo~$p$ systematically for $p\ge7$,
-giving more detail for $p=7$.  The number of congruences in the
-database for $p=11$, $p=13$, and $p=17$ is small; in the latter case,
-there is only one such congruence (up to twist), as noted in
-\cite{Billerey17}.  An explicit form of the Frey-Mazur conjecture (see
-below) asserts that there should exist no congruences modulo~$p>17$
-apart from those induced by isogenies.
-
-For $p=7$, we make use of explicit equations for $X_E(7)$ and
-$X_E^-(7)$.  By ``explicit equations'' for $X_E^{\pm}(p)$, we mean the
+For convenience 
+we sometimes also write $X_E^+(p)$ to denote $X_E(p)$. 
+By ``explicit equations'' for $X_E^{\pm}(p)$, we mean the
 following.
 \begin{itemize}
   \item An explicit model for a family of curves, with equations whose
@@ -614,12 +539,12 @@ following.
     $a,b$ gives a model for $X_E^{\pm}(p)$ where $E$ is the elliptic
     curve with equation $Y^2=X^3=aX+b$; each rational point $P$ is
     either a cusp of the modular curve or encodes a pair $(E',\phi)$
-    such that $(E,E',\phi)$ is a symplectic (respectively,
+    such that $(E,E', p)$ is a symplectic (respectively,
     antisymplectic) triple.
     \item A rational function with coefficients in $\Q(a,b)$ defining
       the map $j: X_E^{\pm}(p) \to \PP^1$, taking a point
       $P=(E',\phi)$ to $j(E')$.  The degree of this map is the
-      index~$[\PSL_2(\Z):\Gamma(p) = |\PSL_2(\F_p)$: for example, when
+      index~$[\PSL_2(\Z):\Gamma(p)] = |\PSL_2(\F_p)|$: for example, when
         $p=7$ the degree is~$168$.
       \item Rational functions $c_4$ and $c_6$ such that for each
         non-cuspidal point~$P=(E',\phi)$, a model for $E'$ is
@@ -629,18 +554,24 @@ Equations for $X_E(7)$, in this sense, were obtained by Kraus and
 Halberstadt in~\cite{Halberstadt-Kraus-XE7}, though the functions
 $c_4$ and $c_6$ in \cite{Halberstadt-Kraus-XE7} are only defined away
 from $5$ points (which may or may not be rational); more complete
-equations, together with $X_E^-(7)$ and $X_E^{\pm}(11)$ were found by
-Fisher in~\cite{Fisher}.
+equations, together with $X_E^-(7)$ and $X_E^{\pm}(11)$ were found by Fisher in~\cite{Fisher}. Equations for $X_E^{\pm}(3)$
+and $X_E^{\pm}(5)$ are classical (see~??).
+
+Below we will study congruences modulo~$p$ systematically 
+for~$p\ge7$,
+giving more detail for $p=7$.  The number of congruences in the
+database for $p=11$, $p=13$, and $p=17$ is small; in the latter case,
+there is only one such congruence (up to twist), as noted in
+\cite{Billerey17}.  An explicit form of the Frey-Mazur conjecture (see
+below) asserts that there should exist no congruences modulo~$p>17$
+apart from those induced by isogenies.
+
 
 \subsection{Further motivation} \label{S:motivation}
 We finish this introduction with a discussion 
 on how the methods of this paper complement the local methods in~\cite{FKSym}.
 
-Recall that, loosely speaking, the modular curves $X_E(p)$ and
-$X_E^-(p)$ parametrize, respectively, elliptic curves with
-$p$-torsion modules symplectically and anti-symplectically isomorphic
-to~$E[p]$; thus triples $(E,E',p)$ as above give rise to $\Q$-points
-on at least one of these curves. 
+From the discussion so far we know that triples $(E,E',p)$ as above give rise to $\Q$-points on at least one of the modular curves~$X_E(p)$ or $X_E^-(p)$. 
 
 The Frey-Mazur conjecture states there is a constant $C \geq 18$ such that, if $E/\Q$ and $E'/\Q$ satisfy $E[p] \simeq E'[p]$ as
 $G_\Q$-modules for some prime $p > C$, then $E$ and $E'$ are
@@ -648,11 +579,12 @@ $\Q$-isogenous. In view of this conjecture, any~$(E,E',p)$ with $p > C$ arises f
 
 %% For $p=3,5$ the modular curves $X(p)$  have genus~0, equations for $X_E(p)$ and $X_E^-(p)$ are well known and we can obtain infinitely many triples $(E,E',p)$ with each symplectic type. 
 
-As mentioned above, if no local
-symplectic criterion from~\cite{FKSym} applies to~$(E,E',p)$ then the image of $\rhobar_{E,p}$ is irreducible and contains no element of order~multiple of~$p$. Furthermore, 
-when $\rhobar_{E,p}$ is reducible the bounds
+As mentioned above, it follows from~\cite{FKSym} 
+that if no local symplectic criterion
+applies to~$(E,E',p)$ then the image of $\rhobar_{E,p}$ is irreducible and contains no element of order~multiple of~$p$. Moreover, 
+when $\rhobar_{E,p}$ is reducible only the criteria at primes of multiplicative or good reduction may succeed and often the bounds
 on a prime~$\ell$ for which a local criterion at~$\ell$ 
-applies are not useful in practice.
+applies may not be useful in practice.
 From the strong form of Serre's uniformity conjecture, these `bad' cases for the local methods imply that either $E$ has CM 
 or one of the following holds:
 \begin{itemize}
@@ -669,15 +601,14 @@ explicit equations for the latter are known, which is the case for
 $p=3,5$ and~$11$. This method works independently of the image
 of~$\rhobar_{E,p}$, so covers cases (i) and (ii) above.
 
-In \cite[Corollary~1.9]{BarinderCrem} is a list of~$3$ rational
-$j$-invariants of elliptic curves over~$\Q$ satisfying (iv); it has
+In \cite[Corollary~1.9]{BarinderCrem} there is a list of~$3$ rational
+$j$-invariants of elliptic curves over~$\Q$ satisfying~(iv); it has
 recently been shown (see~\cite{BDMTV-S4}) that the associated
 genus~$3$ modular curve~$X_{S_4}(13)$ found explicitly
 in~\cite{BarinderCrem} has no more rational points, and hence that
 this list is complete. By Proposition~\ref{P:twist}, none of these
 curves is mod~$13$ congruent to a quadratic twist of another of them
-(including itself); the same is true for the curves and values of~$p$
-in case (v).
+(including itself); the same is true for the curves and values of~$p$ in case~(v). Thus no examples arise in cases (iv) and (v).
 
 The remaining case~(iii) includes the infinitely many curves with
 $\rhobar_{E,13}$ reducible (recall that $X_0(13)$ has genus~0). In
@@ -687,9 +618,8 @@ practice. Indeed, the bounds are very large as they depend on
 Tchebotarev density theorem to predict a prime~$\ell$ of good
 reduction for~$E$ where Frobenius has order multiple of~$p$; however,
 in practice, it is usually easy to find such a prime~$\ell$ after
-trying a few small primes.  There are no such mod~$13$ examples in the
-LMFDB database, instead we refer to \cite[Example~31.2]{FKSym} for
-such an example with $p=7$.
+trying a few small primes.  There are no reducible mod~$13$ congruences in the LMFDB database, so instead we refer to \cite[Example~31.2]{FKSym} for
+an example with $p=7$ analogous to the discussion in this paragraph.
 
 \section{Auxiliary results for the reducible case}
 
@@ -900,8 +830,7 @@ consider each in detail in the following subsections.
 \end{enumerate}
 Next we will explain each step in further detail.  For the first three
 steps, $p$ is arbitrary (and we have carried these steps out for $7\le
-p\le23$) while for the last two we restrict to $p=7$. As remarked in
-the Introduction, this is the most interesting case.
+p\le23$) while for the last two we restrict to $p=7$ which is the most interesting case, as remarked in the Introduction.
 %% as there is a
 %% considerable amount of congruences in both the reducible and
 %% irreducible case; nevertheless, a similar method to the one we
@@ -912,7 +841,7 @@ the Introduction, this is the most interesting case.
 
 
 \subsection{Sieving}
-In order that $E[p]\cong E'[p]$ (up to semisimplification) it is
+In order that $E[p]\cong E'[p]$ up to semisimplification it is
 necessary and sufficient that for all primes~$\ell$ not dividing
 $pNN'$ we have $a_{\ell}(E)\equiv a_{\ell}(E')\pmod{p}$.  In this step
 we may take one curve from each isogeny class, since isogenous curves
@@ -991,6 +920,16 @@ subsets, each consisting of just two isogeny classes, all of which
 have irreducible mod~$11$ representations.  Up to quadratic twist,
 there are only $89$ distinct subsets.
 
+For $p=13$ we find $150$ congruent subsets, all pairs.  Up to
+quadratic twist there are just $19$ pairs.
+
+For $p=17$ we find $8$ congruent subsets, all pairs.  These are all
+quadratic twists of the pair $\{\lmfdbec{3675}{o}{1},
+\lmfdbec{47775}{da}{1}\}$.
+
+For $p \geq 19$ we find no congruences at all between non-isogenous
+curves (see Theorem~\ref{T:cong19}).
+
 \begin{remark}
 Note that the false positive pairs for $p=7$ and $p=11$ are the same.
 These false positives arise since \lmfdbec{25921}{a}{1} and
@@ -1004,15 +943,7 @@ prime $\ell=29$ the values of $a_{\ell}$ for these curves are $+2$
 and~$-2$, which are not congruent modulo any odd prime.
 \end{remark}
 
-For $p=13$ we find $150$ congruent subsets, all pairs.  Up to
-quadratic twist there are just $19$ pairs.
 
-For $p=17$ we find $8$ congruent subsets, all pairs.  These are all
-quadratic twists of the pair $\{\lmfdbec{3675}{o}{1},
-\lmfdbec{47775}{da}{1}\}$.
-
-For $p=19$ and $p=23$ we find no congruences at all between non-isogenous
-curves.
 
 
 \subsection{Testing reducibility}
@@ -1061,7 +992,7 @@ the isogeny criterion.
 
 The local criteria of \cite{FKSym} suffice to determine the symplectic
 type for all the mod~$p$ congruences found in the database for $p=7$
-and $p=11$ (and also for $p=13, 17, 19$), but this does not have to be
+and $p=11$ (and also for $p=13, 17$), but this does not have to be
 the case as discussed in Section~\ref{S:motivation} (see
 \cite[Proposition~16]{FKSym} for an example with $p=3$ where the local
 methods fail).  Therefore, we will now describe a procedure, using the
@@ -1133,9 +1064,9 @@ explicit formulae for the $j$-map and $c_4,c_6$ as above
 in~\cite{Fisher}.
 
 We note that it is not necessary to apply both the symplectic and
-antisymplectic tests to a triple $(E,E')$ if we know already that
+antisymplectic tests to a triple $(E,E',7)$ if we know already that
 $E[7]\cong E'[7]$ as $G_\Q$-modules, since one will succeed if and only if the other
-fails (by remarks made in the Introduction).  However we did apply both
+fails (by Proposition~\ref{P:auto}).  However we did apply both
 tests in our computations with the curves in the database as a test of
 our implementation, verifying that precisely one test passes for each
 pair.  We also checked that the results obtained for each pair using
@@ -1300,6 +1231,76 @@ curves (as in Step~4) there are 421 congruent pairs: 262 symplectic
 and 159 antisymplectic.
 
 For $p\ge11$ there are no reducible pairs to consider.
+
+
+\section{Congruent Twists}
+
+Triples~$(E,E',p)$ such that $E'$ is a twist of~$E$ arise in a number
+of contexts in our study.  The following result characterizes this
+situation.
+
+
+
+
+\begin{proposition}\label{P:twist}
+Let $E$ and~$E'$ be non-isomorphic elliptic curves over~$\Q$ with
+$j(E)=j(E')$, such that $E[p]\cong E'[p]$ with $p\ge3$.
+\begin{enumerate}
+  \item If $E'=E^d$ is the quadratic twist of~$E$ by~$d\in\Q^*$ (which
+    is always the case unless $j(E)\in\{0,1728\}$) then the image
+    of~$\rhobar_{E,p}$ is contained in the normaliser of a split
+    Cartan subgroup of $\GL_2(\F_p)$ but not in the subgroup itself.
+    When $p\ge7$, the twist~$d$ is uniquely determined by~$E$ unless
+    $j(E)=0$ in which case there are three such twists.
+   \item If $j(E)=0$ and $E'$ is a sextic twist of~$E$ (but not a
+     quadratic twist), then...
+   \item If $j(E)=1728$ and $E'$ is a quartic twist of~$E$ (but not a
+     quadratic twist), then...
+\end{enumerate}
+\end{proposition}
+\begin{proof}
+(1) Let $\chi$ be the quadratic character associated to the
+  extension $\Q(\sqrt{d})/\Q$.  For almost all primes~$\ell$ we have
+  on the one hand, since $E'=E^d$,
+  \[
+  a_\ell(E') = \chi(\ell) a_\ell(E),
+  \]
+  (where $a_\ell(E)$ denotes the trace of Frobenius of $E\mod\ell$),
+  and on the other hand, since $E'[p]\cong E[p]$,
+  \[
+  a_\ell(E') \equiv a_\ell(E) \mod{p}.
+  \]
+  Hence for all primes~$\ell$ which are inert in~$\Q(\sqrt{d})$ we have
+  \[
+  a_\ell(E') \equiv a_\ell(E) \equiv0 \mod{p}.
+  \]
+  So the image $H=\rhobar_{E,p}(G_\Q)$ has a subgroup~$H^+$ of
+  index~$2$ such that all elements of~$H\setminus H^+$ have trace~$0$.
+  Such elements have order~$2$ in $\PGL_2(\F_p)$.  From the
+  classification of subgroups of $\PGL_2(\F_p)$ it follows that $H$ is
+  contained in the normaliser of a Cartan subgroup~$C$ and $H^+=H\cap
+  C$.
+
+Consulting Table~3 of \cite{Sutherland} we find that conjecturally we
+have $p\le11$.  For $p=7$ the only images are (in the notation of
+\cite{Sutherland}) $7Ns$ (the full normaliser of a split Cartan),
+$7Nn$ (the full normaliser of a nonsplit Cartan), and in addition
+$7Ns.2.1$ and $7Ns.3.1$ which only occur for $j=2268945/128$ and
+$7Ns.6.1.2$ which only occurs for $j=0$.  Each of these images
+contains a unique subgroup of index~$2$, except the last.  In that
+case (which occurs for example for the curve $\lmfdbec{441}{a}{1}$)
+the twists by $-3$, $-7$ and~$21$ all have isomorphic $7$-torsion
+modules.
+
+For $p=11$, as well as images $11Nn$ and $11Ns$ we find $11Nn.1.4$
+which only occurs for $j=0$; each of these has a unique index~$2$
+subgroup.
+
+  (2)
+
+  (3)
+
+\end{proof}
 
 \section{The case of image equal to normaliser of Cartan}
 
@@ -1690,6 +1691,47 @@ from Theorem~\ref{T:Cartan} and Remark~\ref{R:CM}.
 
 \section{Summary of congruences in LMFDB and examples}
 \label{S:summary}
+
+\begin{theorem}
+ \label{T:cong19}
+ Let $p \geq 19$ be a prime. Let $E/\Q$ and~$E'/\Q$ 
+ be elliptic curves in the LMFDB database. 
+ Suppose that $E[p] \simeq E'[p]$ as $G_\Q$-modules. Then $E$ and $E'$ are $\Q$-isogenous.
+ \end{theorem}
+\begin{proof} Let $N_E$, $\Delta_E$ and $N_{E'}$, $\Delta_{E'}$ denote the conductor and minumal discriminant of $E$ and~$E'$, respectively. Let $N_p$ and $N'_p$ denote the Serre level (i.e. the Artin conductor away from~$p$)
+of~$\rhobar_{E,p}$ and~$\rhobar_{E',p}$ respectively.
+Note that $N = N'$ because $E[p] \simeq E'[p]$ as $G_\Q$-modules.
+
+{\bf Assume for now that both curves have good reduction at $p$ so that $N_E$ and $N_{E'}$ coincide with its part away from~$p$.}
+
+We have $N_p \mid N_E$ and from Kraus~??
+it follows that, for each $\ell \neq p$, if 
+$\vv_{\ell}(N_p) \neq \vv_{\ell}(N_E)$ then
+$\vv_{\ell}(N_E) = 1$ and $p \mid \vv_{\ell}(\Delta_E)$;
+similarly for~$E'$.
+
+In particular, if $N_E \neq N_p$,
+then there are primes $q_0,\cdots,q_n$ such that 
+$N_E = p^0 \cdot N\cdot q_0 \cdot \ldots \cdot q_n$ 
+and $p \mid \vv_{q_i}(\Delta_E)$ for all $i$. 
+
+Fix a concrete curve $E$ in the LMFDB. Let $\calM_E$ be the set of pairs $(q,p)$ where $q$ is a multiplicative prime of~$E$ and
+$p \geq 19$ is a prime satisfying $p \mid \vv_{q}(\Delta_E)$.
+In particular, if $N_E > N_{E'}$ then $p$ must occurr in one of the pairs in~$\calM_E$.
+
+
+
+A similar set of primes~$q_i'$ exists for $E'$.
+
+
+
+
+
+
+
+ 
+\end{proof}
+
 
 \begin{example}
 Consider the set of six elliptic curves
