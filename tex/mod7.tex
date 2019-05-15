@@ -1239,6 +1239,17 @@ Triples~$(E,E',p)$ such that $E'$ is a twist of~$E$ arise in a number
 of contexts in our study.  The following result characterizes this
 situation.
 
+\begin{proposition}
+Let $E/\Q$ and $E'/\Q$ be elliptic curves which are non-isomorphic quadratic twists, say $E' = dE$ for some $d \in \Q^*$. Assume that $E[p]\cong E'[p]$ with $p\ge3$. 
+
+Then the image 
+of~$\rhobar_{E,p}$ is contained in the normaliser of a Cartan subgroup of $\GL_2(\F_p)$ but not in the subgroup itself. 
+Moreover, there are either 1 or 3 values of~$d$ with this property, where the latter case occurs when $\rhobar_{E,p}$ has projective image 
+$\Z/2\Z \times \Z/2\Z$.
+
+In particular, if $p \geq 5$ is a prime of good reduction of~$E$ there is only one such value of~$d$.
+\end{proposition}
+
 
 
 
@@ -1248,7 +1259,7 @@ $j(E)=j(E')$, such that $E[p]\cong E'[p]$ with $p\ge3$.
 \begin{enumerate}
   \item If $E'=E^d$ is the quadratic twist of~$E$ by~$d\in\Q^*$ (which
     is always the case unless $j(E)\in\{0,1728\}$) then the image
-    of~$\rhobar_{E,p}$ is contained in the normaliser of a split
+    of~$\rhobar_{E,p}$ is contained in the normaliser of
     Cartan subgroup of $\GL_2(\F_p)$ but not in the subgroup itself.
     When $p\ge7$, the twist~$d$ is uniquely determined by~$E$ unless
     $j(E)=0$ in which case there are three such twists.
@@ -1700,28 +1711,58 @@ from Theorem~\ref{T:Cartan} and Remark~\ref{R:CM}.
  \end{theorem}
 \begin{proof} Let $N_E$, $\Delta_E$ and $N_{E'}$, $\Delta_{E'}$ denote the conductor and minumal discriminant of $E$ and~$E'$, respectively. Let $N_p$ and $N'_p$ denote the Serre level (i.e. the Artin conductor away from~$p$)
 of~$\rhobar_{E,p}$ and~$\rhobar_{E',p}$ respectively.
-Note that $N = N'$ because $E[p] \simeq E'[p]$ as $G_\Q$-modules.
+We have $N_p = N_p'$ since $E[p] \simeq E'[p]$ as $G_\Q$-modules.
 
-{\bf Assume for now that both curves have good reduction at $p$ so that $N_E$ and $N_{E'}$ coincide with its part away from~$p$.}
-
-We have $N_p \mid N_E$ and from Kraus~??
+Recall that the conductor of an elliptic curve at primes~$p \geq 5$ divides~$p^2$ and that $N_p \mid \tilde{N}_E$, where $\tilde{N}_E$ denotes~$N_E$ away from~$p$. 
+Moreover, from Kraus~??
 it follows that, for each $\ell \neq p$, if 
 $\vv_{\ell}(N_p) \neq \vv_{\ell}(N_E)$ then
-$\vv_{\ell}(N_E) = 1$ and $p \mid \vv_{\ell}(\Delta_E)$;
-similarly for~$E'$.
+$\vv_{\ell}(N_E) = 1$ and $p \mid \vv_{\ell}(\Delta_E)$.
 
-In particular, if $N_E \neq N_p$,
-then there are primes $q_0,\cdots,q_n$ such that 
-$N_E = p^0 \cdot N\cdot q_0 \cdot \ldots \cdot q_n$ 
-and $p \mid \vv_{q_i}(\Delta_E)$ for all $i$. 
+Therefore, we can find primes $q_0,\cdots,q_n$ such that 
+\[
+ N_E = p^k \cdot N_p \cdot q_0 \cdot \ldots \cdot q_n, 
+ \qquad p \mid \vv_{q_i}(\Delta_E), \qquad 0 \leq k \leq 2
+\]
+where the number of~$q_i$ occurring is $\geq 1$ if and only if 
+$\tilde{N}_E \neq N_p$. The same applies to~$E'$ and, since $N_p = N'_p$, 
+we have
+\begin{equation}\label{E:condE'}
+ N_{E'} = p^{k'} \cdot N_p \cdot q'_0 \cdot \ldots \cdot q'_m, 
+ \qquad p \mid \vv_{q'_i}(\Delta_E'),
+ \qquad 0 \leq k' \leq 2.
+\end{equation}
 
-Fix a concrete curve $E$ in the LMFDB. Let $\calM_E$ be the set of pairs $(q,p)$ where $q$ is a multiplicative prime of~$E$ and
+To prove the theorem, we will run through the database by descending conductors as follows.
+
+Fix a curve $E$ in the LMFDB with the largest conductor. 
+
+Suppose $E'$ is a non-isogenous curve with the same conductor. Taking differences of traces of Frobenius at different primes shows that 
+there are no congruence between any two of them for $p \geq 19$, otherwise $p$ needs to divide the differences. 
+Thus we have $N_E > N_{E'}$.
+
+
+Let $\calM_E$ be the set of pairs $(q,p)$ where $q$ is a multiplicative prime of~$E$ and
 $p \geq 19$ is a prime satisfying $p \mid \vv_{q}(\Delta_E)$.
-In particular, if $N_E > N_{E'}$ then $p$ must occurr in one of the pairs in~$\calM_E$.
+Note that we can have $q=p$.
+From $E[p] \simeq E'[p]$ and $N_E > N_{E'}$ it follows that $p$ must occurr in one of the pairs in~$\calM_E$ (which is a finite set).
+
+For each $p$ in a pair of $\calM_E$ we check that there is no congruence with an elliptic curve~$E'$ of smaller conductor.
+To speed up the computation we note that the conductor of~$E'$ must 
+be of the form~\eqref{E:condE'} where $k' = k$ when 
+\[
+k = 2 \quad \text{ or } \quad k=1  \text{ and } p \nmid \vv_{p}(\Delta_E)
+\]
+or $k' \in \{0,1\}$ when 
+\[
+k = 0 \quad \text{ or } \quad k=1  \text{ and } p \mid \vv_{p}(\Delta_E).
+\]
+Observe that if $k=0$ and $k'=1$ we are forced to have a prime~$q_i'$ dividing $N_{E'}$ that disappears mod~$p$ to keep the condition $N_E > N_{E'}$.
+
+After running $E'$ through all the curves with conductor smaller than $N_E$ we pick $E$ to have the next smaller (or equal) conductor. At each step there are less cases for~$E'$.
 
 
 
-A similar set of primes~$q_i'$ exists for $E'$.
 
 
 
@@ -1810,7 +1851,7 @@ LMS J.\ Comput.\ Math.\ {\bf 17} (2014), no. 1, 536--564.
 \url{https://www.dpmms.cam.ac.uk/~taf1000/papers/congr-11}
 
 \bibitem{GL}
-Enrique Gonz\'{a}lez-Jim\'{e}nez and \'{A}lvaro Lozano-Robledo.
+Enrique Gonz\'{a}lez-Jim\'{e}nez and \'{A}lvaro Lozano-Robledo,
 \newblock Elliptic curves with abelian division fields.
 \newblock {\em Math. Z.}, 283(3-4):835--859, 2016.
 
@@ -1821,6 +1862,12 @@ Emmanuel Halberstadt and Alain Kraus, \emph{On the modular curves {$Y_E(7)$}},
 \bibitem{Halberstadt-Kraus-XE7}
 \bysame, \emph{Sur la courbe modulaire {$X_E(7)$}}, Experiment. Math.
   \textbf{12} (2003), no.~1, 27--40. \MR{2002672}
+  
+\bibitem{KrausThesis}
+Alain Kraus,
+\newblock D{\'e}termination du poids et du conducteur associ{\'e}s aux repr{\'e}sentations des points de p-torsion d'une courbe elliptique,
+\newblock Dissertationes Math. (Rozprawy Mat.) {\bf 364}, 1997.
+
   
 \bibitem{KO}
 A.~Kraus and J.~Oesterl\'{e}.
