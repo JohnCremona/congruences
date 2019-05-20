@@ -1,0 +1,24 @@
+Title:
+
+The symplectic type of congruences between elliptic curves
+
+Abstract:
+
+In this talk I will describe a systematic investigation into
+congruences between the mod p torsion modules of elliptic curves
+defined over Q.  For each such curve E and prime p the p-torsion E[p]
+of E, is a 2-dimensional vector space over F_p which carries a Galois
+action of the absolute Galois group G_Q.  The structure of this
+G_Q-module is very well understood, thanks to the work of J.-P. Serre
+and others.  When we say the two curves E and E' are "congruent" we
+mean that E[p] and E'[p] are isomorphic as G_Q-modules.  While such
+congruences are known to exist for all primes up to 17, the Frey-Mazur
+conjecture states that p is bounded: more precisely, that there exists
+B>0 such that if p>B and E[p] and E'[p] are isomorphic then E and E'
+are isogenous.  We report on work toward establishing such a bound for
+the elliptic curves in the LMFDB database.  Secondly, we describe
+methods for determining whether or not a given isomorphism between
+E[p] and E'[p] is symplectic (preserves the Weil pairing) or
+antisymplectic, and report on the results of applying these methods to
+the curves in the database.  This is joint work with Nuno Freitas
+(Warwick).
