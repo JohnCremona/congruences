@@ -101,3 +101,9 @@ for i,s in enumerate(isom_sets_irred):
                     print("{} and {}: {}".format(lab1,lab2,sres))
                 except:
                     print("error processing set number {}: {} and {}".format(i,lab1,lab2))
+
+
+assert irred_pairs_bad == []
+assert irred_pairs_none == []
+assert len(irred_pairs_symp) ==  16822
+assert len(irred_pairs_anti) == 6939
