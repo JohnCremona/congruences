@@ -1,0 +1,31 @@
+Notes on reading Thm 5.1
+
+1. Derive the factorization of N_E (first displayed equation) before
+mentioning another curve E', only assuming p>3, as this really only
+sets notation.  (Complete the Kraus reference.)
+
+2. Now introduce the notation for E' and say that they have the same
+N_p (reference?).
+
+3. Organise the rest a little differently with fewer references to the
+database and implementation strategy.  Really there are two steps,
+given any curve E of conductor N_E:
+
+(a) Check that E is not congruent to any other curve E' of the same
+conductor (using the method you give).  We can implement this since we
+have the complete set of curves of each conductor up to some bound.
+
+(b) Compute the set M_E.  This already gives a finite set of p for
+which is is possible that E might be congruent to another curve mod p
+(so we can finish with E if none of these p>17).
+
+(c) Otherwise, for each relevant p from M_E, check that E is not
+congruent to curves E' of smaller conductor, again a finite set.  As
+you say, N_E' is constrained (and we need to get this condition
+correct!).
+
+Now the overall strategy is simply to apply the above to every curve
+in the database (up to isogeny).  I cannot see the advantage of going
+from largest conductor downwards!
+
+
