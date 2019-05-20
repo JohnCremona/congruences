@@ -523,7 +523,7 @@ $p=7$ and genus~$\ge26$ for $p\ge11$.  Fixing an elliptic
 curve~$E/\Q$, the curve $X_E(p)$, which is a twist of~$X(p)$ (and
 hence has the same genus), parametrizes pairs $(E',\phi)$ such that
 $\phi$ is a symplectic isomorphism~$E[p]\cong E'[p]$; similarly
-$X_E^-(p)$ parametrizes antisymplectic isomorphisms. Note that the pair $(E,\id)$ constituted by $E$ itself and the identiy map
+$X_E^-(p)$ parametrizes antisymplectic isomorphisms. Note that the pair $(E,\id)$ constituted by $E$ itself and the identity map
 gives a base point defined over~$\Q$ on~$X_E(p)$, while $X_E^-(p)$ may have no rational points.
 
 It follows that congruences modulo~$p$ for $p\le 5$ are common.  There
@@ -841,7 +841,7 @@ consider each in detail in the following subsections.
 \end{enumerate}
 Next we will explain each step in further detail.  For the first three
 steps, $p$ is arbitrary, and we have carried these steps out for $7\le
-p\le17$.  According to Theorem~\ref{T:cong19} below, no congruences
+p\le97$.  According to Theorem~\ref{T:cong19} below, no congruences
 (other than those induced by isogenies) exist for larger~$p$.  For the
 last two steps, we restrict to $p=7$ which is the most interesting
 case, as remarked in the Introduction.
@@ -878,11 +878,18 @@ by the different hash values encountered.  At the end of this step we
 can easily form a partition of the set of isogeny classes by taking
 these lists for each hash value.  We then discard any such lists which
 are singletons.  Using $B=40$, this process takes approximately 40
-minutes.
+minutes for a single prime~$p$.  Note, however, that as most of the
+computation time taken is in computing $a_{\ell}(E)$ for all
+curves~$E$ (up to isogeny), it is more efficient to compute the hash
+values for several primes in parallel.
 
-{\bf Example.} After carrying out this step for $7\le7\le17$, using
+{\bf Example.} After carrying out this step for $7\le p\le17$, using
 $B=40$, we find: $20138$ nontrivial subsets for $p=7$, $635$ for
-$p=11$, $150$ for $p=13$ and~$8$ for $p=17$.
+$p=11$, $150$ for $p=13$ and~$8$ for $p=17$.  There are no nontrivial
+subsets for any primes~$p$ with $19\le p\le97$, so we can immediately
+conclude that there are no congruences in the database between
+non-isogenous curves modulo any prime in this range.  See also
+Theorem~\ref{T:cong19} below.
 
 \subsection{Proving isomorphism up to semisimplification}
 
@@ -918,9 +925,6 @@ The sizes of the subsets of isogeny classes we find after the first
 two steps are as follows: for $p=7$ the~$20138$ subsets have sizes
 between~$2$ and~$76$; for $p=11$, $p=13$ and $p=17$ they all have
 size~$2$.
-
-%% For $p \geq 19$ we find no congruences at all between non-isogenous
-%% curves (see Theorem~\ref{T:cong19}).
 
 
 \subsection{Testing reducibility}
@@ -1724,7 +1728,7 @@ The last part follows from the proof of Theorem~\ref{T:j=0}.
  Suppose that $E[p] \simeq E'[p]$ as $G_\Q$-modules. Then $E$ and $E'$ are $\Q$-isogenous.
  \end{theorem}
 \begin{proof} Let~$p \geq 5$ be a prime. Let $N_E$ and $\Delta_E$ 
-denote the conductor and the minumal discriminant of $E$, respectively. Write also $\tilde{N}_E$ to denote~$N_E$ away from~$p$ and let $N_p$ be the Serre level (i.e. the Artin conductor away from~$p$) of~$\rhobar_{E,p}$. 
+denote the conductor and the minimal discriminant of $E$, respectively. Write also $\tilde{N}_E$ to denote~$N_E$ away from~$p$ and let $N_p$ be the Serre level (i.e. the Artin conductor away from~$p$) of~$\rhobar_{E,p}$. 
 We have $N_p \mid \tilde{N}_E$.
 
 Recall that the conductor of an elliptic curve at primes~$p \geq 5$ divides~$p^2$. Moreover, from Kraus~\cite[p. 30]{KrausThesis}
@@ -1762,9 +1766,37 @@ Let $\calM_E$ be the set of pairs $(q,p)$ where $q$ is a multiplicative prime of
 $p \geq 19$ is a prime satisfying $p \mid \vv_{q}(\Delta_E)$.
 Note that we can have $q=p$. Let $\calM_{E'}$ be the analogous set for~$E'$. From the previous paragraph we conclude that $p$ has to occurs in one of the pairs in~$\calM_E$ or $\calM_{E'}$.
 
-Finally, given~$E$ in the database, we compute $\calM_E$ (which is a finite set) and for each~$p$ occuring in a pair of $\calM_E$ we compute the set of conductors~$\calL_{E,p}$ satisfying the factorisation~\eqref{E:condE'} and still in the database (i.e. up to 400000). For each conductor $N_{E'} \in \calL_{E,p}$ we verify there is no elliptic curve~$E'$ of conductor $N_{E'}$ congruent to~$E$ mod~$p$.
+To complete the proof, we carried out the following computations:
+\begin{enumerate}
+\item For each $N\le \numprint{400000}$ and each pair of non-isogenous
+  curves~$E_1,E_2$ of conductor~$N$, we computed $\gcd_{\ell\le B,
+    \ell\nmid N}(a_{\ell}(E_1)-a_{\ell}(E_2))$ for increasing~$B$
+  until the value of the $\gcd$ was~${}\le17$.  The success of this
+  computation shows that there are no congruences mod~$p$ between
+  non-isogenous curves of the same conductor for $p\ge19$.
+\item For one curve~$E$ in each isogeny class we computed the set
+  $M_E$ from the conductor and minimal discriminant.  We found that
+  the largest prime~$p$ occurring in any~$M_E$ was~$97$: in fact,
+  all~$p$ with $19\le p\le97$ occur except for~$p=89$.  Hence any
+  mod~$p$ congruence between non-isogenous curves in the database must
+  have~$p\le97$.  In view of the computations of
+  Section~\ref{S:statistics}, there are no congruences for $19\le
+  p\le97$.
+\end{enumerate}
 
-We end by remarking that a congruence between $E$ and $E'$ can exist modulo a prime~$p$ not occuring in $\calM_E$, but the arguments above show that in such case $p$ occurs in $\calM_{E'}$, therefore we will detect this congruence at a laters stage as we run over all the curves in the database.
+%% Finally, given~$E$ in the database, we compute $\calM_E$ (which is
+%% a finite set) and for each~$p$ occuring in a pair of $\calM_E$ we
+%% compute the set of conductors~$\calL_{E,p}$ satisfying the
+%% factorisation~\eqref{E:condE'} and still in the database (i.e. up
+%% to 400000). For each conductor $N_{E'} \in \calL_{E,p}$ we verify
+%% there is no elliptic curve~$E'$ of conductor $N_{E'}$ congruent
+%% to~$E$ mod~$p$.
+
+%% We end by remarking that a congruence between $E$ and $E'$ can
+%% exist modulo a prime~$p$ not occuring in $\calM_E$, but the
+%% arguments above show that in such case $p$ occurs in $\calM_{E'}$,
+%% therefore we will detect this congruence at a laters stage as we
+%% run over all the curves in the database.
 \end{proof}
 
 
