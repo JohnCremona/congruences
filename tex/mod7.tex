@@ -1723,68 +1723,48 @@ The last part follows from the proof of Theorem~\ref{T:j=0}.
  be elliptic curves in the LMFDB database. 
  Suppose that $E[p] \simeq E'[p]$ as $G_\Q$-modules. Then $E$ and $E'$ are $\Q$-isogenous.
  \end{theorem}
-\begin{proof} Let $N_E$, $\Delta_E$ and $N_{E'}$, $\Delta_{E'}$ denote the conductor and minumal discriminant of $E$ and~$E'$, respectively. Let $N_p$ and $N'_p$ denote the Serre level (i.e. the Artin conductor away from~$p$)
-of~$\rhobar_{E,p}$ and~$\rhobar_{E',p}$ respectively.
-We have $N_p = N_p'$ since $E[p] \simeq E'[p]$ as $G_\Q$-modules.
+\begin{proof} Let~$p \geq 5$ be a prime. Let $N_E$ and $\Delta_E$ 
+denote the conductor and the minumal discriminant of $E$, respectively. Write also $\tilde{N}_E$ to denote~$N_E$ away from~$p$ and let $N_p$ be the Serre level (i.e. the Artin conductor away from~$p$) of~$\rhobar_{E,p}$. 
+We have $N_p \mid \tilde{N}_E$.
 
-Recall that the conductor of an elliptic curve at primes~$p \geq 5$ divides~$p^2$ and that $N_p \mid \tilde{N}_E$, where $\tilde{N}_E$ denotes~$N_E$ away from~$p$. 
-Moreover, from Kraus~??
+Recall that the conductor of an elliptic curve at primes~$p \geq 5$ divides~$p^2$. Moreover, from Kraus~\cite[p. 30]{KrausThesis}
 it follows that, for each $\ell \neq p$, if 
-$\vv_{\ell}(N_p) \neq \vv_{\ell}(N_E)$ then
+$\vv_{\ell}(N_p) \neq \vv_{\ell}(N_E) = \vv_{\ell}(\tilde{N}_E)$ then
 $\vv_{\ell}(N_E) = 1$ and $p \mid \vv_{\ell}(\Delta_E)$.
-
-Therefore, we can find primes $q_0,\cdots,q_n$ such that 
-\[
- N_E = p^k \cdot N_p \cdot q_0 \cdot \ldots \cdot q_n, 
- \qquad p \mid \vv_{q_i}(\Delta_E), \qquad 0 \leq k \leq 2
-\]
-where the number of~$q_i$ occurring is $\geq 1$ if and only if 
-$\tilde{N}_E \neq N_p$. The same applies to~$E'$ and, since $N_p = N'_p$, 
-we have
-\begin{equation}\label{E:condE'}
- N_{E'} = p^{k'} \cdot N_p \cdot q'_0 \cdot \ldots \cdot q'_m, 
- \qquad p \mid \vv_{q'_i}(\Delta_E'),
- \qquad 0 \leq k' \leq 2.
+Therefore, we can find primes $q_i \neq p$ such that 
+\begin{equation}\label{E:condE}
+  N_E = p^s \cdot N_p \cdot q_0 \cdot \ldots \cdot q_n, 
+ \qquad p \mid \vv_{q_i}(\Delta_E), \qquad 0 \leq s \leq 2
 \end{equation}
+where the number of~$q_i$ occurring is $\geq 1$ if and only if 
+$\tilde{N}_E \neq N_p$. 
 
-To prove the theorem, we will run through the database by descending conductors as follows.
+Now let $E'/\Q$ be another elliptic curve satisfying $E[p] \simeq E'[p]$ as $G_\Q$-modules. Write $N_{E'}$, $\tilde{N}_{E'}$, $\Delta_{E'}$, $N'_p$ and $\rhobar_{E',p}$ to denote analogous quantities attached to~$E'$. We have $N'_p \mid \tilde{N}_{E'}$.
 
-Fix a curve $E$ in the LMFDB with the largest conductor. 
+By assumption, we have $\rhobar_{E',p} \simeq \rhobar_{E,p}$ so these representations have the same Serre level, i.e. $N_p = N_p'$ and (similarly as for~$E$) we can find primes~$q_i' \neq p$ such that~$N_{E'}$ factors as
+\begin{equation}\label{E:condE'}
+ N_{E'} = p^{s'} \cdot N_p \cdot q'_0 \cdot \ldots \cdot q'_m, 
+ \qquad p \mid \vv_{q'_i}(\Delta_E'),
+ \qquad 0 \leq s' \leq 2.
+\end{equation}
+The representations $\rhobar_{E,p}$ and $\rhobar_{E',p}$ also have the same Serre weights $k$ and $k'$, respectively. Note that for $s=0$ ($E$ has good reduction at~$p$) we have $k=2$ and for $s=1$ ($E$ has multiplicative reduction at~$p$) we have $k=2$ if $p \mid \vv_p(\Delta_E)$ or $k=p+1$ otherwise (see for example \cite[p. 3]{KrausThesis}); moreover, for $s=2$ it follows from \cite[Theoreme 1]{KrausThesis} that $k \not\in \{2, p+1\}$ 
+for $p \geq 19$. Similar conclusions apply to $E'$, $s'$ and $k'$. 
+Therefore, we have 2 cases: (i) if $s = 2$ or $s=1$ and $p \nmid \vv_{p}(\Delta_E)$ then $s'=s$; (ii) if $s=0$ or $s=1$ and $p \mid \vv_{p}(\Delta_E)$ then $s' \in \{0,1 \}$.
 
 Suppose $E'$ is a non-isogenous curve with the same conductor. Taking differences of traces of Frobenius at different primes shows that 
 there are no congruence between any two of them for $p \geq 19$, otherwise $p$ needs to divide the differences. 
-Thus we have $N_E > N_{E'}$.
+Thus $N_E \neq N_{E'}$.
 
+Suppose $\tilde{N}_E = \tilde{N}_{E'}$, so that the only difference in the conductors is at~$p$. From the possibilities above for the Serre weights, after interchanging $E$ and $E'$ if needed, 
+we can assume $s=1$ and $s'=0$ and we also know that $p \mid \vv_p(\Delta_E)$. On the other hand, if $\tilde{N}_E \neq \tilde{N}_{E'}$ then, after interchanging $E$ and $E'$ if needed, we have $N_p \neq \tilde{N}_E$ and so there is at least one prime~$q_i \neq p$ appearing in the factorization~\eqref{E:condE}, which in particular satisfies $p \mid \vv_{q_i}(\Delta_E)$.
 
 Let $\calM_E$ be the set of pairs $(q,p)$ where $q$ is a multiplicative prime of~$E$ and
 $p \geq 19$ is a prime satisfying $p \mid \vv_{q}(\Delta_E)$.
-Note that we can have $q=p$.
-From $E[p] \simeq E'[p]$ and $N_E > N_{E'}$ it follows that $p$ must occurr in one of the pairs in~$\calM_E$ (which is a finite set).
+Note that we can have $q=p$. Let $\calM_{E'}$ be the analogous set for~$E'$. From the previous paragraph we conclude that $p$ has to occurs in one of the pairs in~$\calM_E$ or $\calM_{E'}$.
 
-For each $p$ in a pair of $\calM_E$ we check that there is no congruence with an elliptic curve~$E'$ of smaller conductor.
-To speed up the computation we note that the conductor of~$E'$ must 
-be of the form~\eqref{E:condE'} where $k' = k$ when 
-\[
-k = 2 \quad \text{ or } \quad k=1  \text{ and } p \nmid \vv_{p}(\Delta_E)
-\]
-or $k' \in \{0,1\}$ when 
-\[
-k = 0 \quad \text{ or } \quad k=1  \text{ and } p \mid \vv_{p}(\Delta_E).
-\]
-Observe that if $k=0$ and $k'=1$ we are forced to have a prime~$q_i'$ dividing $N_{E'}$ that disappears mod~$p$ to keep the condition $N_E > N_{E'}$.
+Finally, given~$E$ in the database, we compute $\calM_E$ (which is a finite set) and for each~$p$ occuring in a pair of $\calM_E$ we compute the set of conductors~$\calL_{E,p}$ satisfying the factorisation~\eqref{E:condE'} and still in the database (i.e. up to 400000). For each conductor $N_{E'} \in \calL_{E,p}$ we verify there is no elliptic curve~$E'$ of conductor $N_{E'}$ congruent to~$E$ mod~$p$.
 
-After running $E'$ through all the curves with conductor smaller than $N_E$ we pick $E$ to have the next smaller (or equal) conductor. At each step there are less cases for~$E'$.
-
-
-
-
-
-
-
-
-
-
- 
+We end by remarking that a congruence between $E$ and $E'$ can exist modulo a prime~$p$ not occuring in $\calM_E$, but the arguments above show that in such case $p$ occurs in $\calM_{E'}$, therefore we will detect this congruence at a laters stage as we run over all the curves in the database.
 \end{proof}
 
 
