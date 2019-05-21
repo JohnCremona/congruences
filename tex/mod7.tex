@@ -68,6 +68,7 @@
 \newcommand{\ksep}{{k^{\operatorname{sep}}}}
 
 \newcommand{\frp}{{\mathfrak p}}
+\newcommand{\frq}{{\mathfrak q}}
 
 \newcommand{\Adeles}{\mathbf{A}}
 \newcommand{\kk}{\mathbf{k}}
@@ -792,7 +793,7 @@ Since we also have
 we conclude that $\rhobar_{E_1,p}(\sigma) = A \rhobar_{E_2,p}(\sigma) A^{-1}$, as desired.
 \end{proof}
 
-\section{The method to determine the symplectic type}\label{S:statistics}
+\section{Finding congruences and determining their symplectic type}\label{S:statistics}
 
 In this section we discuss our systematic study of mod~$p$ congruences
 between elliptic curves in the LMFDB database.  As of April 2019, this
@@ -899,11 +900,11 @@ curves~$E$ (up to isogeny), it is more efficient to compute the hash
 values for several primes in parallel.
 
 {\bf Example.} After carrying out this step for $7\le p\le17$, using
-$B=40$, we find: $20138$ nontrivial subsets for $p=7$, $635$ for
-$p=11$, $150$ for $p=13$ and~$8$ for $p=17$.  There are no nontrivial
-subsets for any primes~$p$ with $19\le p\le97$, so we can immediately
-conclude that there are no congruences in the database between
-non-isogenous curves modulo any prime in this range.  See also
+$B=40$, we find: $\numprint{20138}$ nontrivial subsets for $p=7$;
+$635$ for $p=11$; $150$ for $p=13$; and~$8$ for $p=17$.  There are no
+nontrivial subsets for any primes~$p$ with $19\le p\le97$, so we can
+immediately conclude that there are no congruences in the database
+between non-isogenous curves modulo any prime in this range.  See also
 Theorem~\ref{T:cong19} below.
 
 \subsection{Proving isomorphism up to semisimplification}
@@ -937,9 +938,9 @@ semisimplification.
 \end{remark}
 
 The sizes of the subsets of isogeny classes we find after the first
-two steps are as follows: for $p=7$ the~$20138$ subsets have sizes
-between~$2$ and~$76$; for $p=11$, $p=13$ and $p=17$ they all have
-size~$2$.
+two steps are as follows: for $p=7$ the~$\numprint{20138}$ subsets
+have sizes between~$2$ and~$76$; for $p=11$, $p=13$ and $p=17$ they
+all have size~$2$.
 
 
 \subsection{Testing reducibility}
@@ -949,14 +950,14 @@ or reducible mod~$p$ representations.  To do this we apply a standard
 test of whether an elliptic curve admits a rational $p$-isogeny.  For
 the curves in the database this information is already known.
 
-{\bf Example (continued).} For $p=7$, of the 20138 nontrivial sets
-from Step~2, we find that 19883 are irreducible, {\it i.e.}\@ consist
-of curves whose mod~$7$ representations are irreducible, while $255$
-are reducible.
+{\bf Example (continued).} For $p=7$, of the $\numprint{20138}$
+nontrivial sets from Step~2, we find that $\numprint{19883}$ are
+irreducible, {\it i.e.}\@ consist of curves whose mod~$7$
+representations are irreducible, while $255$ are reducible.
 
 The irreducible sets have size at most~$5$.  In detail, there are
-18334 sets of size~2; 1297 sets of size~3; 246 sets of size~4; and 6
-sets of size~5.
+$\numprint{18334}$ sets of size~2; $\numprint{1297}$ sets of size~3;
+246 sets of size~4; and 6 sets of size~5.
 
 The reducible sets have size up to~$76$.  In Step~5 below we will
 further partition these sets after testing whether the curves are
@@ -1098,10 +1099,10 @@ since our tests show that $\lmfdbec{100800}{gw}{1}$ and
 $\lmfdbec{100800}{hc}{1}$ are antisymplectically isomorphic, and the
 last two curves are $2$-isogenous.
 
-Of the $19883$ non-trivial sets of isogeny classes with mutually
+Of the $\numprint{19883}$ non-trivial sets of isogeny classes with mutually
 isomorphic irreducible mod~$7$ representations, we find that in
-$12394$ cases all the isomorphisms are symplectic, while in the
-remaining $7489$ cases antisymplectic isomorphisms occur.
+$\numprint{12394}$ cases all the isomorphisms are symplectic, while in the
+remaining $\numprint{7489}$ cases antisymplectic isomorphisms occur.
 
 Using the local criteria of \cite{FKSym} for $p=11, 13, 17$ we find:
 for $p=11$, of the $635$ congruent pairs of isogeny classes, $446$ are
@@ -1240,8 +1241,8 @@ also be a congruence (of the same symplectic type) between their
 quadratic twists $E_1^d$ and~$E_2^d$.  Nevertheless it is hard to say
 precisely how many congruences there in the database ``up to twist'',
 since twisting changes conductor (in general), so we may have a set of
-mutually $7$-congruent elliptic curves in the database, but one or
-more of their twists are not in the database, so the twisted set in
+mutually $7$-congruent elliptic curves in the database, but with one or
+more of their twists not in the database, so the twisted set in
 our data will be smaller.
 
 Instead, to have a measure of how many congruences we have found up
@@ -1262,17 +1263,20 @@ $48412981936758748562855/77853743274432041397$ and $-46585/243$.
 
 \section{Congruences between Twists}
 
-Congruences between elliptc curves which are twists of each other arise in a number of ways in our study; in this section we look into this situation in detail.
+Congruences between elliptic curves which are twists of each other arise in a number of ways in our study; in this section we look into this situation in detail.
 
-Let $p$ be an odd prime. Write $D_{2n}$ to denote the dihedral group with~$2n$ elements
-and $C_n \subset D_{2n}$ for a normal cyclic subgroup of order~$n$; note that $C_n$ is unique unless $n=2$, in which case $D_{2n} \simeq C_2 \times C_2$. 
-We will also denote by $C \subset \GL_2(\F_p)$ 
-a Cartan subgroup (either split or non-split) 
-and by $N$ its normalizer in $\GL_2(\F_p)$.
+Let $p$ be an odd prime. Write $D_{n}$ to denote the dihedral group
+with~$2n$ elements and $C_n \subset D_{n}$ for a normal cyclic
+subgroup of order~$n$; note that $C_n$ is unique unless $n=2$, in
+which case $D_{n} \simeq C_2 \times C_2$.  We will also denote by $C
+\subset \GL_2(\F_p)$ a Cartan subgroup (either split or non-split) and
+by $N$ its normalizer in $\GL_2(\F_p)$.  In what follows we will use
+standard facts about subgroups of $\GL_2(\F_p)$ and $\PGL_2(\F_p)$:
+see, for example, \cite[Theorem XI.2.3]{LangModForms}.
 
 Let $K$ be a number field and $E/K$ an elliptic curve. The representation $\rhobar_{E,p}$ has image contained in $N \subset \GL_2(\F_p)$ but not in the Cartan subgroup~$C$ 
 if and only if the projective image 
-$\PP \rhobar_{E,p}(G_K)$ is~$D_{2n}$. In particular, there will be a quadratic extension~$M = K(\sqrt{d})$ corresponding to the subgroup~$C_n$ as above, i.e. $\PP \rhobar_{E,p}(G_M) \simeq C_n$. The character $\eps_d$ cutting out~$M/K$ is obtained also by the composition
+$\PP \rhobar_{E,p}(G_K)$ is~$D_{n}$ for some~$n$. In particular, there will be a quadratic extension~$M = K(\sqrt{d})$ corresponding to the subgroup~$C_n$ as above, i.e. $\PP \rhobar_{E,p}(G_M) \simeq C_n$. The character $\eps_d$ cutting out~$M/K$ is obtained also by the composition
 \[
  \eps_d \; : G_K \to \rhobar_{E,p}(G_K) \twoheadrightarrow \rhobar_{E,p}(G_K)/C \simeq \{\pm 1 \}.
 \]
@@ -1281,8 +1285,8 @@ $\PP \rhobar_{E,p}(G_K)$ is~$D_{2n}$. In particular, there will be a quadratic e
 
 \begin{proposition} \label{P:twistNumber}
 Let $E/K$ be an elliptic curve satisfying that~$\rhobar_{E,p}$ has projectively dihedral image, 
-that is  $\PP \rhobar_{E,p} (G_K) \simeq D_{2n}$,
-and $M=K(\sqrt{d})$ a quadratic field given as above.
+that is  $\PP \rhobar_{E,p} (G_K) \simeq D_{n}$,
+and $M=K(\sqrt{d})$ the quadratic field given as above.
 
 Then the quadratic twist~$E^d$ of $E$ by~$d$ satisfies $E[p] \simeq E^d[p]$ as $G_K$-modules.
 In particular, there are either 1 or 3 quadratic fields~$M$ 
@@ -1305,10 +1309,75 @@ for all $\sigma \in G_K$.
 
 Since $\rhobar_{E,p}$ and $\rhobar_{E',p}$ are irreducible and have the same traces we have $\rhobar_{E,p} \simeq \rhobar_{E',p}$. 
 
-The last statement follows by the discussion above. Indeed, note that there will be one quadratic extension~$M/K$ corresponding to each cyclic subgroup $C_n \subset D_{2n}$ of index~2. 
+The last statement follows by the discussion above. Indeed, note that there will be one quadratic extension~$M/K$ corresponding to each cyclic subgroup $C_n \subset D_{n}$ of index~2. 
 \end{proof}
 
-The above proposition shows that we can find congruent quadratic twists when $\rhobar_{E,p}$ has image in the normalizer of a Cartan but not in the Cartan itself. The following proposition gives a coverse statement to this.
+The above proposition shows that we can find congruent quadratic twists when $\rhobar_{E,p}$ has image in the normalizer of a Cartan but not in the Cartan itself. The following proposition gives a converse statement to this.
+
+\begin{proposition}\label{P:twist}
+Let $E/K$ and $E'/K$ be elliptic curves over a number field~$K$ which
+are non-isomorphic quadratic twists, say $E' = E^d$ for some $d \in
+K^*$ not a square. Assume that $E[p]\cong E'[p]$ (as $G_K$-modules)
+for some prime $p\ge3$.
+
+Then the image of~$\rhobar_{E,p}$ is contained in the normaliser of a
+Cartan subgroup of $\GL_2(\F_p)$ but not in the subgroup itself.
+
+Furthermore, if $p \geq 5$ is a prime of good reduction of~$E$, then
+there is a unique value of~$d$ modulo squares such that $E[p]\cong
+E^d[p]$.
+\end{proposition}
+
+\begin{proof}
+Let $\chi$ be the quadratic character of $G_K$ associated to the
+extension $K(\sqrt{d})/K$.  By class field theory, we may regard
+$\chi$ as a $\{\pm1\}$-valued function on the primes~$\frq$ of~$K$
+unramified in the extension.  For such primes~$\frq$ where both curves
+have good reduction (so still excluding only finitely many primes), we
+have on the one hand, since $E'=E^d$,
+  \[
+  a_\frq(E') = \chi(\frq) a_\frq(E),
+  \]
+  (where $a_\frq(E)$ denotes the trace of Frobenius of of~$E$ over the
+  residue field of~$\frq$), and on the other hand, since $E'[p]\cong
+  E[p]$,
+  \[
+  a_\frq(E') \equiv a_\frq(E) \mod{p}.
+  \]
+  Hence for almost all primes~$\frq$ which are inert
+  in~$K(\sqrt{d})/K$ we have
+  \[
+  a_\frq(E') \equiv a_\frq(E) \equiv0 \mod{p}.
+  \]
+  So the image $H=\rhobar_{E,p}(G_K)$ has a subgroup~$H^+$ of
+  index~$2$ such that all elements of~$H\setminus H^+$ have trace~$0$.
+  Such elements have order~$2$ in $\PGL_2(\F_p)$.  From the
+  classification of subgroups of $\PGL_2(\F_p)$ it follows that $H$ is
+  contained in the normaliser of a Cartan subgroup~$C$ and $H^+=H\cap
+  C$.
+
+ The last part follows from group theory: the dihedral group of order
+ $2n$ has a unique cyclic subgroup of order~$n$ for $n>2$.
+\end{proof}
+
+\begin{comment}
+Consulting Table~3 of \cite{Sutherland} we find that conjecturally we
+have $p\le11$.  For $p=7$ the only images are (in the notation of
+\cite{Sutherland}) $7Ns$ (the full normaliser of a split Cartan),
+$7Nn$ (the full normaliser of a nonsplit Cartan), and in addition
+$7Ns.2.1$ and $7Ns.3.1$ which only occur for $j=2268945/128$ and
+$7Ns.6.1.2$ which only occurs for $j=0$.  Each of these images
+contains a unique subgroup of index~$2$, except the last.  In that
+case (which occurs for example for the curve $\lmfdbec{441}{a}{1}$)
+the twists by $-3$, $-7$ and~$21$ all have isomorphic $7$-torsion
+modules.
+
+For $p=11$, as well as images $11Nn$ and $11Ns$ we find $11Nn.1.4$
+which only occurs for $j=0$; each of these has a unique index~$2$
+subgroup.
+\end{comment}
+
+\begin{comment} %%%%% Same theorem as above but just over Q
 
 \begin{proposition}\label{P:twist}
 Let $E/\Q$ and $E'/\Q$ be elliptic curves which are non-isomorphic
@@ -1319,23 +1388,6 @@ Then the image of~$\rhobar_{E,p}$ is contained in the normaliser of a Cartan sub
 
 Furthermore, if $p \geq 5$ is a prime of good reduction of~$E$ then there is a unique value of~$d$ modulo squares.
 \end{proposition}
-
-%% \begin{proposition}\label{P:twist}
-%% Let $E$ and~$E'$ be non-isomorphic elliptic curves over~$\Q$ with
-%% $j(E)=j(E')$, such that $E[p]\cong E'[p]$ with $p\ge3$.
-%% \begin{enumerate}
-%%   \item If $E'=E^d$ is the quadratic twist of~$E$ by~$d\in\Q^*$ (which
-%%     is always the case unless $j(E)\in\{0,1728\}$) then the image
-%%     of~$\rhobar_{E,p}$ is contained in the normaliser of
-%%     Cartan subgroup of $\GL_2(\F_p)$ but not in the subgroup itself.
-%%     When $p\ge7$, the twist~$d$ is uniquely determined by~$E$ unless
-%%     $j(E)=0$ in which case there are three such twists.
-%%    \item If $j(E)=0$ and $E'$ is a sextic twist of~$E$ (but not a
-%%      quadratic twist), then...
-%%    \item If $j(E)=1728$ and $E'$ is a quartic twist of~$E$ (but not a
-%%      quadratic twist), then...
-%% \end{enumerate}
-%% \end{proposition}
 
 \begin{proof}
  Let $\chi$ be the quadratic character associated to the
@@ -1359,30 +1411,16 @@ Furthermore, if $p \geq 5$ is a prime of good reduction of~$E$ then there is a u
   classification of subgroups of $\PGL_2(\F_p)$ it follows that $H$ is
   contained in the normaliser of a Cartan subgroup~$C$ and $H^+=H\cap
   C$.
-
-\begin{comment}
-Consulting Table~3 of \cite{Sutherland} we find that conjecturally we
-have $p\le11$.  For $p=7$ the only images are (in the notation of
-\cite{Sutherland}) $7Ns$ (the full normaliser of a split Cartan),
-$7Nn$ (the full normaliser of a nonsplit Cartan), and in addition
-$7Ns.2.1$ and $7Ns.3.1$ which only occur for $j=2268945/128$ and
-$7Ns.6.1.2$ which only occurs for $j=0$.  Each of these images
-contains a unique subgroup of index~$2$, except the last.  In that
-case (which occurs for example for the curve $\lmfdbec{441}{a}{1}$)
-the twists by $-3$, $-7$ and~$21$ all have isomorphic $7$-torsion
-modules.
-
-For $p=11$, as well as images $11Nn$ and $11Ns$ we find $11Nn.1.4$
-which only occurs for $j=0$; each of these has a unique index~$2$
-subgroup.
-\end{comment}
 \end{proof}
+\end{comment}
+
+
 The preceding propositions show that
 congruences between quadratic twists occur in particular when the image of $\rhobar_{E,p}$ is the normaliser of a Cartan subgroup. The next result  determines the symplectic type of such congruences. Recall from the introduction this is one of the cases where the local methods from~\cite{FKSym} may not apply.
 
 
 \begin{theorem} \label{T:Cartan}
-Let $p > 2$ be a prime. Let $E/K$ be an elliptic curve 
+Let $p > 3$ be a prime. Let $E/K$ be an elliptic curve 
 over a number field $K$. Assume that $\rhobar_{E,p}$ has image~$N
 \supset C$ as above, and let $E^d$ be the quadratic twist of $E$
 by~$d$.
@@ -1394,7 +1432,7 @@ anti-symplectic otherwise.
 \end{theorem}
 
 \begin{proof} The first conclusion follows directly from Proposition~\ref{P:twistNumber}.
-\begin{comment}
+
 We first prove that $E[p] \simeq E^d[p]$ as $G_K$-modules. 
 Note that $\rhobar_{{E^d}, p} = \rhobar_{E, p} \otimes \eps$, and
 hence for all $\sigma \in G_K$ we have
@@ -1404,7 +1442,6 @@ Note that, if $\eps(\sigma) = -1$ then $\rhobar_{E,p}(\sigma) \in N\backslash C$
 therefore, $\Tr \rhobar_{E,p}(\sigma) = \Tr \rhobar_{E^d,p}(\sigma)$ 
 for all $\sigma \in G_K$. Since these representations are irreducible and have
 the same traces it follows that they are isomorphic.
-\end{comment}
 
 From the hypothesis on the image of $\rhobar_{E,p}$ we can 
 choose a basis $P_1, P_2$ of $E[p]$ such that $\rhobar_{E,p}$ has image 
@@ -1822,7 +1859,7 @@ By assumption, we have $\rhobar_{E',p} \simeq \rhobar_{E,p}$ so these representa
  \qquad p \mid \vv_{q'_i}(\Delta_E'),
  \qquad 0 \leq s' \leq 2.
 \end{equation}
-The representations $\rhobar_{E,p}$ and $\rhobar_{E',p}$ also have the same Serre weights $k$ and $k'$, respectively. Note that for $s=0$ ($E$ has good reduction at~$p$) we have $k=2$ and for $s=1$ ($E$ has multiplicative reduction at~$p$) we have $k=2$ if $p \mid \vv_p(\Delta_E)$ or $k=p+1$ otherwise (see for example \cite[p. 3]{KrausThesis}); moreover, for $s=2$ it follows from \cite[Theoreme 1]{KrausThesis} that $k \not\in \{2, p+1\}$ 
+The representations $\rhobar_{E,p}$ and $\rhobar_{E',p}$ also have the same Serre weights $k$ and $k'$, respectively. Note that for $s=0$ ($E$ has good reduction at~$p$) we have $k=2$ and for $s=1$ ($E$ has multiplicative reduction at~$p$) we have $k=2$ if $p \mid \vv_p(\Delta_E)$ or $k=p+1$ otherwise (see for example \cite[p. 3]{KrausThesis}); moreover, for $s=2$ it follows from \cite[Th\'eor\`eme 1]{KrausThesis} that $k \not\in \{2, p+1\}$ 
 for $p \geq 19$. Similar conclusions apply to $E'$, $s'$ and $k'$. 
 Therefore, we have 2 cases: (i) if $s = 2$ or $s=1$ and $p \nmid \vv_{p}(\Delta_E)$ then $s'=s$; (ii) if $s=0$ or $s=1$ and $p \mid \vv_{p}(\Delta_E)$ then $s' \in \{0,1 \}$.
 
@@ -1911,7 +1948,7 @@ Yuri Bilu, Pierre Parent, and Marusia Rebolledo.
 \newblock {\em Ann. Inst. Fourier (Grenoble)}, 63(3):957--984, 2013.
 
 \bibitem{AMEC}
-J.~E. Cremona.
+J.~E.~Cremona.
 \newblock {\em Algorithms for modular elliptic curves}.
 \newblock Cambridge University Press, Cambridge, second edition, 1997.
 
@@ -1920,14 +1957,6 @@ J.~E. Cremona.
  PhD thesis, Utrecht University, 2008. Available at \\
  \url{https://dspace.library.uu.nl/handle/1874/29640}
 
-
-\bibitem{FKSym} N.\ Freitas and A.\ Kraus,
-{\em On the symplectic type of isomorphisms of the $p$-torsion of elliptic curves}, Preprint
-
-\bibitem{lmfdb} The {LMFDB Collaboration},
-{\em The L-functions and Modular Forms Database}, \\
-\url{http://www.lmfdb.org}, 2013.
-
 \bibitem{Fisher} T.\ Fisher,
 {\em On families of $7$ and $11$-congruent elliptic curves}, 
 LMS J.\ Comput.\ Math.\ {\bf 17} (2014), no. 1, 536--564.
@@ -1935,6 +1964,9 @@ LMS J.\ Comput.\ Math.\ {\bf 17} (2014), no. 1, 536--564.
 \bibitem{FisherList} T.\ Fisher,
 {\em A table of $11$-congruent elliptic curves over the rationals}, \\
 \url{https://www.dpmms.cam.ac.uk/~taf1000/papers/congr-11}
+
+\bibitem{FKSym} N.\ Freitas and A.\ Kraus,
+{\em On the symplectic type of isomorphisms of the $p$-torsion of elliptic curves}, Preprint
 
 \bibitem{GL}
 Enrique Gonz\'{a}lez-Jim\'{e}nez and \'{A}lvaro Lozano-Robledo,
@@ -1954,11 +1986,20 @@ Alain Kraus,
 \newblock D{\'e}termination du poids et du conducteur associ{\'e}s aux repr{\'e}sentations des points de p-torsion d'une courbe elliptique,
 \newblock Dissertationes Math. (Rozprawy Mat.) {\bf 364}, 1997.
 
-  
+
 \bibitem{KO}
 A.~Kraus and J.~Oesterl\'{e}.
 \newblock Sur une question de {B}. {M}azur.
 \newblock {\em Math. Ann.}, 293(2):259--275, 1992.
+
+\bibitem[Lan76]{LangModForms}
+Serge Lang.
+\newblock {\em Introduction to Modular Forms}.
+\newblock Springer-Verlag, 1976.
+
+\bibitem{lmfdb} The {LMFDB Collaboration},
+{\em The L-functions and Modular Forms Database}, \\
+\url{http://www.lmfdb.org}, 2013.
 
 \bibitem{magma}
 Wieb Bosma, John Cannon, and Catherine Playoust.
@@ -1972,7 +2013,7 @@ Bjorn Poonen, Edward~F. Schaefer, and Michael Stoll.
 \newblock {\em Duke Math. J.}, 137(1):103--158, 2007.
 
 
-    \bibitem{Rubin-Silverberg}
+\bibitem{Rubin-Silverberg}
 K.~Rubin and A.~Silverberg.
 \newblock Families of elliptic curves with constant mod {$p$} representations.
 \newblock In {\em Elliptic curves, modular forms, \& {F}ermat's last theorem
