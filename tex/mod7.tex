@@ -332,7 +332,7 @@
 
 \begin{document}
 
-\title{On the symplectic type of congruences between elliptic curves modulo small primes}
+\title{On the symplectic type of congruences between elliptic curves} % modulo small primes}
 
 \author{John Cremona}
 \address{Mathematics Institute,
@@ -364,10 +364,20 @@
   Sk\l{l}odowska-Curie grant agreement No.\ 747808}
 
 
-\begin{abstract} {\bf Needs improvement.}
-We describe a procedure to determine the symplectic type of
-isomorphisms between the $7$- or $11$-torsion modules of elliptic curves over~$\Q$.  We
-apply it to classify all the congruences in LMFDB.
+\begin{abstract}
+%% We describe a procedure to determine the symplectic type of
+%% isomorphisms between the $7$- or $11$-torsion modules of elliptic
+%% curves over~$\Q$.  We apply it to classify all the congruences in
+%% LMFDB.
+We describe a systematic investigation into the existence of
+congruences between the mod~$p$ torsion modules of elliptic curves
+defined over $\Q$, including methods to determine the symplectic type
+of such congruences.  We report on the results of applying our methods
+to the elliptic curves in the LMFDB database, which currently includes
+all elliptic curves of conductor less than~$\numprint{400000}$, for
+all primes~$p\ge7$.  We also show that while such congruences exist
+for each $p\le17$, there are none for larger values of~$p$, in line
+with a strong form of the Frey-Mazur conjecture.
 \end{abstract}
 
 \maketitle
@@ -504,7 +514,7 @@ than~$\numprint{400000}$. More precisely, Theorem~\ref{T:cong19} shows
 there are no mod~$p$ congruences in LMFDB for $p \geq 19$ and we
 found, for $p$ in the range $7 \leq p \leq 17$, all the congruences in
 the database up to twist; we report on the results obtained in
-Sections~\ref{S:statistics}~and~\ref{S:summary}.
+Section~\ref{S:statistics}~and~\ref{S:Frey-Mazur}.
 
 The description of our method also includes a discussion on how to
 determine whether $E[p]$ and~$E'[p]$ are isomorphic (ignoring the
@@ -579,14 +589,19 @@ $X_E^{\pm}(11)$, in~\cite{Fisher}.
 
 
 \subsection{Further motivation} \label{S:motivation}
-We finish this introduction with a discussion 
-on how the methods of this paper complement the local methods in~\cite{FKSym}.
+We finish this introduction with a discussion on how the methods of
+this paper complement the local methods in~\cite{FKSym}.
 
 From the discussion so far we know that triples $(E,E',p)$ as above give rise to $\Q$-points on at least one of the modular curves~$X_E(p)$ or $X_E^-(p)$. 
 
-The Frey-Mazur conjecture states there is a constant $C \geq 18$ such that, if $E/\Q$ and $E'/\Q$ satisfy $E[p] \simeq E'[p]$ as
+The Frey-Mazur conjecture states there is a constant $C \geq 18$ such
+that, if $E/\Q$ and $E'/\Q$ satisfy $E[p] \simeq E'[p]$ as
 $G_\Q$-modules for some prime $p > C$, then $E$ and $E'$ are
-$\Q$-isogenous. In view of this conjecture, any~$(E,E',p)$ with $p > C$ arises from an isogeny, hence its symplectic type is easily determined by the isogeny criterion. Thus we are interested in primes $p \leq C$.
+$\Q$-isogenous. Theorem~\ref{T:cong19} shows that for curves of
+conductor at most~$\numprint{400000}$, this holds with~$C=18$. In view
+of this conjecture, any~$(E,E',p)$ with $p > C$ arises from an
+isogeny, hence its symplectic type is easily determined by the isogeny
+criterion. Thus we are interested in primes $p \leq C$.
 
 %% For $p=3,5$ the modular curves $X(p)$  have genus~0, equations for $X_E(p)$ and $X_E^-(p)$ are well known and we can obtain infinitely many triples $(E,E',p)$ with each symplectic type. 
 
@@ -1718,14 +1733,40 @@ The last part follows from the proof of Theorem~\ref{T:j=0}.
 %and $E_{-27b}$ in the previous remark are even isomorphic, and the
 %$3$-isogeny is the endomorphism $\pm\r3$.  \end{remark}
 
-\section{Summary of congruences in LMFDB and examples}
-\label{S:summary}
+\begin{example}
+Consider the set of six elliptic curves
+\[\{\lmfdbec{9225}{a}{1}, \lmfdbec{9225}{e}{1}, \lmfdbec{225}{a}{1},
+\lmfdbec{225}{a}{2}, \lmfdbec{11025}{c}{1}, \lmfdbec{11025}{c}{2}\}\]
+which form four
+complete isogeny classes.  All have isomorphic mod~7 representations
+with image the normaliser of a split Cartan subgroup.  The last four
+curves all have $j$-invariant~$0$ and CM by $-3$.  The first two are
+$-3$-twists of each other.
+
+The general methods of Step~4 of the section~3 split this set into two
+subsets:
+\[
+  \{\lmfdbec{9225}{a}{1}, \lmfdbec{225}{a}{1},
+  \lmfdbec{11025}{c}{1}\},\qquad \{\lmfdbec{9225}{e}{1},
+  \lmfdbec{225}{a}{2}, \lmfdbec{11025}{c}{2}\}
+\]
+Curves $\lmfdbec{9225}{a}{1}$ and $\lmfdbec{9225}{e}{1}$ give a non-CM
+example of  Theorem~\ref{T:Cartan}.  Curves  $\lmfdbec{225}{a}{1}$ and
+$\lmfdbec{11025}{c}{1}$ are sextic (but  not quadratic or cubic) twists
+and illustrate Theorem~\ref{T:j=0}.
+\end{example}
+
+
+
+\section{Evidence for the Frey-Mazur conjecture in the database}
+\label{S:Frey-Mazur}
 
 \begin{theorem}
  \label{T:cong19}
- Let $p \geq 19$ be a prime. Let $E/\Q$ and~$E'/\Q$ 
- be elliptic curves in the LMFDB database. 
- Suppose that $E[p] \simeq E'[p]$ as $G_\Q$-modules. Then $E$ and $E'$ are $\Q$-isogenous.
+ Let $p \geq 19$ be a prime. Let $E/\Q$ and~$E'/\Q$ be elliptic curves
+ with conductors at most~$\numprint{400000}$.  Suppose that $E[p]
+ \simeq E'[p]$ as $G_\Q$-modules. Then $E$ and $E'$ are
+ $\Q$-isogenous.
  \end{theorem}
 \begin{proof} Let~$p \geq 5$ be a prime. Let $N_E$ and $\Delta_E$ 
 denote the conductor and the minimal discriminant of $E$, respectively. Write also $\tilde{N}_E$ to denote~$N_E$ away from~$p$ and let $N_p$ be the Serre level (i.e. the Artin conductor away from~$p$) of~$\rhobar_{E,p}$. 
@@ -1766,10 +1807,13 @@ Let $\calM_E$ be the set of pairs $(q,p)$ where $q$ is a multiplicative prime of
 $p \geq 19$ is a prime satisfying $p \mid \vv_{q}(\Delta_E)$.
 Note that we can have $q=p$. Let $\calM_{E'}$ be the analogous set for~$E'$. From the previous paragraph we conclude that $p$ has to occurs in one of the pairs in~$\calM_E$ or $\calM_{E'}$.
 
-To complete the proof, we carried out the following computations:
+To complete the proof, we carried out the following computations on
+the LMFDB database of all elliptic curves defined over~$\Q$ and
+conductor at most~$\numprint{400000}$:
 \begin{enumerate}
 \item For each $N\le \numprint{400000}$ and each pair of non-isogenous
-  curves~$E_1,E_2$ of conductor~$N$, we computed $\gcd_{\ell\le B,
+  curves~$E_1,E_2$ of conductor~$N$ (if there are at least two such
+  isogeny classes), we computed $\gcd_{\ell\le B,
     \ell\nmid N}(a_{\ell}(E_1)-a_{\ell}(E_2))$ for increasing~$B$
   until the value of the $\gcd$ was~${}\le17$.  The success of this
   computation shows that there are no congruences mod~$p$ between
@@ -1782,7 +1826,17 @@ To complete the proof, we carried out the following computations:
   have~$p\le97$.  In view of the computations of
   Section~\ref{S:statistics}, there are no congruences for $19\le
   p\le97$.
+
+  Note that the set~$M_E$ is unchanged if we replace $E$ by a curve
+  isogenous to it, provided that the isogeny has degree divisible only
+  by primes less than~$19$.  But the only curves defined over~$\Q$ with
+  isogenies of prime degree~$p\ge19$ are the CM curves for
+  $p=19,43,67,163$, which have no multiplicative primes, and the pairs
+  of $37$-isogenous curves, which have the same property (the smallest
+  conductor being $1225=5^2\cdot7^2$).  Hence in this step it suffices
+  to consider just one curve in each isogeny class.
 \end{enumerate}
+\end{proof}
 
 %% Finally, given~$E$ in the database, we compute $\calM_E$ (which is
 %% a finite set) and for each~$p$ occuring in a pair of $\calM_E$ we
@@ -1797,31 +1851,6 @@ To complete the proof, we carried out the following computations:
 %% arguments above show that in such case $p$ occurs in $\calM_{E'}$,
 %% therefore we will detect this congruence at a laters stage as we
 %% run over all the curves in the database.
-\end{proof}
-
-
-\begin{example}
-Consider the set of six elliptic curves
-\[\{\lmfdbec{9225}{a}{1}, \lmfdbec{9225}{e}{1}, \lmfdbec{225}{a}{1},
-\lmfdbec{225}{a}{2}, \lmfdbec{11025}{c}{1}, \lmfdbec{11025}{c}{2}\}\]
-which form four
-complete isogeny classes.  All have isomorphic mod~7 representations
-with image the normaliser of a split Cartan subgroup.  The last four
-curves all have $j$-invariant~$0$ and CM by $-3$.  The first two are
-$-3$-twists of each other.
-
-The general methods of Step~4 of the section~3 split this set into two
-subsets:
-\[
-  \{\lmfdbec{9225}{a}{1}, \lmfdbec{225}{a}{1},
-  \lmfdbec{11025}{c}{1}\},\qquad \{\lmfdbec{9225}{e}{1},
-  \lmfdbec{225}{a}{2}, \lmfdbec{11025}{c}{2}\}
-\]
-Curves $\lmfdbec{9225}{a}{1}$ and $\lmfdbec{9225}{e}{1}$ give a non-CM
-example of  Theorem~\ref{T:Cartan}.  Curves  $\lmfdbec{225}{a}{1}$ and
-$\lmfdbec{11025}{c}{1}$ are sextic (but  not quadratic or cubic) twists
-and illustrate Theorem~\ref{T:j=0}.
-\end{example}
 
 
  
@@ -1930,270 +1959,7 @@ Andrew V. Sutherland.
 \newblock Computing images of Galois representations attached to elliptic curves.
 \newblock {\em Forum of Mathematics}, Sigma {\bf 4} (2016), e4, 79 pp.
 
-\begin{comment}
 
-@incollection {MR1363500,
-    AUTHOR = {Rubin, K. and Silverberg, A.},
-     TITLE = {Families of elliptic curves with constant mod {$p$}
-              representations},
- BOOKTITLE = {Elliptic curves, modular forms, \& {F}ermat's last theorem
-              ({H}ong {K}ong, 1993)},
-    SERIES = {Ser. Number Theory, I},
-     PAGES = {148--161},
- PUBLISHER = {Int. Press, Cambridge, MA},
-      YEAR = {1995},
-   MRCLASS = {11G05},
-  MRNUMBER = {1363500},
-MRREVIEWER = {Andrea Mori},
-}
-
- 
-\bibitem{AnniSiksek} S.\ Anni and S.\ Siksek,
-{\em Modular elliptic curves over real abelian fields and the generalized {F}ermat equation $x^{2\ell} + y^{2m}=z^p$}, Algebra \& Number Theory {\bf 10} (2016), no.6, 1147--1172
-
-%\bibitem{bggt14}
-%T. Barnet-Lamb, T. Gee, D. Geraghty, and R. Taylor,
-%\emph{Potential automorphy and change of weight}, Ann. of Math. (2)
- % \textbf{179} (2014), no.~2, 501--609. \MR{3152941}
-
-\bibitem{BennetSkinner} M.\ A.\ Bennett and C.\ M.\ Skinner,
-{\em Ternary Diophantine equations via Galois representations and modular forms}, Canad.\ J.\ Math.\ {\bf 56} (2004), no. 1, 23--54.
- 
-%\bibitem{Bill} N. Billerey,
-%{\em {\'E}quations de Fermat de type $(5,5,p)$},
-%Bull.\ Austral.\ Math.\ Soc. {\bf 76} (2007), no. 2, 161--194.
-
-%\bibitem{BD} N. Billerey and L.\ Dieulefait,
-%{\em Solving Fermat-type equations $x^5 + y^5=d z^p$},
-%Mathematics of Computation {\bf 79} (2010), no. 286, 535--544.
-
-\bibitem{programs} N. Billerey, I. Chen, L. Demb\'el\'e, L. Dieulefait, and N. Freitas, 
-{\em Supporting {{\Magma}} program files for this paper},
-\url{http://math.univ-bpclermont.fr/~billerey/Research/BCDDF/}
-
-\bibitem{BCDF} N. Billerey, I. Chen. L. Dieulefait, and N. Freitas, 
-{\em A multi-Frey approach to Fermat equations of signature $(r,r,p)$},
-Transactions of AMS (to appear).
-
-\bibitem{BD14} C.~Breuil, and F.~Diamond,
-{\em Formes modulaires de Hilbert modulo $p$ et valeurs d'extensions entre caract\`eres galoisiens.}
-Ann. Sci. \'Ec. Norm. Sup\'er. (4) {\bf 47} (2014), no. 5, 905--974.
-
-\bibitem{BMSI} Y.\ Bugeaud, M.\ Mignotte and S.\ Siksek
-{\em A multi-Frey approach to some multi-parameter families of Diophantine equations},
-Canadian Journal of Mathematics {\bf 60} (2008), 491-519.
-
-
-\bibitem{magma}
-W. Bosma, J. Cannon, and C. Playoust.
-\newblock The {M}agma algebra system. {I}. {T}he user language.
-\newblock {\em J. Symbolic Comput.}, 24(3-4):235--265, 1997.
-\newblock Computational algebra and number theory (London, 1993).
-
-
-%\bibitem{BreuilDiamond} C.\ Breuil and F.\ Diamond
-%{\em Formes modulaires de Hilbert modulo $p$ et valeurs d'extensions galoisiennes},
-%Annales Scientifiques de l'\'{E}cole Normale Sup\'{e}rieure, to appear.
-
-
-%\bibitem{bdj10} K. Buzzard, F. Diamond, and F. Jarvis,
-%{\em On Serre's conjecture for mod $\ell$ Galois representations over totally real fields.} 
-%Duke Math. J. {\bf 155} (2010), no. 1, 105--161.
-
-\bibitem{BH06} C.\ J.\ Bushnell, G.\ Henniart, 
-{\em The local Langlands conjecture for $\GL(2)$.} 
-{\it Grundlehren der Mathematischen Wissenschaften} {\bf 335},
-Springer-Verlag, Berlin, 2006. xii+347 pp.
-
-
-\bibitem{Cali} \'E.\ Cali, 
-{\em D{\'e}faut de semi-stabilit{\'e} des courbes elliptiques dans le cas non ramifi{\'e}}, 
-Canad.\ J.\ Math.\ {\bf 56} (2004), no 4, 673--698.
-
-\bibitem{car86}  H. Carayol, 
-{\em Sur les repr\'esentations $l$-adiques associ\'ees aux formes modulaires de Hilbert}. 
-Ann. Sci. \'Ecole Norm. Sup. (4) {\bf 19} (1986), no. 3, 409--468.
-
-%\bibitem{cli37}
-%A. H. Clifford, {\em Representations induced in an invariant subgroup}, Ann.
-%of Math. {\bf 38} (1937), 533--550.
-
-\bibitem{cmsv} E. Costa, N. Mascot, J. Sijsling, J. Voight,
-{\em Rigorous computation of the endomorphism ring of a Jacobian}, preprint.
-Available at \url{https://arxiv.org/pdf/1705.09248.pdf}. 
-
-\bibitem{DahmenSiksek} S. R. Dahmen, and S. Siksek,
-{\em Perfect powers expressible as sums of two fifth or seventh powers.} 
-Acta Arith. {\bf 164} (2014), no. 1, 65--100. 
-
-\bibitem{DarmonDuke} H.\ Darmon,
-{\em Rigid local systems, {H}ilbert modular forms, and {F}ermat's last theorem}, 
-Duke Math.\ J.\ {\bf 102} (2000), no 3, 413--449.
-
-\bibitem{DV13} L.~Demb\'el\'e, Lassina, and J.~Voight, 
-{\em Explicit methods for Hilbert modular forms.} Elliptic curves, Hilbert modular forms and Galois deformations, 
-135--198, Adv. Courses Math. CRM Barcelona, Birkh\"auser/Springer, Basel, 2013.
-
-%\bibitem{DDT}
-%H. Darmon, F. Diamond, and R. Taylor, 
-%{\em Fermat's last theorem}. Elliptic curves, modular forms and Fermat's last theorem (Hong Kong, %1993), 2--140, 
-%Int. Press, Cambridge, MA, 1997.
-
-\bibitem{dk16}
-L. Demb\'el\'e, and A. Kumar, 
-{\em Examples of abelian surfaces with everywhere good reduction.} Math. Ann. {\bf 364} (2016), no. 3-4, 1365--1392.
-
-%\bibitem{dk17} 
-%L. Demb\'el\'e, and A. Kumar, 
-%{\em On the existence of abelian surfaces with everywhere good reduction}, in preparation.
-
- 
-\bibitem{dia95} F. Diamond, 
-{\em An extension of Wiles' results.} 
-Modular forms and Fermat's last theorem (Boston, MA, 1995), 475--489, Springer, New York, 1997. 
- 
-%\bibitem{DF1} L.\ Dieulefait and N. Freitas,
-%{\em The Fermat-type equations $x^5 + y^5 = 2z^p$ or $3z^p$ solved through $\Q$-curves},
-%Mathematics of Computation {\bf 83} (2014), no. 286, 917--933.
-
-%\bibitem{DFV} L.\ Demb\'el\'e, N.\ Freitas, and J.\ Voight,
-%{\em On Galois inertial types of elliptic curves over $\Q_\ell$}, preprint.
-
-\bibitem{BP} J.\  Burgos Gil and A.\ Pacetti, 
-{\em Hecke and Sturm bounds for Hilbert modular forms over real quadratic fields.}
-Math. Comp. {\bf 86} (2017), no. 306, 1949--1978. 
-
-\bibitem{DD17} T. Dokchitser, C. Doris
-{\em $3$-torsion and conductor of genus 2 curves}, preprint.
-Available \url{https://arxiv.org/pdf/1706.06162.pdf}. 
-
-\bibitem{Dor17} C. Doris, Package for computing the conductor or genus $2$ curves.
-Available at \url{https://cjdoris.github.io/Genus2Conductor/\#installation}
-
-\bibitem{ek14}
-N. Elkies, and A. Kumar, 
-{\em $K3$ surfaces and equations for Hilbert modular surfaces.}
-Algebra Number Theory {\bf 8} (2014), no. 10, 2297--2411.
- 
-%\bibitem{Ell} J.\ Ellenberg,
-%{\em Galois representations attached to $\Q$-curves and the Generalized Fermat equation $A^4 + B^2 = %C^p$}, Amer.\ J.\ Math.\ {\bf 126} (2016), no. 4, 763--787.
-
-\bibitem{ell05} J. Ellenberg, {\em Serre's conjecture over $\F_9$},
-Ann. of Math. (2) {\bf 161} (2005), no. 3, 1111--1142.
-
-
-\bibitem{feit} W.\ Feit, 
-{\em The Representation Theory of Finite Groups},
-North-Holland, Amsterdam-New York-Oxford, 1982.
-
-%\bibitem{F} N. Freitas,
-%{\em Recipes for Fermat-type equations of the form $x^r + y^r = Cz^p$},
-%Math.\ Z.\ {\bf 279} (2015), no. 3-4, 605--639.
-
-\bibitem{F33p} N. Freitas,
-{\em On the Fermat-type equation $x^3 + y^3 = z^p$},
-Commentarii Mathematici Helvetici {\bf 91} (2016), 295--304.
-
-
-%\bibitem{FS} Freitas, Nuno and Siksek, Samir,
-%{\em Criteria for irreducibility of {${\rm mod}\, p$} representations of {F}rey curves}, J. Th\'eor. Nombres Bordeaux, 27, (2015), no. 1, 67--76.
-
-\bibitem{FLHS} N. Freitas, B. Le Hung, S. Siksek,
-{\em Elliptic Curves over Real Quadratic Fields are Modular},
-Inventiones Mathematicae {\bf 201} (2015), no. 1, 159--206.
-
-
-\bibitem{GV11}
-M.~Greenberg, and J.~Voight, 
-{\em Computing systems of Hecke eigenvalues associated to Hilbert modular forms.}
-Math. Comp. {\bf 80} (2011), no. 274, 1071--1092.
-
-%\bibitem{FNS23n} N.\ Freitas, B.\ Naskr{\k e}cki and M.\ Stoll,
-%{\em The generalized Fermat equation with exponents $2,3,n$.} (preprint)
-%\url{http://www.math.ubc.ca/~nuno/preprint3.pdf}
-
-%\bibitem{Fuj} K.\ Fujiwara,
-%{\em Level optimisation in the totally real case},
-%{\tt arXiv:0602586v1}, 27 February 2006.
-
-%\bibitem{Jarv} F.\ Jarvis,
-%{\em Correspondences on Shimura curves and Mazur's principle at $p$},
-%Pacific J. Math., {\bf 213} (2), 2004, 267--280.
-
-\bibitem{kw09} C.~Khare, and J.-P. Wintenberger, 
-{\em On Serre's conjecture for $2$-dimensional mod p representations of ${\rm Gal}(\overline{\Q}/\Q)$.} 
-Ann. of Math. (2) {\bf 169} (2009), no. 1, 229--253.
-
-\bibitem{kis09} M. Kisin, {\em Moduli of finite flat group schemes, and modularity}. 
-Ann. of Math. (2) {\bf 170} (2009), no. 3, 1085--1180.
-
-\bibitem{Kraus1990} A.\ Kraus,
-{\em Sur le d\'efaut de semi-stabilit\'e des courbes elliptiques \`a r\'eduction additive},
-Manuscripta Math.\ {\bf 69} (1990), no. 4, 353--385.
-
-\bibitem{kut80} P. Kutzko, 
-{\em The Langlands conjecture for $\GL_2$ of a local field.} 
-Ann. of Math. (2) {\bf 112} (1980), no. 2, 381--412.
-
-\bibitem{liu93} Q. Liu, 
-{\em Courbes stables de genre 2 et leur sch\'ema de modules.}
-Math. Ann. {\bf 295} (1993), no. 2, 201--222. 
-
-\bibitem{martin} K.~Martin, 
-{\em The Jacquet-Langlands correspondence, Eisenstein congruences, and integral $L$-values in weight $2$.} 
-Math. Res. Lett. {\bf 24} (2017), no. 6, 1775--1795.
-
-\bibitem{nek12} J.~Nekovar, 
-\emph{{L}evel {R}aising and {A}nticyclotomic {S}elmer {G}roups for {H}ilbert {M}odular {F}orms of
-{W}eight {T}wo}, Canad. J. Math. Vol. {\bf 64} (3), 2012 pp. 588--668.
-
-%\bibitem{Raj} A.\ Rajaei,
-%{\em On the levels of mod {$\ell$} Hilbert modular forms}, 
-%J.\ reine angew.\ Math.\ 
-%{\bf 537} (2001), 33--65.
-
-\bibitem{ribet10}
-K. Ribet, {\em Non-optimal levels of mod $\ell$ reducible Galois representations}, 
-CRM Lecture notes, 2010. Available at \url{http://math.berkeley.edu/~ribet/crm.pdf}.
-
-\bibitem{ribet} K. Ribet, {\em Abelian varieties over $\Q$ and modular forms}. 
-Modular curves and abelian varieties, 241--261, Progr. Math., 224, Birkh\"auser, Basel, 2004.
-
-\bibitem{SerreReps} J.-P.\ Serre, 
-{\em Linear representations of finite groups},
-Springer-Verlag, New York-Heidelberg, 1977.
-Translated from the second French edition by Leonard L. Scott,
-Graduate Texts in Mathematics, Vol. 42. 
- 
-\bibitem{ST1968} J.-P.\ Serre and J.\ Tate,
-{\em Good reduction of abelian varieties},
-Annals of Math.\ {\bf 88} (1968), no. 2, 492--517.
-
-\bibitem{shi78} Goro Shimura, 
-\emph{The special values of the zeta functions associated with 
-{H}ilbert modular forms}, Duke Math. J. \textbf{45} (1978), no.~3, 637--679.
-
-
-%\bibitem{stein} W.~Stein, {\em Modular forms, a computational approach}. 
-%With an appendix by Paul E. Gunnells. Graduate Studies in Mathematics, {\bf 79}. 
-%American Mathematical Society, Providence, RI, 2007. xvi+268 pp.
-
-
-\bibitem{wilson98} J.\ Wilson,
-{\em Curves of genus 2 with real multiplication by a square root of 5}, PhD thesis, University of Oxford, 1998.
-
-\bibitem{yoo}H.~Yoo, {\em Non-optimal levels of a reducible mod $\ell$ modular representation}, preprint.
-Available at \url{https://arxiv.org/pdf/1409.8342.pdf}.
-
-\bibitem{tay89}
-R. Taylor, 
-\emph{On {G}alois representations associated to {H}ilbert modular forms}, 
-Invent.\ Math.\ \textbf{98} (1989), no.~2, 265--280.
-  
- \bibitem{zha01}S.~Zhang, 
- \emph{ {H}eights of {H}eegner {P}oints on {S}himura {C}urves},
-Annals of Math., Second Series, Vol. {\bf 153}, No. 1 (2001), pp. 27--147.
-\end{comment}
 \end{thebibliography}
 
 
