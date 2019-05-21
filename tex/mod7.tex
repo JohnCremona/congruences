@@ -1262,24 +1262,62 @@ $48412981936758748562855/77853743274432041397$ and $-46585/243$.
 
 \section{Congruences between Twists}
 
-\subsection{Quadratic twists}
-Triples~$(E,E',p)$ such that $E'$ is a twist of~$E$ arise in a number
-of contexts in our study.  The following result characterizes this
-situation completely in the case of quadratic twists.
+Congruences between elliptc curves which are twists of each other arise in a number of ways in our study; in this section we look into this situation in detail.
+
+Let $p$ be an odd prime. Write $D_{2n}$ to denote the dihedral group with~$2n$ elements
+and $C_n \subset D_{2n}$ for a normal cyclic subgroup of order~$n$; note that $C_n$ is unique unless $n=2$, in which case $D_{2n} \simeq C_2 \times C_2$. 
+We will also denote by $C \subset \GL_2(\F_p)$ 
+a Cartan subgroup (either split or non-split) 
+and by $N$ its normalizer in $\GL_2(\F_p)$.
+
+Let $K$ be a number field and $E/K$ an elliptic curve. The representation $\rhobar_{E,p}$ has image contained in $N \subset \GL_2(\F_p)$ but not in the Cartan subgroup~$C$ 
+if and only if the projective image 
+$\PP \rhobar_{E,p}(G_K)$ is~$D_{2n}$. In particular, there will be a quadratic extension~$M = K(\sqrt{d})$ corresponding to the subgroup~$C_n$ as above, i.e. $\PP \rhobar_{E,p}(G_M) \simeq C_n$. The character $\eps_d$ cutting out~$M/K$ is obtained also by the composition
+\[
+ \eps_d \; : G_K \to \rhobar_{E,p}(G_K) \twoheadrightarrow \rhobar_{E,p}(G_K)/C \simeq \{\pm 1 \}.
+\]
+
+\subsection{Quadratic Twists}
+
+\begin{proposition} \label{P:twistNumber}
+Let $E/K$ be an elliptic curve satisfying that~$\rhobar_{E,p}$ has projectively dihedral image, 
+that is  $\PP \rhobar_{E,p} (G_K) \simeq D_{2n}$,
+and $M=K(\sqrt{d})$ a quadratic field given as above.
+
+Then the quadratic twist~$E^d$ of $E$ by~$d$ satisfies $E[p] \simeq E^d[p]$ as $G_K$-modules.
+In particular, there are either 1 or 3 quadratic fields~$M$ 
+with this property and the latter case occurs 
+if and only if $n=2$.
+\end{proposition}
+\begin{proof} 
+Recall from the above discussion that 
+$\rhobar_{E,p}$ has image contained in $N \subset \GL_2(\F_p)$ but not in the Cartan subgroup~$C$. Thus $\Tr \rhobar_{E,p}(\sigma) = 0$ for all $\sigma \in G_K$ such that $\rhobar_{E,p}(\sigma) \not\in C$. 
+
+Let $\eps_d$ denote the character corresponding to~$M$ as above.
+We have $\rhobar_{{E^d}, p} = \rhobar_{E, p} \otimes \eps_d$, and
+hence for all $\sigma \in G_K$ we have the following equality of traces
+\[\Tr \rhobar_{{E^d},p}(\sigma) = \eps_d(\sigma) \cdot \Tr \rhobar_{E,p}(\sigma).\]
+
+Clearly, if $\eps_d(\sigma)=1$ then $\Tr \rhobar_{E,p}(\sigma) = \Tr \rhobar_{E^d,p}(\sigma)$. 
+If $\eps(\sigma) = -1$ then $\rhobar_{E,p}(\sigma) \in \rhobar_{E,p} (G_K) \backslash C$ and $\Tr \rhobar_{E,p}(\sigma) = 0$, so also $\Tr \rhobar_{E^d,p}(\sigma) = 0$.
+Then, $\Tr \rhobar_{E,p}(\sigma) = \Tr \rhobar_{E^d,p}(\sigma)$ 
+for all $\sigma \in G_K$. 
+
+Since $\rhobar_{E,p}$ and $\rhobar_{E',p}$ are irreducible and have the same traces we have $\rhobar_{E,p} \simeq \rhobar_{E',p}$. 
+
+The last statement follows by the discussion above. Indeed, note that there will be one quadratic extension~$M/K$ corresponding to each cyclic subgroup $C_n \subset D_{2n}$ of index~2. 
+\end{proof}
+
+The above proposition shows that we can find congruent quadratic twists when $\rhobar_{E,p}$ has image in the normalizer of a Cartan but not in the Cartan itself. The following proposition gives a coverse statement to this.
 
 \begin{proposition}\label{P:twist}
 Let $E/\Q$ and $E'/\Q$ be elliptic curves which are non-isomorphic
-quadratic twists, say $E' = E^d$ for some $d \in \Q^*$. Assume that
+quadratic twists, say $E' = E^d$ for some $d \in \Q^*$ not a square. Assume that
 $E[p]\cong E'[p]$ with $p\ge3$.
 
-Then the image of~$\rhobar_{E,p}$ is contained in the normaliser of a
-Cartan subgroup of $\GL_2(\F_p)$ but not in the subgroup itself.
-Moreover, there are either 1 or 3 values of~$d$ with this property,
-where the latter case occurs when $\rhobar_{E,p}$ has projective image
-$\Z/2\Z \times \Z/2\Z$.
+Then the image of~$\rhobar_{E,p}$ is contained in the normaliser of a Cartan subgroup of $\GL_2(\F_p)$ but not in the subgroup itself.
 
-In particular, if $p \geq 5$ is a prime of good reduction of~$E$ then
-there is only one such value of~$d$.
+Furthermore, if $p \geq 5$ is a prime of good reduction of~$E$ then there is a unique value of~$d$ modulo squares.
 \end{proposition}
 
 %% \begin{proposition}\label{P:twist}
@@ -1322,6 +1360,7 @@ there is only one such value of~$d$.
   contained in the normaliser of a Cartan subgroup~$C$ and $H^+=H\cap
   C$.
 
+\begin{comment}
 Consulting Table~3 of \cite{Sutherland} we find that conjecturally we
 have $p\le11$.  For $p=7$ the only images are (in the notation of
 \cite{Sutherland}) $7Ns$ (the full normaliser of a split Cartan),
@@ -1336,26 +1375,11 @@ modules.
 For $p=11$, as well as images $11Nn$ and $11Ns$ we find $11Nn.1.4$
 which only occurs for $j=0$; each of these has a unique index~$2$
 subgroup.
-
+\end{comment}
 \end{proof}
+The preceding propositions show that
+congruences between quadratic twists occur in particular when the image of $\rhobar_{E,p}$ is the normaliser of a Cartan subgroup. The next result  determines the symplectic type of such congruences. Recall from the introduction this is one of the cases where the local methods from~\cite{FKSym} may not apply.
 
-\subsection{The case of image equal to normaliser of Cartan}
-We have seen in the preceding subsection that congruences between
-quadratic twists occur when the image is contained in the normaliser
-of a Cartan subgroup.  Here we show that the type of congruence
-(symplectic or not) is easy to determine in this situation.
-
-Let $p$ be an odd prime, and fix $\zeta_p \in \Qbar$ a primitive $p$-th root of
-unity.
-
-When $\rhobar_{E,p}$ has image $N \subset \GL_2(\F_p)$, the normaliser
-of a Cartan subgroup~$C$ (either split or non-split), it induces a
-non-trivial quadratic character
-\[
- \eps \; : G_K \to N \twoheadrightarrow N/C \simeq \{\pm 1 \}
-\]
-and we write $K(\sqrt{d})$ for the quadratic extension cut out
-by~$\eps$.
 
 \begin{theorem} \label{T:Cartan}
 Let $p > 2$ be a prime. Let $E/K$ be an elliptic curve 
@@ -1369,7 +1393,9 @@ such isomorphism is symplectic if and only if $C$ is split and $p
 anti-symplectic otherwise.
 \end{theorem}
 
-\begin{proof} We first prove that $E[p] \simeq E^d[p]$ as $G_K$-modules. 
+\begin{proof} The first conclusion follows directly from Proposition~\ref{P:twistNumber}.
+\begin{comment}
+We first prove that $E[p] \simeq E^d[p]$ as $G_K$-modules. 
 Note that $\rhobar_{{E^d}, p} = \rhobar_{E, p} \otimes \eps$, and
 hence for all $\sigma \in G_K$ we have
 \[\Tr \rhobar_{{E^d},p}(\sigma) = \eps(\sigma) \cdot \Tr \rhobar_{E,p}(\sigma).\]
@@ -1378,6 +1404,7 @@ Note that, if $\eps(\sigma) = -1$ then $\rhobar_{E,p}(\sigma) \in N\backslash C$
 therefore, $\Tr \rhobar_{E,p}(\sigma) = \Tr \rhobar_{E^d,p}(\sigma)$ 
 for all $\sigma \in G_K$. Since these representations are irreducible and have
 the same traces it follows that they are isomorphic.
+\end{comment}
 
 From the hypothesis on the image of $\rhobar_{E,p}$ we can 
 choose a basis $P_1, P_2$ of $E[p]$ such that $\rhobar_{E,p}$ has image 
@@ -1401,11 +1428,11 @@ have
                             \begin{pmatrix}
                             a & b\delta \\
                             b & a
-                            \end{pmatrix} \quad \text{ if } \eps(\sigma) = 1,  \\
+                            \end{pmatrix} \quad \text{ if } \eps_d(\sigma) = 1,  \\
 \begin{pmatrix}
 a & b\delta \\
 -b & -a
-\end{pmatrix} \quad \text{ if } \eps(\sigma) = -1.  \\
+\end{pmatrix} \quad \text{ if } \eps_d(\sigma) = -1.  \\
 \end{cases}\]
 Fix $\tau \in G_K$ such that 
 \[
@@ -1424,7 +1451,7 @@ Let $\tw : E[p](\Qbar) \to E^d[p](\Qbar)$ be the map on $p$-torsion points induc
 With a direct calculation we see
 that
 \begin{equation} \label{E:eps}
- \tw(\sigma(P)) = \eps(\sigma)\cdot\sigma(\tw(P)) \quad \text{ for all } \sigma \in G_K 
+ \tw(\sigma(P)) = \eps_d(\sigma)\cdot\sigma(\tw(P)) \quad \text{ for all } \sigma \in G_K 
  \text{ and all } P \in E[P]. 
  \end{equation}
 We now consider the linear
@@ -1434,7 +1461,7 @@ map $\phi : E[p] \to E^d[p]$ defined on the basis by
 \]
 and will show it is $G_K$-equivariant, i.e. $\sigma(\phi(P)) =
 \phi(\sigma(P))$ for all $\sigma \in G_K$ and $P \in E[P]$. Write $P_i
-= (x_i,y_i)$. Since $\eps(\tau) = -1$, we have
+= (x_i,y_i)$. Since $\eps_d(\tau) = -1$, we have
 \[
  \tau(\phi(P_1)) = \tau(\tw(P_2)) = -\tw(\tau(P_2)) = -\tw (-P_2) = \phi(P_1) = \phi(\tau(P_1)),
 \]
@@ -1444,7 +1471,7 @@ where in the second inequality we used~\eqref{E:eps}; also,
   -\delta \tw(P_1) = -\phi (P_2) = \phi(\tau(P_2)).
 \]
 Recall that for $\sigma \in G_K$ such that $\rhobar_{E,p}(\sigma) \in C$, we have
-$\eps(\sigma) = 1$ and
+$\eps_d(\sigma) = 1$ and
 \[
  \rhobar_{E,p}(\sigma) =  \begin{pmatrix}
                             a & b\delta \\
@@ -1487,6 +1514,9 @@ arising from CM curves as in the previous remark. This is because
 such mod~$p$ isomorphisms occur within an isogeny class, and we have
 omitted these from consideration.
 \end{remark}
+
+\subsection{Mod $p$ isomorphisms between elliptic curves with
+$j$-invariant~$1728$} blah blah
 
 
 \subsection{Mod $7$ isomorphisms between elliptic curves with
@@ -1776,7 +1806,7 @@ Recall that the conductor of an elliptic curve at primes~$p \geq 5$ divides~$p^2
 it follows that, for each $\ell \neq p$, if 
 $\vv_{\ell}(N_p) \neq \vv_{\ell}(N_E) = \vv_{\ell}(\tilde{N}_E)$ then
 $\vv_{\ell}(N_E) = 1$ and $p \mid \vv_{\ell}(\Delta_E)$.
-Therefore, we can find primes $q_i \neq p$ such that 
+Therefore, we can find primes $q_i \nmid pN_p$ such that 
 \begin{equation}\label{E:condE}
   N_E = p^s \cdot N_p \cdot q_0 \cdot \ldots \cdot q_n, 
  \qquad p \mid \vv_{q_i}(\Delta_E), \qquad 0 \leq s \leq 2
@@ -1786,7 +1816,7 @@ $\tilde{N}_E \neq N_p$.
 
 Now let $E'/\Q$ be another elliptic curve satisfying $E[p] \simeq E'[p]$ as $G_\Q$-modules. Write $N_{E'}$, $\tilde{N}_{E'}$, $\Delta_{E'}$, $N'_p$ and $\rhobar_{E',p}$ to denote analogous quantities attached to~$E'$. We have $N'_p \mid \tilde{N}_{E'}$.
 
-By assumption, we have $\rhobar_{E',p} \simeq \rhobar_{E,p}$ so these representations have the same Serre level, i.e. $N_p = N_p'$ and (similarly as for~$E$) we can find primes~$q_i' \neq p$ such that~$N_{E'}$ factors as
+By assumption, we have $\rhobar_{E',p} \simeq \rhobar_{E,p}$ so these representations have the same Serre level, i.e. $N_p = N_p'$ and (similarly as for~$E$) we can find primes~$q_i' \nmid pN'_p$ such that~$N_{E'}$ factors as
 \begin{equation}\label{E:condE'}
  N_{E'} = p^{s'} \cdot N_p \cdot q'_0 \cdot \ldots \cdot q'_m, 
  \qquad p \mid \vv_{q'_i}(\Delta_E'),
@@ -1797,7 +1827,7 @@ for $p \geq 19$. Similar conclusions apply to $E'$, $s'$ and $k'$.
 Therefore, we have 2 cases: (i) if $s = 2$ or $s=1$ and $p \nmid \vv_{p}(\Delta_E)$ then $s'=s$; (ii) if $s=0$ or $s=1$ and $p \mid \vv_{p}(\Delta_E)$ then $s' \in \{0,1 \}$.
 
 Suppose $E'$ is a non-isogenous curve with the same conductor. Taking differences of traces of Frobenius at different primes shows that 
-there are no congruence between any two of them for $p \geq 19$, otherwise $p$ needs to divide the differences. 
+there are no congruence between any two of them for $p \geq 19$, otherwise $p$ needs to divide the differences (see (1) below). 
 Thus $N_E \neq N_{E'}$.
 
 Suppose $\tilde{N}_E = \tilde{N}_{E'}$, so that the only difference in the conductors is at~$p$. From the possibilities above for the Serre weights, after interchanging $E$ and $E'$ if needed, 
@@ -1805,7 +1835,8 @@ we can assume $s=1$ and $s'=0$ and we also know that $p \mid \vv_p(\Delta_E)$. O
 
 Let $\calM_E$ be the set of pairs $(q,p)$ where $q$ is a multiplicative prime of~$E$ and
 $p \geq 19$ is a prime satisfying $p \mid \vv_{q}(\Delta_E)$.
-Note that we can have $q=p$. Let $\calM_{E'}$ be the analogous set for~$E'$. From the previous paragraph we conclude that $p$ has to occurs in one of the pairs in~$\calM_E$ or $\calM_{E'}$.
+Note that we can have $q=p$. Let $\calM_{E'}$ be the analogous set for~$E'$. From the previous paragraph we conclude that 
+$p$ has to occurs in the second entry of one of the pairs~$(q,p)$ in~$\calM_E$ or $\calM_{E'}$.
 
 To complete the proof, we carried out the following computations on
 the LMFDB database of all elliptic curves defined over~$\Q$ and
@@ -1819,12 +1850,12 @@ conductor at most~$\numprint{400000}$:
   computation shows that there are no congruences mod~$p$ between
   non-isogenous curves of the same conductor for $p\ge19$.
 \item For one curve~$E$ in each isogeny class we computed the set
-  $M_E$ from the conductor and minimal discriminant.  We found that
-  the largest prime~$p$ occurring in any~$M_E$ was~$97$: in fact,
+  $\calM_E$ from the conductor and minimal discriminant.  We found that
+  the largest prime~$p$ occurring in any~$\calM_E$ was~$97$: in fact,
   all~$p$ with $19\le p\le97$ occur except for~$p=89$.  Hence any
   mod~$p$ congruence between non-isogenous curves in the database must
   have~$p\le97$.  In view of the computations of
-  Section~\ref{S:statistics}, there are no congruences for $19\le
+  Section~\ref{S:statistics}, there are no such congruences for $19\le
   p\le97$.
 
   Note that the set~$M_E$ is unchanged if we replace $E$ by a curve
