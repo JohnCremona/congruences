@@ -1553,7 +1553,87 @@ omitted these from consideration.
 \end{remark}
 
 \subsection{Mod $p$ isomorphisms between elliptic curves with
-$j$-invariant~$1728$} blah blah
+  $j$-invariant~$1728$}
+
+Over any number field~$K$, elliptic curves with $j$-invariant~$1728$
+have a model of the form
+\[
+E_a:\quad Y^2 = X^3+aX,
+\]
+with $a$ uniquely determined modulo~$(K^*)^4$, and all such curves are
+quartic twists, where the twist by $t\in K^*$ takes $E_a$ to $E_{ta}$.
+Each $E_a$ has CM by $\sqrt{-1}$; if $-1$ is not a square in~$K$ then
+$E_a$ and $E_{-4a}$ are not isomorphic but are $2$-isogenous, and
+hence $E_a[p]\cong E_{-4a}[p]$ for all $p>2$.  When $-1$ is a square
+in~$K$ then $\End_K(E_a)\cong\Z[\sqrt{-1}]$ and this isogeny is the
+endomorphism~$1+\sqrt{-1}$.  Note also that when $-1$ is a square,
+$-4$ is in fact a $4$th power: $-4=(1+\sqrt{-1})^4$.
+
+Our result for these curves is that there are no other isomorphisms
+between their $p$-torsion for any~$p>2$, provided that the image of
+$\rhobar_{E,p}$ is not too small.
+
+\begin{theorem}\label{T:j=1728}
+Let $K$ be a number field.  For all $a \in K^*$ and all primes~$p>2$,
+the elliptic curves $E_a$ and $E_{-4a}$ have isomorphic mod-$p$ Galois
+representations, the isomorphism being symplectic if and only if $2$
+is a quadratic residue modulo~$p$.
+
+Conversely, if $E_{a_1}[p]\cong E_{a_2}[p]$ then $a_1/a_2 \in\{1,-4\}$
+(modulo~$(K^*)^4$), so there are no other mod~$p$ congruences between
+these curves. \textbf{We need an assumption on the mod~$p$ image being
+  not too small here}
+\end{theorem}
+
+\begin{proof}
+As already remarked, the first part follows from the fact that $E_a$
+and~$E_{-4a}$ are $2$-isogenous, together with the isogeny criterion.
+
+Suppose that $E_{a_1}[p]\cong E_{a_2}[p]$ but that $E_{a_1}$ and
+$E_{a_2}$ are not isomorphic over~$K$.
+
+First consider the case when $E_{a_1}$ and~$E_{a_2}$ become isomorphic
+over a quadratic extension $K(\sqrt{d})$ of~$K$.  This is the case when
+$a_1/a_2$ is a square, but also in other cases: for example, $-4$ is
+not a square over~$\Q$ but equals a $4$th power $(1+\sqrt{-1})^4$
+over the quadratic extension~$\Q(\sqrt{-1})$.
+
+Applying Proposition~\ref{P:twist}, the image of $\rhobar_{E,p}$ is
+contained in the normaliser~$N$ of a Cartan subgroup~$C$, but not
+contained in the Cartan itself, where $N/C$ cuts out the quadratic
+extension $K(\sqrt{d})/K$.  By hypothesis \textbf{NB: not yet stated}
+this is true for a unique pair $(N,C)$; hence the quadratic extension
+cut out by $N/C$ must also be the CM extension $K(\sqrt{-1})$.  Note
+that we cannot have $\sqrt{-1}\in K$ in this situation, since then the
+image would be contained in a Cartan and it would not be the case that
+half the traces were~$0$ (see the proof of Proposition~\ref{P:twist}).
+Hence $K(\sqrt{d})=K(\sqrt{-1})$.
+
+Thus the only way in which the two curves could be quadratic twists is
+when $-1\notin(K^*)^2$ and they are $-1$-twists of each other.  This
+is always possible when $-1\notin(K^*)^2$, since $E_{-4a}$ and $E_a$
+are quadratic twists, and also $2$-isogenous and hence have ismorphic
+mod~$p$ representations for all odd~$p$.
+
+If $a_1/a_2 = d^2$ with $d\in K^*$ not square, then the curves are
+quadratic twists by~$d$, so $K(\sqrt{d})=K(\sqrt{-1})\not= K$.  But
+then $-d\in(K^*)^2$, so $a_1/a_2=(-d)^2\in(K^*)^4$, contradiction.
+
+Hence $a_1/a_2$ is not a square in~$K$.  Let $m=\sqrt{a_1/a_2}$ and
+set $L=K(m)$, a quadratic extension of~$K$.  Since $E_{a_1}[p]\cong
+E_{a_2}[p]$ as $G_L$-modules, and $E_{a_1}$ is isomorphic to~$E_{a_2}$
+over~$L(\sqrt{m})$, by the previous paragraph (applied over~$L$) we
+see that in fact they are isomorphic over~$L$.  But then they are
+quadratic twists over~$K$, so $L=K(\sqrt{-1})$.
+
+It remains to show that $a_1/a_2=-4$ (modulo $4$th powers).  Since
+$L=K(\sqrt{-1})$ we have that $a_1/a_2$ is minus a square, say
+$a_1/a_2=-4s^2$ with $s\in K$.  Also $a_1/a_2\in(L^*)^4$.  Hence
+$s^2=t^4$ with $t\in L$; here we use the fact noted above that $-4$ is
+a $4$th power in $K(\sqrt{-1})$.  Hence $\pm s=t^2$, a square in~$L$
+but not in~$K$.  But~$L=K(\sqrt{-1})$, so $\pm s$ is a square in~$K$
+also, so $a_1/a_2$ is indeed $-4$ times a $4$th power in~$K$.
+\end{proof}
 
 
 \subsection{Mod $7$ isomorphisms between elliptic curves with
