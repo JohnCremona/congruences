@@ -1312,20 +1312,27 @@ Since $\rhobar_{E,p}$ and $\rhobar_{E',p}$ are irreducible and have the same tra
 The last statement follows by the discussion above. Indeed, note that there will be one quadratic extension~$M/K$ corresponding to each cyclic subgroup $C_n \subset D_{n}$ of index~2. 
 \end{proof}
 
+\begin{corollary} Let $E/\Q$ be an elliptic curve with CM by
+$F=\Q(\sqrt{d})$ with~$d$ squarefree. Then $E[p] \simeq E^d[p]$ for all primes $p \geq 5$  unramified 
+in~$F$ and of good reduction for~$E$. 
+Moreover, for each such~$p$, $d$ is unique with this property 
+\end{corollary}
+\begin{proof} 
+Since $E$ has CM by~$F$ we know that the image of~$\rhobar_{E,p}$ is the normalizer of a Cartan for all primes 
+$p$ unramified in~$F$ and of good reduction for~$E$. 
+Moreover, $\PP \rhobar_{E,p} \simeq D_n \neq C_2 \times C_2$ (since $p \geq 5$) and $\PP \rhobar_{E,p}(G_F) \simeq C_n$. Thus, for each such~$p$, in the notation of Proposition~\ref{P:twistNumber}, we have $M=F$ and $M$ is unique, hence~$d$ squarefree is unique.
+\end{proof}
+
 The above proposition shows that we can find congruent quadratic twists when $\rhobar_{E,p}$ has image in the normalizer of a Cartan but not in the Cartan itself. The following proposition gives a converse statement to this.
 
 \begin{proposition}\label{P:twist}
 Let $E/K$ and $E'/K$ be elliptic curves over a number field~$K$ which
 are non-isomorphic quadratic twists, say $E' = E^d$ for some $d \in
-K^*$ not a square. Assume that $E[p]\cong E'[p]$ (as $G_K$-modules)
-for some prime $p\ge3$.
+K^*$ not a square. Assume that, 
+for some prime $p\ge3$, we have $E[p]\cong E'[p]$ as $G_K$-modules.
 
 Then the image of~$\rhobar_{E,p}$ is contained in the normaliser of a
 Cartan subgroup of $\GL_2(\F_p)$ but not in the subgroup itself.
-
-Furthermore, if $p \geq 5$ is a prime of good reduction of~$E$, then
-there is a unique value of~$d$ modulo squares such that $E[p]\cong
-E^d[p]$.
 \end{proposition}
 
 \begin{proof}
@@ -1336,18 +1343,18 @@ unramified in the extension.  For such primes~$\frq$ where both curves
 have good reduction (so still excluding only finitely many primes), we
 have on the one hand, since $E'=E^d$,
   \[
-  a_\frq(E') = \chi(\frq) a_\frq(E),
+  a_\frq(E') = \chi(\frq) a_\frq(E)
   \]
   (where $a_\frq(E)$ denotes the trace of Frobenius of of~$E$ over the
   residue field of~$\frq$), and on the other hand, since $E'[p]\cong
-  E[p]$,
+  E[p]$, we have
   \[
-  a_\frq(E') \equiv a_\frq(E) \mod{p}.
+  a_\frq(E') \equiv a_\frq(E) \pmod{p}.
   \]
-  Hence for almost all primes~$\frq$ which are inert
-  in~$K(\sqrt{d})/K$ we have
+  Hence for almost all primes~$\frq$ satisfying $\chi(\frq) = -1$ (i.e. inert
+  in~$K(\sqrt{d})/K$) we have
   \[
-  a_\frq(E') \equiv a_\frq(E) \equiv0 \mod{p}.
+  a_\frq(E') \equiv a_\frq(E) \equiv0 \pmod{p}.
   \]
   So the image $H=\rhobar_{E,p}(G_K)$ has a subgroup~$H^+$ of
   index~$2$ such that all elements of~$H\setminus H^+$ have trace~$0$.
@@ -1355,9 +1362,6 @@ have on the one hand, since $E'=E^d$,
   classification of subgroups of $\PGL_2(\F_p)$ it follows that $H$ is
   contained in the normaliser of a Cartan subgroup~$C$ and $H^+=H\cap
   C$.
-
- The last part follows from group theory: the dihedral group of order
- $2n$ has a unique cyclic subgroup of order~$n$ for $n>2$.
 \end{proof}
 
 \begin{comment}
@@ -1420,20 +1424,17 @@ congruences between quadratic twists occur in particular when the image of $\rho
 
 
 \begin{theorem} \label{T:Cartan}
-Let $p > 3$ be a prime. Let $E/K$ be an elliptic curve 
-over a number field $K$. Assume that $\rhobar_{E,p}$ has image~$N
-\supset C$ as above, and let $E^d$ be the quadratic twist of $E$
-by~$d$.
+Let $p > 3$ be a prime. Let $E/K$ be an elliptic curve. Assume that $\rhobar_{E,p}$ has image~$N \supset C$, and let $E^d$ be the corresponding (unique) quadratic twist of~$E$, as above. 
 
 Then $E[p]$ and $E^d[p]$ are isomorphic $G_K$-modules. Moreover, any
-such isomorphism is symplectic if and only if $C$ is split and $p
-\equiv 1 \pmod{4}$, or $C$ is non-split and $p \equiv 3 \pmod{4}$; and
+such isomorphism is symplectic if and only if $C$ is split and $p \equiv 1 \pmod{4}$, or $C$ is non-split and $p \equiv 3 \pmod{4}$; and
 anti-symplectic otherwise.
 \end{theorem}
 
-\begin{proof} The first conclusion follows directly from Proposition~\ref{P:twistNumber}.
-
-We first prove that $E[p] \simeq E^d[p]$ as $G_K$-modules. 
+\begin{proof} 
+We have $\PP \rhobar_{E,p} \simeq D_n$, hence the first conclusion follows directly from Proposition~\ref{P:twistNumber}; actually, $n \neq 2$ since $p > 3$ and so the value of~$d$ up to squares is unique.
+\begin{comment}
+ We first prove that $E[p] \simeq E^d[p]$ as $G_K$-modules. 
 Note that $\rhobar_{{E^d}, p} = \rhobar_{E, p} \otimes \eps$, and
 hence for all $\sigma \in G_K$ we have
 \[\Tr \rhobar_{{E^d},p}(\sigma) = \eps(\sigma) \cdot \Tr \rhobar_{E,p}(\sigma).\]
@@ -1442,9 +1443,10 @@ Note that, if $\eps(\sigma) = -1$ then $\rhobar_{E,p}(\sigma) \in N\backslash C$
 therefore, $\Tr \rhobar_{E,p}(\sigma) = \Tr \rhobar_{E^d,p}(\sigma)$ 
 for all $\sigma \in G_K$. Since these representations are irreducible and have
 the same traces it follows that they are isomorphic.
+\end{comment}
 
 From the hypothesis on the image of $\rhobar_{E,p}$ we can 
-choose a basis $P_1, P_2$ of $E[p]$ such that $\rhobar_{E,p}$ has image 
+also choose a basis $P_1, P_2$ of $E[p]$ such that $\rhobar_{E,p}$ has image 
 the subgroup of $\GL_2(\F_p)$ given by 
 \[
 \left\{ 
@@ -1634,7 +1636,6 @@ a $4$th power in $K(\sqrt{-1})$.  Hence $\pm s=t^2$, a square in~$L$
 but not in~$K$.  But~$L=K(\sqrt{-1})$, so $\pm s$ is a square in~$K$
 also, so $a_1/a_2$ is indeed $-4$ times a $4$th power in~$K$.
 \end{proof}
-
 
 \subsection{Mod $7$ isomorphisms between elliptic curves with
 $j$-invariant~$0$} We will show that for every elliptic curve~$E$ with
@@ -1975,7 +1976,7 @@ conductor at most~$\numprint{400000}$:
   Section~\ref{S:statistics}, there are no such congruences for $19\le
   p\le97$.
 
-  Note that the set~$M_E$ is unchanged if we replace $E$ by a curve
+  Note that the set~$\calM_E$ is unchanged if we replace $E$ by a curve
   isogenous to it, provided that the isogeny has degree divisible only
   by primes less than~$19$.  But the only curves defined over~$\Q$ with
   isogenies of prime degree~$p\ge19$ are the CM curves for
