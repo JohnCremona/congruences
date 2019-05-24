@@ -1285,17 +1285,14 @@ $\PP \rhobar_{E,p}(G_K)$ is~$D_{n}$ for some~$n$. In particular, there will be a
 
 We say that two curves $E/K$ and $E'/K$ are {\em quadratic twists},
 when they become isomorphic over a quadratic extension~$L/K$.  Writing
-$L=K(\sqrt{d})$ with $d\in K$ non-square, we denote by~$E^d$ the
-unique $K$-isomorphism class of such curves.
+$L=K(\sqrt{d})$ with $d\in K$ non-square, we denote by~$E^d$ the unique $K$-isomorphism class of quadratic twists of~$E$.
 
 The special case in the following lemma (which is valid over all
 fields~$K$ of characteristic neither~$2$ nor~$3$) will be important
 when we consider curves with $j$-invariant~$1728$ below.
 
-\begin{lemma}\label{L:quadratic-twist}
-Let $E_{a,b}$ be the elliptic curve defined over $K$ by the short
-Weierstrass equation $Y^2=X^3+aX+b$, and let $L=K(\sqrt{d})$ be a
-quadratic extension (so $d\in K$ is not a square).  Then the quadratic
+\begin{lemma}\label{L:quadratic-twist} Let $a, b , d\in K$ with $d$ not a square. Denote by $E_{a,b}$ the elliptic curve defined by the short Weierstrass equation $Y^2=X^3+aX+b$ and 
+let $L=K(\sqrt{d})$. Then the quadratic
 twist~$E_{a,b}^d$ is $E_{ad^2,bd^3}$ unless $L=K(\sqrt{-1})$ and
 $b=0$, when we have $E_{a,0}^{-1}=E_{-4a,0}$.
 \end{lemma}
@@ -1307,7 +1304,7 @@ $u=\sqrt{d}$. We need to ensure that they are not isomorphic over~$K$.
 If so, then there exists $u\in K^*$ such that $ad^2=au^4$ and
 $bd^3=bu^6$.  If $b\not=0$ then $d^3=u^6$ so $d$ is a square in~$K$,
 contradiction.  If $b=0$ then $a\not=0$ and $d^2=u^4$.  Since $d$ is
-non-square this imples $d=-u^2$ and $-1$ non-square, so
+non-square this implies $d=-u^2$ and $-1$ non-square, so
 $L=K(\sqrt{-1})$.  In this case the twist is $E_{-4a,0}$ since $-4$ is
 not a $4$th power in~$K$ (not even a square) but $-4=(1+\sqrt{-1})^4$
 in~$L$.
@@ -1638,7 +1635,7 @@ the elliptic curves $E_a$ and $E_{-4a}$ have isomorphic mod-$p$ Galois
 representations, the isomorphism being symplectic if and only if $2$
 is a quadratic residue modulo~$p$.
 
-Conversely, if $E_{a_1}[p]\cong E_{a_2}[p]$ and the image of
+Conversely, if $E_{a_1}[p]\cong E_{a_2}[p]$ and the projective image of
 $\rhobar_{E_{a_1},p}$ has order greater than~$8$, then $a_1/a_2
 \in\{1,-4\}$ modulo~$(K^*)^4$.
 %% \textbf{We need an assumption on the mod~$p$ image being
@@ -1650,10 +1647,8 @@ The first part follows from the fact that $E_a$ and~$E_{-4a}$ are
 $2$-isogenous, together with the isogeny criterion.
 
 Suppose that $E_{a_1}[p]\cong E_{a_2}[p]$ and the image condition
-holds.  Since $\rhobar_{E_{a_1},p}(G_K)$ has order greater than~$8$,
-we have that $\rhobar_{E_{a_1},p}(G_K)\not\cong C_2\times C_2$, and
-also that for all quadratic extensions $L/K$ we also have
-$\rhobar_{E_{a_1},p}(G_L)\not\cong C_2\times C_2$.
+holds.  Since $\PP \rhobar_{E_{a_1},p}(G_K)$ has order greater than~$8$,
+we have that $\PP \rhobar_{E_{a_1},p}(G_L)\not\cong C_2\times C_2$, for any extension $L/K$ at most quadratic.
 
 We first claim that if $E_{a_1}$ and~$E_{a_2}$ are not isomorphic
 over~$K$ but are quadratic twists by an extension $L=K(\sqrt{d})$
@@ -1662,13 +1657,14 @@ that $E_{a_1}$ and~$E_{a_2}$ become isomorphic over~$L=K(\sqrt{d})$.
 Applying Proposition~\ref{P:twist}, the image of $\rhobar_{E,p}$ is
 contained in the normaliser~$N$ of a Cartan subgroup~$C$, but not
 contained in the Cartan itself, where $N/C$ cuts out the quadratic
-extension $K(\sqrt{d})/K$.  By hypothesis the image is not~$C_2\times
-C_2$, so this is true for a unique pair $(N,C)$.  Hence the quadratic
-extension cut out by $N/C$ must also be the CM extension
-$K(\sqrt{-1})$.  Note that we cannot have $\sqrt{-1}\in K$, since then
-the image would be contained in a Cartan and it would not be the case
-that half the traces were~$0$ (see the proof of
-Proposition~\ref{P:twist}).  Hence $L = K(\sqrt{d})=K(\sqrt{-1})$,
+extension $K(\sqrt{d})/K$.  By hypothesis the projective image is not~$C_2\times
+C_2$, so this is true for a unique pair $(N,C)$. 
+Hence the non-trivial quadratic extension cut out by $N/C$ must also be the CM extension $K(\sqrt{-1})$; in particular, $\sqrt{-1} \not\in K$.
+%Note that we cannot have $\sqrt{-1}\in K$, since then
+%the image would be contained in a Cartan and it would not be the case
+%that half the traces were~$0$ (see the proof of
+%Proposition~\ref{P:twist}).  
+Hence $L = K(\sqrt{d})=K(\sqrt{-1})$,
 proving the claim.
 
 %Thus the only way in which the two curves could be quadratic twists is
@@ -1683,16 +1679,16 @@ We now consider two cases:
 then the curves are isomorphic.  Otherwise, by the claim, they are
 quadratic twists by~$L=K(\sqrt{d})=K(\sqrt{-1})$.  But then
 $-d\in(K^*)^2$, so $a_1/a_2=(-d)^2\in(K^*)^4$, and again the curves
-are isomorphic over~$K$.  So if $a_1/a_2$ is a square, then it must in
+are isomorphic over~$K$.  So if $a_1/a_2$ is a square in~$K$, then it must in
 fact be a $4$th power.
 
 (ii) Assume $a_1/a_2$ is not a square in~$K$.  Let $m=\sqrt{a_1/a_2}$
 and set $L=K(m)$. Thus $a_1/a_2 = m^2$ with $m \in L$ and $E_{a_1}$ is
 isomorphic to~$E_{a_2}$ over~$L(\sqrt{m})$.  Since $E_{a_1}[p]\cong
-E_{a_2}[p]$ as $G_L$-modules, and the image $\rhobar_{E_{a_1},p}(G_L)$
+E_{a_2}[p]$ as $G_L$-modules, and the projective image $\rhobar_{E_{a_1},p}(G_L)$
 has order geater than~$4$, by part (i) over~$L$ we conclude that the
 curves are in fact isomorphic over~$L$.  Since $L$ is a quadratic
-extension of~$K$, the claim gives $L=K(\sqrt{-1})$.  Hence
+extension of~$K$, the claim gives $L=K(\sqrt{-1})$.  From the discussion preceeding the theorem, we have
 $E_{a_2}\cong E_{a_1}^{-1} \cong E_{-4a_1}$, so $a_1/a_2 = -4$ (modulo
 4th powers).
 %%
