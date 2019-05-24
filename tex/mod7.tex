@@ -1283,6 +1283,9 @@ $\PP \rhobar_{E,p}(G_K)$ is~$D_{n}$ for some~$n$. In particular, there will be a
 
 \subsection{Quadratic Twists}
 
+We say that two curves $E/K$ and $E'/K$ are quadratic twists, when they become isomorphic over a quadratic extension~$L/K$.
+This is certainly the case when $E' = dE$ for some $d \in K$ not a square, but it includes more cases when $j(E)=0,1728$.
+
 \begin{proposition} \label{P:twistNumber}
 Let $E/K$ be an elliptic curve satisfying that~$\rhobar_{E,p}$ has projectively dihedral image, 
 that is  $\PP \rhobar_{E,p} (G_K) \simeq D_{n}$,
@@ -1326,8 +1329,9 @@ Moreover, $\PP \rhobar_{E,p} \simeq D_n \neq C_2 \times C_2$ (since $p \geq 5$) 
 The above proposition shows that we can find congruent quadratic twists when $\rhobar_{E,p}$ has image in the normalizer of a Cartan but not in the Cartan itself. The following proposition gives a converse statement to this.
 
 \begin{proposition}\label{P:twist}
-Let $E/K$ and $E'/K$ be elliptic curves over a number field~$K$ which are quadratic twists, say $E' = E^d$ for some $d \in
-K^*$ not a square. Assume that, 
+Let $E/K$ and $E'/K$ be non-isomorphic elliptic curves 
+which become isomorphic over the quadratic extension
+$K(\sqrt{d})$. Assume that, 
 for some prime $p\ge3$, we have $E[p]\cong E'[p]$ as $G_K$-modules.
 
 Then the image of~$\rhobar_{E,p}$ is contained in the normaliser of a
@@ -1335,17 +1339,16 @@ Cartan subgroup of $\GL_2(\F_p)$ but not in the subgroup itself.
 \end{proposition}
 
 \begin{proof}
-Let $\chi$ be the quadratic character of $G_K$ associated to the
-extension $K(\sqrt{d})/K$.  By class field theory, we may regard
-$\chi$ as a $\{\pm1\}$-valued function on the primes~$\frq$ of~$K$
-unramified in the extension.  For such primes~$\frq$ where both curves
-have good reduction (so still excluding only finitely many primes), we
-have on the one hand, since $E'=E^d$,
-  \[
-  a_\frq(E') = \chi(\frq) a_\frq(E)
-  \]
-  (where $a_\frq(E)$ denotes the trace of Frobenius of of~$E$ over the
-  residue field of~$\frq$), and on the other hand, since $E'[p]\cong
+Let $\chi$ be the quadratic character of $G_K$ associated to the extension $K(\sqrt{d})/K$. By hypothesis, the curves are quadratic twists by $K(\sqrt{d})$, so
+their associated Galois representations are twists by~$\chi$. In particular, for primes~$\frq$ of~$K$ where both curves
+have good reduction (so excluding only finitely many primes),
+we have
+\[
+  a_\frq(E') = \chi(\frq) a_\frq(E),
+\]
+where $a_\frq(E)$ and $a_\frq(E')$ denotes the trace of Frobenius at $\frq$ of~$E$ and~$E'$, respectively. 
+  
+Moreover, since $E'[p]\cong
   E[p]$, we have
   \[
   a_\frq(E') \equiv a_\frq(E) \pmod{p}.
@@ -1419,7 +1422,7 @@ Furthermore, if $p \geq 5$ is a prime of good reduction of~$E$ then there is a u
 
 
 The preceding propositions show that
-congruences between quadratic twists occur in particular when the image of $\rhobar_{E,p}$ is the normaliser of a Cartan subgroup. The next result  determines the symplectic type of such congruences. Recall from the introduction this is one of the cases where the local methods from~\cite{FKSym} may not apply.
+congruences between quadratic twists occur in particular when the image of $\rhobar_{E,p}$ is the normaliser of a Cartan subgroup. The next result  determines the symplectic type of such congruences. Recall from the introduction this is one of the cases where the local methods from~\cite{FKSym} may not apply, as illustrated by Example~\ref{Ex:LocalFail7} below.
 
 
 \begin{theorem} \label{T:Cartan}
@@ -1553,6 +1556,18 @@ such mod~$p$ isomorphisms occur within an isogeny class, and we have
 omitted these from consideration.
 \end{remark}
 
+\begin{example} \label{Ex:LocalFail7}
+Consider the elliptic curve 
+\[ E : y^2 + y = x^3 - x^2 - 74988699621831x +  238006866237979285299 \]
+which has conductor $ N_E = 7^2 \cdot  2381 \cdot 134177^2$
+and so it is not in the LMFDB database.
+
+Let $d = -7 \cdot 134177$ and consider~$E^d$ the quadratic twist of~$E$ by~$d$. Applying Theorem~\ref{T:j=1728} (or the general method from Section~\ref{S:statistics}) yelds that
+$E[7] \simeq E^d[7]$ are symplectically isomorphic~$G_\Q$-modules and not anti-symplectically isomorphic. Moreover, one can verify that none of the local criteria in~\cite{FKSym} 
+applies for this case.
+\end{example}
+
+
 \subsection{Mod $p$ isomorphisms between elliptic curves with
   $j$-invariant~$1728$}
 
@@ -1564,15 +1579,18 @@ E_a:\quad Y^2 = X^3+aX,
 and the isomorphism class of~$E_a$ depends only on
 $a$ modulo $4$th powers. 
 Any two such curves are quartic
-twists of each other: the quartic twist of $E_a$ by $t$ is $E_{ta}$, which is isomorphic to $E_a$ if and only if $t$ is a $4$th power. 
+twists of each other: the quartic twist of~$E_a$ by $t$ 
+is~$E_{ta}$, which is isomorphic to~$E_a$ if and only if $t$ is a $4$th power. 
 
 Each $E_a$ has CM by $\Q(\sqrt{-1})$. If $-1$ is not a square in~$K$ then
-$E_a$ and~$E_{-4a}$ are not isomorphic but are $2$-isogenous (Silverman~??), and hence $E_a[p]\cong E_{-4a}[p]$ for 
+$E_a$ and~$E_{-4a}$ are not isomorphic but are $2$-isogenous (see \cite[p. 336]{SilvermanI}), and hence $E_a[p]\cong E_{-4a}[p]$ for 
 all~$p>2$. If $-1$ is a square in $K$,  then $-4=(1+\sqrt{-1})^4$ is a 4th power and 
 $E_a$ and $E_{-4a}$ are isomorphic; 
 moreover, in this case, we have 
-$\End_K(E_a)\cong\Z[\sqrt{-1}]$ and the mentioned isogeny is the
-endomorphism~$1+\sqrt{-1}$.  
+$\End_K(E_a)\cong\Z[\sqrt{-1}]$ and the mentioned isogeny is the endomorphism~$1+\sqrt{-1}$.  
+
+Note this also shows it is possible for two curves $E_{a_1}/K$ and~$E_{a_2}/K$ to be quadratic twists and $a_1/a_2$ not being a square in~$K$ since, when $\sqrt{-1} \notin K$, the curves~$E_{-4a}$ and~$E_a$ become isomorphic 
+over~$K(\sqrt{-1})$ and $-4$ is not a square in~$K$.
 
 Our result for these curves is that there are no other isomorphisms
 between their $p$-torsion for any~$p>2$, provided that the image of
@@ -1580,7 +1598,7 @@ $\rhobar_{E,p}$ is not too small.
 
 \begin{theorem}\label{T:j=1728}
 Let $K$ be a number field.  For all $a \in K^*$ and all primes~$p>2$,
-the elliptic curves $E_a$ and $E_{-4a}$ have isomorphic mod~$p$ Galois
+the elliptic curves $E_a$ and $E_{-4a}$ have isomorphic mod-$p$ Galois
 representations, the isomorphism being symplectic if and only if $2$
 is a quadratic residue modulo~$p$.
 
@@ -1594,35 +1612,23 @@ these curves. \textbf{We need an assumption on the mod~$p$ image being
 As already remarked, the first part follows from the fact that $E_a$
 and~$E_{-4a}$ are $2$-isogenous, together with the isogeny criterion.
 
-As the curves are quartic twists, we have that
-$a_1/a_2 = \alpha^4$ with $\alpha$ at most in 
-a quartic field. 
-We have two possibilities:
+Suppose that $E_{a_1}[p]\cong E_{a_2}[p]$ {\bf and the image condition holds.}
 
-(a) We have $a_1/a_2 = d^2$ in~$K$. Here  
-the curves are quadratic twists by~$d \in K$
-and we can take $\alpha = \sqrt{d}$ and the 
-curves are isomorphic over~$\in K(\sqrt{d})$.
+We claim that if $E_{a_1}$ and~$E_{a_2}$ are not isomorphic over~$K$ and become isomorphic
+over a quadratic extension $L=K(\sqrt{d})$ of~$K$
+then $\sqrt{-1} \notin K$ and $L=K(\sqrt{-1})$.
+Note this holds for the curves 
+$E_{-4a}$ and $E_a$: if $\sqrt{-1} \notin K$ then 
+they not isomorphic over~$K$, are quadratic twists by~$K(\sqrt{-1})$, and also $2$-isogenous thus have ismorphic
+mod~$p$ representations for all odd~$p$.
 
-(b) We have that $a_1/a_2$ is not a square in~$K$.  
-Let $m=\sqrt{a_1/a_2}$ and
-set $L=K(m)$, a quadratic extension of~$K$.  
-Thus $a_1/a_2 = \alpha^4 = m^2$, we can take 
-$\alpha = \sqrt{m}$ and the curves $E_{a_1}/L$ and~$E_{a_2}/L$ are quadratic twists by~$m$.
+We will now prove the claim. Suppose $E_{a_1}$ and~$E_{a_2}$ become isomorphic over~$L=K(\sqrt{d})$.
+This is the case when
+$a_1/a_2$ is a square, but also in other cases: for example, $-4$ is
+not a square over~$\Q$ but equals a $4$th power $(1+\sqrt{-1})^4$
+over the quadratic extension~$\Q(\sqrt{-1})$.
 
-Suppose that $E_{a_1}[p]\cong E_{a_2}[p]$ but that $E_{a_1}$ and $E_{a_2}$ are not isomorphic over~$K$. 
-
-Suppose $E_{a_1}$ and~$E_{a_2}$ become isomorphic over some quadratic extension $K(\sqrt{d})$ of~$K$, 
-that is $a_1/a_2 = \alpha^4$ with $\alpha \in K(\sqrt{d})$. 
-This is is possible in two ways :
-
-(i) We have $a_1/a_2 = d^2$ in~$K$ (i.e. case (a) above). Here  
-the curves are quadratic twists by~$d \in K$ and
-this implies that 
-$\rhobar_{E_{a_1},p} \simeq \rhobar_{E_{a_1},p} \otimes \chi_d$, where $\chi_d$ is the character 
-corresponding to~$K(\sqrt{d})$.
-
-Applying Proposition~\ref{P:twist}, the image of $\rhobar_{E_{a_1},p}$ is
+Applying Proposition~\ref{P:twist}, the image of $\rhobar_{E,p}$ is
 contained in the normaliser~$N$ of a Cartan subgroup~$C$, but not
 contained in the Cartan itself, where $N/C$ cuts out the quadratic
 extension $K(\sqrt{d})/K$.  By hypothesis \textbf{NB: not yet stated}
@@ -1631,47 +1637,41 @@ cut out by $N/C$ must also be the CM extension $K(\sqrt{-1})$.  Note
 that we cannot have $\sqrt{-1}\in K$ in this situation, since then the
 image would be contained in a Cartan and it would not be the case that
 half the traces were~$0$ (see the proof of Proposition~\ref{P:twist}).
-Hence $K(\sqrt{d})=K(\sqrt{-1})$ is quadratic over~$K$,
-\begin{comment}
-{\bf I don't understand this paragraph :}
-Thus the only way in which the two curves could be quadratic twists is
-when $-1\notin(K^*)^2$ and they are $-1$-twists of each other.  This
-is always possible when $-1\notin(K^*)^2$, since $E_{-4a}$ and $E_a$
-are quadratic twists, and also $2$-isogenous and hence have ismorphic
-mod~$p$ representations for all odd~$p$.
-\end{comment}
-and therefore $d=-s^2$, $s \in K$ and so $a_1/a_2 = d^2 = s^4$, thus $E_{a_1}$ and~$E_{a_2}$ are isomorphic over~$K$. 
+Hence $L = K(\sqrt{d})=K(\sqrt{-1})$, proving the claim.
 
+%Thus the only way in which the two curves could be quadratic twists is
+%when $-1\notin(K^*)^2$ and they are $-1$-twists of each other.  This
+%is always possible when $-1\notin(K^*)^2$, since $E_{-4a}$ and $E_a$
+%are quadratic twists, and also $2$-isogenous and hence have ismorphic
+%mod~$p$ representations for all odd~$p$.
 
-(ii) We have $a_1/a_2 = \alpha^4$ in $K(\sqrt{d})$
-but $a_1/a_2$ is not a square in~$K$. 
-Here the curves are quadratic twists in $K(\sqrt{d})$ which are also isomorphic over this field; note this is the case in the example mentioned above: $-4$ is
-not a square in~$\Q$ but equals the $4$th power $(1+\sqrt{-1})^4$ over~$\Q(\sqrt{-1})$. In this setting, 
-we only know the weaker condition on the representations
-$\rhobar_{E_{a_1},p}|_{G_{K(\sqrt{d})}} \simeq \rhobar_{E_{a_2},p}|_{G_{K(\sqrt{d})}}$, so we cannot apply Proposition~\ref{P:twist} directly.
+We consider two cases: 
 
+(i) Assume $a_1/a_2 = d^2$ with $d\in K^*$. 
+Thus the curves are isomorphic over~$L = K(\sqrt{d})$. 
+If $d$ is not a square in~$K$, then the curves are not isomorphic over~$K$ and the claim implies 
+$L = K(\sqrt{d})=K(\sqrt{-1})\not= K$.  
+But then $-d\in(K^*)^2$, so $a_1/a_2=(-d)^2\in(K^*)^4$, a contradiction. We conclude that $d$ is a square in~$K$ and 
+$E_{a_1}$ and~$E_{a_2}$ are isomorphic over~$K$.
 
-%If $a_1/a_2 = d^2$ with $d\in K^*$ not square, then the curves are
-%quadratic twists by~$d$, so $K(\sqrt{d})=K(\sqrt{-1})\not= K$.  But
-%then $-d\in(K^*)^2$, so $a_1/a_2=(-d)^2\in(K^*)^4$, contradiction.
+(ii) Assume $a_1/a_2$ is not a square in~$K$.  Let $m=\sqrt{a_1/a_2}$ and set $L=K(m)$. Thus $a_1/a_2 = m^2$ with $m \in L$ and 
+$E_{a_1}$ is isomorphic to~$E_{a_2}$ over~$L(\sqrt{m})$.
+Since $E_{a_1}[p]\cong
+E_{a_2}[p]$ as $G_L$-modules {\bf and the condition on the image still holds for~$G_L$}, by applying (i) over~$L$ we
+conclude the curves are 
+in fact they are isomorphic over~$L$, which is a quadratic extension of~$K$, so $L=K(\sqrt{-1})$ by the claim.
 
-Let $m=\sqrt{a_1/a_2}$ and
-set $L=K(m)$, a quadratic extension of~$K$.  
-Since $ a_1/a_2 = m^2$ in~$L$, 
-$E_{a_1}[p]\cong E_{a_2}[p]$ as $G_L$-modules, and $E_{a_1}$ and~$E_{a_2}$ are quadratic twists by~$m$ (in particular isomorphic over~$L(\sqrt{m})$) we can apply the argument in~(i) to $E_{a_1}/L$ and $E_{a_2}/L$ {\bf (provided the image condition still holds)} and conclude they are isomorphic over~$L$. This means that $a_1/a_2 = m^2 = m_0^4 $ with $m_0 \in L$.
+To finish the proof we need to show that $a_1/a_2 \in \{1,-4 \}$ modulo 4th powers. 
 
-{\bf But then they are quadratic twists over~$K$}, so $L=K(\sqrt{-1})$.
-
-It remains to show that $a_1/a_2=-4$ (modulo $4$th powers).  Since
-$L=K(\sqrt{-1})$ we have that $a_1/a_2$ is minus a square, say
-$a_1/a_2=-4s^2$ with $s\in K$.  We already know that $a_1/a_2\in(L^*)^4$.  Hence
+Clearly, in case (i) we have $a_1/a_2 = 1$ modulo 4th powers, as the curves are isomorphic over~$K$.
+Suppose we are in case (ii).
+Since
+$L=K(\sqrt{a_1/a_2})=K(\sqrt{-1})$ we have that $a_1/a_2$ is minus a square, say
+$a_1/a_2=-4s^2$ with $s\in K$.  Also $a_1/a_2\in(L^*)^4$, so
 $s^2=t^4$ with $t\in L$; here we use the fact noted above that $-4$ is
-a $4$th power in $K(\sqrt{-1})$.  Therefore, $\pm s=t^2$ is a square in~$L$, 
-but~$L=K(\sqrt{-1})$ {\bf so $\pm s$ is a square in~$K$}
-and so $a_1/a_2$ is indeed $-4$ times a $4$th power in~$K$.
-
-{\bf What happens to the case where the curves are not isomorphic over a quadratic field? This is a subcase of (b) above.}
-
+a $4$th power in $K(\sqrt{-1})$.  Hence $\pm s=t^2$ is a square in~$L$
+but not in~$K$. But~$L=K(\sqrt{-1})$, {\bf so $\pm s$ is a square in~$K$
+also}, so $a_1/a_2$ is indeed $-4$ times a $4$th power in~$K$.
 \end{proof}
 
 \subsection{Mod $7$ isomorphisms between elliptic curves with
@@ -2143,6 +2143,10 @@ W.\thinspace{}A. Stein et~al.
 \newblock {\em {S}age {M}athematics {S}oftware ({V}ersion 8.7)}.
 \newblock The Sage Development Team, 2019.
 \newblock {\tt http://www.sagemath.org}.
+
+\bibitem{SilvermanI} J.\ H. Silverman,
+{\em The arithmetic of elliptic curves},
+Second Edition, Graduate Texts in Mathematics {\bf 106}, Springer, Dordrecht, 2009.
 
 \bibitem{Sutherland}
 Andrew V. Sutherland.
