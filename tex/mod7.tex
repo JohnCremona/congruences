@@ -1456,15 +1456,28 @@ congruences between quadratic twists occur in particular when the image of $\rho
 
 
 \begin{theorem} \label{T:Cartan}
-Let $p > 3$ be a prime. Let $E/K$ be an elliptic curve. Assume that $\rhobar_{E,p}$ has image~$N \supset C$, and let $E^d$ be the corresponding (unique) quadratic twist of~$E$, as above. 
+Let $p \geq 3$ be a prime. Let $E/K$ be an elliptic 
+curve such that $\rhobar_{E,p}$ has image equal to the normalizer~$N$ of a Cartan~$C$ (either split or non-split).
 
-Then $E[p]$ and $E^d[p]$ are isomorphic $G_K$-modules. Moreover, any
-such isomorphism is symplectic if and only if $C$ is split and $p \equiv 1 \pmod{4}$, or $C$ is non-split and $p \equiv 3 \pmod{4}$; and
-anti-symplectic otherwise.
+1) Assume $p > 3$ or $p=3$ and $C$ is non-split.
+Then there is a unique quadratic twist~$E^d$ of~$E$ 
+such that $E[p] \simeq E^d[p]$ as $G_K$-modules. Moreover, these modules are symplectically isomorphic if and only if $C$ is split and $p \equiv 1 \pmod{4}$, or $C$ is non-split and $p \equiv 3 \pmod{4}$; and
+anti-symplectic otherwise. 
+
+2) Assume $p=3$ and $C$ is split. Then there are three quadratic twists~$E^{d_i}$ of~$E$ such 
+that $E[3] \simeq E^{d_i}[3]$ as $G_K$-modules, for $i=1,2,3$  . Moreover, for two values of~$d_i$ these modules are anti-symplectically isomorphic and for the third value they are symplectically isomorphic.
 \end{theorem}
 
 \begin{proof} 
-We have $\PP \rhobar_{E,p} \simeq D_n$, hence the first conclusion follows directly from Proposition~\ref{P:twistNumber}; actually, $n \neq 2$ since $p > 3$ and so the value of~$d$ up to squares is unique.
+The hypothesis on the image implies $\PP \rhobar_{E,p} \simeq D_n$ for some $n \geq 2$. 
+
+1) Note that $n=4$ when $p =3$ and $C$ is non-split
+and $n \neq 2$ if $p > 3$. 
+Thus, Proposition~\ref{P:twistNumber} implies there is a unique quadratic twist~$E^d$ such that $E[p] \simeq~E^d[p]$.
+Furthermore, the field $K(\sqrt{d})$ is contained in the $p$-torsion fields of $E$ and $E^d$ and restricting to $G_{K(\sqrt{d})}$ corresponds to have image in~$C$. 
+Write $\eps_d$ for the quadratic character of~$G_K$ 
+fixing~$K(\sqrt{d})$.
+
 \begin{comment}
  We first prove that $E[p] \simeq E^d[p]$ as $G_K$-modules. 
 Note that $\rhobar_{{E^d}, p} = \rhobar_{E, p} \otimes \eps$, and
@@ -1567,6 +1580,17 @@ as desired. Finally, we note that
  \]
 where the last equality holds since $\tw$ preserves the Weil pairing.
 Thus $\phi$ is symplectic if and only if $(-\delta/p) = 1$.
+
+2) In this case we have $\PP \rhobar_{E,3} \simeq C_2 \times C_2$ therefore there are three twists $E^{d_i}$ of~$E$ such that $E[3] \simeq E^{d_i}[3]$ by Proposition~\ref{P:twistNumber}. We have $K(\sqrt{d_i}) \subset K(E[3]) = K(E^{d_i}[3])$.
+
+The normalizer~$N$ of a split Cartan $C \subset \GL_2(\F_3)$ has three index 2 subgroups: the split cartan~$C$, another split Cartan~$C'$ and third subgroup~$H$ whose normalizer is the normalizer of non-split Cartan.
+Restriction to the $G_{K(\sqrt{d_i})}$ corresponds to~$\rhobar_{E,3}$ having image in each of these subgroups. 
+Therefore, for each of the two pairs $(N,C)$ and $(N,C')$ corresponding to (say) $d_1$ and~$d_2$, we can apply the same proof as in part 1). This yelds that 
+$E[3] \simeq E^{d_i}[3]$ are
+anti-symplectically isomorphic for $i=1,2$.
+
+We are left to show that $E[3] \simeq E^{d_3}[3]$ are symplectically isomorphic.
+Indeed, we know that $E[3] \simeq E^{d_1}[3] \simeq E^{d_2}[3]$ where both the first isomorphism and the composition are anti-symplectic. Thus $E^{d_1}[3] \simeq E^{d_2}[3]$ are symplectically isomorphic $G_K$-modules. Because each of the twists satisfies the same hypothesis as~$E$ we can apply the first part of our argument to~$E^{d_1}$ to conclude the statement of the theorem holds for~$E^{d_1}$, hence also for~$E$.
 \end{proof}
 
 \begin{remark}\label{R:CM}
