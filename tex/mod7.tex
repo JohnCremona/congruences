@@ -1235,15 +1235,57 @@ and 159 antisymplectic.
 For $p\ge11$ there are no reducible cases to consider.
 
 \subsection{Twists}
-It is easy to see that if there is a mod~$p$ congruence between two
-elliptic curves~$E_1$ and~$E_2$, then for any $d\in\Q^*$ there will
-also be a congruence (of the same symplectic type) between their
-quadratic twists $E_1^d$ and~$E_2^d$.  Nevertheless it is hard to say
-precisely how many congruences there in the database ``up to twist'',
-since twisting changes conductor (in general), so we may have a set of
-mutually $7$-congruent elliptic curves in the database, but with one or
-more of their twists not in the database, so the twisted set in
-our data will be smaller.
+If there is a mod~$p$ congruence between two elliptic curves~$E_1$
+and~$E_2$, then for any $d\in\Q^*$ there will also be a congruence (of
+the same symplectic type) between their quadratic twists $E_1^d$
+and~$E_2^d$.
+
+\begin{proposition}
+Let $E_1$ and~$E_2$ be elliptic curves defined over a number field~$K$
+and $p$ a prime such that $E_1[p]\cong E_2[p]$.  Then, for all
+non-square $d\in K^*$ we also have $E_1^d[p]\cong E_2^d[p]$.
+\end{proposition}
+\begin{proof}
+Let $Y^2=X^3+a_kX+b_k$ for $k=1,2$ be short Weierstrass equations for
+$E_1$ and $E_2$ respectively.  Let $\sigma$ be the nontrivial
+automorphism of $K(\sqrt{d})/K$ and denote by $[-1]$ the negation
+automorphism $(x,y)\mapsto(x,-y)$ on each elliptic curve.
+
+(1) Assume first that either $d\not=-1$, or that both $b_1$ and~$b_2$
+are non-zero, so the quadratic twists have equations
+$E_k^d:Y^2=X^3+a_kd^2X+b_kd^3$.  (See Lemma~\ref{L:quadratic-twist}.)
+
+An isomorphism $E_k\to E_k^d$, defined over~$K(\sqrt{d})$, is given by
+$\alpha_k:(x,y)\mapsto (dx,d\sqrt{d}y)$.  Then we have
+\[
+\alpha_k^{\sigma} = [-1]\circ\alpha_k = \alpha_k\circ[-1]
+\]
+for $k=1,2$.  Let $\phi:E_1[p]\to E_2[p]$ be a $G_K$-equivariant
+isomorphism.  Define $\psi:E_1^d[p]\to E_2^d[p]$ by
+$\psi=\alpha_2\circ\phi\circ\alpha_1^{-1}$, which is a
+$G_{K(\sqrt{d})}$-equivariant linear isomorphism, satisfying
+\[
+\psi^{\sigma} =
+\alpha_2^{\sigma}\circ\phi^{\sigma}\circ(\alpha_1^{-1})^{\sigma} =
+\alpha_2\circ[-1]\circ\phi\circ[-1]\circ\alpha_1^{-1} = \psi,
+\]
+since $[-1]\circ\phi=\phi\circ[-1]$, as $\phi$ is linear.  Hence in
+fact $\psi$ is $G_K$-equivariant.
+
+(2) Now suppose that $d=-1\notin(K^*)^2$, and that one of the curves,
+say~$E_1$ has $j$-invariant~$1728$.  Now $\rhobar_{E_1,p}$ has image
+contained in the normaliser of a Cartan subgroup but not in the Cartan
+itself; by Proposition~\ref{P:twistNumber} we have $E_1[p]\cong
+E_1^{-1}[p]$.  Since $E_1[p]\cong E_2[p]$ we also have $E_2[p]\cong
+E_2^{-1}[p]$ for the same reason, and hence $E_1^{-1}[p]\cong
+E_2^{-1}[p]$.
+\end{proof}
+
+Despite this result, it is hard to say precisely how many congruences
+there in the database ``up to twist'', since twisting changes
+conductor (in general), so we may have a set of mutually $7$-congruent
+elliptic curves in the database, but with one or more of their twists
+not in the database, so the twisted set in our data will be smaller.
 
 Instead, to have a measure of how many congruences we have found up
 to twist, we simply report on how many distinct $j$-invariants we
@@ -1583,9 +1625,9 @@ Thus $\phi$ is symplectic if and only if $(-\delta/p) = 1$.
 
 2) In this case we have $\PP \rhobar_{E,3} \simeq C_2 \times C_2$ therefore there are three twists $E^{d_i}$ of~$E$ such that $E[3] \simeq E^{d_i}[3]$ by Proposition~\ref{P:twistNumber}. We have $K(\sqrt{d_i}) \subset K(E[3]) = K(E^{d_i}[3])$.
 
-The normalizer~$N$ of a split Cartan $C \subset \GL_2(\F_3)$ has three index 2 subgroups: the split cartan~$C$, another split Cartan~$C'$ and third subgroup~$H$ whose normalizer is the normalizer of non-split Cartan.
+The normalizer~$N$ of a split Cartan $C \subset \GL_2(\F_3)$ has three index 2 subgroups: the split Cartan~$C$, another split Cartan~$C'$ and third subgroup~$H$ whose normalizer is the normalizer of non-split Cartan.
 Restriction to the $G_{K(\sqrt{d_i})}$ corresponds to~$\rhobar_{E,3}$ having image in each of these subgroups. 
-Therefore, for each of the two pairs $(N,C)$ and $(N,C')$ corresponding to (say) $d_1$ and~$d_2$, we can apply the same proof as in part 1). This yelds that 
+Therefore, for each of the two pairs $(N,C)$ and $(N,C')$ corresponding to (say) $d_1$ and~$d_2$, we can apply the same proof as in part 1). This yields that 
 $E[3] \simeq E^{d_i}[3]$ are
 anti-symplectically isomorphic for $i=1,2$.
 
@@ -1610,15 +1652,35 @@ such mod~$p$ isomorphisms occur within an isogeny class, and we have
 omitted these from consideration.
 \end{remark}
 
+\begin{example} \label{Ex:3twists}
+  Let $E$ be the elliptic curve with LMFDB label~\lmfdbec{6534}{a}{1},
+  of conductor $6534=2\cdot3^3\cdot11^2$.  The image of the mod~$3$
+  Galois representation is isomorphic to $D_4$; it may be viewed as
+  either the normalizer of a split Cartan, or a subgroup of index~$2$
+  in the normalizer of a non-split Cartan, the latter being isomorphic
+  to~$D_8$.  The three quadratic subfields of the $3$-division fields
+  are $\Q(\sqrt{-3})$, $\Q(\sqrt{-11})$, and~$\Q(\sqrt{33})$; the
+  corresponding quadratic twist of~$E$ are
+  $E^{-3}=\lmfdbec{6534}{v}{1}$, $E^{-11}=\lmfdbec{6534}{p}{1}$, and
+  $E^{33}=\lmfdbec{6534}{h}{1}$ respectively.  All four curves have
+  isomorphic mod~$3$ representations, the isomorphism being
+  antisymplectic for $E^{-11}$ and $E^{33}$ and symplectic for
+  $E^{-3}$. \textbf{NF: please check I have this the right way round.}
+\end{example}
 \begin{example} \label{Ex:LocalFail7}
-Consider the elliptic curve 
-\[ E : y^2 + y = x^3 - x^2 - 74988699621831x +  238006866237979285299 \]
-which has conductor $ N_E = 7^2 \cdot  2381 \cdot 134177^2$
-and so it is not in the LMFDB database.
+Consider the elliptic curve
+\[ E : y^2 + y = x^3 - x^2 - 74988699621831x +  238006866237979285299, \]
+which has conductor $ N_E = 7^2 \cdot 2381 \cdot 134177^2>2\cdot10^{15}$, so
+is not in the LMFDB database.  The image of the mod~$7$ Galois
+representation is equal to the normalizer of a non-split Cartan
+subgroup.
 
-Let $d = -7 \cdot 134177$ and consider~$E^d$ the quadratic twist of~$E$ by~$d$. Applying Theorem~\ref{T:j=1728} (or the general method from Section~\ref{S:statistics}) yelds that
-$E[7] \simeq E^d[7]$ are symplectically isomorphic~$G_\Q$-modules and not anti-symplectically isomorphic. Moreover, one can verify that none of the local criteria in~\cite{FKSym} 
-applies for this case.
+Let $d = -7 \cdot 134177$ and consider~$E^d$ the quadratic twist
+of~$E$ by~$d$. Applying Theorem~\ref{T:j=1728} (or the general method
+from Section~\ref{S:statistics}) yields that $E[7] \simeq E^d[7]$ are
+symplectically isomorphic~$G_\Q$-modules and not anti-symplectically
+isomorphic. Moreover, one can verify that none of the local criteria
+in~\cite{FKSym} applies for this case.
 \end{example}
 
 
@@ -1659,11 +1721,11 @@ the elliptic curves $E_a$ and $E_{-4a}$ have isomorphic mod-$p$ Galois
 representations, the isomorphism being symplectic if and only if $2$
 is a quadratic residue modulo~$p$.
 
-Conversely, if $E_{a_1}[p]\cong E_{a_2}[p]$ and the projective image of
-$\rhobar_{E_{a_1},p}$ has order greater than~$8$, then $a_1/a_2
-\in\{1,-4\}$ modulo~$(K^*)^4$.
-%% \textbf{We need an assumption on the mod~$p$ image being
-%%   not too small here}
+Conversely, if $E_{a_1}[p]\cong E_{a_2}[p]$ and the projective image
+of $\rhobar_{E_{a_1},p}$ has order greater than~$8$, then $a_1/a_2
+\in\{1,-4\}$ modulo~$(K^*)^4$.  That is, either $E_{a_1}$
+and~$E_{a_2}$ are isomorphic over~$K$, or $-1\notin(K^*)^2$ and
+$E_{a_2}$ is the quadratic twist~$E_{a_1}^{-1}$.
 \end{theorem}
 
 \begin{proof}
@@ -1710,9 +1772,9 @@ fact be a $4$th power.
 and set $L=K(m)$. Thus $a_1/a_2 = m^2$ with $m \in L$ and $E_{a_1}$ is
 isomorphic to~$E_{a_2}$ over~$L(\sqrt{m})$.  Since $E_{a_1}[p]\cong
 E_{a_2}[p]$ as $G_L$-modules, and the projective image $\rhobar_{E_{a_1},p}(G_L)$
-has order geater than~$4$, by part (i) over~$L$ we conclude that the
+has order greater than~$4$, by part (i) over~$L$ we conclude that the
 curves are in fact isomorphic over~$L$.  Since $L$ is a quadratic
-extension of~$K$, the claim gives $L=K(\sqrt{-1})$.  From the discussion preceeding the theorem, we have
+extension of~$K$, the claim gives $L=K(\sqrt{-1})$.  From the discussion preceding the theorem, we have
 $E_{a_2}\cong E_{a_1}^{-1} \cong E_{-4a_1}$, so $a_1/a_2 = -4$ (modulo
 4th powers).
 %%
