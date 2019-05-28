@@ -1352,6 +1352,23 @@ not a $4$th power in~$K$ (not even a square) but $-4=(1+\sqrt{-1})^4$
 in~$L$.
 \end{proof}
 
+\begin{remark}\label{R:2-isog}
+In the special case, note that $E_{-4a,0}$ is also $2$-isogenous
+to~$E_{a,0}$ (see \cite[p. 336]{SilvermanI}).  These curves have CM
+by~$\Z[\sqrt{-1}]$, and after base-change to~$K(\sqrt{-1})$ the
+$2$-isogeny becomes the endomorphism~$1+\sqrt{-1}$.
+\end{remark}
+
+\begin{remark}
+In all cases, the Galois representations of $E$ and~$E^d$ are related
+by
+\begin{equation}
+  \rhobar_{E^d,p} = \rhobar_{E,p}\otimes\eps_d, \label{E:rho-twist}
+\end{equation}
+where $\eps_d$ is the quadratic character of~$G_K$ associated to the
+extension $K(\sqrt{d})/K$.
+\end{remark}
+
 \begin{proposition} \label{P:twistNumber}
 Let $E/K$ be an elliptic curve satisfying that~$\rhobar_{E,p}$ has
 projectively dihedral image, that is $\PP \rhobar_{E,p} (G_K) \simeq
@@ -1368,8 +1385,8 @@ Recall from the above discussion that
 $\rhobar_{E,p}$ has image contained in $N \subset \GL_2(\F_p)$ but not in the Cartan subgroup~$C$. Thus $\Tr \rhobar_{E,p}(\sigma) = 0$ for all $\sigma \in G_K$ such that $\rhobar_{E,p}(\sigma) \not\in C$. 
 
 Let $\eps_d$ denote the character corresponding to~$M$ as above.
-We have $\rhobar_{{E^d}, p} = \rhobar_{E, p} \otimes \eps_d$, and
-hence for all $\sigma \in G_K$ we have the following equality of traces
+By~(\ref{E:rho-twist}), for all $\sigma \in G_K$ we have the following
+equality of traces
 \[\Tr \rhobar_{{E^d},p}(\sigma) = \eps_d(\sigma) \cdot \Tr \rhobar_{E,p}(\sigma).\]
 
 Clearly, if $\eps_d(\sigma)=1$ then $\Tr \rhobar_{E,p}(\sigma) = \Tr \rhobar_{E^d,p}(\sigma)$. 
@@ -1377,7 +1394,8 @@ If $\eps(\sigma) = -1$ then $\rhobar_{E,p}(\sigma) \in \rhobar_{E,p} (G_K) \back
 Then, $\Tr \rhobar_{E,p}(\sigma) = \Tr \rhobar_{E^d,p}(\sigma)$ 
 for all $\sigma \in G_K$. 
 
-Since $\rhobar_{E,p}$ and $\rhobar_{E',p}$ are irreducible and have the same traces we have $\rhobar_{E,p} \simeq \rhobar_{E',p}$. 
+Since $\rhobar_{E,p}$ and $\rhobar_{E^d,p}$ are irreducible and have
+the same traces we have $\rhobar_{E,p} \simeq \rhobar_{E^d,p}$.
 
 The last statement follows by the discussion at the start of this
 section. Indeed, note that there will be one quadratic extension~$M/K$
@@ -1401,96 +1419,44 @@ $M=F$ and $M$ is unique, hence~$d$  is unique modulo squares.
 The above proposition shows that we can find congruent quadratic twists when $\rhobar_{E,p}$ has image in the normalizer of a Cartan but not in the Cartan itself. The following proposition gives a converse statement to this.
 
 \begin{proposition}\label{P:twist}
-Let $E/K$ and $E'/K$ be non-isomorphic elliptic curves 
-which become isomorphic over the quadratic extension
-$K(\sqrt{d})$. Assume that, 
-for some prime $p\ge3$, we have $E[p]\cong E'[p]$ as $G_K$-modules.
+Let $E/K$ and $E^d/K$ be quadratic twists, where $d\in K^*$ is not a
+square. Assume that, for some prime $p\ge3$, we have $E[p]\cong E^d[p]$
+as $G_K$-modules.
 
 Then the image of~$\rhobar_{E,p}$ is contained in the normaliser of a
 Cartan subgroup of $\GL_2(\F_p)$ but not in the subgroup itself.
 \end{proposition}
 
 \begin{proof}
-Let $\chi$ be the quadratic character of $G_K$ associated to the extension $K(\sqrt{d})/K$. By hypothesis, the curves are quadratic twists by $K(\sqrt{d})$, so
-their associated Galois representations are twists by~$\chi$. In particular, for primes~$\frq$ of~$K$ where both curves
-have good reduction (so excluding only finitely many primes),
-we have
+Let $\eps_d$ be the quadratic character of $G_K$ associated to the
+extension $K(\sqrt{d})/K$. By (\ref{E:rho-twist}), for primes~$\frq$
+of~$K$ where both curves have good reduction (so excluding only
+finitely many primes), we have
 \[
-  a_\frq(E') = \chi(\frq) a_\frq(E),
+  a_\frq(E^d) = \eps_d(\frq) a_\frq(E),
 \]
-where $a_\frq(E)$ and $a_\frq(E')$ denotes the trace of Frobenius at $\frq$ of~$E$ and~$E'$, respectively. 
+where $a_\frq(E)$ and $a_\frq(E^d)$ denotes the trace of Frobenius at
+$\frq$ of~$E$ and~$E^d$, respectively, and we view $\eps_d$ is a
+function on primes of~$K$ unramified in~$K(\sqrt{d})$ as usual via
+class field theory.
   
-Moreover, since $E'[p]\cong
+Moreover, since $E^d[p]\cong
   E[p]$, we have
   \[
-  a_\frq(E') \equiv a_\frq(E) \pmod{p}.
+  a_\frq(E^d) \equiv a_\frq(E) \pmod{p}.
   \]
-  Hence for almost all primes~$\frq$ satisfying $\chi(\frq) = -1$ (i.e. inert
+  Hence for almost all primes~$\frq$ satisfying $\eps_d(\frq) = -1$ (i.e. inert
   in~$K(\sqrt{d})/K$) we have
   \[
-  a_\frq(E') \equiv a_\frq(E) \equiv0 \pmod{p}.
+  a_\frq(E^d) \equiv a_\frq(E) \equiv0 \pmod{p}.
   \]
-  So the image $H=\rhobar_{E,p}(G_K)$ has a subgroup~$H^+$ of
-  index~$2$ such that all elements of~$H\setminus H^+$ have trace~$0$.
-  Such elements have order~$2$ in $\PGL_2(\F_p)$.  From the
-  classification of subgroups of $\PGL_2(\F_p)$ it follows that $H$ is
-  contained in the normaliser of a Cartan subgroup~$C$ and $H^+=H\cap
-  C$.
+  So the image $H=\rhobar_{E,p}(G_K)$ has a
+  subgroup~$H^+=\rhobar_{E,p}(G_{K(\sqrt{d})})$ of index~$2$ such that
+  all elements of~$H\setminus H^+$ have trace~$0$.  Such elements have
+  order~$2$ in $\PGL_2(\F_p)$.  From the classification of subgroups
+  of $\PGL_2(\F_p)$ it follows that $H$ is contained in the normaliser
+  of a Cartan subgroup~$C$ and $H^+=H\cap C$.
 \end{proof}
-
-\begin{comment}
-Consulting Table~3 of \cite{Sutherland} we find that conjecturally we
-have $p\le11$.  For $p=7$ the only images are (in the notation of
-\cite{Sutherland}) $7Ns$ (the full normaliser of a split Cartan),
-$7Nn$ (the full normaliser of a nonsplit Cartan), and in addition
-$7Ns.2.1$ and $7Ns.3.1$ which only occur for $j=2268945/128$ and
-$7Ns.6.1.2$ which only occurs for $j=0$.  Each of these images
-contains a unique subgroup of index~$2$, except the last.  In that
-case (which occurs for example for the curve $\lmfdbec{441}{a}{1}$)
-the twists by $-3$, $-7$ and~$21$ all have isomorphic $7$-torsion
-modules.
-
-For $p=11$, as well as images $11Nn$ and $11Ns$ we find $11Nn.1.4$
-which only occurs for $j=0$; each of these has a unique index~$2$
-subgroup.
-\end{comment}
-
-\begin{comment} %%%%% Same theorem as above but just over Q
-
-\begin{proposition}\label{P:twist}
-Let $E/\Q$ and $E'/\Q$ be elliptic curves which are non-isomorphic
-quadratic twists, say $E' = E^d$ for some $d \in \Q^*$ not a square. Assume that
-$E[p]\cong E'[p]$ with $p\ge3$.
-
-Then the image of~$\rhobar_{E,p}$ is contained in the normaliser of a Cartan subgroup of $\GL_2(\F_p)$ but not in the subgroup itself.
-
-Furthermore, if $p \geq 5$ is a prime of good reduction of~$E$ then there is a unique value of~$d$ modulo squares.
-\end{proposition}
-
-\begin{proof}
- Let $\chi$ be the quadratic character associated to the
-  extension $\Q(\sqrt{d})/\Q$.  For almost all primes~$\ell$ we have
-  on the one hand, since $E'=E^d$,
-  \[
-  a_\ell(E') = \chi(\ell) a_\ell(E),
-  \]
-  (where $a_\ell(E)$ denotes the trace of Frobenius of $E\mod\ell$),
-  and on the other hand, since $E'[p]\cong E[p]$,
-  \[
-  a_\ell(E') \equiv a_\ell(E) \mod{p}.
-  \]
-  Hence for all primes~$\ell$ which are inert in~$\Q(\sqrt{d})$ we have
-  \[
-  a_\ell(E') \equiv a_\ell(E) \equiv0 \mod{p}.
-  \]
-  So the image $H=\rhobar_{E,p}(G_\Q)$ has a subgroup~$H^+$ of
-  index~$2$ such that all elements of~$H\setminus H^+$ have trace~$0$.
-  Such elements have order~$2$ in $\PGL_2(\F_p)$.  From the
-  classification of subgroups of $\PGL_2(\F_p)$ it follows that $H$ is
-  contained in the normaliser of a Cartan subgroup~$C$ and $H^+=H\cap
-  C$.
-\end{proof}
-\end{comment}
 
 
 The preceding propositions show that
@@ -1501,10 +1467,14 @@ congruences between quadratic twists occur in particular when the image of $\rho
 Let $p \geq 3$ be a prime. Let $E/K$ be an elliptic 
 curve such that $\rhobar_{E,p}$ has image equal to the normalizer~$N$ of a Cartan~$C$ (either split or non-split).
 
-1) Assume $p > 3$ or $p=3$ and $C$ is non-split.
-Then there is a unique quadratic twist~$E^d$ of~$E$ 
-such that $E[p] \simeq E^d[p]$ as $G_K$-modules. Moreover, these modules are symplectically isomorphic if and only if $C$ is split and $p \equiv 1 \pmod{4}$, or $C$ is non-split and $p \equiv 3 \pmod{4}$; and
-anti-symplectic otherwise. 
+1) Assume $p > 3$ or $p=3$ and $C$ is non-split.  Then there is a
+unique quadratic twist~$E^d$ of~$E$ such that $E[p] \simeq E^d[p]$ as
+$G_K$-modules. If $d=-1$ and $j(E)=1728$, the isomorphism between
+these modules is symplectic or antisymplectic according as the
+Legendre symbol $(2/p)=+1$ or~$-1$ respectively; otherwise, they are
+symplectically isomorphic if and only if $C$ is split and $p \equiv 1
+\pmod{4}$, or $C$ is non-split and $p \equiv 3 \pmod{4}$; and
+anti-symplectic otherwise.
 
 2) Assume $p=3$ and $C$ is split. Then there are three quadratic twists~$E^{d_i}$ of~$E$ such 
 that $E[3] \simeq E^{d_i}[3]$ as $G_K$-modules, for $i=1,2,3$  . Moreover, for two values of~$d_i$ these modules are anti-symplectically isomorphic and for the third value they are symplectically isomorphic.
@@ -1513,12 +1483,13 @@ that $E[3] \simeq E^{d_i}[3]$ as $G_K$-modules, for $i=1,2,3$  . Moreover, for t
 \begin{proof} 
 The hypothesis on the image implies $\PP \rhobar_{E,p} \simeq D_n$ for some $n \geq 2$. 
 
-1) Note that $n=4$ when $p =3$ and $C$ is non-split
-and $n \neq 2$ if $p > 3$. 
-Thus, Proposition~\ref{P:twistNumber} implies there is a unique quadratic twist~$E^d$ such that $E[p] \simeq~E^d[p]$.
-Furthermore, the field $K(\sqrt{d})$ is contained in the $p$-torsion fields of $E$ and $E^d$ and restricting to $G_{K(\sqrt{d})}$ corresponds to have image in~$C$. 
-Write $\eps_d$ for the quadratic character of~$G_K$ 
-fixing~$K(\sqrt{d})$.
+1) Note that $n=4$ when $p =3$ and $C$ is non-split and $n \neq 2$ if
+$p > 3$.  Thus, Proposition~\ref{P:twistNumber} implies there is a
+unique quadratic twist~$E^d$ such that $E[p] \simeq~E^d[p]$.
+Furthermore, the field $K(\sqrt{d})$ is contained in the $p$-torsion
+fields of $E$ and $E^d$, and the restriction to $G_{K(\sqrt{d})}$ has
+image~$C$.  As usual, write $\eps_d$ for the quadratic character
+of~$G_K$ fixing~$K(\sqrt{d})$.
 
 \begin{comment}
  We first prove that $E[p] \simeq E^d[p]$ as $G_K$-modules. 
@@ -1532,11 +1503,16 @@ for all $\sigma \in G_K$. Since these representations are irreducible and have
 the same traces it follows that they are isomorphic.
 \end{comment}
 
-From the hypothesis on the image of $\rhobar_{E,p}$ we can 
-also choose a basis $P_1, P_2$ of $E[p]$ such that $\rhobar_{E,p}$ has image 
-the subgroup of $\GL_2(\F_p)$ given by 
+In the special case $j(E)=1728$ and $d=-1$ (modulo squares), we know
+by Remark~\ref{R:2-isog} that $E^{-1}$ is $2$-isogenous to~$E$, so the
+result follows by the isogeny criterion.
+
+From now on we assume that we are not in the special case.  From the
+hypothesis on the image of $\rhobar_{E,p}$, we can choose a basis
+$P_1, P_2$ of $E[p]$ such that the image of~$\rhobar_{E,p}$ is the
+subgroup of $\GL_2(\F_p)$ given by
 \[
-\left\{ 
+N = \left\{ 
 \begin{pmatrix}
 a & b\delta \\
 b & a
@@ -1547,19 +1523,34 @@ a & b\delta \\
 \end{pmatrix}  \; : a, b \in \F_p, \; a^2 - \delta b^2 \neq 0 \right\},
 \]
 where $\delta \in \F_p^*$ is a (fixed) square if $C$ is split and a
-non-square if $C$ is non-split. Furthermore, for $\sigma \in G_K$, we
+non-square if $C$ is non-split. This is the normaliser of
+\[
+C = \left\{ 
+\begin{pmatrix}
+a & b\delta \\
+b & a
+\end{pmatrix}  \; : a, b \in \F_p, \; a^2 - \delta b^2 \neq 0 \right\}.
+\]
+Furthermore, for $\sigma \in G_K$, we
 have
 \[
- \rhobar_{E,p}(\sigma) = \begin{cases} 
+ \rhobar_{E,p}(\sigma) = \begin{pmatrix}1&0\\0&\eps_d(\sigma)\end{pmatrix} 
                             \begin{pmatrix}
                             a & b\delta \\
                             b & a
-                            \end{pmatrix} \quad \text{ if } \eps_d(\sigma) = 1,  \\
-\begin{pmatrix}
-a & b\delta \\
--b & -a
-\end{pmatrix} \quad \text{ if } \eps_d(\sigma) = -1.  \\
-\end{cases}\]
+                            \end{pmatrix}.
+                            \]
+%% \[
+%%  \rhobar_{E,p}(\sigma) = \begin{cases} 
+%%                             \begin{pmatrix}
+%%                             a & b\delta \\
+%%                             b & a
+%%                             \end{pmatrix} \quad \text{ if } \eps_d(\sigma) = 1,  \\
+%% \begin{pmatrix}
+%% a & b\delta \\
+%% -b & -a
+%% \end{pmatrix} \quad \text{ if } \eps_d(\sigma) = -1.  \\
+%% \end{cases}\]
 Fix $\tau \in G_K$ such that 
 \[
  \rhobar_{E,p}(\tau) =  \begin{pmatrix}
@@ -1570,12 +1561,11 @@ Fix $\tau \in G_K$ such that
 so that  $\tau(P_1) = P_1$, $\tau(P_2) = -P_2$ and 
 $\rhobar_{E,p}(G_K) = N = \langle C,\rhobar_{E,p}(\tau) \rangle$.
 
-The map from $E$ to $E^d$ given by
-$(x,y) \mapsto (dx,d\sqrt{d}y)$ becomes 
-an isomorphism over $K(\sqrt{d})$. 
-Let $\tw : E[p](\Qbar) \to E^d[p](\Qbar)$ be the map on $p$-torsion points induced by it. 
-With a direct calculation we see
-that
+Since we are not in the special case, an isomorphism from $E$ to $E^d$
+defined over $K(\sqrt{d})$ is given by $(x,y) \mapsto
+(dx,d\sqrt{d}y)$.  Let $\tw : E[p](\Qbar) \to E^d[p](\Qbar)$ be the
+map on $p$-torsion points induced by it.  With a direct calculation we
+see that
 \begin{equation} \label{E:eps}
  \tw(\sigma(P)) = \eps_d(\sigma)\cdot\sigma(\tw(P)) \quad \text{ for all } \sigma \in G_K 
  \text{ and all } P \in E[P]. 
@@ -1623,7 +1613,13 @@ as desired. Finally, we note that
 where the last equality holds since $\tw$ preserves the Weil pairing.
 Thus $\phi$ is symplectic if and only if $(-\delta/p) = 1$.
 
-2) In this case we have $\PP \rhobar_{E,3} \simeq C_2 \times C_2$ therefore there are three twists $E^{d_i}$ of~$E$ such that $E[3] \simeq E^{d_i}[3]$ by Proposition~\ref{P:twistNumber}. We have $K(\sqrt{d_i}) \subset K(E[3]) = K(E^{d_i}[3])$.
+2) In this case we have $\PP \rhobar_{E,3} \simeq C_2 \times C_2$
+therefore there are three twists $E^{d_i}$ of~$E$ such that $E[3]
+\simeq E^{d_i}[3]$ by Proposition~\ref{P:twistNumber}. We have
+$K(\sqrt{d_i}) \subset K(E[3]) = K(E^{d_i}[3])$.  Moreover, we are not
+in the special case of $j=1728$ here since $3$ is inert in the CM
+field $\Q(\sqrt{-1})$ of such curves, so the mod~$3$ image is
+contained in the normaliser of a non-split Cartan.
 
 The normalizer~$N$ of a split Cartan $C \subset \GL_2(\F_3)$ has three index 2 subgroups: the split Cartan~$C$, another split Cartan~$C'$ and third subgroup~$H$ whose normalizer is the normalizer of non-split Cartan.
 Restriction to the $G_{K(\sqrt{d_i})}$ corresponds to~$\rhobar_{E,3}$ having image in each of these subgroups. 
@@ -1665,15 +1661,17 @@ omitted these from consideration.
   $E^{33}=\lmfdbec{6534}{h}{1}$ respectively.  All four curves have
   isomorphic mod~$3$ representations, the isomorphism being
   antisymplectic for $E^{-11}$ and $E^{33}$ and symplectic for
-  $E^{-3}$. \textbf{NF: please check I have this the right way round.}
+  $E^{-3}$. (Here we use the local criteria to verify these.)
 \end{example}
 \begin{example} \label{Ex:LocalFail7}
 Consider the elliptic curve
 \[ E : y^2 + y = x^3 - x^2 - 74988699621831x +  238006866237979285299, \]
-which has conductor $ N_E = 7^2 \cdot 2381 \cdot 134177^2>2\cdot10^{15}$, so
-is not in the LMFDB database.  The image of the mod~$7$ Galois
-representation is equal to the normalizer of a non-split Cartan
-subgroup.
+which has conductor $ N_E = 7^2 \cdot 2381 \cdot
+134177^2>2\cdot10^{15}$, so is not in the LMFDB database.  This
+example was found using the explicit parametrization of curves for
+which the image of the mod~$7$ Galois representation is equal to the
+normalizer of a non-split Cartan subgroup; we also verified this by
+explicit computation.
 
 Let $d = -7 \cdot 134177$ and consider~$E^d$ the quadratic twist
 of~$E$ by~$d$. Applying Theorem~\ref{T:j=1728} (or the general method
@@ -1700,20 +1698,16 @@ is~$E_{ta}$, which is isomorphic to~$E_a$ if and only if $t$ is a $4$th power.
 From our discussion of quadratic twists (see
 Lemma~\ref{L:quadratic-twist}) we know that all quadratic twists of
 $E_a$ have the form $E_a^d\cong E_{ad^2}$, except that when $-1$ is
-not a square in~$K$ we have $E_a^{-1}\cong E_{-4a}$.
+not a square in~$K$ we have $E_a^{-1}\cong E_{-4a}$.  Note that the
+natural map $K^*/(K^*)^4 \to L^*/(L^*)^4$ for $L=K(\sqrt{d})$ always
+has kernel of order~$2$; it is generated by $d^2$, unless
+$L=K(\sqrt{-1})$ in which case it is generated by~$-4$.
 
-Each $E_a$ has CM by $\Q(\sqrt{-1})$. The curves $E_a$ and $E_{-4a}$
-are $2$-isogenous (see \cite[p. 336]{SilvermanI}), and hence
-$E_a[p]\cong E_{-4a}[p]$ for all~$p>2$. If $-1$ is a square in $K$,
-then $-4=(1+\sqrt{-1})^4$ is a 4th power and $E_a$ and $E_{-4a}$ are
-isomorphic; moreover, in this case, we have
-$\End_K(E_a)\cong\Z[\sqrt{-1}]$ and the mentioned isogeny is the
-endomorphism~$1+\sqrt{-1}$.  Otherwise, when $-1$ is not a square
-in~$K$, then $E_a$ and~$E_{-4a}$ are quadratic twists by~$-1$.
-
-Our result for these curves is that there are no isomorphisms between
-their $p$-torsion, for any~$p>2$, except for $E_a[p]\cong E_{-4a}[p]$,
-provided that the image of $\rhobar_{E,p}$ is not too small.
+The curves $E_a$ and $E_{-4a}$ are $2$-isogenous (see
+\cite[p. 336]{SilvermanI}), and hence $E_a[p]\cong E_{-4a}[p]$ for
+all~$p>2$.  Our result for these curves is that there are no further
+congruences between them for any~$p>2$, provided that the image of
+$\rhobar_{E,p}$ is not too small.
 
 \begin{theorem}\label{T:j=1728}
 Let $K$ be a number field.  For all $a \in K^*$ and all primes~$p>2$,
