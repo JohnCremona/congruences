@@ -1238,50 +1238,8 @@ For $p\ge11$ there are no reducible cases to consider.
 If there is a mod~$p$ congruence between two elliptic curves~$E_1$
 and~$E_2$, then for any $d\in\Q^*$ there will also be a congruence (of
 the same symplectic type) between their quadratic twists $E_1^d$
-and~$E_2^d$.
-
-\begin{proposition}
-Let $E_1$ and~$E_2$ be elliptic curves defined over a number field~$K$
-and $p$ a prime such that $E_1[p]\cong E_2[p]$.  Then, for all
-non-square $d\in K^*$ we also have $E_1^d[p]\cong E_2^d[p]$.
-\end{proposition}
-\begin{proof}
-Let $Y^2=X^3+a_kX+b_k$ for $k=1,2$ be short Weierstrass equations for
-$E_1$ and $E_2$ respectively.  Let $\sigma$ be the nontrivial
-automorphism of $K(\sqrt{d})/K$ and denote by $[-1]$ the negation
-automorphism $(x,y)\mapsto(x,-y)$ on each elliptic curve.
-
-(1) Assume first that either $d\not=-1$, or that both $b_1$ and~$b_2$
-are non-zero, so the quadratic twists have equations
-$E_k^d:Y^2=X^3+a_kd^2X+b_kd^3$.  (See Lemma~\ref{L:quadratic-twist}.)
-
-An isomorphism $E_k\to E_k^d$, defined over~$K(\sqrt{d})$, is given by
-$\alpha_k:(x,y)\mapsto (dx,d\sqrt{d}y)$.  Then we have
-\[
-\alpha_k^{\sigma} = [-1]\circ\alpha_k = \alpha_k\circ[-1]
-\]
-for $k=1,2$.  Let $\phi:E_1[p]\to E_2[p]$ be a $G_K$-equivariant
-isomorphism.  Define $\psi:E_1^d[p]\to E_2^d[p]$ by
-$\psi=\alpha_2\circ\phi\circ\alpha_1^{-1}$, which is a
-$G_{K(\sqrt{d})}$-equivariant linear isomorphism, satisfying
-\[
-\psi^{\sigma} =
-\alpha_2^{\sigma}\circ\phi^{\sigma}\circ(\alpha_1^{-1})^{\sigma} =
-\alpha_2\circ[-1]\circ\phi\circ[-1]\circ\alpha_1^{-1} = \psi,
-\]
-since $[-1]\circ\phi=\phi\circ[-1]$, as $\phi$ is linear.  Hence in
-fact $\psi$ is $G_K$-equivariant.
-
-(2) Now suppose that $d=-1\notin(K^*)^2$, and that one of the curves,
-say~$E_1$ has $j$-invariant~$1728$.  Now $\rhobar_{E_1,p}$ has image
-contained in the normaliser of a Cartan subgroup but not in the Cartan
-itself; by Proposition~\ref{P:twistNumber} we have $E_1[p]\cong
-E_1^{-1}[p]$.  Since $E_1[p]\cong E_2[p]$ we also have $E_2[p]\cong
-E_2^{-1}[p]$ for the same reason, and hence $E_1^{-1}[p]\cong
-E_2^{-1}[p]$.
-\end{proof}
-
-Despite this result, it is hard to say precisely how many congruences
+and~$E_2^d$: see Proposition~\ref{P:twist-cong}.
+Nevertheless, it is hard to say precisely how many congruences
 there in the database ``up to twist'', since twisting changes
 conductor (in general), so we may have a set of mutually $7$-congruent
 elliptic curves in the database, but with one or more of their twists
@@ -1368,6 +1326,7 @@ by
 where $\eps_d$ is the quadratic character of~$G_K$ associated to the
 extension $K(\sqrt{d})/K$.
 \end{remark}
+
 
 \begin{proposition} \label{P:twistNumber}
 Let $E/K$ be an elliptic curve satisfying that~$\rhobar_{E,p}$ has
@@ -1647,6 +1606,59 @@ arising from CM curves as in the previous remark. This is because
 such mod~$p$ isomorphisms occur within an isogeny class, and we have
 omitted these from consideration.
 \end{remark}
+
+Quadratic twists act on congruent pairs of curves:
+\begin{proposition}\label{P:twist-cong}
+Let $E_1$ and~$E_2$ be elliptic curves defined over a number field~$K$
+and $p$ a prime such that $E_1[p]\cong E_2[p]$.  Then, for all
+non-square $d\in K^*$ we also have $E_1^d[p]\cong E_2^d[p]$.
+Moreover, the symplectic type of the isomorphism is preserved.
+\end{proposition}
+\begin{proof}
+If $d\not=-1$ or both $b_1$ and~$b_2$ are non-zero, this is
+\cite[Lemma 11]{FKSym}.
+
+%% In all cases except for the exceptional case
+%% where Let $Y^2=X^3+a_kX+b_k$ for $k=1,2$ be short Weierstrass
+%% equations for $E_1$ and $E_2$ respectively.  Let $\sigma$ be the
+%% nontrivial automorphism of $K(\sqrt{d})/K$ and denote by $[-1]$ the
+%% negation automorphism $(x,y)\mapsto(x,-y)$ on each elliptic curve.
+
+%% (1) Assume first that either $d\not=-1$, or that both $b_1$ and~$b_2$
+%% are non-zero, so the quadratic twists have equations
+%% $E_k^d:Y^2=X^3+a_kd^2X+b_kd^3$.  (See Lemma~\ref{L:quadratic-twist}.)
+
+%% An isomorphism $E_k\to E_k^d$, defined over~$K(\sqrt{d})$, is given by
+%% $\alpha_k:(x,y)\mapsto (dx,d\sqrt{d}y)$.  Then we have
+%% \[
+%% \alpha_k^{\sigma} = [-1]\circ\alpha_k = \alpha_k\circ[-1]
+%% \]
+%% for $k=1,2$.  Let $\phi:E_1[p]\to E_2[p]$ be a $G_K$-equivariant
+%% isomorphism.  Define $\psi:E_1^d[p]\to E_2^d[p]$ by
+%% $\psi=\alpha_2\circ\phi\circ\alpha_1^{-1}$, which is a
+%% $G_{K(\sqrt{d})}$-equivariant linear isomorphism, satisfying
+%% \[
+%% \psi^{\sigma} =
+%% \alpha_2^{\sigma}\circ\phi^{\sigma}\circ(\alpha_1^{-1})^{\sigma} =
+%% \alpha_2\circ[-1]\circ\phi\circ[-1]\circ\alpha_1^{-1} = \psi,
+%% \]
+%% since $[-1]\circ\phi=\phi\circ[-1]$, as $\phi$ is linear.  Hence in
+%% fact $\psi$ is $G_K$-equivariant.
+
+Suppose that $d=-1\notin(K^*)^2$, and that one of the curves,
+say~$E_1$ has $j$-invariant~$1728$.  Now $\rhobar_{E_1,p}$ has image
+contained in the normaliser of a Cartan subgroup but not in the Cartan
+itself; by Proposition~\ref{P:twistNumber} we have $E_1[p]\cong
+E_1^{-1}[p]$.  Since $E_1[p]\cong E_2[p]$ we also have $E_2[p]\cong
+E_2^{-1}[p]$ for the same reason, and hence $E_1^{-1}[p]\cong
+E_2^{-1}[p]$.
+
+As for the symplectic type, the isomorphisms $E_k[p]\cong E_k^{-1}[p]$
+have the same type for $k=1,2$ since these twists are both also
+$2$-isogenies, so each is symplectic if and only if $2$ is a quadratic
+residue modulo~$p$.  Hence the composite $E_1^{-1}[p]\cong E_1[p]\cong
+E_2[p]\cong E_2^{-1}[p]$ has the same type as $E_1[p]\cong E_2[p]$.
+\end{proof}
 
 \begin{example} \label{Ex:3twists}
   Let $E$ be the elliptic curve with LMFDB label~\lmfdbec{6534}{a}{1},
