@@ -599,7 +599,8 @@ genus~$3$ modular curve~$X_{S_4}(13)$ found explicitly
 in~\cite{BarinderCrem} has no more rational points, and hence that
 this list is complete. By Proposition~\ref{P:twist}, none of these
 curves is mod~$13$ congruent to a quadratic twist of another of them
-(including itself); the same is true for the curves and values of~$p$ in case~(v). Thus no examples arise in cases (iv) and (v).
+(including itself); the same is true for the curves and values of~$p$
+in case~(v). Thus no examples arise in cases (iv) and (v).
 
 The remaining case~(iii) includes the infinitely many curves with
 $\rhobar_{E,13}$ reducible (recall that $X_0(13)$ has genus~0). In
@@ -672,10 +673,16 @@ $2$-isogeny becomes the endomorphism~$1+\sqrt{-1}$.
 In all cases, the Galois representations of $E$ and~$E^d$ are related
 by
 \begin{equation}
-  \rhobar_{E^d,p} = \rhobar_{E,p}\otimes\eps_d, \label{E:rho-twist}
+  \rhobar_{E^d,p} \cong \rhobar_{E,p}\otimes\eps_d, \label{E:rho-twist}
 \end{equation}
 where $\eps_d$ is the quadratic character of~$G_K$ associated to the
-extension $K(\sqrt{d})/K$.
+extension $K(\sqrt{d})/K$.  In the special case, and more generally
+when $E$ has CM with the extra endomorphisms defined
+over~$K(\sqrt{d})$, since $E$ and $E^{d}$ are isogenous, it is also
+true that $\rhobar_{E^d,p} \cong \rhobar_{E,p}$ and $\rhobar_{E,p}
+\cong \rhobar_{E,p}\otimes\eps_d$.
+\textbf{I think we need to exclude $p$ which are ramified in
+  $K(\sqrt{d})$ here?}
 \end{remark}
 
 
@@ -782,8 +789,9 @@ Let $E/K$ and $E^d/K$ be quadratic twists, where $d\in K^*$ is not a
 square. Assume that, for some prime $p\ge3$, we have $E[p]\cong E^d[p]$
 as $G_K$-modules.
 
-Then the image of~$\rhobar_{E,p}$ is contained in the normaliser of a
-Cartan subgroup of $\GL_2(\F_p)$ but not in the subgroup itself.
+Then \textbf{(with some extra hypotheses!)} the image of~$\rhobar_{E,p}$
+is contained in the normaliser of a Cartan subgroup of $\GL_2(\F_p)$
+but not in the subgroup itself.
 \end{proposition}
 
 \begin{proof}
@@ -812,7 +820,15 @@ Moreover, since $E^d[p]\cong
   So the image $H=\rhobar_{E,p}(G_K)$ has a
   subgroup~$H^+=\rhobar_{E,p}(G_{K(\sqrt{d})})$ of index~$2$ such that
   all elements of~$H\setminus H^+$ have trace~$0$.  Such elements have
-  order~$2$ in $\PGL_2(\F_p)$.  From the classification of subgroups
+  order~$2$ in $\PGL_2(\F_p)$.
+
+  \textbf{The following sentnce was lazy, and in fact incorrect: we
+    could have image
+    $\left\{\begin{pmatrix}\pm1&*\\0&1\end{pmatrix}\right\}$, dihedral
+    of order $2p$, but not contained in any Cartan normalizer since
+    these have order prime to $p$.}
+
+  From the classification of subgroups
   of $\PGL_2(\F_p)$ it follows that $H$ is contained in the normaliser
   of a Cartan subgroup~$C$ and $H^+=H\cap C$.
 \end{proof}
@@ -827,8 +843,14 @@ cases where the local methods from~\cite{FKSym} may not apply, as
 illustrated by Example~\ref{Ex:LocalFail7} below.
 
 \begin{theorem} \label{T:Cartan}
-Let $p \geq 3$ be a prime. Let $E/K$ be an elliptic 
-curve such that $\rhobar_{E,p}$ has image equal to the normalizer~$N$ of a Cartan~$C$ (either split or non-split).
+Let $p \geq 3$ be a prime. Let $E/K$ be an elliptic curve such that
+$\rhobar_{E,p}$ has image contained in the normalizer~$N$ of a Cartan
+subgroup~$C$ (either split or non-split), but is not contained in~$C$
+itself.
+
+\textbf{In case $p=3$ the rest of the statement needs more work since
+  the split C is contained in the nonsplit C.  When this is the image
+  we need to make clear that Case (2) applies, not Case 1.}
 
 1) Assume $p > 3$ or $p=3$ and $C$ is non-split.  Then there is a
 unique quadratic twist~$E^d$ of~$E$ such that $E[p] \simeq E^d[p]$ as
@@ -872,8 +894,8 @@ result follows by the isogeny criterion.
 
 From now on we assume that we are not in the special case.  From the
 hypothesis on the image of $\rhobar_{E,p}$, we can choose a basis
-$P_1, P_2$ of $E[p]$ such that the image of~$\rhobar_{E,p}$ is the
-subgroup of $\GL_2(\F_p)$ given by
+$P_1, P_2$ of $E[p]$ such that the image of~$\rhobar_{E,p}$ is
+contained in the subgroup~$N$ of $\GL_2(\F_p)$ given by
 \[
 N = \left\{ 
 \begin{pmatrix}
@@ -885,17 +907,17 @@ a & b\delta \\
 -b & -a
 \end{pmatrix}  \; : a, b \in \F_p, \; a^2 - \delta b^2 \neq 0 \right\},
 \]
-where $\delta \in \F_p^*$ is a (fixed) square if $C$ is split and a
-non-square if $C$ is non-split. This is the normaliser of
+which is the normaliser of the Cartan subgroup
 \[
 C = \left\{ 
 \begin{pmatrix}
 a & b\delta \\
 b & a
-\end{pmatrix}  \; : a, b \in \F_p, \; a^2 - \delta b^2 \neq 0 \right\}.
+\end{pmatrix}  \; : a, b \in \F_p, \; a^2 - \delta b^2 \neq 0 \right\};
 \]
-Furthermore, for $\sigma \in G_K$, we
-have
+here, $\delta \in \F_p^*$ is a (fixed) square if $C$ is split and a
+non-square if $C$ is non-split.  Furthermore, for $\sigma \in
+G_K$, we have
 \[
  \rhobar_{E,p}(\sigma) = \begin{pmatrix}1&0\\0&\eps_d(\sigma)\end{pmatrix} 
                             \begin{pmatrix}
@@ -914,7 +936,8 @@ have
 %% -b & -a
 %% \end{pmatrix} \quad \text{ if } \eps_d(\sigma) = -1.  \\
 %% \end{cases}\]
-Fix $\tau \in G_K$ such that 
+Fix $\tau \in G_K$ such that \textbf{[this is possible if $G_K$ maps
+    onto $N$; what if not?]}
 \[
  \rhobar_{E,p}(\tau) =  \begin{pmatrix}
                             1 & 0 \\
@@ -939,8 +962,9 @@ map $\phi : E[p] \to E^d[p]$ defined on the basis by
  \phi(P_1) = \tw (P_2) \quad \text{ and } \quad   \phi(P_2) = \delta \tw (P_1),
 \]
 and will show it is $G_K$-equivariant, i.e. $\sigma(\phi(P)) =
-\phi(\sigma(P))$ for all $\sigma \in G_K$ and $P \in E[P]$. Write $P_i
-= (x_i,y_i)$. Since $\eps_d(\tau) = -1$, we have
+\phi(\sigma(P))$ for all $\sigma \in G_K$ and $P \in E[P]$. We first
+consider the acton of~$\tau$.  Write $P_i = (x_i,y_i)$. Since
+$\eps_d(\tau) = -1$, we have
 \[
  \tau(\phi(P_1)) = \tau(\tw(P_2)) = -\tw(\tau(P_2)) = -\tw (-P_2) = \phi(P_1) = \phi(\tau(P_1)),
 \]
@@ -949,8 +973,8 @@ where in the second inequality we used~\eqref{E:eps}; also,
  \tau(\phi(P_2)) = \tau(\delta \tw(P_1)) = -\delta \tw(\tau(P_1)) = 
   -\delta \tw(P_1) = -\phi (P_2) = \phi(\tau(P_2)).
 \]
-Recall that for $\sigma \in G_K$ such that $\rhobar_{E,p}(\sigma) \in C$, we have
-$\eps_d(\sigma) = 1$ and
+Next, for $\sigma \in G_K$ such that $\rhobar_{E,p}(\sigma) \in C$, we
+have $\eps_d(\sigma) = 1$ and
 \[
  \rhobar_{E,p}(\sigma) =  \begin{pmatrix}
                             a & b\delta \\
@@ -1073,9 +1097,20 @@ $E_1^{-1}=\lmfdbec{288}{a}{2}$ and $E_2^{-1}=\lmfdbec{32544}{c}{1}$,
 which again have symplectically isomorphic mod~$7$ representations.
 \end{example}
 
-\textbf{Perhaps also find and include a similar $p=5$ example, where
-  according to the Proposition twisting by -1 should change the
-  symplectic character.}
+\begin{example}
+  [\textbf{needs completion}] $E_1=\lmfdbec{32}{a}{1}$ has
+  $j$-invariant $1728$, its $2$-isogenous twist is
+  $E_1^{-1}=\lmfdbec{32}{a}{2}$, and these are antismplectically
+  congruent mod~$5$ since $\legendre{2}{5}=-1$.  They are also
+  congruent mod~$5$ to $E_2=\lmfdbec{608}{b}{1}$ and its $-1$-twist
+  $E_2^{-1}=\lmfdbec{608}{e}{1}$, which are symplectically
+  $5$-congruent to each other in accordant with Theorem~\ref{T:Cartan}
+  \textbf{[check this]}.  The mod~$5$ congruence between
+  $\lmfdbec{32}{a}{1}$ and $\lmfdbec{608}{b}{1}$ is ? while that
+  between $\lmfdbec{32}{a}{2}$ and $\lmfdbec{608}{e}{1}$ is ??
+  \textbf{[find and insert these, there should be one of each type]}, so
+  in this case applying the $-1$-twist reverses the symplectic type.
+\end{example}
 
 \begin{example} \label{Ex:3twists}
   Let $E$ be the elliptic curve with LMFDB label~\lmfdbec{6534}{a}{1},
@@ -1098,9 +1133,9 @@ Consider the elliptic curve
 which has conductor $ N_E = 7^2 \cdot 2381 \cdot
 134177^2>2\cdot10^{15}$, so is not in the LMFDB database.  This
 example was found using the explicit parametrization of curves for
-which the image of the mod~$7$ Galois representation is equal to the
-normalizer of a non-split Cartan subgroup; we also verified this by
-explicit computation.
+which the image of the mod~$7$ Galois representation is contained in
+the normalizer of a non-split Cartan subgroup; we verified by explicit
+computation that the image is equal to the full normalizer.
 
 Let $d = -7 \cdot 134177$ and consider~$E^d$ the quadratic twist
 of~$E$ by~$d$. Applying Theorem~\ref{T:j=1728} (or the general method
@@ -1166,13 +1201,10 @@ that $E_{a_1}$ and~$E_{a_2}$ become isomorphic over~$L=K(\sqrt{d})$.
 Applying Proposition~\ref{P:twist}, the image of $\rhobar_{E,p}$ is
 contained in the normaliser~$N$ of a Cartan subgroup~$C$, but not
 contained in the Cartan itself, where $N/C$ cuts out the quadratic
-extension $K(\sqrt{d})/K$.  By hypothesis the projective image is not~$C_2\times
-C_2$, so this is true for a unique pair $(N,C)$. 
-Hence the non-trivial quadratic extension cut out by $N/C$ must also be the CM extension $K(\sqrt{-1})$; in particular, $\sqrt{-1} \not\in K$.
-%Note that we cannot have $\sqrt{-1}\in K$, since then
-%the image would be contained in a Cartan and it would not be the case
-%that half the traces were~$0$ (see the proof of
-%Proposition~\ref{P:twist}).  
+extension $K(\sqrt{d})/K$.  By hypothesis the projective image is
+not~$C_2\times C_2$, so this is true for a unique pair $(N,C)$.  Hence
+the non-trivial quadratic extension cut out by $N/C$ must also be the
+CM extension $K(\sqrt{-1})$; in particular, $\sqrt{-1} \not\in K$.
 Hence $L = K(\sqrt{d})=K(\sqrt{-1})$,
 proving the claim.
 
@@ -1850,7 +1882,7 @@ model for $X_E(7)$.  Then we find all preimages (if any) of $j'=j(E')$
 under the map $X_E(7)\to X(1)$.  While over an algebraically closed
 field there are $168$ distinct preimages of each $j'$, except that the
 ramification points $j=0$ and $j=1728$ have $56$ and $84$ preimages,
-over $\Q$, by Proposition~\ref{P:twist} there are at most two, except
+over $\Q$, by Theorem~\ref{T:Cartan} there are at most two, except
 for $j'=0$ when there may be four.
 
 If there are no preimages of~$j'$, we conclude that the isomorphism
@@ -2247,7 +2279,7 @@ Emmanuel Halberstadt and Alain Kraus, \emph{On the modular curves {$Y_E(7)$}},
 
 \bibitem{Halberstadt-Kraus-XE7}
 \bysame, \emph{Sur la courbe modulaire {$X_E(7)$}}, Experiment. Math.
-  \textbf{12} (2003), no.~1, 27--40. \MR{2002672}
+  {\bf 12} (2003), no.~1, 27--40. \MR{2002672}
   
 \bibitem{KrausThesis}
 Alain Kraus,
