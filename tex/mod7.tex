@@ -787,9 +787,9 @@ converse statement to this.
 \begin{proposition}\label{P:twist}
 Let $E/K$ and $E^d/K$ be quadratic twists, where $d\in K^*$ is not a
 square. Assume that, for some prime $p\ge3$, we have $E[p]\cong E^d[p]$
-as $G_K$-modules.
+as $G_K$-modules, and that $E[p]$ is irreducible.
 
-Then \textbf{(with some extra hypotheses!)} the image of~$\rhobar_{E,p}$
+Then the image of~$\rhobar_{E,p}$
 is contained in the normaliser of a Cartan subgroup of $\GL_2(\F_p)$
 but not in the subgroup itself.
 \end{proposition}
@@ -822,11 +822,11 @@ Moreover, since $E^d[p]\cong
   all elements of~$H\setminus H^+$ have trace~$0$.  Such elements have
   order~$2$ in $\PGL_2(\F_p)$.
 
-  \textbf{The following sentnce was lazy, and in fact incorrect: we
-    could have image
-    $\left\{\begin{pmatrix}\pm1&*\\0&1\end{pmatrix}\right\}$, dihedral
-    of order $2p$, but not contained in any Cartan normalizer since
-    these have order prime to $p$.}
+  %% \textbf{The following sentnce was lazy, and in fact incorrect: we
+  %%   could have image
+  %%   $\left\{\begin{pmatrix}\pm1&*\\0&1\end{pmatrix}\right\}$, dihedral
+  %%   of order $2p$, but not contained in any Cartan normalizer since
+  %%   these have order prime to $p$.}
 
   From the classification of subgroups
   of $\PGL_2(\F_p)$ it follows that $H$ is contained in the normaliser
@@ -846,35 +846,48 @@ illustrated by Example~\ref{Ex:LocalFail7} below.
 Let $p \geq 3$ be a prime. Let $E/K$ be an elliptic curve such that
 $\rhobar_{E,p}$ has image contained in the normalizer~$N$ of a Cartan
 subgroup~$C$ (either split or non-split), but is not contained in~$C$
-itself.
+itself.  Let $K(\sqrt{d})$ be the quadratic extension of~$K$ cut out
+by the subgroup~$\rhobar_{E,p}^{-1}(C)$ of~$G_K$, which has index~$2$
+in~$G_K$.
+
+1) If $K(\sqrt{d})=K(\sqrt{-1})$ and~$j(E)=1728$, then $E[p] \simeq
+E^d[p]$, the isomorphism being symplectic or antisymplectic according
+as the Legendre symbol $(2/p)=+1$ or~$-1$ respectively.
 
 \textbf{In case $p=3$ the rest of the statement needs more work since
   the split C is contained in the nonsplit C.  When this is the image
-  we need to make clear that Case (2) applies, not Case 1.}
+  we need to make clear that Case (3) applies, not Case 2.}
 
-1) Assume $p > 3$ or $p=3$ and $C$ is non-split.  Then there is a
-unique quadratic twist~$E^d$ of~$E$ such that $E[p] \simeq E^d[p]$ as
-$G_K$-modules. If $d=-1$ and $j(E)=1728$, the isomorphism between
-these modules is symplectic or antisymplectic according as the
-Legendre symbol $(2/p)=+1$ or~$-1$ respectively; otherwise, they are
-symplectically isomorphic if and only if $C$ is split and $p \equiv 1
-\pmod{4}$, or $C$ is non-split and $p \equiv 3 \pmod{4}$; and
-anti-symplectic otherwise.
+2) Otherwise, assume $p > 3$ or $p=3$ and $C$ is non-split.
+Then~$E^d$ is the unique quadratic twist of~$E$ such that $E[p] \simeq
+E^d[p]$ as $G_K$-modules, and the isomorphism is symplectic if and
+only if $C$ is split and $p \equiv 1 \pmod{4}$, or $C$ is non-split
+and $p \equiv 3 \pmod{4}$.
 
-2) Assume $p=3$ and $C$ is split. Then there are three quadratic twists~$E^{d_i}$ of~$E$ such 
+3) Assume $p=3$ and $C$ is split. Then there are three quadratic twists~$E^{d_i}$ of~$E$ such 
 that $E[3] \simeq E^{d_i}[3]$ as $G_K$-modules, for $i=1,2,3$  . Moreover, for two values of~$d_i$ these modules are anti-symplectically isomorphic and for the third value they are symplectically isomorphic.
 \end{theorem}
 
 \begin{proof} 
-The hypothesis on the image implies $\PP \rhobar_{E,p} \simeq D_n$ for some $n \geq 2$. 
+The hypothesis on the image implies $\PP \rhobar_{E,p} \simeq D_n$ for
+some $n \geq 2$.  By Proposition~\ref{P:twistNumber}, we have $E[p]
+\simeq E^d[p]$, and if $n>2$ there are no other quadratic twists
+congruent to~$E$.
 
-1) Note that $n=4$ when $p =3$ and $C$ is non-split and $n \neq 2$ if
-$p > 3$.  Thus, Proposition~\ref{P:twistNumber} implies there is a
-unique quadratic twist~$E^d$ such that $E[p] \simeq~E^d[p]$.
-Furthermore, the field $K(\sqrt{d})$ is contained in the $p$-torsion
-fields of $E$ and $E^d$, and the restriction to $G_{K(\sqrt{d})}$ has
-image~$C$.  As usual, write $\eps_d$ for the quadratic character
-of~$G_K$ fixing~$K(\sqrt{d})$.
+Note that $n=4$ when $p =3$ and $C$ is non-split, and $n \neq 2$ if $p
+> 3$.  This implies the uniquness part of case~2).
+
+1) When case $j(E)=1728$ and $d=-1$ (modulo squares), we know by
+Remark~\ref{R:2-isog} that $E^{-1}$ is $2$-isogenous to~$E$, so the
+result follows by the isogeny criterion.  Assume from now on that we
+are not in this case.
+
+2) We have already seen that there is a unique quadratic twist~$E^d$
+such that $E[p] \simeq~E^d[p]$.  Furthermore, the field $K(\sqrt{d})$
+is contained in the $p$-torsion fields of $E$ and $E^d$, and the
+restriction to $G_{K(\sqrt{d})}$ has image contained in the Cartan~$C$.
+As usual, write $\eps_d$ for the quadratic character of~$G_K$
+fixing~$K(\sqrt{d})$.
 
 \begin{comment}
  We first prove that $E[p] \simeq E^d[p]$ as $G_K$-modules. 
@@ -888,13 +901,8 @@ for all $\sigma \in G_K$. Since these representations are irreducible and have
 the same traces it follows that they are isomorphic.
 \end{comment}
 
-In the special case $j(E)=1728$ and $d=-1$ (modulo squares), we know
-by Remark~\ref{R:2-isog} that $E^{-1}$ is $2$-isogenous to~$E$, so the
-result follows by the isogeny criterion.
-
-From now on we assume that we are not in the special case.  From the
-hypothesis on the image of $\rhobar_{E,p}$, we can choose a basis
-$P_1, P_2$ of $E[p]$ such that the image of~$\rhobar_{E,p}$ is
+From the hypothesis on the image of $\rhobar_{E,p}$, we can choose a
+basis $P_1, P_2$ of $E[p]$ such that the image of~$\rhobar_{E,p}$ is
 contained in the subgroup~$N$ of $\GL_2(\F_p)$ given by
 \[
 N = \left\{ 
@@ -936,22 +944,19 @@ G_K$, we have
 %% -b & -a
 %% \end{pmatrix} \quad \text{ if } \eps_d(\sigma) = -1.  \\
 %% \end{cases}\]
-Fix $\tau \in G_K$ such that \textbf{[this is possible if $G_K$ maps
-    onto $N$; what if not?]}
+Fix $\tau \in G_K$ such that $\rhobar_{E,p}\in N\setminus C$, say
 \[
  \rhobar_{E,p}(\tau) =  \begin{pmatrix}
-                            1 & 0 \\
-                            0 & -1
+                            a & b\delta \\
+                            -b & -a
                             \end{pmatrix},
 \]
-so that  $\tau(P_1) = P_1$, $\tau(P_2) = -P_2$ and 
-$\rhobar_{E,p}(G_K) = N = \langle C,\rhobar_{E,p}(\tau) \rangle$.
+so that $\rhobar_{E,p}(G_K) = N = \langle C,\rhobar_{E,p}(\tau) \rangle$.
 
-Since we are not in the special case, an isomorphism from $E$ to $E^d$
-defined over $K(\sqrt{d})$ is given by $(x,y) \mapsto
-(dx,d\sqrt{d}y)$.  Let $\tw : E[p](\Qbar) \to E^d[p](\Qbar)$ be the
-map on $p$-torsion points induced by it.  With a direct calculation we
-see that
+Since we are not in case~1), an isomorphism from $E$ to $E^d$ defined
+over $K(\sqrt{d})$ is given by $(x,y) \mapsto (dx,d\sqrt{d}y)$.  Let
+$\tw : E[p](\Qbar) \to E^d[p](\Qbar)$ be the map on $p$-torsion points
+induced by it.  With a direct calculation we see that
 \begin{equation} \label{E:eps}
  \tw(\sigma(P)) = \eps_d(\sigma)\cdot\sigma(\tw(P)) \quad \text{ for all } \sigma \in G_K 
  \text{ and all } P \in E[P]. 
@@ -962,9 +967,14 @@ map $\phi : E[p] \to E^d[p]$ defined on the basis by
  \phi(P_1) = \tw (P_2) \quad \text{ and } \quad   \phi(P_2) = \delta \tw (P_1),
 \]
 and will show it is $G_K$-equivariant, i.e. $\sigma(\phi(P)) =
-\phi(\sigma(P))$ for all $\sigma \in G_K$ and $P \in E[P]$. We first
-consider the acton of~$\tau$.  Write $P_i = (x_i,y_i)$. Since
-$\eps_d(\tau) = -1$, we have
+\phi(\sigma(P))$ for all $\sigma \in G_K$ and $P \in E[P]$.
+
+We first consider the acton of~$\tau$.  Since $\eps_d(\tau) = -1$, we
+have
+
+[Not yet typed properly but the point is that rho(tau) anticommutes
+  with [0,delta;1,0] but rho(sigma) in C commoutes with it.]
+
 \[
  \tau(\phi(P_1)) = \tau(\tw(P_2)) = -\tw(\tau(P_2)) = -\tw (-P_2) = \phi(P_1) = \phi(\tau(P_1)),
 \]
@@ -1098,18 +1108,17 @@ which again have symplectically isomorphic mod~$7$ representations.
 \end{example}
 
 \begin{example}
-  [\textbf{needs completion}] $E_1=\lmfdbec{32}{a}{1}$ has
-  $j$-invariant $1728$, its $2$-isogenous twist is
-  $E_1^{-1}=\lmfdbec{32}{a}{2}$, and these are antismplectically
-  congruent mod~$5$ since $\legendre{2}{5}=-1$.  They are also
-  congruent mod~$5$ to $E_2=\lmfdbec{608}{b}{1}$ and its $-1$-twist
-  $E_2^{-1}=\lmfdbec{608}{e}{1}$, which are symplectically
-  $5$-congruent to each other in accordant with Theorem~\ref{T:Cartan}
-  \textbf{[check this]}.  The mod~$5$ congruence between
-  $\lmfdbec{32}{a}{1}$ and $\lmfdbec{608}{b}{1}$ is ? while that
-  between $\lmfdbec{32}{a}{2}$ and $\lmfdbec{608}{e}{1}$ is ??
-  \textbf{[find and insert these, there should be one of each type]}, so
-  in this case applying the $-1$-twist reverses the symplectic type.
+  $E_1=\lmfdbec{32}{a}{1}$ has $j$-invariant $1728$, its $2$-isogenous
+  twist is $E_1^{-1}=\lmfdbec{32}{a}{2}$, and these are
+  antismplectically congruent mod~$5$ since $\legendre{2}{5}=-1$.
+  They are also congruent mod~$5$ to $E_2=\lmfdbec{608}{b}{1}$ and its
+  $-1$-twist $E_2^{-1}=\lmfdbec{608}{e}{1}$, which are symplectically
+  $5$-congruent to each other in accordance with
+  Theorem~\ref{T:Cartan}.  The mod~$5$ congruence between
+  $\lmfdbec{32}{a}{1}$ and $\lmfdbec{608}{b}{1}$ is symplectic while
+  that between $\lmfdbec{32}{a}{2}$ and $\lmfdbec{608}{e}{1}$ is
+  antisymplectic, so in this case applying the $-1$-twist reverses the
+  symplectic type.
 \end{example}
 
 \begin{example} \label{Ex:3twists}
