@@ -769,9 +769,17 @@ D = 7 and 28: sqrt{-7], norm 7
 
 D = p = 11, 19, 43, 67, 163: sqrt{-p}, norm p
 
-The fact of 4 for D=16,8,12,28 does not affect the legendre symbol but
+The fact of 4 for D=16,8,12,28 does not affect the Legendre symbol but
 the factor of 2 for D=4 does!
 \end{comment}
+
+\begin{remark}
+In our computed data, we do not see usually isomorphisms arising from
+CM curves as in the corollary. This is because (apart from the CM
+cases where quartic or sextic twists occur) all such mod~$p$
+isomorphisms occur within an isogeny class, and we have omitted these
+from consideration.
+\end{remark}
 
 \begin{remark}\label{R:CM}
 The last part of the Corollary is also a special case of
@@ -875,7 +883,7 @@ some $n \geq 2$.  By Proposition~\ref{P:twistNumber}, we have $E[p]
 congruent to~$E$.
 
 Note that $n=4$ when $p =3$ and $C$ is non-split, and $n \neq 2$ if $p
-> 3$.  This implies the uniquness part of case~2).
+> 3$.  This implies the uniqueness part of case~2).
 
 1) When case $j(E)=1728$ and $d=-1$ (modulo squares), we know by
 Remark~\ref{R:2-isog} that $E^{-1}$ is $2$-isogenous to~$E$, so the
@@ -889,19 +897,84 @@ restriction to $G_{K(\sqrt{d})}$ has image contained in the Cartan~$C$.
 As usual, write $\eps_d$ for the quadratic character of~$G_K$
 fixing~$K(\sqrt{d})$.
 
-\begin{comment}
- We first prove that $E[p] \simeq E^d[p]$ as $G_K$-modules. 
-Note that $\rhobar_{{E^d}, p} = \rhobar_{E, p} \otimes \eps$, and
-hence for all $\sigma \in G_K$ we have
-\[\Tr \rhobar_{{E^d},p}(\sigma) = \eps(\sigma) \cdot \Tr \rhobar_{E,p}(\sigma).\]
+Since we are not in case~1), an isomorphism~$t: E \to E^d$ defined
+over $K(\sqrt{d})$ is given on short Weierstrass models by $(x,y)
+\mapsto (dx,d\sqrt{d}y)$.  With a direct calculation we see that
+\begin{equation} \label{E:eps}
+ t(\sigma(P)) = \eps_d(\sigma)\cdot\sigma(t(P)) \quad \text{ for all } \sigma \in G_K
+ \text{ and all } P \in E[P].
+\end{equation}
+Note that this equation does not hold if we are in the special case
+handled separately in case~1).
 
-Note that, if $\eps(\sigma) = -1$ then $\rhobar_{E,p}(\sigma) \in N\backslash C$ and $\Tr \rhobar_{E,p}(\sigma) = 0$, so also $\Tr \rhobar_{E^d,p}(\sigma) = 0$;
-therefore, $\Tr \rhobar_{E,p}(\sigma) = \Tr \rhobar_{E^d,p}(\sigma)$ 
-for all $\sigma \in G_K$. Since these representations are irreducible and have
-the same traces it follows that they are isomorphic.
-\end{comment}
+We also let $t: E[p](\Qbar) \to E^d[p](\Qbar)$ denote the induced map
+on $p$-torsion points; this is an $\F_p$-linear isomorphism which is
+not Galois equivariant on account of the character~$\eps_d$ appearing
+in~(\ref{E:eps}).  Also, since $t$ is an isomorphism over~$\Qbar$, it
+preserves the Weil pairing.
 
-From the hypothesis on the image of $\rhobar_{E,p}$, we can choose a
+Let $\delta\in\F_p^*$ be a fixed square if the Cartan subgroup~$C$ is
+split, and a fixed non-square if it is non-split.  We now define a
+map~$s:E[p]\to E[p]$ satisfying
+\begin{enumerate}
+  \item $s$ is an~$\F_p$-linear isomorphism;
+  \item  $s(\sigma(P)) = \eps_d(\sigma)\cdot\sigma(s(P)) \quad \text{ for all } \sigma \in G_K
+    \text{ and all } P \in E[P]$, as for~$t$ in~(\ref{E:eps});
+  \item $e_p(s(P),s(Q)) = e_p(P,Q)^{-\delta}$ for all $P,Q\in E[p]$.
+\end{enumerate}
+Given such an~$s$, the composite $t\circ s:E[p]\to E^p[p]$ is a Galois
+equivariant isomorphism whose symplectic type
+is~$\legendre{-\delta}{p}$ which gives the result stated.
+
+\def\rd{\sqrt{\delta}} Define a $2$-dimensional
+$\F_p$-algebra~$A=\F_p[X]/(X^2-\delta)$.  Then $A\cong\F_p\oplus\F_p$
+or $\F_{p^2}$ (as $\F_p$-algebras) in the split and non-split cases
+respectively.  We denote by $\sqrt{\delta}$ the generator of~$A$ as
+$A$-algebra (the image of~$X$); note that in the split case $\rd$ does
+not refer to a square root of~$\delta$ in~$\F_p$.
+
+The Cartan subgroup~$C$ may be identified with the group of
+units~$A^{\times}$, and hence with the group of $A$-linear
+automorphisms of~$A$: these are maps~$f$ of the form $x\mapsto ax$ for
+some $a\in A^{\times}$.  Similarly, $N$ is identified with the group
+of semilinear automorphisms of~$A$; explicitly, elements of
+$N\setminus C$ correspond to conjugate-linear maps $A\to A$,
+\textit{i.e.}, maps~$f$ of the form $x\mapsto a\overline{x}$ for
+some~$a\in A^{\times}$.  Here, $x\mapsto\overline{x}$ denotes the
+nontrivial automorphism of~$A$, mapping $\rd$ to $-\rd$.
+
+From the hypothesis on the image of $\rhobar_{E,p}$, we may identify
+$A$ with~$E[p]$ in such a way that if $\eps_d(\sigma)=+1$ so that
+$\rhobar_{E,p}(\sigma)\in C$, the induced action of~$\sigma$ on~$A$ is
+linear, while if $\eps_d(\sigma)=-1$ so that $\rhobar_{E,p}(\sigma)\in
+N\setminus C$, the induced action of~$\sigma$ on~$A$ is conjugate
+linear.
+
+Now let $s:E[p]\to E[p]$ be the map, which when considered as a map
+$A\to A$ under this identification, is given by multiplication
+by~$\rd$.  This is clearly $\F_p$-linear.  Since multiplication by
+$\rd$ is linear and linear maps commute, we see that
+$s(\sigma(P))=\sigma(s(P))$ whenever~$\eps_d(\sigma)=+1$. Also,
+$\overline{\rd}=-\rd$ implies that multiplication by~$\rd$ anticommutes
+with conjugate-linear maps, so $s(\sigma(P))=-\sigma(s(P))$
+whenever~$\eps_d(\sigma)=-1$.  Hence $s$ satisfies the first two
+properties listed above.
+
+Define $\left<,\right>:A\times A\to \mu_p$ to be the pairing which
+under our identification $A\cong E[p]$ corresponds to the Weil
+pairing.  This is $\F_p$-bilinear and alternating.  For all $x,y\inA$
+and~$a\in A^{\times}$ we have $\left<ax,ay\right> =
+\left<x,y\right>^{N(a)}$, where $N(a)=a\overline{a}$ is the norm map
+from~$A$ to~$\F_p$.  This follows from the $\F_p$-linearity of
+multiplication by~$a$, together with the facts that the pairing is
+alternating and that (by definition) $N(a)$ is the determinant of
+multiplication by~$a$.  Taking $a=\rd$ with $N(\rd)=-\delta$, we see
+that $\left<\rd x,\rd y\right> = \left<x,y\right>^{-\delta}$, and
+hence that $e_p(s(P),s(Q)) = e_p(P,Q)^{-\delta}$ for all $P,Q\in
+E[p]$, as required.
+
+\begin{comment} % old proof, partially rewritten
+  We can choose a
 basis $P_1, P_2$ of $E[p]$ such that the image of~$\rhobar_{E,p}$ is
 contained in the subgroup~$N$ of $\GL_2(\F_p)$ given by
 \[
@@ -933,17 +1006,6 @@ G_K$, we have
                             b & a
                             \end{pmatrix}.
                             \]
-%% \[
-%%  \rhobar_{E,p}(\sigma) = \begin{cases} 
-%%                             \begin{pmatrix}
-%%                             a & b\delta \\
-%%                             b & a
-%%                             \end{pmatrix} \quad \text{ if } \eps_d(\sigma) = 1,  \\
-%% \begin{pmatrix}
-%% a & b\delta \\
-%% -b & -a
-%% \end{pmatrix} \quad \text{ if } \eps_d(\sigma) = -1.  \\
-%% \end{cases}\]
 Fix $\tau \in G_K$ such that $\rhobar_{E,p}\in N\setminus C$, say
 \[
  \rhobar_{E,p}(\tau) =  \begin{pmatrix}
@@ -953,14 +1015,6 @@ Fix $\tau \in G_K$ such that $\rhobar_{E,p}\in N\setminus C$, say
 \]
 so that $\rhobar_{E,p}(G_K) = N = \langle C,\rhobar_{E,p}(\tau) \rangle$.
 
-Since we are not in case~1), an isomorphism from $E$ to $E^d$ defined
-over $K(\sqrt{d})$ is given by $(x,y) \mapsto (dx,d\sqrt{d}y)$.  Let
-$\tw : E[p](\Qbar) \to E^d[p](\Qbar)$ be the map on $p$-torsion points
-induced by it.  With a direct calculation we see that
-\begin{equation} \label{E:eps}
- \tw(\sigma(P)) = \eps_d(\sigma)\cdot\sigma(\tw(P)) \quad \text{ for all } \sigma \in G_K 
- \text{ and all } P \in E[P]. 
- \end{equation}
 We now consider the linear
 map $\phi : E[p] \to E^d[p]$ defined on the basis by
 \[
@@ -969,11 +1023,11 @@ map $\phi : E[p] \to E^d[p]$ defined on the basis by
 and will show it is $G_K$-equivariant, i.e. $\sigma(\phi(P)) =
 \phi(\sigma(P))$ for all $\sigma \in G_K$ and $P \in E[P]$.
 
-We first consider the acton of~$\tau$.  Since $\eps_d(\tau) = -1$, we
+We first consider the action of~$\tau$.  Since $\eps_d(\tau) = -1$, we
 have
 
 [Not yet typed properly but the point is that rho(tau) anticommutes
-  with [0,delta;1,0] but rho(sigma) in C commoutes with it.]
+  with [0,delta;1,0] but rho(sigma) in C commutes with it.]
 
 \[
  \tau(\phi(P_1)) = \tau(\tw(P_2)) = -\tw(\tau(P_2)) = -\tw (-P_2) = \phi(P_1) = \phi(\tau(P_1)),
@@ -1009,8 +1063,9 @@ as desired. Finally, we note that
  \]
 where the last equality holds since $\tw$ preserves the Weil pairing.
 Thus $\phi$ is symplectic if and only if $(-\delta/p) = 1$.
+\end{comment}
 
-2) In this case we have $\PP \rhobar_{E,3} \simeq C_2 \times C_2$
+3) In this case we have $\PP \rhobar_{E,3} \simeq C_2 \times C_2$
 therefore there are three twists $E^{d_i}$ of~$E$ such that $E[3]
 \simeq E^{d_i}[3]$ by Proposition~\ref{P:twistNumber}. We have
 $K(\sqrt{d_i}) \subset K(E[3]) = K(E^{d_i}[3])$.  Moreover, we are not
@@ -1018,23 +1073,20 @@ in the special case of $j=1728$ here since $3$ is inert in the CM
 field $\Q(\sqrt{-1})$ of such curves, so the mod~$3$ image is
 contained in the normaliser of a non-split Cartan.
 
-The normalizer~$N$ of a split Cartan $C \subset \GL_2(\F_3)$ has three index 2 subgroups: the split Cartan~$C$, another split Cartan~$C'$ and third subgroup~$H$ whose normalizer is the normalizer of non-split Cartan.
-Restriction to the $G_{K(\sqrt{d_i})}$ corresponds to~$\rhobar_{E,3}$ having image in each of these subgroups. 
-Therefore, for each of the two pairs $(N,C)$ and $(N,C')$ corresponding to (say) $d_1$ and~$d_2$, we can apply the same proof as in part 1). This yields that 
-$E[3] \simeq E^{d_i}[3]$ are
+The normalizer~$N$ of a split Cartan $C \subset \GL_2(\F_3)$ has three
+index 2 subgroups: the split Cartan~$C$, another split Cartan~$C'$ and
+third subgroup~$H$ whose normalizer is the normalizer of non-split
+Cartan.  Restriction to the $G_{K(\sqrt{d_i})}$ corresponds
+to~$\rhobar_{E,3}$ having image in each of these subgroups.
+Therefore, for each of the two pairs $(N,C)$ and $(N,C')$
+corresponding to (say) $d_1$ and~$d_2$, we can apply the same proof as
+in part 2). This yields that $E[3] \simeq E^{d_i}[3]$ are
 anti-symplectically isomorphic for $i=1,2$.
 
 We are left to show that $E[3] \simeq E^{d_3}[3]$ are symplectically isomorphic.
 Indeed, we know that $E[3] \simeq E^{d_1}[3] \simeq E^{d_2}[3]$ where both the first isomorphism and the composition are anti-symplectic. Thus $E^{d_1}[3] \simeq E^{d_2}[3]$ are symplectically isomorphic $G_K$-modules. Because each of the twists satisfies the same hypothesis as~$E$ we can apply the first part of our argument to~$E^{d_1}$ to conclude the statement of the theorem holds for~$E^{d_1}$, hence also for~$E$.
 \end{proof}
 
-\begin{remark}
-In our computed data, we do not see usually isomorphisms
-arising from CM curves as in the previous remark. This is because
-(apart from the CM cases where quartic or sextic twists occur) all
-such mod~$p$ isomorphisms occur within an isogeny class, and we have
-omitted these from consideration.
-\end{remark}
 
 Quadratic twists act on congruent pairs of curves:
 \begin{proposition}\label{P:twist-cong}
@@ -1110,7 +1162,7 @@ which again have symplectically isomorphic mod~$7$ representations.
 \begin{example}
   $E_1=\lmfdbec{32}{a}{1}$ has $j$-invariant $1728$, its $2$-isogenous
   twist is $E_1^{-1}=\lmfdbec{32}{a}{2}$, and these are
-  antismplectically congruent mod~$5$ since $\legendre{2}{5}=-1$.
+  antisymplectically congruent mod~$5$ since $\legendre{2}{5}=-1$.
   They are also congruent mod~$5$ to $E_2=\lmfdbec{608}{b}{1}$ and its
   $-1$-twist $E_2^{-1}=\lmfdbec{608}{e}{1}$, which are symplectically
   $5$-congruent to each other in accordance with
