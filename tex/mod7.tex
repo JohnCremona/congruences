@@ -914,23 +914,22 @@ in~(\ref{E:eps}).  Also, since $t$ is an isomorphism over~$\Qbar$, it
 preserves the Weil pairing.
 
 Let $\delta\in\F_p^*$ be a fixed square if the Cartan subgroup~$C$ is
-split, and a fixed non-square if it is non-split.  We now define a
+split, and a fixed non-square if it is non-split.  We shall define a
 map~$s:E[p]\to E[p]$ satisfying
 \begin{enumerate}
   \item $s$ is an~$\F_p$-linear isomorphism;
   \item  $s(\sigma(P)) = \eps_d(\sigma)\cdot\sigma(s(P)) \quad \text{ for all } \sigma \in G_K
-    \text{ and all } P \in E[P]$, as for~$t$ in~(\ref{E:eps});
+    \text{ and all } P \in E[P]$; 
   \item $e_p(s(P),s(Q)) = e_p(P,Q)^{-\delta}$ for all $P,Q\in E[p]$.
 \end{enumerate}
-Given such an~$s$, the composite $t\circ s:E[p]\to E^p[p]$ is a Galois
-equivariant isomorphism whose symplectic type
-is~$\legendre{-\delta}{p}$ which gives the result stated.
+Note that~(2) is identical to property~(\ref{E:eps}) satisfied by~$t$. Thus, given such an~$s$, the composite $t\circ s:E[p]\to E^d[p]$ is a Galois
+equivariant isomorphism which is symplectic if and only if
+the Legendre symbol $(-\delta/p) = 1$ and anti-symplectic otherwise. The result now follows by a simple case checking.
 
-\def\rd{\sqrt{\delta}} Define a $2$-dimensional
+\def\rd{\sqrt{\delta}} Define the $2$-dimensional
 $\F_p$-algebra~$A=\F_p[X]/(X^2-\delta)$.  Then $A\cong\F_p\oplus\F_p$
 or $\F_{p^2}$ (as $\F_p$-algebras) in the split and non-split cases
-respectively.  We denote by $\sqrt{\delta}$ the generator of~$A$ as
-$A$-algebra (the image of~$X$); note that in the split case $\rd$ does
+respectively.  We write $\sqrt{\delta}$ for the image of~$X$ in~$A$, which is a generator of~$A$ as $A$-algebra; note that in the split case $\rd$ does
 not refer to a square root of~$\delta$ in~$\F_p$.
 
 The Cartan subgroup~$C$ may be identified with the group of
@@ -957,12 +956,12 @@ $\rd$ is linear and linear maps commute, we see that
 $s(\sigma(P))=\sigma(s(P))$ whenever~$\eps_d(\sigma)=+1$. Also,
 $\overline{\rd}=-\rd$ implies that multiplication by~$\rd$ anticommutes
 with conjugate-linear maps, so $s(\sigma(P))=-\sigma(s(P))$
-whenever~$\eps_d(\sigma)=-1$.  Hence $s$ satisfies the first two
-properties listed above.
+whenever~$\eps_d(\sigma)=-1$.  Hence $s$ satisfies 
+properties (1) and~(2).
 
-Define $\left<,\right>:A\times A\to \mu_p$ to be the pairing which
+Define $\left<\; , \right>:A\times A\to \mu_p$ to be the pairing which
 under our identification $A\cong E[p]$ corresponds to the Weil
-pairing.  This is $\F_p$-bilinear and alternating.  For all $x,y\inA$
+pairing.  This is $\F_p$-bilinear and alternating.  For all $x,y\in A$
 and~$a\in A^{\times}$ we have $\left<ax,ay\right> =
 \left<x,y\right>^{N(a)}$, where $N(a)=a\overline{a}$ is the norm map
 from~$A$ to~$\F_p$.  This follows from the $\F_p$-linearity of
