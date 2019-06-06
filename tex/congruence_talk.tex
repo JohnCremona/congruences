@@ -1,0 +1,417 @@
+%
+%  The symplectic type of congruences between elliptic curves
+%
+%  Talk first given at
+%
+%  AGC2T, Luminy June 2019
+%
+%  Time-stamp: <2019-06-06 20:00:24 john>
+%
+\documentclass[compress]{beamer}
+%\documentclass[handout]{beamer}
+
+% for themes, etc.
+   \usetheme{}
+\mode<presentation>%<handout> 
+%{ \useinnertheme{rounded}
+  \setbeamerfont{block title}{size={}}
+  \setbeamertemplate{navigation symbols}[only frame symbol]
+  \usefonttheme[onlymath]{serif}
+  \useoutertheme[footline=empty]{miniframes} %,subsection=false
+%}
+
+\usepackage{comment}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{amsmath,amssymb,amsthm,bbm} %,calc,picins}
+\usepackage[mathcal]{euscript}
+\usepackage{mathrsfs}
+\usepackage{booktabs}
+\usepackage{numprint}
+
+\setlength{\parindent}{0pt}
+
+\newtheorem{remark}{Remark}
+%% \newtheorem{theorem}{Theorem}
+%% \newtheorem{lemma}{Lemma}
+\newtheorem{prop}{Proposition}
+\newtheorem{cor}{Corollary}
+
+
+% ---------------------------------
+\renewcommand{\geq}{\geqslant}
+\renewcommand{\leq}{\leqslant}
+
+\newcommand{\Q}{\mathbb Q}
+\newcommand{\Qbar}{\overline{\Q}}
+\newcommand{\Kbar}{\overline{K}}
+\newcommand{\rhobar}{\overline{\rho}}
+\newcommand{\F}{\mathbb F}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb R}
+\newcommand{\OO}{\mathcal O}
+\newcommand{\CC}{\mathcal C}
+\newcommand{\LL}{\mathcal L}
+\newcommand{\C}{\mathbb C}
+\newcommand{\PP}{\mathbb P}
+\newcommand{\Fp}{\mathbb F_{\! p}}
+\newcommand{\sss}{\scriptscriptstyle}
+\newcommand{\idealin}{\vartriangleleft}
+\newcommand{\GL}{\operatorname{GL}}
+\newcommand{\SL}{\operatorname{SL}}
+\newcommand{\PGL}{\operatorname{PGL}}
+\newcommand{\PSL}{\operatorname{PSL}}
+\newcommand{\Gal}{\operatorname{Gal}}
+\newcommand{\End}{\operatorname{End}}
+\newcommand{\n}{\mathfrak n}
+\newcommand{\p}{\mathfrak p}
+\newcommand{\q}{\mathfrak q}
+
+
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\Reg}{Reg}
+\DeclareMathOperator{\Pf}{Pf}
+%\DeclareMathOperator{\rank}{rank}
+
+%--   Colours
+\definecolor{dgreen}{rgb}{0,0.4,0.4}
+\definecolor{dblue}{rgb}{0,0,0.7}
+\definecolor{dred}{rgb}{0.7,0,0}
+\definecolor{lightgrey}{rgb}{0.9,0.9,0.9}
+\setbeamercolor{sagecolors}{fg=dblue,bg=lightgrey}
+
+
+\DeclareMathOperator{\disc}{disc}
+\DeclareMathOperator{\cond}{cond}
+\DeclareMathOperator{\Sel}{Sel}
+\newcommand\Sage{{\sc Sage}}
+\newcommand\Magma{{\sc Magma}}
+\newcommand{\BF}[1]{{\bf #1:}\hspace{1em}\ignorespaces}
+\newcommand{\lmfdbec}[3]{\color{blue}\href{http://www.lmfdb.org/EllipticCurve/Q/#1#2#3}{{\text{\rm#1#2#3}}}}
+\newcommand{\LMFDB}{\href{http://www.lmfdb.org/EllipticCurve/Q}{\color{blue}LMFDB}}
+\newcommand{\high}[1]{\emph{\color{blue}{#1}}}
+
+% titlepage -----------------------
+
+\title
+{
+The symplectic type of congruences between elliptic curves
+}
+
+\author{\href{https://warwick.ac.uk/fac/sci/maths/people/staff/john_cremona/}{John Cremona}}
+
+\institute{University of Warwick\\---\\ joint work with
+  \href{https://homepages.warwick.ac.uk/staff/Nuno.Freitas/}{Nuno Freitas}
+  (Warwick) %\includegraphics[height=1cm]{nuno.pdf}
+}
+
+\date{AGC${}^2$T Luminy, 10 June 2019}
+
+% --------------------------------
+\begin{document}
+
+\frame[plain]{
+ \maketitle
+\vskip-40pt
+\hbox to \hsize{
+ \includegraphics[height=10mm]{./epsrc.pdf}
+\hfill
+ \includegraphics[height=10mm]{./eu_flag.pdf}
+\hfill
+ \includegraphics%[height=10mm]{./UW-blue.pdf}
+[scale=0.2]{UofW_CMYK_Colour_logo_+Descriptor.pdf}}
+}
+
+
+\begin{frame}\frametitle{Overview}
+ \begin{enumerate}
+\item Elliptic curves, mod~$p$ Galois representations, Weil pairing.
+\item Congruences between curves, symplectic types.  The isogeny criterion.
+\item The Frey--Mazur Conjecture over~$\Q$. % Theorem.
+\item Finding all congruences in the \LMFDB\ database. % Results.
+\item Determining the symplectic type using modular curves
+  ($p=7$). % Results.
+\item Congruences between twists.
+ \end{enumerate}
+
+
+\end{frame}
+
+\begin{frame}\frametitle{Elliptic Curves}
+In this talk we consider elliptic curves over a number field~$K$, for
+example ~$K=\Q$.
+
+If we need explicit equations we'll use short Weierstrass models
+\[  E_{a,b}:\quad Y^2 = X^3+aX+b
+\]
+with $a,b\in K$ such that $4 a^{3} + 27 b^{2} \not=0$. \pause
+
+The set of $K$-rational points $E(K)$ forms an abelian group.
+
+For $m\ge2$ we denote by $E[m]$ the \high{$m$-torsion subgroup}:
+\[
+  E[m] = \{ P \in E(\Kbar) \mid mP=0 \}.
+  \]
+  \pause
+  We have $E[m]\cong (\Z/mZ)^2$ as abelian groups.
+  \medskip
+  
+  But $E[m]$ carries additional structure\dots.
+\end{frame}
+
+\begin{frame}\frametitle{Mod $p$ Galois representations}
+  Let $G_K=\Gal(\Kbar/K)$, the \high{absolute Galois group} of~$K$.
+  This acts on $E(\Kbar)$ by acting on coordinates:
+  \[
+   P=(x,y)\in E(\Kbar), \quad\sigma\in G_K:\qquad
+   \sigma(P)=(\sigma(x),\sigma(y))\in E(\Kbar).
+   \]
+   \pause
+ The Galois action preserves the group structure:
+   \[
+   \sigma(P+Q)=\sigma(P)+\sigma(Q).
+   \]
+   Hence each $E[m]$ is a \high{$G_K$-module}.
+   \pause\medskip
+
+   Taking $m=p$ prime, $E[p]$ is a $2$-dimensional vector space
+   over~$\F_p$.  Fixing a basis of $E[p]$ we obtain the \high{mod~$p$
+   Galois representation}
+   \[
+   \rhobar_{E,p}: G_K \to \GL_2(\F_p).
+   \]
+
+\end{frame}
+
+\begin{frame}\frametitle{The Weil pairing}
+  As well as its vector space structure, $E[p]$ admits a \high{symplectic
+  structure}: there is a non-degenerate alternating bilinear pairing,
+  the \high{Weil pairing}
+  \[
+  e_p = e_{E,p}:\quad E[p]\times E[p] \to \mu_p
+  \]
+  where~$\mu_p$ denotes the group of $p$'th roots of unity in
+  $\Qbar^*$.
+  \pause\medskip
+
+  The Weil pairing is \high{Galois equivariant}:
+  \[
+  e_p(\sigma(P),\sigma(Q)) = \sigma(e_p(P,Q)) = e_p(P,Q)^{\chi_p(\sigma)}
+  \]
+  where $\chi_p:G_K\to\F_p^*$ is the cyclotomic character.
+
+  \pause\medskip This Galois-equivariant symplectic structure on $E[p]$ is
+  what we are interested in.
+\end{frame}
+
+\begin{frame}\frametitle{Congruences and their symplectic types}
+  We are interested in the situation where two different curves have
+  \high{isomorphic} $p$-torsion modules.
+  \pause\medskip
+
+  $E_1$ and $E_2$ are said to satisfy a \high{mod~$p$ congruence} if
+  there is a map
+  \[
+  \phi:\quad E_1[p] \to E_2[p]
+  \]
+  which is both $\F_p$-linear and $G_K$-equivariant, \textit{i.e.}, is
+  an isomorphism of $G_K$-modules.
+  \pause\medskip
+
+  To each such~$\phi$ there is a constant $d_{\phi}\in\F_p^*$ such
+  that
+  \[
+  e_{E_2,p}(\phi(P),\phi(Q)) = e_{E_1,p}(P,Q)^{d_{\phi}}.
+  \]
+
+  We say that $\phi$ is \high{symplectic} if $d_{\phi}$ is a
+  \high{square} mod~$p$ and \high{antisymplectic} otherwise.
+\end{frame}
+
+\begin{frame}\frametitle{Pedantic remarks}
+  \begin{itemize}
+    \item This is uninteresting for $p=2$ so we'll assume that $p$ is
+      \high{odd}.
+
+    \item The Weil pairing is not well-defined by the properties
+      given.  If $E[p]$ has $G_K$-automorphisms we can compose with
+      $e_p$ to get a new pairing which will equal $e_p^k$ for some
+      $k\in\F_p^*$.
+
+      But if $E[p]$ is \high{irreducible} as
+      $G_K$-module then the only such automorphisms are scalar
+      multiplications, for which $d$ is a square.  We will only talk
+      about the symplectic type of isomorphisms between irreducible
+      modules: this \high{is} well-defined.
+  \end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Isogenies}
+  Isogenies between curves provide one source of congruences.
+  \pause\medskip
+
+  Let $\phi:E_1\to E_2$ be an isogeny of degree~$\deg(\phi)$
+  \high{coprime to $p$}, defined over~$K$.  Then $\phi$ induces an
+  $\F_p$-isomorphism $E_1[p]\to E_2[p]$.  The \high{isogeny criterion}
+  says that $\phi$ is symplectic if and only if the Legendre symbol
+  $({\deg(\phi)}/{p})=+1$.
+  \pause\medskip
+
+  \begin{proof}
+    Using Weil reciprocity,
+    \[
+    \begin{aligned}
+      e_{E_2,p}(\phi(P), \phi(Q)) &= e_{E_1,p}(P, \hat\phi\phi(Q)) \\
+      &= e_{E_1,p}(P, \deg(\phi)(Q))\\ &= e_{E_1,p}(P,
+      Q)^{\deg(\phi)},
+    \end{aligned}
+  \]
+  where $\hat{\phi}$ denotes the dual isogeny, since $\hat\phi\phi=\deg(\phi)$.
+  \end{proof}
+  \pause\medskip
+
+  Do any other mod~$p$ congruences exist?
+\end{frame}
+
+\begin{frame}\frametitle{The Frey-Mazur conjecture}
+  The \high{Frey--Mazur conjecture} (over $\Q$) states:
+
+  \begin{quote}There is a constant $C$ such that, if $E_1/\Q$ and $E_2/\Q$
+  satisfy $E_1[p] \simeq E_2[p]$ as $G_\Q$-modules for some prime $p >
+  C$, then $E_1$ and $E_2$ are $\Q$-isogenous.
+  \end{quote}
+
+  \pause\medskip
+
+  \begin{theorem}[C. \& Freitas]
+  If $E_1$ and~$E_2/\Q$ both have conductor ${}\le\numprint{400000}$
+  are not isogenous, and satisfy $E_1[p] \simeq E_2[p]$ as
+  $G_\Q$-modules for some prime $p$, then $p\le17$.
+  \end{theorem}
+
+  \pause\medskip
+  \begin{itemize}
+    \item It is generally believed that the Frey--Mazur
+      conjecture is true, with $C=17$. More on this later later.
+      \item Congruences for small~$p$ are common; for $p=17$ there is
+        essentially only one known, between $\lmfdbec{47775}{b}{1}$
+        and~$\lmfdbec{3675}{b}{1}$.
+  \end{itemize}
+
+\end{frame}
+
+\begin{frame}\frametitle{Finding congruences in the LMFDB database}
+The \LMFDB\ database contains all elliptic curves defined over~$\Q$ of
+conductor up to $\numprint{400000}$: that is $\numprint{2483649}$
+curves in $\numprint{1741002}$ isogeny classes.
+
+What congruences are there between (non-isogenous) curves, and how do
+we find them?
+
+Two representations have isomorphic semisimplifications if and only if
+they have the same traces. We can test this condition by testing
+whether
+\[ a_{\ell}(E_1)\equiv a_{\ell}(E_2)\pmod{p}
+\quad \text{for all primes } \ell \nmid pN_1N_2,
+\] 
+where $N_1$ and $N_2$ are the conductors of~$E_1$ and $E_2$.
+
+But there are infinitely many primes~$\ell$.  And each for curve we need to
+ignore a different bad set!
+\end{frame}
+
+\begin{frame}\frametitle{Sieving}
+  To get around these issues we use a \high{sieve} with a hash
+  function, and only test $\ell>\numprint{400000}$.
+
+  Let $\LL_B=\{\ell_0,\dots,\ell_{B-1}\}$ be the set of the $B$
+  smallest primes greater than $\numprint{400000}$.  For each $p$ we
+  define the hash of $E$ to be
+  \[\sum_{i=0}^{B-1}\overline{a}_{\ell_i}(E)p^i\in\Z.\]
+
+ Any two $p$-congruent curves (up to semisimplification) have the same
+ hash value.  If $B$ is not too small then we will get few (if any)
+ ``false positive'' clashes.
+
+  We can also parallelise this with repect to~$p$, so that we only
+  need to compute each $a_{\ell}(E)$ once.  Against each hash value,
+  we store lists of curves which have that $p$-hash (processing the
+  curves one at a time, one from each isogeny class).  At the end we
+  extract the lists of size at least~$2$, to give us sets of curves
+  which are likely to all be $p$-congruent. % (up to  semisimplification).
+
+\end{frame}
+
+\begin{frame}\frametitle{Sieving in practice}
+  This works well in practice with $B=40$.
+
+  \pause
+  \medskip
+  The curves with labels $\lmfdbec{25921}{a}{1}$ and
+  $\lmfdbec{78400}{gw}{1}$ have traces $a_{\ell}$ which are \high{equal
+    for all~$\ell\in\LL_{35}$}, that is, for all~$\ell$ with
+  $400000\le \ell<400457$ (though not for the 36th $\ell=400457$).
+  \pause
+  \medskip
+
+  Note on reducibility: here we are testing for $p$-congruence only up
+  to semisimplification.  For curves with $E[p]$ reducible
+  (\textit{i.e.}, which have a rational $p$-isogeny) this is a weaker
+  condition than $p$-congruence, and we need to carry out further
+  tests.
+
+    \pause
+  \medskip
+  We also need to test whether curves which appear to be $p$-congruent
+  after sieving actually are.  With $B=40$ this is always the case.
+\end{frame}
+
+\begin{frame}\frametitle{Sieving results}
+  For $5\le p\le 97$ we find the following number of sets of more than
+  one mutually $p$-congruent curves (up to semisimplification,
+  ignoring isogenies):
+
+  %% p=5: 102043 subsets (101717 irred, 326 red) sizes up to 18
+  %% (irred), 430 (red)
+  %% p=7: 20138 subsets (19883 irred, 255 red) sizes up to 5 (irred),
+  %% 76 (red)
+  %% p=11: 635 subsets, size 2, all irred
+  %% p=13: 150, size 2, all irred
+  %% p=17: 8, size 2, all irred
+  %% p>=19: none
+  \[
+  \begin{tabular}{||c||c|c|c|c|c||}
+    \hline
+    $p$ & \#sets & \# irred. & max.irred. & \# red. & max. red.\\
+    \hline
+    5 & 102043 & 101717 & 18 & 326 & 430 \\
+    7 & 20138 & 19883 & 5 & 255 & 76 \\
+    11 & 635 & 635 & 2 & 0 & - \\
+    13 & 150 & 150 & 2 & 0 & - \\
+    17 & 8 & 8 & 2 & 0 & - \\
+    19$\le p\le$ 97 & 0 & 0 & - & 0 & - \\
+    \hline
+  \end{tabular}
+  \]
+\end{frame}
+
+\begin{frame}\frametitle{}
+\end{frame}
+
+\begin{frame}\frametitle{}
+\end{frame}
+
+\begin{frame}\frametitle{}
+\end{frame}
+
+\begin{frame}\frametitle{Using modular curves} % for congruences and their symplectic type}
+\end{frame}
+
+\begin{frame}\frametitle{Some results on congruences between twists}
+\end{frame}
+
+
+
+\end{document}
