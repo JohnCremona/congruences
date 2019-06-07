@@ -711,19 +711,57 @@ by~$\Z[\sqrt{-1}]$, and after base-change to~$K(\sqrt{-1})$ the
 $2$-isogeny becomes the endomorphism~$1+\sqrt{-1}$.
 \end{remark}
 
-\begin{remark}
-In all cases, the Galois representations of $E$ and~$E^d$ are related
-by
-\begin{equation}
-  \rhobar_{E^d,p} \cong \rhobar_{E,p}\otimes\eps_d, \label{E:rho-twist}
+\begin{lemma}\label{L:twist-rep}
+Let $E$ and $E^d$ be quadratic twists defined over~$K$, and let
+$\eps_d$ denote the associated quadratic character of~$G_K$.
+\begin{enumerate}
+\item Assume that we are not in the special case $j(E)=1728$ and
+  $K(\sqrt{d})=K(\sqrt{-1})$.  Then there is an isomorphism
+  $\alpha:E\to E^d$ defined over $K(\sqrt{d})$ satisfying
+\begin{equation}\label{E:iso-twist}
+\alpha(\sigma(P)) = \eps_d(\sigma)\sigma(\alpha(P))\qquad\text{for
+  all~$\sigma\in G_K$ and $P\in E(\Kbar)$};
 \end{equation}
-where $\eps_d$ is the quadratic character of~$G_K$ associated to the
-extension $K(\sqrt{d})/K$.  In the special case, and more generally
-when $E$ has CM with the extra endomorphisms defined
-over~$K(\sqrt{d})$, since $E$ and $E^{d}$ are isogenous, it is also
-true that $\rhobar_{E^d,p} \cong \rhobar_{E,p}$ and $\rhobar_{E,p}
-\cong \rhobar_{E,p}\otimes\eps_d$.  Here, we exclude $p$ which are
-ramified in $K(\sqrt{d})$.  See also Corollary~\ref{C:CM-twist}.
+that is, $\alpha^{\sigma} = \eps_d(\sigma)\alpha$.  For all primes~$p$ we have
+\begin{equation} \label{E:rho-twist}
+  \rhobar_{E^d,p} \cong \rhobar_{E,p}\otimes\eps_d.
+\end{equation}
+\item
+  In the special case, isomorphisms $\alpha: E=E_{a,0}\to
+  E_{-4a,0}=E^{-1}$ defined over $K(\sqrt{-1})$ exist, but do not
+  satisfy~(\ref{E:iso-twist}).  However, (\ref{E:rho-twist}) still
+  holds for all \emph{odd} primes~$p$.
+\end{enumerate}
+\end{lemma}
+
+\begin{proof}
+In the general case we may assume that $E=E_{a,b}$ and
+$E^d=E_{ad^2,bd^3}$ and then define $\alpha((x,y)) = (dx,d\sqrt{d}y)$
+which clearly satisfies~(\ref{E:iso-twist}) and hence
+also~(\ref{E:rho-twist}).
+
+In the special case, take $E=E_{a,0}$ and $E^{-1}=E_{-4a,0}$.  One
+isomorphism $\alpha:E\to E^{-1}$ is given by $\alpha((x,y)) =
+(2ix,(2-2i)y)$, where $i=\sqrt{-1}$.  One may check that when
+$\eps(\sigma)=-1$ (that is, when $\sigma(i)=-i$) we have
+$\alpha\circ\sigma=[i]\circ\sigma\circ\alpha$, where $[i]$ denotes the
+automorphism of $E$ or $E^{-1}$ defined by $[i](x,y)=(-x,-iy)$,
+satisfying $[i]^2=-1$ and $[i]\circ\sigma=\eps(\sigma)\sigma\circ[i]$.
+
+To prove (\ref{E:rho-twist}) in this case for odd~$p$, first note that
+since $E$ and $E^{-1}$ are $2$-isogenous we have $\rhobar_{E^{-1},p}
+\cong \rhobar_{E,p}$ for $p\not=2$.  Secondly, $\rhobar_{E,p} \cong
+\rhobar_{E,p}\otimes\eps$: for both are irreducible, since $p$ is not
+ramified in the CM field~$\Q(\sqrt{-1})$, and they have the same
+traces, since the trace of $\rhobar_{E,p}(\sigma)$ is~$0$ when
+$\eps(\sigma)=-1$.
+\end{proof}
+
+\begin{remark}
+The relation~(\ref{E:rho-twist}) does not always hold for $p=2$ in the
+special case.  For example, taking $E=E_{1,0}$ and $E^{-1}=E_{-4,0}$
+over~$\Q$, the image of $\rhobar_{E,2}$ has order~$2$ while
+$\rhobar_{E^{-1},2}$ is trivial.
 \end{remark}
 
 \subsection{Dihedral Projective Images}
@@ -738,8 +776,8 @@ exclude some degenerate cases, where the projective image is very
 small, in which case this symplectic type is not well-defined.
 
 \begin{lemma}\label{L:irred}
-Let $E$ be an elliptic curve over the number field~$K$, let $p\ge3$
-be a prime, and suppose that we have a congruence $E[p]\cong E^d[p]$
+Let $E$ be an elliptic curve over the number field~$K$, let $p$ be an
+odd prime, and suppose that we have a congruence $E[p]\cong E^d[p]$
 for some quadratic twist~$E^d$ of~$E$.  If the projective image $\PP
 \rhobar_{E,p} (G_K)$ has size at least~$3$ then $E[p]$ is irreducible.
 \end{lemma}
@@ -759,9 +797,10 @@ using~(\ref{E:rho-twist}), we have
 \begin{pmatrix}\chi_1\eps&0\\0&\chi_2\eps
 \end{pmatrix}.
 \]
-The projective image is trivial if $\chi_1=\chi_2$.  Otherwise, since
-$\eps$ is not trivial, this equivalence implies $\chi_1=\chi_2\eps$,
-so the projective image has order~$2$.
+(Note that (\ref{E:rho-twist}) holds here even in the special case
+since $p\not=2$.)  The projective image is trivial if $\chi_1=\chi_2$.
+Otherwise, since $\eps$ is not trivial, this equivalence implies
+$\chi_1=\chi_2\eps$, so the projective image has order~$2$.
 
 If $E[p]$ has exactly one fixed line then
 $\rhobar_{E,p}$ has the form
@@ -825,12 +864,13 @@ split.
   elements of order~$2$ has square determinant.
 
   Examination of the characteristic polynomial shows that the elements
-  of order~$2$ in~$\PGL_2(\F_p)$ are those with trace zero, and these
-  elements are split (having $2$ fixed points on $\PP^1(\F_p)$) if the
-  determinant is minus a square, and non-split (having no fixed
-  points) otherwise.  Hence when $p\equiv1\pmod4$, elements of
-  order~$2$ are split if and only if they lie in $\PSL_2(\F_p)$, while
-  for $p\equiv3\pmod4$ the reverse is the case.  The result follows.
+  of order~$2$ in~$\PGL_2(\F_p)$ are precisely those with trace zero,
+  and these elements are split (having $2$ fixed points on
+  $\PP^1(\F_p)$) if the determinant is minus a square, and non-split
+  (having no fixed points) otherwise.  Hence when $p\equiv1\pmod4$,
+  elements of order~$2$ are split if and only if they lie in
+  $\PSL_2(\F_p)$, while for $p\equiv3\pmod4$ the reverse is the case.
+  The result follows.
 \end{proof}
 
 In the next proposition we show that congruences between quadratic
@@ -840,7 +880,7 @@ the normaliser of a Cartan subgroup but not in the Cartan itself.
 
 \begin{proposition}\label{P:twist}
 Let $E/K$ and $E^d/K$ be quadratic twists, where $d\in K^*$ is not a
-square. Assume that, for some prime $p\ge3$, we have $E[p]\cong
+square. Assume that, for some odd prime $p$, we have $E[p]\cong
 E^d[p]$ as $G_K$-modules, and that the projective image
 $\PP\rhobar_{E,p}(G_K)$ has order greater than~$2$.
 
@@ -872,7 +912,7 @@ finitely many primes), we have
   a_\frq(E^d) = \eps_d(\frq) a_\frq(E),
 \]
 where $a_\frq(E)$ and $a_\frq(E^d)$ denotes the trace of Frobenius at
-$\frq$ of~$E$ and~$E^d$, respectively, and we view $\eps_d$ is a
+$\frq$ of~$E$ and~$E^d$, respectively, and we view $\eps_d$ as a
 function on primes of~$K$ unramified in~$K(\sqrt{d})$ as usual via
 class field theory.
   
@@ -888,7 +928,7 @@ Moreover, since $E^d[p]\cong
   \]
   So the image $H=\rhobar_{E,p}(G_K)$ has a
   subgroup~$H^+=\rhobar_{E,p}(G_{K(\sqrt{d})})$ of index~$2$ such that
-  all elements of~$H\setminus H^+$ have trace~$0$.  Such elements have
+  all elements of~$H\setminus H^+$ have trace~$0$;  such elements have
   order~$2$ in $\PGL_2(\F_p)$.
 
   From the classification of subgroups of $\PGL_2(\F_p)$ and the
@@ -912,7 +952,7 @@ Then, $\Tr \rhobar_{E,p}(\sigma) = \Tr \rhobar_{E^d,p}(\sigma)$
 for all $\sigma \in G_K$. 
 
 Since $\rhobar_{E,p}$ and $\rhobar_{E^d,p}$ are irreducible
-(Lemma~\ref{L:irred}) and have the same traces, they are isomorphic.
+by Lemma~\ref{L:irred}, and have the same traces, they are isomorphic.
 
 For the last part we note that for $n=2$, $D_n$ has three cyclic
 subgroups of index~$2$, since $D_2\cong C_2\times C_2$, while for
@@ -994,12 +1034,12 @@ cases, by Proposition~\ref{P:twist}, this is one of the situations where
 the local methods from~\cite{FKSym} may not apply, as illustrated by
 Example~\ref{Ex:LocalFail7} below.
 
-For $p$ an odd prime, let $p^*=\pm p\equiv1\pmod4$, so that
+For $p$ an odd prime, define $p^*=\pm p\equiv1\pmod4$, so that
 $\Q(\sqrt{p^*})$ is the quadratic subfield of the cyclotomic
 field~$\Q(\zeta_p)$.
 
 \begin{theorem} \label{T:Cartan}
-Let $p \geq 3$ be a prime. Let $E/K$ be an elliptic curve such that
+Let $p$ be an odd prime. Let $E/K$ be an elliptic curve such that
 $\rhobar_{E,p}$ has projective image of order greater than~$2$, and
 suppose that for some quadratic twist~$E^d$ we have a congruence
 $E[p]\cong E^d[p]$.
@@ -1011,8 +1051,8 @@ $E[p]\cong E^d[p]$.
 \item Otherwise, let $C$ be the Cartan subgroup of~$\GL_2(\F_p)$
   associated to the extension $K(\sqrt{d})/K$ in
   Proposition~\ref{P:twist}.  Then the congruence is symplectic if and
-  only if $C$ is split and $p \equiv 1 \pmod{4}$, or $C$ is non-split
-  and $p \equiv 3 \pmod{4}$.
+  only if \emph{either} $C$ is split and $p \equiv 1 \pmod{4}$,
+  \emph{or} $C$ is non-split and $p \equiv 3 \pmod{4}$.
 
 \item When $\PP\rhobar_{E,p}\cong C_2\times C_2$, there are three
   different quadratic twists $E^{d}$ of~$E$ such that $E[p] \simeq
@@ -1031,20 +1071,17 @@ criterion.  Assume from now on that this is not the case.
 (2) As usual, write $\eps_d$ for the quadratic character of~$G_K$
 fixing~$K(\sqrt{d})$.
 
-Since we are not in case~(1), an isomorphism~$t: E \to E^d$ defined
-over $K(\sqrt{d})$ is given on short Weierstrass models by $(x,y)
-\mapsto (dx,d\sqrt{d}y)$.  With a direct calculation we see that
+Since we are not in case~(1), we have by Lemma~\ref{L:twist-rep} an
+isomorphism~$\alpha: E \to E^d$ satisfying~(\ref{E:iso-twist}).  Let
+$t: E[p](\Qbar) \to E^d[p](\Qbar)$ denote the induced map on
+$p$-torsion points; this is an $\F_p$-linear isomorphism but is not
+Galois equivariant: in fact by~(\ref{E:iso-twist}) we have
 \begin{equation} \label{E:eps}
  t(\sigma(P)) = \eps_d(\sigma)\cdot\sigma(t(P)) \quad \text{ for all } \sigma \in G_K
- \text{ and all } P \in E[P].
+ \text{ and all } P \in E[p].
 \end{equation}
-Note that this equation does not hold in case~(1).
-
-We also let $t: E[p](\Qbar) \to E^d[p](\Qbar)$ denote the induced map
-on $p$-torsion points; this is an $\F_p$-linear isomorphism which is
-not Galois equivariant, on account of the character~$\eps_d$ appearing
-in~(\ref{E:eps}).  Also, since $t$ is an isomorphism over~$\Qbar$, it
-preserves the Weil pairing.
+Also, since $\alpha$ is an isomorphism
+over~$\Qbar$, $t$ preserves the Weil pairing on~$E[p]$.
 
 Let $\delta\in\F_p^*$ be a fixed square if the Cartan subgroup~$C$ is
 split, and a fixed non-square if it is non-split.  We shall define a
@@ -1052,14 +1089,14 @@ map~$s:E[p]\to E[p]$ satisfying
 \begin{enumerate}
   \item $s$ is an~$\F_p$-linear isomorphism;
   \item  $s(\sigma(P)) = \eps_d(\sigma)\cdot\sigma(s(P)) \quad \text{ for all } \sigma \in G_K
-    \text{ and all } P \in E[P]$; 
+    \text{ and all } P \in E[p]$; 
   \item $e_p(s(P),s(Q)) = e_p(P,Q)^{-\delta}$ for all $P,Q\in E[p]$.
 \end{enumerate}
 Note that~(2) is identical to property~(\ref{E:eps}) satisfied
 by~$t$. Thus, given such an~$s$, the composite $t\circ s:E[p]\to
 E^d[p]$ is a Galois equivariant isomorphism which by~(3) is symplectic
 if and only if the Legendre symbol $(-\delta/p) = 1$ and
-anti-symplectic otherwise. The result now follows by a simple case
+anti-symplectic otherwise. The result will now follow by simple case
 checking.
 
 \def\rd{\sqrt{\delta}} Define the $2$-dimensional
@@ -1147,21 +1184,16 @@ a complete proof here.
 First suppose that either $d\not=-1$, or that $j(E_1)\not=1728$ and
 $j(E_2)\not=1728$, so that neither twist is the special case.
 
-Let $Y^2=X^3+a_kX+b_k$ for $k=1,2$ be short Weierstrass equations for
-$E_1$ and $E_2$ respectively.  Let $\sigma$ be the nontrivial
-automorphism of $K(\sqrt{d})/K$ and denote by $[-1]$ the negation
-automorphism $(x,y)\mapsto(x,-y)$ on each elliptic curve.
-
-Since we are not in the special case, for $k=1,2$ the quadratic twists
-have equations $E_k^d:Y^2=X^3+a_kd^2X+b_kd^3$ and an isomorphism
-$E_k\to E_k^d$, defined over~$K(\sqrt{d})$, is given by
-$\alpha_k:(x,y)\mapsto (dx,d\sqrt{d}y)$.  Then by~\ref{E:rho-twist} we
-have
+Let $\sigma$ be the nontrivial automorphism of $K(\sqrt{d})/K$ and
+denote by $[-1]$ the negation automorphism on each elliptic curve.
+Since we are not in the special case, by Lemma~\ref{L:twist-rep} we
+have for $k=1,2$ isomorphisms $\alpha_k:E_k\to E_k^d$, defined
+over~$K(\sqrt{d})$, and satisfying
 \[
-\alpha_k^{\sigma} = [-1]\circ\alpha_k = \alpha_k\circ[-1]
+\alpha_k^{\sigma} = [-1]\circ\alpha_k = \alpha_k\circ[-1],
 \]
-for $k=1,2$.  Let $\phi:E_1[p]\to E_2[p]$ be a $G_K$-equivariant
-isomorphism.  Define $\psi:E_1^d[p]\to E_2^d[p]$ by
+since $\eps_d(\sigma)=-1$.  Let $\phi:E_1[p]\to E_2[p]$ be a
+$G_K$-equivariant isomorphism.  Define $\psi:E_1^d[p]\to E_2^d[p]$ by
 $\psi=\alpha_2\circ\phi\circ\alpha_1^{-1}$, which is a
 $G_{K(\sqrt{d})}$-equivariant linear isomorphism, satisfying
 \[
@@ -1231,6 +1263,7 @@ which again have symplectically isomorphic mod~$7$ representations.
   antisymplectic for~$E^{-11}$ and~$E^{33}$ and symplectic
   for~$E^{-3}$, in accordance with Theorem~\ref{T:Cartan}.
 
+\begin{comment}
   \textbf{We no longer need the following, since the new version of
     Theorem~\ref{T:Cartan} says that the symplectic twist is the one
     by $3^*=-3$!}
@@ -1242,10 +1275,9 @@ which again have symplectically isomorphic mod~$7$ representations.
   \]
  Thus $e = e' = 4$ by \cite[Proposition~1]{Kraus1990}. 
 Moreover, we have $\vv_{11}(\Delta_m) \equiv \vv_{11}(\Delta_m') \pmod{4}$ and none of $\tilde{\Delta}$, $\tilde{\Delta}'$ is a square mod~$11$. Thus, $r=t=0$ and $E[3]$ and $E'[3]$ are symplectically isomorphic $G_{\Q_{11}}$-modules, hence $E[3]$ and $E'[3]$ are also symplectically isomorphic $G_\Q$-modules.
-
-  
-  
+\end{comment}
 \end{example}
+
 \begin{example} \label{Ex:LocalFail7}
 Consider the elliptic curve
 \[ E : y^2 + y = x^3 - x^2 - 74988699621831x +  238006866237979285299, \]

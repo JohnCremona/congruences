@@ -5,7 +5,7 @@
 %
 %  AGC2T, Luminy June 2019
 %
-%  Time-stamp: <2019-06-06 20:00:24 john>
+%  Time-stamp: <2019-06-07 10:28:23 masgaj>
 %
 \documentclass[compress]{beamer}
 %\documentclass[handout]{beamer}
@@ -345,7 +345,7 @@ ignore a different bad set!
 \end{frame}
 
 \begin{frame}\frametitle{Sieving in practice}
-  This works well in practice with $B=40$.
+  This works well in practice with $B=40$. Not quite with $B=35$!
 
   \pause
   \medskip
@@ -395,6 +395,95 @@ ignore a different bad set!
     \hline
   \end{tabular}
   \]
+
+After eliminating reducibles which are not isomorphic, for $p=7$ we
+find $337$ non-trivial sets, of size up to~$4$.
+\end{frame}
+
+\begin{frame}\frametitle{Distinguishing symplectic from
+    antisymplectic} Freitas and Kraus have a long paper which gives
+  many different \high{local} criteria for determining whether a
+  congruence $E_1[p]\cong E_2[p]$ is symplectic or antisymplectic.
+  These criteria are not guaranteed to apply in all cases.
+
+\pause\medskip
+
+  For $p=7$ we use a method based on \high{modular curves}.
+
+  Recall that for each prime $p$ there is a modular curve $X(p)$
+  defined over $\Q$ which parametrises elliptic curves with a fixed
+  level structure, \textit{i.e.}, a fixed structure of $E[p]$ as a
+  Galois module.  For $p=7$ this curve has genus $3$, and the Klein
+  quartic is one model for it.
+
+    \pause
+  \medskip
+  Fix one elliptic curve over $\Q$.  Then there exists a curve
+  $X_E(p)$, which is a twist of $X(p)$, whose (non-cuspidal) points
+  correspond to curves $E'$ with $E[p]\cong E'[p]$ symplectically.
+  (Strictly, to pairs $(E',\alpha)$ where $\alpha:E[p]\to E'[p]$ is a
+  symplectic isomorphism, up to scaling.)
+\end{frame}
+
+\begin{frame}\frametitle{$X_E^{\pm}(p)$}
+Similarly there is another twist $X_E^-(p)$ parametrizing curves $E'$
+which are antisymplectically isomorphic to~$E$.
+    \pause
+  \medskip
+
+An explicit model for $X_E(7)$ was found by Kraus and Halberstadt
+(2003) together with the degree~$168$ map $j:X_E(7)\to X(1)=\PP^1$
+(giving the $j$-invariant of the congruent curve $E'$, and incomplete
+formulas for the coefficients of $E'$.
+
+    \pause
+  \medskip
+More complete formulas were provided by Fisher (2014), who also gave
+all the formulas for $X_E^-(7)$ parametrizing antisymplectic
+congruences, and $X_E^{\pm}(11)$ (which has genus~$26$).
+
+    \pause
+  \medskip
+For $p=7$ we implementated these formulas and apply them as follows.
+\end{frame}
+
+\begin{frame}\frametitle{Using $X_E^{\pm}(7)$: the algorithm}
+\begin{itemize}
+\item Given two elliptic curves $E$, $E'$ defined over a field~$K$ of
+  characteristic~$0$. We do not need to assume anything about them.
+  Compute $j(E')$.
+\item Use the explicit map $j:X_E(7)\to\PP^1$ to find the preimages
+  (if any) of $j(E')$ in $X_E(7)(K)$.  If none then $E,E'$ are not
+  symplectically $p$-congruent over~$K$.
+\item For any $P\in X_E(7)(K)$ use Fisher's formulas to find a model
+  for the associated congruent curve $E''$.
+\item If $E'\cong E''$ for any of these, then $E,E'$ are $p$-congruent
+  over $K$, otherwise not.
+\item repeat with $X_E^-(7)$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}\frametitle{Using $X_E^{\pm}(7)$: results}
+Of the $\numprint{19883}$ non-trivial sets of isogeny classes with mutually
+isomorphic irreducible mod~$7$ representations, we find that in
+$\numprint{12394}$ cases all the isomorphisms are symplectic, while in the
+remaining $\numprint{7489}$ cases antisymplectic isomorphisms occur.
+
+We checked in all cases where the local criteria apply that the result
+are consistent, and they were.
+
+For example, there are $5092$ pairs of curves with irreducible mod~$7$
+representations which are antisymplectically congruent.  Of these, the
+local tests work in $5090$ cases but not the remaining two.
+
+Of $411$ pairs of $7$-congruent reducible pairs, local test work in
+$245$ cases but not the remaining $166$.
+\end{frame}
+
+\begin{frame}\frametitle{}
+\end{frame}
+
+\begin{frame}\frametitle{}
 \end{frame}
 
 \begin{frame}\frametitle{}
