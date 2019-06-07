@@ -5,7 +5,7 @@
 %
 %  AGC2T, Luminy June 2019
 %
-%  Time-stamp: <2019-06-07 10:28:23 masgaj>
+%  Time-stamp: <2019-06-07 15:04:32 masgaj>
 %
 \documentclass[compress]{beamer}
 %\documentclass[handout]{beamer}
@@ -470,7 +470,9 @@ $\numprint{12394}$ cases all the isomorphisms are symplectic, while in the
 remaining $\numprint{7489}$ cases antisymplectic isomorphisms occur.
 
 We checked in all cases where the local criteria apply that the result
-are consistent, and they were.
+are consistent, and they were.  In fact the local criteria were able
+to decide all the cases from the database (but the local criteria were
+expanded for this to be the case).
 
 For example, there are $5092$ pairs of curves with irreducible mod~$7$
 representations which are antisymplectically congruent.  Of these, the
@@ -480,7 +482,64 @@ Of $411$ pairs of $7$-congruent reducible pairs, local test work in
 $245$ cases but not the remaining $166$.
 \end{frame}
 
-\begin{frame}\frametitle{}
+\begin{frame}\frametitle{Results for $p>7$}
+For $p\ge11$ we used the local criteria only to test congruences.
+
+It would be possible to implement Fisher's formulas for
+$X_E^{\pm}(11)$, but we have not yet done so.
+
+For $11\le p\le 17$ we only find congruences with $E[p]$ irreducible
+and we never find sets of more than three congruent curves (excluding
+isogenies).
+
+
+  \[
+  \begin{tabular}{||c||c|c|c||}
+    \hline
+    $p$ & \# congruent pairs & \# symplectic & \# antisymplectic\\
+    \hline
+    11 & 635 & 446 & 189 \\
+    13 & 150 & 88 & 62 \\
+    17 & 8 & 0 & 8 \\
+    \hline
+  \end{tabular}
+  \]
+%% for $p=11$, of the $635$ congruent pairs of isogeny classes, $446$ are
+%% symplectic and $189$ are antisymplectic; for $p=13$, of the $150$
+%% congruent pairs of isogeny classes, $88$ are symplectic and $62$ are
+%% antisymplectic; for $p=17$, all of the $8$ congruent pairs of isogeny
+%% classes are antisymplectic.
+\end{frame}
+
+\begin{frame}\frametitle{Twists}
+As well as these computational results, we also have various results
+of a more theoretical nature.  Many of these involve \high{twists}.
+
+First, it is easy to show that when we have a congruence $E_1[p]\cong
+E_2[p]$ then for any quadratic twist (associated to a quadratic
+extension $K(\sqrt{d})/K$), the twisted curves also satisfy a
+$p$-congruence: $E_1^d[p]\cong E_2^d[p]$.  Moreover the symplectic
+type is preserved except in one very special situation.
+
+So perhaps the previous tables should have only shown the number of
+congruences ``up to twist''.  This is not so easy, since twisting
+changes the conductor in general.  However, we can count the total
+number of curves, up to twist, appearing in any of the congruences we
+found:
+
+For $p=7$ there are $\numprint{10348}$ distinct $j$-invariants of
+curves with irreducible mod~$7$ representations which are congruent to
+at least one non-isogenous curve, and $358$ distinct $j$-invariants in
+the reducible case.
+
+For $p=11$ there are $191$ distinct $j$-invariants and for $p=13$
+there are $39$.  For $p=17$, all $17$-congruent isogeny classes
+consist of single curves, the eight pairs are quadratic twists, and
+the $j$-invariants of the curves in each pair are
+$48412981936758748562855/77853743274432041397$ and $-46585/243$.  One
+such pair of $17$-congruent curves consists of $\lmfdbec{47775}{b}{1}$
+and~$\lmfdbec{3675}{b}{1}$.
+
 \end{frame}
 
 \begin{frame}\frametitle{}

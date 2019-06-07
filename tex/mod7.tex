@@ -672,23 +672,28 @@ start by recalling some basic facts about quadratic twists.
 
 \subsection{Quadratic Twists}
 
-We say that two curves $E/K$ and $E'/K$ are {\em quadratic twists},
-when they are not isomorphic over~$K$ but become isomorphic over a
-quadratic extension~$L/K$.  Writing $L=K(\sqrt{d})$ with $d\in K^*$
-non-square, we denote by~$E^d$ the unique $K$-isomorphism class of
-quadratic twists of~$E$; this only depends on the class of~$d$
-modulo~$(K^*)^2$.
+Let $L=K(\sqrt{d})$ with $d\in K^*$ non-square be a quadratic
+extension of $K$.  We say that two curves $E/K$ and $E'/K$ are {\em
+  quadratic twists by $L$}, or {\em $d$-twists}, if they are not
+isomorphic over~$K$ but become isomorphic over~$L$.  We denote
+by~$E^d$ the unique $K$-isomorphism class of $d$-twists of~$E$; this
+only depends on the class of~$d$ modulo~$(K^*)^2$.
 
-The special case in the following lemma (which is valid over all
-fields~$K$ of characteristic neither~$2$ nor~$3$) will be important
-when we consider curves with $j$-invariant~$1728$ below.
 Denote by $E_{a,b}$ the elliptic curve defined by the short
 Weierstrass equation $Y^2=X^3+aX+b$.
 
+In view of the following lemma, we call the $-1$-twist for curves with
+$j$-invariant~$1728$ over fields in which $-1$ is not a square the
+\emph{special quadratic twist}. In this case $L=K(\sqrt{-1})$ and the
+curve has a model of the form $E_{a,0}$.  These twists have properties
+which are different from the general case, and will need to be treated
+separately in several of the results which follow.
+
 \begin{lemma}\label{L:quadratic-twist} Let $a, b , d\in K$ with $d$ not a square,  and
 let $L=K(\sqrt{d})$. Then the quadratic twist~$E_{a,b}^d$ of~$E_{a,b}$
-by~$d$ is $E_{ad^2,bd^3}$ unless $L=K(\sqrt{-1})$ and $b=0$, when we
-have $E_{a,0}^{-1}=E_{-4a,0}$.
+by~$d$ is $E_{ad^2,bd^3}$, except for the special quadratic twist,
+when we have
+$E_{a,0}^{-1}=E_{-4a,0}$.
 \end{lemma}
 \begin{proof}
 Recall that all isomorphisms between short Weierstrass equations are
@@ -705,19 +710,19 @@ in~$L$.
 \end{proof}
 
 \begin{remark}\label{R:2-isog}
-In the special case, note that $E_{-4a,0}$ is also $2$-isogenous
-to~$E_{a,0}$ (see \cite[p. 336]{SilvermanI}).  These curves have CM
-by~$\Z[\sqrt{-1}]$, and after base-change to~$K(\sqrt{-1})$ the
-$2$-isogeny becomes the endomorphism~$1+\sqrt{-1}$.
+Note that $E_{-4a,0}$ is also $2$-isogenous to~$E_{a,0}$ (see
+\cite[p. 336]{SilvermanI}).  These curves have CM by~$\Z[\sqrt{-1}]$,
+and after base-change to~$K(\sqrt{-1})$ the $2$-isogeny becomes the
+endomorphism~$1+\sqrt{-1}$.
 \end{remark}
 
 \begin{lemma}\label{L:twist-rep}
 Let $E$ and $E^d$ be quadratic twists defined over~$K$, and let
 $\eps_d$ denote the associated quadratic character of~$G_K$.
 \begin{enumerate}
-\item Assume that we are not in the special case $j(E)=1728$ and
-  $K(\sqrt{d})=K(\sqrt{-1})$.  Then there is an isomorphism
-  $\alpha:E\to E^d$ defined over $K(\sqrt{d})$ satisfying
+\item Assume that $E^d$ is not a special quadratic twist.  Then there
+  is an isomorphism $\alpha:E\to E^d$ defined over $K(\sqrt{d})$
+  satisfying
 \begin{equation}\label{E:iso-twist}
 \alpha(\sigma(P)) = \eps_d(\sigma)\sigma(\alpha(P))\qquad\text{for
   all~$\sigma\in G_K$ and $P\in E(\Kbar)$};
@@ -727,26 +732,30 @@ that is, $\alpha^{\sigma} = \eps_d(\sigma)\alpha$.  For all primes~$p$ we have
   \rhobar_{E^d,p} \cong \rhobar_{E,p}\otimes\eps_d.
 \end{equation}
 \item
-  In the special case, isomorphisms $\alpha: E=E_{a,0}\to
-  E_{-4a,0}=E^{-1}$ defined over $K(\sqrt{-1})$ exist, but do not
-  satisfy~(\ref{E:iso-twist}).  However, (\ref{E:rho-twist}) still
-  holds for all \emph{odd} primes~$p$.
+  In the case of a special quadratic twist, there is no isomorphism
+  $\alpha: E\to E^{-1}$ which satisfies~(\ref{E:iso-twist}).  However,
+  (\ref{E:rho-twist}) still holds for all \emph{odd} primes~$p$.
 \end{enumerate}
 \end{lemma}
 
 \begin{proof}
-In the general case we may assume that $E=E_{a,b}$ and
+(1) In the general case we may assume that $E=E_{a,b}$ and
 $E^d=E_{ad^2,bd^3}$ and then define $\alpha((x,y)) = (dx,d\sqrt{d}y)$
 which clearly satisfies~(\ref{E:iso-twist}) and hence
 also~(\ref{E:rho-twist}).
 
-In the special case, take $E=E_{a,0}$ and $E^{-1}=E_{-4a,0}$.  One
+(2) In the special case, take $E=E_{a,0}$ and $E^{-1}=E_{-4a,0}$.  One
 isomorphism $\alpha:E\to E^{-1}$ is given by $\alpha((x,y)) =
 (2ix,(2-2i)y)$, where $i=\sqrt{-1}$.  One may check that when
 $\eps(\sigma)=-1$ (that is, when $\sigma(i)=-i$) we have
 $\alpha\circ\sigma=[i]\circ\sigma\circ\alpha$, where $[i]$ denotes the
 automorphism of $E$ or $E^{-1}$ defined by $[i](x,y)=(-x,-iy)$,
 satisfying $[i]^2=-1$ and $[i]\circ\sigma=\eps(\sigma)\sigma\circ[i]$.
+
+Hence this isomorphism does not satisfy~(\ref{E:iso-twist}). The other
+isomorphisms $E\to E^{-1}$ are obtained by composing $\alpha$ by one
+of the four automorphisms of~$E^{-1}$, and none of these satisfy
+(\ref{E:iso-twist}) either.
 
 To prove (\ref{E:rho-twist}) in this case for odd~$p$, first note that
 since $E$ and $E^{-1}$ are $2$-isogenous we have $\rhobar_{E^{-1},p}
