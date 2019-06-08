@@ -1,4 +1,4 @@
-\documentclass[12pt]{amsart}
+\documentclass[12pt, reqno]{amsart}
 \usepackage{fullpage,url,amssymb,enumerate,colonequals, numprint}
 
 \usepackage{mathrsfs} % for \mathscr (script letters)
@@ -692,8 +692,7 @@ separately in several of the results which follow.
 \begin{lemma}\label{L:quadratic-twist} Let $a, b , d\in K$ with $d$ not a square,  and
 let $L=K(\sqrt{d})$. Then the quadratic twist~$E_{a,b}^d$ of~$E_{a,b}$
 by~$d$ is $E_{ad^2,bd^3}$, except for the special quadratic twist,
-when we have
-$E_{a,0}^{-1}=E_{-4a,0}$.
+when $E_{a,0}^{-1}=E_{-4a,0}$.
 \end{lemma}
 \begin{proof}
 Recall that all isomorphisms between short Weierstrass equations are
@@ -744,7 +743,14 @@ $E^d=E_{ad^2,bd^3}$ and then define $\alpha((x,y)) = (dx,d\sqrt{d}y)$
 which clearly satisfies~(\ref{E:iso-twist}) and hence
 also~(\ref{E:rho-twist}).
 
-(2) In the special case, take $E=E_{a,0}$ and $E^{-1}=E_{-4a,0}$.  One
+(2) In the special case, both $E$ and $E^{-1}$ have automorphisms
+$[\sqrt{-1}]$ of order~$4$ satisfying
+$[\sqrt{-1}]^\sigma=\eps_{-1}(\sigma)[\sqrt{-1}]$.  Hence, if
+$\alpha:E\to E^{-1}$ were an isomorphism
+satisfying~(\ref{E:iso-twist}), then $[\sqrt{-1}]\circ\alpha$ would be
+an isomorphism defined over~$K$, contradiction.
+\begin{comment}
+  take $E=E_{a,0}$ and $E^{-1}=E_{-4a,0}$.  One
 isomorphism $\alpha:E\to E^{-1}$ is given by $\alpha((x,y)) =
 (2ix,(2-2i)y)$, where $i=\sqrt{-1}$.  One may check that when
 $\eps(\sigma)=-1$ (that is, when $\sigma(i)=-i$) we have
@@ -756,6 +762,7 @@ Hence this isomorphism does not satisfy~(\ref{E:iso-twist}). The other
 isomorphisms $E\to E^{-1}$ are obtained by composing $\alpha$ by one
 of the four automorphisms of~$E^{-1}$, and none of these satisfy
 (\ref{E:iso-twist}) either.
+\end{comment}
 
 To prove (\ref{E:rho-twist}) in this case for odd~$p$, first note that
 since $E$ and $E^{-1}$ are $2$-isogenous we have $\rhobar_{E^{-1},p}
@@ -768,9 +775,9 @@ $\eps(\sigma)=-1$.
 
 \begin{remark}
 The relation~(\ref{E:rho-twist}) does not always hold for $p=2$ in the
-special case.  For example, taking $E=E_{1,0}$ and $E^{-1}=E_{-4,0}$
-over~$\Q$, the image of $\rhobar_{E,2}$ has order~$2$ while
-$\rhobar_{E^{-1},2}$ is trivial.
+case of the special quadratic twist.  For example, taking $E=E_{1,0}$
+and $E^{-1}=E_{-4,0}$ over~$\Q$, the image of $\rhobar_{E,2}$ has
+order~$2$ while $\rhobar_{E^{-1},2}$ is trivial.
 \end{remark}
 
 \subsection{Dihedral Projective Images}
@@ -840,12 +847,15 @@ of any mod~$p$ congruences is not well-defined.  We will exclude such
 cases in the sequel.
 \end{remark}
 
-When the projective image is dihedral and of order greater than~$2$,
-\textbf{it is usually the case that} the image is contained in the
-normaliser~$N$ of a Cartan subgroup~$C$ of~$\GL_2(\F_p)$.  In the case
-where the projective image is~$D_2\cong C_2\times C_2$, there are there
-are three different choices for~$C$.  For $n\ge3$ the Cartan subgroup
-is unique.
+When the projective image is~$D_n$ with $n\ge2$, it is often the case
+that the image is contained in the normaliser~$N$ of a Cartan
+subgroup~$C$ of~$\GL_2(\F_p)$.  For $n=2$, the projective image
+is~$D_2\cong C_2\times C_2$, and there are there are three different
+choices for~$C$ for which this holds, while for $n\ge3$ the Cartan
+subgroup is unique.  The image may be dihedral in other ways, for
+example $\left\{\begin{pmatrix}\pm1&*\\0&1\end{pmatrix}\right\}$, but
+this is reducible so by the previous lemma does not give rise to a
+congruent twist.
 
 \begin{lemma}\label{L:C2xC2}
 Let $p$ be an odd prime.  Let $N$ be a subgroup of~$\PGL_2(\F_p)$
@@ -884,8 +894,9 @@ split.
 
 In the next proposition we show that congruences between quadratic
 twist arise when the projective image is dihedral; equivalently
-(except when the image is very small) when the image is contained in
-the normaliser of a Cartan subgroup but not in the Cartan itself.
+(except when the image is very small or reducible), when the image is
+contained in the normaliser of a Cartan subgroup but not in the Cartan
+itself.
 
 \begin{proposition}\label{P:twist}
 Let $E/K$ and $E^d/K$ be quadratic twists, where $d\in K^*$ is not a
@@ -939,7 +950,6 @@ Moreover, since $E^d[p]\cong
   subgroup~$H^+=\rhobar_{E,p}(G_{K(\sqrt{d})})$ of index~$2$ such that
   all elements of~$H\setminus H^+$ have trace~$0$;  such elements have
   order~$2$ in $\PGL_2(\F_p)$.
-
   From the classification of subgroups of $\PGL_2(\F_p)$ and the
   irreducibility of~$E[p]$, it follows that $H$ is contained in the
   normaliser of a Cartan subgroup~$C$ and $H^+=H\cap C$.
@@ -959,13 +969,12 @@ Clearly, if $\eps_d(\sigma)=1$ then $\Tr \rhobar_{E,p}(\sigma) = \Tr \rhobar_{E^
 If $\eps(\sigma) = -1$ then $\rhobar_{E,p}(\sigma) \in \rhobar_{E,p} (G_K) \backslash C$ and $\Tr \rhobar_{E,p}(\sigma) = 0$, so also $\Tr \rhobar_{E^d,p}(\sigma) = 0$.
 Then, $\Tr \rhobar_{E,p}(\sigma) = \Tr \rhobar_{E^d,p}(\sigma)$ 
 for all $\sigma \in G_K$. 
-
 Since $\rhobar_{E,p}$ and $\rhobar_{E^d,p}$ are irreducible
 by Lemma~\ref{L:irred}, and have the same traces, they are isomorphic.
 
-For the last part we note that for $n=2$, $D_n$ has three cyclic
-subgroups of index~$2$, since $D_2\cong C_2\times C_2$, while for
-$n\ge3$ there is only one such subgroup.
+For the last part, we note that $D_2\cong C_2\times C_2$ has three
+cyclic subgroups of index~$2$, while $D_n$ for $n\ge3$ has only one
+such subgroup.
 \end{proof}
 
 A special case of the situation described in this result is the case
@@ -1053,9 +1062,8 @@ $\rhobar_{E,p}$ has projective image of order greater than~$2$, and
 suppose that for some quadratic twist~$E^d$ we have a congruence
 $E[p]\cong E^d[p]$.
 \begin{enumerate}
-\item If $K(\sqrt{d})=K(\sqrt{-1})$ and~$j(E)=1728$, the congruence is
-  symplectic or antisymplectic according as the Legendre symbol
-  $(2/p)=+1$ or~$-1$ respectively.
+\item In the case of the special quadratic twist, the congruence is
+  symplectic if and only if $(2/p)=+1$.
 
 \item Otherwise, let $C$ be the Cartan subgroup of~$\GL_2(\F_p)$
   associated to the extension $K(\sqrt{d})/K$ in
@@ -1073,18 +1081,19 @@ $E[p]\cong E^d[p]$.
 \end{theorem}
 
 \begin{proof}
-(1) When case $j(E)=1728$, we know by Remark~\ref{R:2-isog} that
-$E^{-1}$ is $2$-isogenous to~$E$, so the result follows by the isogeny
-criterion.  Assume from now on that this is not the case.
+(1) In this case we know by Remark~\ref{R:2-isog} that $E^{-1}$ is
+  $2$-isogenous to~$E$, so the result follows by the isogeny
+  criterion.  Assume from now on that this is not the case.
 
 (2) As usual, write $\eps_d$ for the quadratic character of~$G_K$
 fixing~$K(\sqrt{d})$.
 
-Since we are not in case~(1), we have by Lemma~\ref{L:twist-rep} an
-isomorphism~$\alpha: E \to E^d$ satisfying~(\ref{E:iso-twist}).  Let
-$t: E[p](\Qbar) \to E^d[p](\Qbar)$ denote the induced map on
-$p$-torsion points; this is an $\F_p$-linear isomorphism but is not
-Galois equivariant: in fact by~(\ref{E:iso-twist}) we have
+Since the twist is not special, by Lemma~\ref{L:twist-rep} there
+exists an isomorphism~$\alpha: E \to E^d$
+satisfying~(\ref{E:iso-twist}).  Let $t: E[p](\Qbar) \to
+E^d[p](\Qbar)$ denote the induced map on $p$-torsion points; this is
+an $\F_p$-linear isomorphism but is not Galois equivariant: in fact,
+(\ref{E:iso-twist}) implies that
 \begin{equation} \label{E:eps}
  t(\sigma(P)) = \eps_d(\sigma)\cdot\sigma(t(P)) \quad \text{ for all } \sigma \in G_K
  \text{ and all } P \in E[p].
@@ -1173,35 +1182,36 @@ $C$ inducing the symplectic congruence is the unique one contained in
 $\PSL_2(\F_p)$, the associated quadratic extension is~$K(\sqrt{p^*})$.
 \end{proof}
 
+See Example~\ref{Ex:3twists} for an illustration of the last part of
+the theorem.
 
 Quadratic twists act on congruent pairs of curves, usually---but not
-always---preserving the symplectic type.
+always---preserving the symplectic type.  The exception arises from
+the special quadratic twist.
+
 \begin{proposition}\label{P:twist-cong}
 Let $E_1$ and~$E_2$ be elliptic curves defined over a number field~$K$
 and $p$ an odd prime such that $E_1[p]\cong E_2[p]$.  Then, for all
 non-square $d\in K^*$ we also have $E_1^d[p]\cong E_2^d[p]$.
 Moreover, the symplectic type of the isomorphism is preserved, unless
-$d=-1$ and exactly one of $E_1$, $E_2$ has $j$-invariant~$1728$, in
-which case the symplectic type is preserved if and only if
-$\legendre{2}{p}=+1$.
+exactly one of the~$E_i^d$ is a special quadratic twist, in which case
+the symplectic type is preserved if and only if $\legendre{2}{p}=+1$.
 \end{proposition}
 \begin{proof}
 This is essentially \cite[Lemma~11]{FKSym}, but there the special case
 of the $-1$-twist of curves with $j=1728$ was not included, so we give
 a complete proof here.
 
-First suppose that either $d\not=-1$, or that $j(E_1)\not=1728$ and
-$j(E_2)\not=1728$, so that neither twist is the special case.
-
-Let $\sigma$ be the nontrivial automorphism of $K(\sqrt{d})/K$ and
-denote by $[-1]$ the negation automorphism on each elliptic curve.
-Since we are not in the special case, by Lemma~\ref{L:twist-rep} we
-have for $k=1,2$ isomorphisms $\alpha_k:E_k\to E_k^d$, defined
+First suppose that neither quadratic twist is special.  Let $\sigma$
+be the nontrivial automorphism of $K(\sqrt{d})/K$ and denote by $[-1]$
+the negation automorphism on each elliptic curve.  Since neither twist
+is special and $\eps_d(\sigma)=-1$, by Lemma~\ref{L:twist-rep} we have
+for $k=1,2$ isomorphisms $\alpha_k:E_k\to E_k^d$, defined
 over~$K(\sqrt{d})$, and satisfying
 \[
-\alpha_k^{\sigma} = [-1]\circ\alpha_k = \alpha_k\circ[-1],
+\alpha_k^{\sigma} = [-1]\circ\alpha_k = \alpha_k\circ[-1].
 \]
-since $\eps_d(\sigma)=-1$.  Let $\phi:E_1[p]\to E_2[p]$ be a
+  Let $\phi:E_1[p]\to E_2[p]$ be a
 $G_K$-equivariant isomorphism.  Define $\psi:E_1^d[p]\to E_2^d[p]$ by
 $\psi=\alpha_2\circ\phi\circ\alpha_1^{-1}$, which is a
 $G_{K(\sqrt{d})}$-equivariant linear isomorphism, satisfying
@@ -1216,17 +1226,17 @@ $\alpha_k$ preserve the Weil pairing, the symplectic types of $\phi$
 and~$\psi=\alpha_2\circ\phi\circ\alpha_1^{-1}$ are equal.
 
 Now suppose that $d=-1\notin(K^*)^2$, and that one of the curves,
-say~$E_1$, has $j$-invariant~$1728$.  Now $\rhobar_{E_1,p}$ has image
-contained in the normaliser of a Cartan subgroup but not in the Cartan
-itself; by Proposition~\ref{P:twist} we have $E_1[p]\cong
-E_1^{-1}[p]$.  Since $E_1[p]\cong E_2[p]$ we also have $E_2[p]\cong
-E_2^{-1}[p]$ for the same reason, and hence $E_1^{-1}[p]\cong
-E_2^{-1}[p]$.
+say~$E_1$, has $j$-invariant~$1728$; so at least one of the quadratic
+twists is special.  Now $\rhobar_{E_1,p}$ has image contained in the
+normaliser of a Cartan subgroup but not in the Cartan itself; by
+Proposition~\ref{P:twist} we have $E_1[p]\cong E_1^{-1}[p]$.  Since
+$E_1[p]\cong E_2[p]$ we also have $E_2[p]\cong E_2^{-1}[p]$ for the
+same reason, and hence $E_1^{-1}[p]\cong E_2^{-1}[p]$.
 
-As for the symplectic type, if also $j(E_2)=1728$ then both
-isomorphisms $E_k[p]\cong E_k^{-1}[p]$ have the same type, since these
-twists are both also $2$-isogenies, so each is symplectic if and only
-if $2$ is a quadratic residue modulo~$p$.  Hence the composite
+As for the symplectic type, if also $j(E_2)=1728$ so that both twists
+are special, then both isomorphisms $E_k[p]\cong E_k^{-1}[p]$ have the
+same type, each being symplectic if and only if $2$ is a quadratic
+residue modulo~$p$ by Theorem~\ref{T:Cartan}~(1).  Hence the composite
 $E_1^{-1}[p]\cong E_1[p]\cong E_2[p]\cong E_2^{-1}[p]$ has the same
 type as $E_1[p]\cong E_2[p]$.  But if $j(E_2)\not=1728$ then
 Theorem~\ref{T:Cartan} implies that $E_2[p]\cong E_2^{-1}[p]$ is
@@ -1253,7 +1263,8 @@ which again have symplectically isomorphic mod~$7$ representations.
   $\lmfdbec{32}{a}{1}$ and $\lmfdbec{608}{b}{1}$ is symplectic while
   that between $\lmfdbec{32}{a}{2}$ and $\lmfdbec{608}{e}{1}$ is
   antisymplectic, so in this case applying the $-1$-twist reverses the
-  symplectic type.
+  symplectic type, in accordance with Proposition~\ref{P:twist-cong},
+  since exactly one of the twists is special.
 \end{example}
 
 \begin{example} \label{Ex:3twists}
@@ -1283,7 +1294,8 @@ which again have symplectically isomorphic mod~$7$ representations.
   \vv_{11}(\Delta_m) = \vv_{11}(\Delta_m') = 3 \quad \text{ and } \quad \tilde{\Delta} = -1259712, \quad \tilde{\Delta}' = -1728.
   \]
  Thus $e = e' = 4$ by \cite[Proposition~1]{Kraus1990}. 
-Moreover, we have $\vv_{11}(\Delta_m) \equiv \vv_{11}(\Delta_m') \pmod{4}$ and none of $\tilde{\Delta}$, $\tilde{\Delta}'$ is a square mod~$11$. Thus, $r=t=0$ and $E[3]$ and $E'[3]$ are symplectically isomorphic $G_{\Q_{11}}$-modules, hence $E[3]$ and $E'[3]$ are also symplectically isomorphic $G_\Q$-modules.
+Moreover, we have $\vv_{11}(\Delta_m) \equiv \vv_{11}(\Delta_m')
+\pmod{4}$ and none of $\tilde{\Delta}$, $\tilde{\Delta}'$ is a square mod~$11$. Thus, $r=t=0$ and $E[3]$ and $E'[3]$ are symplectically isomorphic $G_{\Q_{11}}$-modules, hence $E[3]$ and $E'[3]$ are also symplectically isomorphic $G_\Q$-modules.
 \end{comment}
 \end{example}
 
@@ -1314,24 +1326,24 @@ have a model of the form
 \[
 E_a:\quad Y^2 = X^3+aX,
 \]
-and the isomorphism class of~$E_a$ depends only on
-$a$ modulo $4$th powers. 
-Any two such curves are quartic
-twists of each other: the quartic twist of~$E_a$ by $t$ 
-is~$E_{ta}$, which is isomorphic to~$E_a$ if and only if $t$ is a $4$th power. 
-From our discussion of quadratic twists (see
-Lemma~\ref{L:quadratic-twist}) we know that all quadratic twists of
-$E_a$ have the form $E_a^d\cong E_{ad^2}$, except that when $-1$ is
-not a square in~$K$ we have $E_a^{-1}\cong E_{-4a}$.  Note that the
-natural map $K^*/(K^*)^4 \to L^*/(L^*)^4$ for $L=K(\sqrt{d})$ always
-has kernel of order~$2$; it is generated by $d^2$, unless
-$L=K(\sqrt{-1})$ in which case it is generated by~$-4$.
+and the isomorphism class of~$E_a$ depends only on $a$ modulo $4$th
+powers.  Any two such curves are quartic twists of each other: the
+quartic twist of~$E_a$ by $t$ is~$E_{ta}$, which is isomorphic
+to~$E_a$ if and only if $t$ is a $4$th power.  From our discussion of
+quadratic twists (see Lemma~\ref{L:quadratic-twist}) we know that all
+quadratic twists of $E_a$ have the form $E_a^d\cong E_{ad^2}$, except
+that when $-1$ is not a square in~$K$ we have the special quadratic
+twist $E_a^{-1}\cong E_{-4a}$.  Note that the natural map $K^*/(K^*)^4
+\to L^*/(L^*)^4$ for $L=K(\sqrt{d})$ always has kernel of order~$2$;
+it is generated by $d^2$, unless $L=K(\sqrt{-1})$ in which case it is
+generated by~$-4$.
 
-The curves $E_a$ and $E_{-4a}$ are $2$-isogenous (see
-Remark~\ref{R:2-isog}), and hence $E_a[p]\cong E_{-4a}[p]$ for
-all~$p>2$.  Our result for these curves is that there are no further
-congruences between them for any~$p>2$, provided that the image of
-$\rhobar_{E,p}$ is not too small.
+
+We know that $E_a[p]\cong E_{-4a}[p]$ for all~$p>2$, since $E_a$ and
+$E_{-4a}$ are $2$-isogenous (see Remark~\ref{R:2-isog}).  Our result
+for these curves is that there are no further congruences between them
+for any~$p>2$, provided that the image of $\rhobar_{E,p}$ is not too
+small.
 
 \begin{theorem}\label{T:j=1728}
 Let $K$ be a number field.  For all $a \in K^*$ and all primes~$p>2$,
@@ -1347,25 +1359,24 @@ $E_{a_2}$ is the quadratic twist~$E_{a_1}^{-1}$.
 \end{theorem}
 
 \begin{proof}
-The first part follows from the fact that $E_a$ and~$E_{-4a}$ are
-$2$-isogenous, together with the isogeny criterion.
+The first part follows from the isogeny criterion since $E_a$
+and~$E_{-4a}$ are $2$-isogenous.
 
 Suppose that $E_{a_1}[p]\cong E_{a_2}[p]$ and the image condition
 holds.  Since $\PP \rhobar_{E_{a_1},p}(G_K)$ has order greater than~$8$,
 we have that $\PP \rhobar_{E_{a_1},p}(G_L)\not\cong C_2\times C_2$, for any extension $L/K$ at most quadratic.
 
 We first claim that if $E_{a_1}$ and~$E_{a_2}$ are not isomorphic
-over~$K$ but are quadratic twists by a quadratic
-extension~$L=K(\sqrt{d})$, then $L=K(\sqrt{-1})$ (and $\sqrt{-1}
-\notin K$).  For suppose that $E_{a_1}$ and~$E_{a_2}$ become
-isomorphic over~$K(\sqrt{d})$.  Applying Proposition~\ref{P:twist},
-the image of $\rhobar_{E,p}$ is contained in the normaliser~$N$ of a
-Cartan subgroup~$C$, but not contained in the Cartan itself, where $C$
-cuts out the quadratic extension $K(\sqrt{d})/K$.  By hypothesis the
-projective image is not~$C_2\times C_2$, so this is true for a unique
-pair $(N,C)$.  Hence the non-trivial quadratic extension cut out by
-$C$ must be the CM extension $K(\sqrt{-1})$; in particular, $\sqrt{-1}
-\not\in K$.  Hence $K(\sqrt{d})=K(\sqrt{-1})$, proving the claim.
+over~$K$ but are quadratic twists, then they are special quadratic
+twists.
+Applying Proposition~\ref{P:twist}, the image of $\rhobar_{E,p}$ is
+contained in the normaliser~$N$ of a Cartan subgroup~$C$, but not
+contained in the Cartan itself, where $C$ cuts out the quadratic
+extension $K(\sqrt{d})/K$.  By hypothesis the projective image is
+not~$C_2\times C_2$, so this is true for a unique pair $(N,C)$.  Hence
+the non-trivial quadratic extension cut out by $C$ must be the CM
+extension $K(\sqrt{-1})$; in particular, $\sqrt{-1} \not\in K$.  Hence
+$K(\sqrt{d})=K(\sqrt{-1})$, proving the claim.
 
 We now consider two cases:
 
