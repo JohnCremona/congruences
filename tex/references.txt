@@ -1,0 +1,17 @@
+T. A. Fisher,
+On families of 7- and 11-congruent elliptic curves,
+LMS J. Comput. Math.  17 (2014), no. 1, 536--564.
+
+N. Freitas and A. Kraus,
+On the symplectic type of isomorphisms of the p-torsion of elliptic
+curves, to appear.
+
+Emmanuel Halberstadt and Alain Kraus, Sur la courbe modulaire
+$X_E(7)$, Experiment. Math. 12 (2003), no.1, 27--40.
+
+The LMFDB Collaboration, The L-functions and Modular Forms Database,
+http://www.lmfdb.org.
+
+Bjorn Poonen, Edward F. Schaefer, and Michael Stoll.  Twists of X(7)
+and primitive solutions to $x^2+y^3=z^7$, Duke Math. J., 137(1),
+pp.103--158, 2007.

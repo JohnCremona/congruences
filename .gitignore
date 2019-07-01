@@ -22,4 +22,7 @@ tex/*.blg
 tex/*.brf
 tex/*.log
 tex/*.out
-
+tex/*.nav
+tex/*.snm
+tex/*.toc
+tex/*.pdf

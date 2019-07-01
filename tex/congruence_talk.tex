@@ -5,10 +5,12 @@
 %
 %  AGC2T, Luminy June 2019
 %
-%  Time-stamp: <2019-06-08 15:19:44 john>
+%  Time-stamp: <2019-07-01 09:06:31 john>
 %
-%\documentclass[compress]{beamer}
-\documentclass[handout]{beamer}
+% Use this option to activate the pauses:
+\documentclass[compress]{beamer}
+% Use this option to cut out the pauses:
+%\documentclass[handout]{beamer}
 
 % for themes, etc.
    \usetheme{}
@@ -103,7 +105,7 @@ The symplectic type of congruences between elliptic curves
 \author{\href{https://warwick.ac.uk/fac/sci/maths/people/staff/john_cremona/}{John Cremona}}
 
 \institute{University of Warwick\\---\\ joint work with
-  \href{https://homepages.warwick.ac.uk/staff/Nuno.Freitas/}{Nuno Freitas}
+  \href{https://homepages.warwick.ac.uk/staff/Nuno.Freitas/}{\color{blue}{Nuno Freitas}}
   (Warwick) %\includegraphics[height=1cm]{nuno.pdf}
 }
 
@@ -211,7 +213,7 @@ For $m\ge2$ we denote by $E[m]$ the \high{$m$-torsion subgroup}:
   \pause\medskip
 
   $E_1$ and $E_2$ are said to satisfy a \high{mod~$p$ congruence} if
-  there is a map
+  there is a bijective map
   \[
   \phi:\quad E_1[p] \to E_2[p]
   \]
@@ -226,40 +228,40 @@ For $m\ge2$ we denote by $E[m]$ the \high{$m$-torsion subgroup}:
   \]
 
   We say that $\phi$ is \high{symplectic} if $d_{\phi}$ is a
-  \high{square} mod~$p$ and \high{antisymplectic} otherwise.
+  \high{square} mod~$p$ and \high{anti-symplectic} otherwise.
 \end{frame}
 
-\begin{frame}\frametitle{Pedantic remarks}
-  \begin{itemize}
-    \item This is uninteresting for $p=2$ so we'll assume that $p$ is
-      \high{odd}.
+%% \begin{frame}\frametitle{Pedantic remarks}
+%%   \begin{itemize}
+%%     \item This is uninteresting for $p=2$ so we'll assume that $p$ is
+%%       \high{odd}.
 
-    \item The Weil pairing is not well-defined by the properties
-      given.  If $E[p]$ has $G_K$-automorphisms we can compose with
-      $e_p$ to get a new pairing which will equal $e_p^k$ for some
-      $k\in\F_p^*$.
+%%     \item The Weil pairing is not well-defined by the properties
+%%       given.  If $E[p]$ has $G_K$-automorphisms we can compose with
+%%       $e_p$ to get a new pairing which will equal $e_p^k$ for some
+%%       $k\in\F_p^*$.
 
-      But if $E[p]$ is \high{irreducible} as
-      $G_K$-module then the only such automorphisms are scalar
-      multiplications, for which $k$ is a square.  We will only talk
-      about the symplectic type of isomorphisms between irreducible
-      modules: this \high{is} well-defined.
-  \end{itemize}
-\end{frame}
+%%       But if $E[p]$ is \high{irreducible} as
+%%       $G_K$-module then the only such automorphisms are scalar
+%%       multiplications, for which $k$ is a square.  We will only talk
+%%       about the symplectic type of isomorphisms between irreducible
+%%       modules: this \high{is} well-defined.
+%%   \end{itemize}
+%% \end{frame}
 
 \begin{frame}\frametitle{Isogenies}
   Isogenies between curves provide one source of congruences.
   \pause\medskip
 
-  Let $\phi:E_1\to E_2$ be an isogeny of degree~$\deg(\phi)$
+  Let $\phi:E_1\to E_2$ be an isogeny$/K$ of degree~$\deg(\phi)$
   \high{coprime to $p$}, defined over~$K$.  Then $\phi$ induces an
-  $\F_p$-isomorphism $E_1[p]\to E_2[p]$.  The \high{isogeny criterion}
+  $\F_pG_K$-isomorphism $E_1[p]\to E_2[p]$.  The \high{isogeny criterion}
   says that $\phi$ is symplectic if and only if the Legendre symbol
   $({\deg(\phi)}/{p})=+1$.
   \pause\medskip
 
   \begin{proof}
-    Using Weil reciprocity,
+    Using Weil reciprocity, for $P,Q\in E_1[p]$,
     \[
     \begin{aligned}
       e_{E_2,p}(\phi(P), \phi(Q)) &= e_{E_1,p}(P, \hat\phi\phi(Q)) \\
@@ -275,9 +277,9 @@ For $m\ge2$ we denote by $E[m]$ the \high{$m$-torsion subgroup}:
 \end{frame}
 
 \begin{frame}\frametitle{The Frey-Mazur conjecture}
-  The \high{Frey--Mazur conjecture} (over $\Q$) states:
+  The \high{Uniform Frey--Mazur conjecture} (over $\Q$) states:
 
-  \begin{quote}There is a constant $C$ such that, if $E_1/\Q$ and $E_2/\Q$
+  \begin{quote}There is a constant $C=C_{\Q}$ such that, if $E_1/\Q$ and $E_2/\Q$
   satisfy $E_1[p] \simeq E_2[p]$ as $G_\Q$-modules for some prime $p >
   C$, then $E_1$ and $E_2$ are $\Q$-isogenous.
   \end{quote}
@@ -285,17 +287,17 @@ For $m\ge2$ we denote by $E[m]$ the \high{$m$-torsion subgroup}:
   \pause\medskip
 
   \begin{theorem}[C. \& Freitas]
-  If $E_1$ and~$E_2/\Q$ both have conductor ${}\le\numprint{400000}$
+  If $E_1/\Q$ and~$E_2/\Q$ both have conductor ${}\le\numprint{400000}$
   are not isogenous, and satisfy $E_1[p] \simeq E_2[p]$ as
   $G_\Q$-modules for some prime $p$, then $p\le17$.
   \end{theorem}
 
   \pause\medskip
   \begin{itemize}
-    \item It is generally believed that the Frey--Mazur
-      conjecture is true, with $C=17$. More on this later later.
+    \item A stronger version of the Frey--Mazur conjecture states that
+      it is holds with $C=23$.
       \item Congruences for small~$p$ are common; for $p=17$ there is
-        essentially only one known, between $\lmfdbec{47775}{b}{1}$
+        essentially only one known, between $\lmfdbec{47775}{be}{1}$
         and~$\lmfdbec{3675}{b}{1}$.
   \end{itemize}
 
@@ -317,7 +319,7 @@ whether
 \] 
 where $N_1$ and $N_2$ are the conductors of~$E_1$ and $E_2$.
 
-But there are infinitely many primes~$\ell$.  And each for curve we need to
+But there are infinitely many primes~$\ell$.  And for each curve we need to
 ignore a different bad set!
 \end{frame}
 
@@ -334,7 +336,7 @@ ignore a different bad set!
  hash value.  If $B$ is not too small then we will get few (if any)
  ``false positive'' clashes.
 
-  We can also parallelise this with repect to~$p$, so that we only
+  We can also parallelise this with respect to~$p$, so that we only
   need to compute each $a_{\ell}(E)$ once.  Against each hash value,
   we store lists of curves which have that $p$-hash (processing the
   curves one at a time, one from each isogeny class).  At the end we
@@ -400,11 +402,11 @@ find $337$ non-trivial sets, of size up to~$4$.
 \end{frame}
 
 \begin{frame}\frametitle{Distinguishing symplectic from
-    antisymplectic}
+    anti-symplectic}
 
-  Freitas and Kraus have a long preprint which gives many different
+  Freitas and Kraus have a long paper (to appear) which gives many different
   \high{local criteria} for determining whether a congruence
-  $E_1[p]\cong E_2[p]$ is symplectic or antisymplectic.  These
+  $E_1[p]\cong E_2[p]$ is symplectic or anti-symplectic.  These
   criteria are not guaranteed to apply in all cases, but usually do,
   and are usually fast.  They depend on knowing in advance that a
   congruence does hold.
@@ -417,13 +419,12 @@ find $337$ non-trivial sets, of size up to~$4$.
 
 \pause\medskip
 
-  This test suite is now broad enough to decide the question for
-  \high{all} the congruences we found in the database.  But this was
-  not the case before we carried out our systematic study!\pause
+  This test suite has now been implemented, and the tests are powerful
+  enough to handle \high{all} the congruences in the database.\pause
 
-  As well as leading to new local criteria, we made certain
-  observations which led to new theoretical results about congruences
-  between twists.
+  There are congruences (outside the database) for which none of the
+  local criteria apply; we developed some new global methods to handle
+  these.
 
 \end{frame}
 
@@ -433,7 +434,7 @@ find $337$ non-trivial sets, of size up to~$4$.
   establish congruences and their symplectic type.    \pause
 
  For each prime $p$ there is a modular curve $X(p)$ defined over $\Q$
- which parametrises elliptic curves together with a level structure
+ which parametrises elliptic curves together with a level $p$ structure
  (essentially, a marked basis for $E[p]$).    \pause
 
  For $p\le5$, this curve has genus~$0$, and $p$-congruences are very
@@ -445,49 +446,51 @@ find $337$ non-trivial sets, of size up to~$4$.
     \pause
   \medskip
   Fix one elliptic curve~$E$ over $\Q$.  Then there exists a curve
-  $X_E(p)$, which is a twist of $X(p)$, whose (non-cuspidal) points
-  correspond to curves $E'$ with $E[p]\cong E'[p]$ symplectically.
+  $X_E^+(p)$ (or simply $X_E(p)$), which is a twist of $X(p)$, whose
+  (non-cuspidal) points correspond to curves $E'$ with $E[p]\cong
+  E'[p]$ symplectically.
 
   {\small(Strictly, to pairs $(E',\alpha)$ where $\alpha:E[p]\to E'[p]$ is a
   symplectic isomorphism, up to scaling.)}
 \end{frame}
 
 \begin{frame}\frametitle{The modular curves $X_E^{\pm}(p)$}
-Similarly there is another twist $X_E^-(p)$ parametrizing curves $E'$
-which are antisymplectically isomorphic to~$E$.
-    \pause
+As well as $X_E^+(p)$, there is another twist $X_E^-(p)$ parametrizing
+curves $E'$ which are anti-symplectically isomorphic to~$E$.  \pause
   \medskip
 
-An explicit model for $X_E(7)$ was found by Kraus and Halberstadt
-(2003) together with the degree~$168$ map $j:X_E(7)\to X(1)=\PP^1$
+An explicit model for $X_E^+(7)$ was found by Kraus and Halberstadt
+(2003) together with the degree~$168$ map $j:X_E^+(7)\to X(1)=\PP^1$
 (giving the $j$-invariant of the congruent curve $E'$), and incomplete
-formulas for the coefficients of $E'$.
+formulas for the coefficients of $E'$. A model for $X_E^-(7)$ was
+given by Poonen, Schaefer and Stoll.
 
     \pause
   \medskip
 More complete formulas were provided by Fisher (2014), who also gave
-all the formulas for $X_E^-(7)$ parametrizing antisymplectic
+all the formulas for $X_E^-(7)$ parametrizing anti-symplectic
 congruences, and $X_E^{\pm}(11)$ (which has genus~$26$).
 
     \pause
   \medskip
-For $p=7$ we implementated these formulas and apply them as follows.
+For $p=7$ we implemented these formulas and apply them as follows.
 \end{frame}
 
 \begin{frame}\frametitle{Using $X_E^{\pm}(7)$: the algorithm}
-\begin{itemize}
+\begin{enumerate}
 \item Given two elliptic curves $E$, $E'$ defined over a field~$K$ of
   characteristic~$0$. We do not need to assume anything about them.
-  Compute $j(E')$, and the curve $X_E(7)$.
-\item Use the explicit map $j:X_E(7)\to\PP^1$ to find the preimages
-  (if any) of $j(E')$ in $X_E(7)(K)$.  If none then $E,E'$ are not
+  Compute $j(E')$, and the curves $X_E^{\pm}(7)$.
+\item Use the explicit map $j:X_E^+(7)\to\PP^1$ to find the preimages
+  (if any) of $j(E')$ in $X_E^+(7)(K)$.  If none then $E,E'$ are not
   symplectically $p$-congruent over~$K$.
-\item For any $P\in X_E(7)(K)$ use Fisher's formulas to find a model
+\item For any $P\in X_E^+(7)(K)$ use Fisher's formulas to find a model
   for the associated congruent curve $E''$.
-\item If $E'\cong E''$ for any of these, then $E,E'$ are $p$-congruent
+\item If $E'\cong E''$ for any of these, then $E,E'$ are
+  symplectically $p$-congruent
   over $K$, otherwise not.
-\item repeat with $X_E^-(7)$.
-\end{itemize}
+\item repeat steps 3--5 with $X_E^-(7)$.
+\end{enumerate}
 \pause
 It would be possible to implement a similar algorithm for $p=11$ using
 Fisher's formulas.
@@ -497,19 +500,23 @@ Fisher's formulas.
 Of the $\numprint{19883}$ non-trivial sets of isogeny classes with mutually
 isomorphic irreducible mod~$7$ representations, we find that in
 $\numprint{12394}$ cases all the isomorphisms are symplectic, while in the
-remaining $\numprint{7489}$ cases antisymplectic isomorphisms occur.
+remaining $\numprint{7489}$ cases anti-symplectic isomorphisms occur.
+\medskip
+\pause
 
-We checked in all cases where the local criteria apply that the result
-are consistent, and they were.  In fact the local criteria were able
-to decide all the cases from the database (but the local criteria were
-expanded for this to be the case).
+We successfully checked that in all these cases, the results of
+applying the local criteria are consistent.  At the same time we found
+that for all pairs of $7$-congruent curves in the database, at least
+one of the local criteria are able to decide whether the congruence
+was symplectic or not.
 
-For example, there are $5092$ pairs of curves with irreducible mod~$7$
-representations which are antisymplectically congruent.  Of these, the
-local tests work in $5090$ cases but not the remaining two.
+%% For example, there are $5092$ pairs of curves with irreducible mod~$7$
+%% representations which are anti-symplectically congruent.  Of these,
+%% the faster local criteria (at bad primes) work in $5090$ cases but the
+%% remaining two required the good prime criteria.
 
-Of $411$ pairs of $7$-congruent reducible pairs, local test work in
-$245$ cases but not the remaining $166$.
+%% Of $411$ pairs of $7$-congruent reducible pairs, the faster local
+%% tests work in $245$ cases but not the remaining $166$.
 \end{frame}
 
 \begin{frame}\frametitle{Results for $p>7$}
@@ -519,14 +526,14 @@ It would be possible to implement Fisher's formulas for
 $X_E^{\pm}(11)$, but we have not yet done so.
 
 For $11\le p\le 17$ we only find congruences with $E[p]$ irreducible
-and we never find sets of more than three congruent curves (excluding
+and we never find sets of more than two congruent curves (excluding
 isogenies).
 
 
   \[
   \begin{tabular}{||c||c|c|c||}
     \hline
-    $p$ & \# congruent pairs & \# symplectic & \# antisymplectic\\
+    $p$ & \# congruent pairs & \# symplectic & \# anti-symplectic\\
     \hline
     11 & 635 & 446 & 189 \\
     13 & 150 & 88 & 62 \\
@@ -535,10 +542,10 @@ isogenies).
   \end{tabular}
   \]
 %% for $p=11$, of the $635$ congruent pairs of isogeny classes, $446$ are
-%% symplectic and $189$ are antisymplectic; for $p=13$, of the $150$
+%% symplectic and $189$ are anti-symplectic; for $p=13$, of the $150$
 %% congruent pairs of isogeny classes, $88$ are symplectic and $62$ are
-%% antisymplectic; for $p=17$, all of the $8$ congruent pairs of isogeny
-%% classes are antisymplectic.
+%% anti-symplectic; for $p=17$, all of the $8$ congruent pairs of isogeny
+%% classes are anti-symplectic.
 \end{frame}
 
 \begin{frame}\frametitle{The Frey--Mazur conjecture}
@@ -560,7 +567,7 @@ isogenies).
 
   \begin{lemma}
     If $E_1$ and $E_2$ have different conductors $N_1$ and $N_2$
-  and are $p$-congruent, then for $i=1$ or $i=2$ there exists a
+  and are $p$-congruent for some $p\ge5$, then for $i=1$ or $i=2$ there exists a
   prime~$q\mid\mid N_i$ such that $p\mid\ord_q(\Delta_i)$, where
   $\Delta_i$ is the minimal discriminant of~$E_i$.
   \end{lemma}
@@ -579,7 +586,8 @@ First, it is easy to show that when we have a congruence $E_1[p]\cong
 E_2[p]$ then for any quadratic twist (associated to a quadratic
 extension $K(\sqrt{d})/K$), the twisted curves also satisfy a
 $p$-congruence: $E_1^d[p]\cong E_2^d[p]$.  Moreover the symplectic
-type is preserved except in one very special situation${}^*$.
+type is preserved.
+%% except in one very special situation${}^*$.
 
 \pause\medskip
 So the previous tables could have only shown the number of congruences
@@ -587,12 +595,12 @@ So the previous tables could have only shown the number of congruences
 However, we can count the total number of curves, up to twist,
 appearing in any of the congruences we found.
 
-\pause\medskip
-\begin{example}[${}^*$]
-$E_1=\lmfdbec{32}{a}{1}$ is symplectically $5$-congruent to
-$E_2=\lmfdbec{608}{b}{1}$, but $E_1^{-1}=\lmfdbec{32}{a}{2}$ is
-antisymplectically $5$-congruent to $E_2^{-1}=\lmfdbec{608}{e}{1}$.
-\end{example}
+%% \pause\medskip
+%% \begin{example}[${}^*$]
+%% $E_1=\lmfdbec{32}{a}{1}$ is symplectically $5$-congruent to
+%% $E_2=\lmfdbec{608}{b}{1}$, but $E_1^{-1}=\lmfdbec{32}{a}{2}$ is
+%% anti-symplectically $5$-congruent to $E_2^{-1}=\lmfdbec{608}{e}{1}$.
+%% \end{example}
 \end{frame}
 
 \begin{frame}\frametitle{Congruences up to twist}
@@ -618,13 +626,13 @@ and~$\lmfdbec{3675}{b}{1}$.
 
 \begin{frame}\frametitle{Congruences between twists I}
 With some mild conditions to exclude very small images we have a
-correspondence between the following siuations, for odd $p$ over any
+correspondence between the following situations, for odd $p$ over any
 number field $K$:
 \begin{itemize}
 \item the projective image in $\PGL_2(\F_p)$ being dihedral;
 \item the image being contained in the normaliser $N$ of a Cartan
   subgroup $C$, but not contained in $C$;
-  \item a $p$-congruence between twists: $E[p]\cong E^d[p]$.
+  \item a $p$-congruence between quadratic twists: $E[p]\cong E^d[p]$.
 \end{itemize}
 \pause\medskip
 
@@ -645,17 +653,17 @@ irreducible).
 
   \begin{prop}
   If $\phi:\ E[p]\cong E^d[p]$ with image contained in $N\supseteq C$ a
-  Cartan normaliser, then${}^*$
+  Cartan normaliser, then%%${}^*$
   \begin{enumerate}
     \item $\phi$ is symplectic if $C$ is split and $p\equiv1\pmod4$ or
       if $C$ is nonsplit and $p\equiv3\pmod4$;
-      \item $\phi$ is antisymplectic if $C$ is split and $p\equiv3\pmod4$ or
+      \item $\phi$ is anti-symplectic if $C$ is split and $p\equiv3\pmod4$ or
       if $C$ is nonsplit and $p\equiv1\pmod4$.
   \end{enumerate}
 
-  \pause \medskip ${}^*$With one exception: when $j(E)=1728$, the
-  congruence $E[p]\cong E^{-1}[p]$ is symplectic iff $2$ is a
-  quadratic residue mod~$p$.
+  %% \pause \medskip ${}^*$With one exception: when $j(E)=1728$, the
+  %% congruence $E[p]\cong E^{-1}[p]$ is symplectic iff $2$ is a
+  %% quadratic residue mod~$p$.
   \end{prop}
 
 \end{frame}
@@ -668,13 +676,13 @@ irreducible).
   \pause\medskip
 
   \begin{prop}
-    Suppose that $\rhobar_{E,p}$ has projective image $\C_2\times
+    Suppose that $\rhobar_{E,p}$ has projective image $C_2\times
     C_2$.  Then there are \high{three} quadratic twists $E^{d_i}$
     which are $p$-congruent to~$E$.
   \begin{itemize}
   \item If $\sqrt{p^*}\in K$ then all three congruences are symplectic;
     \item Otherwise one is the symplectic congruence $E[p]\cong
-      E^{p^*}[p]$, and the other two are antisymplectic.
+      E^{p^*}[p]$, and the other two are anti-symplectic.
   \end{itemize}
   \end{prop}
   $p^*=\pm p\equiv1\pmod4$, and $\sqrt{p^*}\in K$ iff
@@ -685,7 +693,7 @@ irreducible).
   \begin{example}
   $E=\lmfdbec{6534}{a}{1}$, of conductor $6534=2\cdot3^3\cdot11^2$ is
   symplectically $3$-congruent to $E^{-3}=\lmfdbec{6534}{v}{1}$, and
-  antisymplectically to $E^{-11}=\lmfdbec{6534}{p}{1}$ and
+  anti-symplectically to $E^{-11}=\lmfdbec{6534}{p}{1}$ and
   $E^{33}=\lmfdbec{6534}{h}{1}$.
   \end{example}
   
@@ -693,24 +701,26 @@ irreducible).
 
 \begin{frame}\frametitle{Quartic twists}
   Curves of the form $E_a:\ Y^2=X^3+aX$ have $j(E_a)=1728$ and CM
-  by~$\sqrt{-1}$, and admit \high{quartic twists} $E_a\sim E_{ta}$.
+  by~$\sqrt{-1}$, and admit \high{quartic twists} $E_a\sim E_{ta}$,
+  parametrized by $t\in K^*/(K^*)^4$.
 
   \pause\medskip
 
   \begin{prop}
   The only $p$-congruence between these curves is the one induced by
-  the $2$-isogeny: $E_a[p]\cong E_{-4a}[p] = E_a^{-1}[p]$.
+  the $2$-isogeny: $E_a[p]\cong E_{-4a}[p]$.
   \end{prop}
   \pause\medskip
 
-  This is only non-trivial when $\sqrt{-1}\notin K$,
-  as otherwise the curves themselves are isomorphic.
+  This is only non-trivial when $\sqrt{-1}\notin K$, as otherwise the
+  curves themselves are isomorphic (since $-4=(1+\sqrt{-1})^4$).
 
 \end{frame}
 
 \begin{frame}\frametitle{Sextic twists}
   Curves of the form $E_b:\ Y^2=X^3+b$ have $j(E_b)=0$ and CM
-  by~$\sqrt{-3}$, and admit \high{sextic twists} $E_b\sim E_{tb}$.
+  by~$\sqrt{-3}$, and admit \high{sextic twists} $E_b\sim E_{tb}$,
+  parametrized by $t\in K^*/(K^*)^6$.
 
   \pause\medskip
 
@@ -723,10 +733,10 @@ irreducible).
   Assume $\sqrt{-3}\notin K$.  The only $7$-congruences between these
   are:
   \begin{itemize}
-  \item $E_b[7]\cong E_{-27b}[7]$, antisymplectic (induced by a
+  \item $E_b[7]\cong E_{-27b}[7]$, anti-symplectic (induced by a
     $3$-isogeny);
-  \item $E_b[7] \cong E_{-28/b}[7]$ symplectic;
-  \item $E_b[7] \cong E_{27\cdot28/b}[7]$ antisymplectic (composite of
+  \item $E_b[7] \cong E_{-28/b}[7]$, symplectic;
+  \item $E_b[7] \cong E_{27\cdot28/b}[7]$, anti-symplectic (composite of
     previous).
   \end{itemize}
   \end{prop}
