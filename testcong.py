@@ -46,7 +46,7 @@ def read_cong(fname):
 # semisimplifications (ignoring whether a symplectic isomorphism
 # exists).
 
-def test_cong(p, E1, E2, mumax=5000000, semisimp=True, verbose=False):
+def test_cong(p, E1, E2, mumax=5000000, semisimp=True, verbose=False, twist=True):
     """mumax: only test a_l for l up to this even if the bound is
     greater, but then output a warning semisimp: if True, output True
     when the two reps have isomorphic semisimplifications, don't try
@@ -60,27 +60,29 @@ def test_cong(p, E1, E2, mumax=5000000, semisimp=True, verbose=False):
     """
     N1 = E1.conductor()
     N2 = E2.conductor()
-    E1, d = E1.minimal_quadratic_twist()
-    if d!=1:
+    if twist:
         E1orig = E1
         E2orig = E2
         N1orig = N1
         N2orig = N2
-        E2 = E2.quadratic_twist(d)
-        if verbose:
-            print("Twisting by {} before testing congruence".format(d))
-            print("Before twisting, conductors were {} and {}".format(N1,N2))
-        N1 = E1.conductor()
-        N2 = E2.conductor()
-        if verbose:
-            print("After  twisting, conductors are {} and {}".format(N1,N2))
-        if N2>400000: # we have made E2 worse, so untwist
+
+        E1, d = E1.minimal_quadratic_twist()
+        if d!=1:
+            E2 = E2.quadratic_twist(d)
             if verbose:
-                print("After twisting, E2 is not in the database, so we undo the twisting")
-            E1 = E1orig
-            E2 = E2orig
-            N1 = N1orig
-            N2 = N2orig
+                print("Twisting by {} before testing congruence".format(d))
+                print("Before twisting, conductors were {} and {}".format(N1,N2))
+            N1 = E1.conductor()
+            N2 = E2.conductor()
+            if verbose:
+                print("After  twisting, conductors are {} and {}".format(N1,N2))
+            if N2>400000: # we have made E2 worse, so untwist
+                if verbose:
+                    print("After twisting, E2 is not in the database, so we undo the twisting")
+                E1 = E1orig
+                E2 = E2orig
+                N1 = N1orig
+                N2 = N2orig
 
     S = N1.gcd(N2).support()
     S1 = [ell for ell in S if E1.has_split_multiplicative_reduction(ell) and  E2.has_nonsplit_multiplicative_reduction(ell)]
