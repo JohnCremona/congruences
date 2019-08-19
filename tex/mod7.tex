@@ -261,6 +261,7 @@
 
 % imported from JC's file
 \DeclareMathOperator{\id}{id}
+\DeclareMathOperator{\Id}{Id}
 \def\w{\omega}
 \def\r3{\sqrt{-3}}
 \def\pibar{\overline{\pi}}
@@ -2170,8 +2171,196 @@ The last part follows from the proof of Theorem~\ref{T:j=0}.
 %\begin{remark} Over a field where $-3$ is a square, the curves $E_b$
 %and $E_{-27b}$ in the previous remark are even isomorphic, and the
 %$3$-isogeny is the endomorphism $\pm\r3$.  \end{remark}
-
 \end{comment}
+
+%%%%%%%%%%%%%%%%%%%%%%
+
+\section{The symplectic type of congruences between twists}
+
+Let~$K$ be a number field. Let $E$ and~$E'$ be elliptic curves over~$K$ having the same $j$-invariant $j = j(E) = j(E')$. Assume they are not 
+isomorphic over~$K$. Therefore, $E$ and $E'$ are (non-trivial) twists and become isomorphic over an extension $L/K$. Write $d = [L : K]$. 
+
+Let $t : E \to E'$ be a twist map with 
+cocycle~$\psi : G_K \to \calO^* = \mu_n$.
+We have 
+\begin{itemize}
+ \item[(i)] $n=2$ and $d = 2$ if $j  \neq 0, 1728$ (quadratic twists);
+ \item[(ii)] $n=4$ and $d \in \{2,4\}$ if $j = 1728$ (quartic twists);
+ \item[(iii)] $n=3$ and $d=3$ if $j = 0$ (cubic twists);
+ \item[(iv)] $n=6$ and $d \in \{3,6\}$ if $j = 0$ (sextic twists);
+\end{itemize}
+
+We have $t^\sigma = \psi(\sigma) \cdot t$ for all~$\sigma \in G_K$. 
+Denote by $t_p : E[p] \to E'[p]$ the restriction of~$t$ to the $p$-torsion points of~$E$. Thus,
+\begin{equation}\label{E:cocycle}
+   t_p(P)^\sigma = \psi(\sigma) \cdot t_p(P^\sigma) \quad \text{ for all } \sigma \in G_K,
+  \; P \in E[p].
+\end{equation}
+Let $P_1, P_2$ be a basis of~$E[p]$, so that $t_p(P_1), t_p(P_2)$ is a basis of~$E'[p]$.
+In these basis, the map~$t_p$ is represented by the identity matrix in~$\GL_2(\F_p)$ and we obtain, for all $\sigma \in G_K$, the equality of matrices
+\begin{equation} \label{E:PsiMatrix}
+ \rhobar_{E',p}(\sigma) = \rhobar_{E,p}(\sigma) \cdot \Psi_\sigma 
+\end{equation}
+Assume further that $E$ and $E'$ are $p$-congruent, so there exists an 
+isomorphism of $G_K$-modules $\phi : E[p] \to E'[p]$. Let~$M \in \GL_2(\F_p)$ be the matrix representing~$\phi$ in the basis above, hence
+\begin{equation}\label{E:PsiM}
+M \rhobar_{E,p}(\sigma) M^{-1} = \rhobar_{E,p}(\sigma) \cdot \Psi_\sigma 
+ \quad \text{ for all } \sigma \in G_K.
+\end{equation}
+The map $\sigma \mapsto \Psi_\sigma$ becomes an homomorphism over an extension $M/K$ given by $M=K$ if $n=2$, $M=K(\sqrt{-1})$ if $n=4$ and $M=K(\sqrt{-3})$ if $n=3,6$.
+
+
+Since the map~$t$ is an isomorphism over~$\Qbar$ it preserves the Weil pairing, therefore the symplectic type of the congruence $E[p] \simeq E'[p]$ is determined by the square class of $\det M$.
+
+We start with the case of quadratic twists.
+
+\begin{theorem}\label{T:quadratic} Suppose that $E'$ is a non-trivial quadratic twist of~$E$ so that $\Psi_\sigma \in \{\pm \Id \}$. Assume that $E[p] \cong E'[p]$ so that $\rhobar_{E,p}$ has image contained in the normalizer of a Cartan subgroup~$C$ but not in~$C$ by Proposition~?? 
+
+Let~$\delta \in \F_p^*$ be a square if $C$ is split and a non-square if $C$ is non-split.
+Then $E[p]$ and~$E'[p]$ are symplectically isomorphic if and only if $-\delta$ is a square mod~$p$ and anti-symplectically otherwise.
+\end{theorem}
+\begin{proof} 
+From the hypothesis we can 
+choose a basis $P_1, P_2$ of $E[p]$ such that 
+$\rhobar_{E,p}$ has image 
+contained in the subgroup of $\GL_2(\F_p)$ given by 
+\[
+\left\{ 
+\begin{pmatrix}
+a & b\delta \\
+b & a
+\end{pmatrix}, 
+\begin{pmatrix}
+a & b\delta \\
+-b & -a
+\end{pmatrix}  \; : a, b \in \F_p, \; a^2 - \delta b^2 \neq 0 \right\},
+\]
+where~$C$ is given by the first type of matrices. 
+Restricting~\eqref{E:PsiM} to the index~$2$ subgroup $H = \ker \Psi_\sigma$ we see that 
+that~$M \in C$ and $M$ is non-scalar since the twist is non-trvial. Moreover, for $\tau \in G_K - H$ we have 
+$M \rhobar_{E,p}(\tau) M^{-1} =-\rhobar_{E,p}(\tau)$ and so, modulo scalars, $M$ comutes with 
+$\rhobar_{E,p}(\tau)$, so $M$ comutes with the projective image, thus $M$ has order 2 modulo scalars ({\bf why?}). 
+We conclude that $\Tr M = 2a = 0$, so $a=0$ (as $p \neq 2$) and $\det M = -b^2\delta$. Thus $\det M$ is a square mod~$p$ if and only 
+if~$(-\delta/p) = 1$, as desired.
+\end{proof}
+
+
+
+\begin{lemma} \label{L:LinF}
+Let $E$ and $E'$ be $p$-congruent non-trivial $n$-twists by~$u$. 
+Let $L = K(\root n \of u)$. 
+
+Then $L \cap F \neq K$. Furthermore,
+$L \subset F$ if $n \in \{2,3\}$ and $K(\sqrt{u}) \subset F$ if $n \in \{4,6\}$.
+\end{lemma}
+\begin{proof} 
+%Let~$\sigma$ be in the kernel of~$\rhobar_{E,p}$. Then equality~\eqref{E:PsiM} implies~$\Psi_\sigma = \Id$. Since~$\Psi_\sigma$ becomes a homomorphism when restricted to~$G_{K(\sqrt{-3})}$ we conclude that the kernel of $\rhobar_{E,p}|_{G_{K(\sqrt{-3})}}$ is contained in the kernel of $\Psi_\sigma|_{G_{K(\sqrt{-3})}}$.
+
+
+
+For all $\sigma \in G_L$ we have $\Psi_\sigma = \Id$. From~\eqref{E:PsiM} it follows that $M$ comutes with $\rhobar_{E,p}(G_L)$. Since $M$ is not scalar (as the twist is non-trivial),
+we conclude that $\rhobar_{E,p}(G_L)$ is abelian. Since $\PP \rhobar_{E,p}(G_K) \simeq D_m$ implies that 
+$\rhobar_{E,p}(G_K)$ is
+absolutely irreducible, we conclude that $\PP \rhobar_{E,p}(G_L)$ is not dihedral hence the projective image shrank by base change to~$L$, that is $F \cap L \neq K$.
+
+We divide the last statement into three cases. We already know $F \cap L \neq K$.
+
+(a) Suppose $n=2, 3$. Then $L \subset F$ as~$n$ is prime.
+
+(b) Suppose $n=4$. The subfields of~$L$ are
+$K$, $K(\sqrt{u})$ and $L$. 
+Thus $K(\sqrt{u}) \subset F \cap L$.
+
+(c) Suppose $n=6$. We have $L = K(\sqrt{u},\root 3 \of u)$.
+If $F \cap L = K(\sqrt{u})$ or $L$ we are done.
+
+Suppose $F \cap L = K(\root 3 \of{u})$. 
+Let $W$ and $W'$ denote the base change of $E$ and $E'$ to $K(\root 3 \of{u})$, respectively.
+Let $F_W$ be the field cut of by $\PP \rhobar_{W,p}$. We have $F = F_W$ as 
+$K(\root 3 \of{u}) \subset F$. 
+
+The curves $W$ and $W'$ are $p$-congruent quadratic twists and $\PP \rhobar_{W,p} (G) \cong D_m$ for $m \geq 2$, 
+as $K(\sqrt{-3}) \not\subset K(\root 3 \of{u})$. From (a) applied to~$W$ and~$W'$ 
+we get~$K(\root 3 \of{u})(\sqrt{u}) \subset F_W = F$.
+\end{proof}
+
+
+\begin{lemma} \label{L:PsiInImage}
+Let~$E$ and~$E'$ be non-trivial cubic or sextic twists. 
+Fix basis for $E[p]$ and~$E'[p]$ as above so that the matrix equality \eqref{E:PsiMatrix} holds. Assume $E$ and $E'$ are $p$-congruent.
+
+Then 
+$\rhobar_{E,p}(G_K) = \rhobar_{E',p}(G_K)$ 
+as subgroups of~$\GL_2(\F_p)$. In particular, the common image contains $\{ \Psi_\sigma \}_{\sigma \in G_K}$.
+\end{lemma}
+
+\begin{lemma}
+Let~$E$ and~$E'$ be non-trivial cubic or sextic twists. Assume they are $p$-congruent. 
+
+Then $\PP\rhobar_{E,p}(G_K)$ is either $D_3$ or~$D_6$, where the later case only occur for sextic twists.
+\end{lemma}
+
+
+\begin{theorem}\label{T:cubicM} 
+Let $K$ be a number field with $\sqrt{-3} \not\in K$. 
+Let $E'/K$ be a cubic or sextic twist of~$E/K$ by~$u \in K$. Assume $E[p] \cong E'[p]$
+and $\PP \rhobar_{E,p} \simeq D_3$.
+Then $E[p]$ and~$E'[p]$ are symplectically isomorphic if and only if
+$\sqrt{p^*} \in K$.
+\end{theorem}
+\begin{proof} We have $j=j'=0$ and the curves have~CM by $\Q(\sqrt{-3})$.
+
+By hypothesis $\psi(\sigma) \neq 1$ for some~$\sigma \in G_K$ therefore, 
+considering~\eqref{E:PsiM} projectively, we see that~$M$ acts as a non-trivial automorphism of~$D_3$ by Lemma~\ref{L:PsiInImage}.
+Since all automorphisms of~$D_3$ are inner, 
+there is $\tau \in G_K$ such that 
+$M = \rhobar_{E,p}(\tau) \neq \Id$ in~$\PGL_2(\F_p)$.
+
+If $\Psi_\tau \neq \Id$, then   
+taking~$\sigma = \tau$ in~\eqref{E:PsiM} 
+gives
+$\rhobar_{E,p}(\tau) = \rhobar_{E,p}(\tau) \cdot \Psi_\tau$, a contradiction. We conclude that
+$\tau \in G_{K(\root3\of{u})}$. 
+Moreover, by hypothesis
+$F = K(\sqrt{-3},\root3\of{u})$ is
+the field cut out by $\PP \rhobar_{E,p}$. 
+Thus $\tau(\sqrt{-3}) = - \sqrt{-3}$.
+
+Recall that $\sqrt{p^*} \in F$.
+Thus $\sqrt{p^*} \in K(\sqrt{-3})$, so either $\sqrt{p^*} \in K$ or $\sqrt{-3p^*} \in K$. In the first case, clearly $\tau(\sqrt{p^*}) = \sqrt{p^*}$; in the second, we have 
+\[
+ \tau(\sqrt{p^*}) = \tau(\sqrt{-3}\cdot\sqrt{-3p^*}) = \tau(\sqrt{-3}) \cdot \tau(\sqrt{-3p^*})= - \sqrt{-3} \cdot \sqrt{-3p^*} = - \sqrt{p^*}
+\]
+and we conclude that $\det \rhobar_{E,p}(\tau)$ is a square if and only if~$\sqrt{p^*} \in K$. Clearly the same holds for~$M$ and the result follows.
+\end{proof}
+
+\begin{theorem}\label{T:sexticM} 
+Let $K$ be a number field with $\sqrt{-3} \not\in K$. 
+Let $E'/K$ be the sextic twist of~$E/K$ by~$u \in K$ with $u \neq -3$ mod squares. 
+Assume $E[p] \simeq E'[p]$
+and $\PP \rhobar_{E,p} \simeq D_6$.
+Then $E[p]$ and~$E'[p]$ are symplectically isomorphic if and only if
+$\sqrt{p^*} \in K$ or $u = p^*$ mod squares.
+\end{theorem}
+\begin{proof}   
+We have $j=j'=0$ so that the curves have~CM by $\Q(\sqrt{-3})$. 
+
+Recall the field $F$ cut out by $\PP \rhobar_{E,p}$ 
+contains $K(\sqrt{-3})$ 
+and $K(\sqrt{u})$ by Lemma~\ref{L:LinF}; 
+hence it also contains $K(\sqrt{-3u})$ and these thre extensions are different.
+
+
+The group~$D_6$ has three normal subgroups of order~$6$: one cyclic corresponding to the projective image of $G_{K(\sqrt{-3})}$ and two isomorphic to~$D_3$ corresponding to the projective images of
+$G_{K(\sqrt{u})}$ and $G_{K(\sqrt{-3u})}$.
+Moreover, the base change of~$E$ and~$E'$ 
+to~$K(\sqrt{u})$ are cubic twists. Since the 
+symplectic type is preserved by base change 
+to~$K(\sqrt{u})$, we can apply Proposition~\ref{T:cubicM} over this field.
+Indeed, over~$K(\sqrt{u})$ we have that $E[p]$ and~$E'[p]$ are symplectically isomorphic if and only if
+$\sqrt{p^*} \in K(\sqrt{u})$, that is when
+$\sqrt{p^*} \in K$ or $K(\sqrt{u}) = K(\sqrt{p^*})$, as desired.
+\end{proof}
 
 \section{Auxiliary results for the reducible case}
 
