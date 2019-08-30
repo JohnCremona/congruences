@@ -32,3 +32,31 @@ def test_equal_N(max_N=1000):
         if not ok:
             print test_conductor(N, verbose=True)
 
+# Find the sets M_E
+
+def M_E(E, verbose=False):
+    t = [(l.prime().gen(), l.discriminant_valuation()) for l in E.local_data() if l.conductor_valuation()==1]
+    if verbose:
+        print("(q,v_q(D)): {}".format(t))
+    ME = sum([[[ti[0],p] for p in ti[1].prime_factors() if p>17] for ti in t], [])
+    return ME
+
+# find all nontrivial M_E for curves of conductor up to some bound
+
+def all_M_E(Nmax):
+    nc =0
+    nc_nontriv = 0
+    Ms = {}
+    for E in cremona_optimal_curves([11..Nmax]):
+        nc += 1
+        M = M_E(E)
+        if M:
+            nc_nontriv += 1
+            print E.label(), M
+            Ms[E.label()] = M
+    print("Out of {} isogeny classes of curves of conductor <= {}, {} have non-trivial M_E".format(nc, Nmax, nc_nontriv))
+    qlist = sorted(list(Set(sum([[q for q,p in M] for M in Ms.values()],[]))))
+    plist = sorted(list(Set(sum([[p for q,p in M] for M in Ms.values()],[]))))
+    print("all p: {}".format(plist))
+    print("all q: {}".format(qlist))
+    return Ms

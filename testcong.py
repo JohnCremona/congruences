@@ -352,6 +352,33 @@ def make_hash(p, N1, N2, np=20):
     print("{} sets of conjugate curves".format(ns))
     return hashtab
 
+def make_hash_many(plist, N1, N2, nq=20):
+    qlist = [next_prime(400000)]
+    while len(qlist)<nq:
+        qlist.append(next_prime(qlist[-1]))
+
+    hashtabs = dict([(p,dict()) for p in plist])
+    nc = 0
+    for E in cremona_optimal_curves(srange(N1,N2+1)):
+        nc +=1
+        lab = E.label()
+        if nc%1000==0:
+            print(lab)
+        h = hash1many(plist,E,qlist)
+
+        for p in plist:
+            hp = h[p]
+            if hp in hashtabs[p]:
+                hashtabs[p][hp].append(lab)
+                print("p={}, new set {}".format(p,hashtabs[p][hp]))
+            else:
+                hashtabs[p][hp] = [lab]
+
+    ns = dict([(p,len([v for v in hashtabs[p].values() if len(v)>1])) for p in plist])
+    for p in plist:
+        print("p={}: {} nontrivial sets of congruent curves".format(p,ns[p]))
+    return hashtabs
+
 def EC_from_SW_label(lab):
     N, ainvs = lab.split(".")
     N = ZZ(N)
