@@ -2297,7 +2297,7 @@ isomorphism of $G_K$-modules $\phi : E[p] \to E'[p]$. Let~$M \in \GL_2(\F_p)$ be
 M \rhobar_{E,p}(\sigma) M^{-1} = \rhobar_{E,p}(\sigma) \cdot \Psi_\sigma 
  \quad \text{ for all } \sigma \in G_K.
 \end{equation}
-The map $\sigma \mapsto \Psi_\sigma$ becomes an homomorphism over an extension $M/K$ given by $M=K$ if $n=2$, $M=K(\sqrt{-1})$ if $n=4$ and $M=K(\sqrt{-3})$ if $n=6$.
+The map $\sigma \mapsto \Psi_\sigma$ becomes an homomorphism over an extension $K'/K$ given by $K'=K$ if $n=2$, $K'=K(\sqrt{-1})$ if $n=4$ and $K'=K(\sqrt{-3})$ if $n=6$.
 
 
 Since the map~$t$ is an isomorphism over~$\Qbar$ it preserves the Weil pairing, therefore the symplectic type of the congruence $E[p] \simeq E'[p]$ is determined by the square class of $\det M$.
@@ -2417,20 +2417,54 @@ This latter condition means $u = p^*$ mod squares and since $M = K(\sqrt{u})$ th
 
 For the case of cubic and sextic twists we need some auxiliary results first. 
 
-\begin{lemma} \label{L:PsiInImage}
-Let~$E$ and~$E'$ be non-trivial cubic or sextic twists. 
-Fix basis for $E[p]$ and~$E'[p]$ as above so that the matrix equality \eqref{E:PsiMatrix} holds. Assume $E$ and $E'$ are $p$-congruent.
+\begin{lemma}
+Let~$p$ be an odd prime. Let~$E$ and~$E'$ be quartic or sextic twists which are 
+$p$-congruent. Assume also that $E$ and~$E'$
+are not isomorphic over a quadratic extension.
 
-Then 
+Then $\PP\rhobar_{E,p}(G_K)$ is $D_4$ in the case of quartic twists or it is either $D_3$ or~$D_6$ in the case of sextic twists.
+Moreover, when the sextic twist is actually a cubic twist then we have $\PP\rhobar_{E,p}(G_K) \simeq D_3$ while for a genunine sextic twist both cases can occur.
+\end{lemma}
+\begin{proof} From Proposition~\ref{P:twist} we already know the projective image is $D_n$ for some~$n$. 
+
+Let $K'=K(\sqrt{-1})$ in the case of quartic twists and $K'=K(\sqrt{-3})$ in the case of sextic twists. Our hypothesis guarantees that the curves are not quadratic twists neither the special quartic twist by~$-4$. 
+Thus the map $\sigma \mapsto \Psi_\sigma$ where~$\Psi_\sigma$ is as in~\eqref{E:PsiMatrix} is a homomorphism of $G_{K'}$ of order 4 in the former case and of order 3 or 6 in the latter case.
+Let $F/K'$ be the field cur out by its kernel. Equation~\eqref{E:PsiM} holds for some~$M$ and, since $\rhobar_{E,p}(G_{K'})$ is in a Cartan subgroup~$C$, we conclude that 
+$M \not\in C$. Restricting~\eqref{E:PsiM} to~$G_F$ shows that $M$ comutes with $\rhobar_{E,p}(G_F) \subset C$, hence 
+$\rhobar_{E,p}(G_F)$ is scalar and so 
+projectively trivial.
+
+Since $\det \Psi_\sigma = 1$ we see that the homomorphism $\sigma \mapsto \Psi_\sigma$ has projective order 4 in the case of quartic twist and projective order 3 in the case of sextic twists. This already implies the result in the cases of quartic and cubic twists; to show the case~$D_6$ occurs we observe 
+that the Galois closure of the field$L=K(\sqrt{u},\root 3 \of u)$ appearing in 
+case (iii) in the proof of Lemma~\ref{L:LinF} is precisely~$F$ as defined above.
+\end{proof}
+
+\begin{corollary}
+Let~$p$ be an odd prime and $n \in \{4,6 \}$. Let~$E/K$ and~$E'/K$ be $n$-twists by~$u \in K$ which are $p$-congruent. 
+Assume $E$ and~$E'$
+are not isomorphic over a quadratic extension of~$K$. Suppose also that $\sqrt{-1} \not\in K$ or
+$\sqrt{-3} \not\in K$ if $n=4$ or $n=6$, respectively.
+
+Let~$F$ denote the common projective $p$-division field of~$E$ and~$E'$. Then,
+
+1) $F = K(\sqrt{-1}, \root 4 \of u)$ and $\Gal(F/K) \simeq D_4$ if~$n = 4$.
+
+2) $F = K(\sqrt{-3}, \root 3 \of u)$
+and $\Gal(F/K) \simeq D_3$ if $n=6$ and $u$ is a square.
+
+3) $F = K(\sqrt{-3}, \root 6 \of u)$
+and $\Gal(F/K) \simeq D_6$ if $n=6$ and $u$ is not a square.
+\end{corollary}
+\begin{proof} This follows directly from the proof of Lemma~\ref{L:LinF} and the previous lemma.
+\end{proof}
+
+\begin{proposition} \label{P:PsiInImage}
+Let~$E$ and~$E'$ be non-trivial cubic twists over~$K$, i.e. sextic twists by a square~$u \in K$. Assume $\sqrt{-3} \not\in K$ and that $E$ and $E'$ are $p$-congruent.
+
+Fix basis for $E[p]$ and~$E'[p]$ as above so that the matrix equality \eqref{E:PsiMatrix} holds. Then 
 $\rhobar_{E,p}(G_K) = \rhobar_{E',p}(G_K)$ 
 as subgroups of~$\GL_2(\F_p)$. In particular, the common image contains $\{ \Psi_\sigma \}_{\sigma \in G_K}$.
-\end{lemma}
-
-\begin{lemma}
-Let~$E$ and~$E'$ be non-trivial cubic or sextic twists. Assume they are $p$-congruent. 
-
-Then $\PP\rhobar_{E,p}(G_K)$ is either $D_3$ or~$D_6$, where the later case only occur for sextic twists.
-\end{lemma}
+\end{proposition}
 
 
 \begin{theorem}\label{T:cubicM} 
@@ -2443,7 +2477,7 @@ $\sqrt{p^*} \in K$.
 \begin{proof} We have $j=j'=0$ and the curves have~CM by $\Q(\sqrt{-3})$.
 
 By hypothesis $\psi(\sigma) \neq 1$ for some~$\sigma \in G_K$ therefore, 
-considering~\eqref{E:PsiM} projectively, we see that~$M$ acts as a non-trivial automorphism of~$D_3$ by Lemma~\ref{L:PsiInImage}.
+considering~\eqref{E:PsiM} projectively, we see that~$M$ acts as a non-trivial automorphism of~$D_3$ by Proposition~\ref{P:PsiInImage}.
 Since all automorphisms of~$D_3$ are inner, 
 there is $\tau \in G_K$ such that 
 $M = \rhobar_{E,p}(\tau) \neq \Id$ in~$\PGL_2(\F_p)$.
