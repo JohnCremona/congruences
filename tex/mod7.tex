@@ -357,7 +357,7 @@ congruences between the mod~$p$ torsion modules of elliptic curves
 defined over $\Q$, including methods to determine the symplectic type
 of such congruences.  We report on the results of applying our methods
 to the elliptic curves in the LMFDB database, which currently includes
-all elliptic curves of conductor less than~$\numprint{500000}$, for
+all elliptic curves of conductor less than~$\numprint{400000}$, for
 all primes~$p\ge7$.  We also show that while such congruences exist
 for each $p\le17$, there are none for larger values of~$p$, in line
 with a strong form of the Frey-Mazur conjecture.
@@ -476,7 +476,7 @@ do not apply, specifically when the projective images are dihedral;} to
 study congruences between twists; and to systematically identify and
 determine the symplectic type of all congruences between curves in the
 LMFDB (see \cite{lmfdb})
-%%of conductors up to~$\numprint{500000}$
+%%of conductors up to~$\numprint{400000}$
 for all~$p\ge7$.
 
 %% to give a uniform procedure to
@@ -488,7 +488,7 @@ and {\Sage} \cite{sage} the methods from this paper together with
 those from~\cite{FKSym}. We have used our code to classify the
 symplectic types of congruences between curves in the LMFDB, namely
 all elliptic curves defined over~$\Q$ of conductor less
-than~$\numprint{500000}$. More precisely, Theorem~\ref{T:cong19} shows
+than~$\numprint{400000}$. More precisely, Theorem~\ref{T:cong19} shows
 there are no mod~$p$ congruences in LMFDB for $p \geq 19$ and we
 found, for $p$ in the range $7 \leq p \leq 17$, all the congruences in
 the database; we report on the results obtained in
@@ -593,7 +593,7 @@ The Frey-Mazur conjecture states there is a constant $C \geq 18$ such
 that, if $E/\Q$ and $E'/\Q$ satisfy $E[p] \simeq E'[p]$ as
 $G_\Q$-modules for some prime $p > C$, then $E$ and $E'$ are
 $\Q$-isogenous. Theorem~\ref{T:cong19} shows that for curves of
-conductor at most~$\numprint{500000}$, this holds with~$C=18$. In view
+conductor at most~$\numprint{400000}$, this holds with~$C=18$. In view
 of this conjecture, any~$(E,E',p)$ with $p > C$ arises from an
 isogeny, hence its symplectic type is easily determined by the isogeny
 criterion. Thus we are interested in primes $p \leq C$.
@@ -647,7 +647,7 @@ an example with $p=7$ analogous to the discussion in this paragraph.
 
 \section{Congruences between Twists}\label{S:cong-twist}
 
-Congruences between elliptic curves which are twists of each other arise in a number of ways in our study; in this section we look into this situation in detail.
+Congruences between elliptic curves which are twists of each other arise in a number of ways in our study; in this and the next two sections we look into this situation in detail.
 
 Let $p$ be an odd prime. Let $D_{n}$ denote the dihedral group
 with~$2n$ elements and $C_n \subset D_{n}$ for a normal cyclic
@@ -814,6 +814,8 @@ $3$-isogeny is the endomorphism $\sqrt{-3}$.
 
 \jc{We need to extend part (2) of the following, like (4.2).}
 
+\nf{Yes. The discussion at the begining of Section 4 should be moved (or repeated) to and around this lemma. I only wrote it there to make the symplectic arguments self contained and easier to followat a first glance.}
+
 \begin{lemma}\label{L:twist-rep}
   \begin{enumerate}
     \item
@@ -847,6 +849,8 @@ twist is not quadratic.
 
 \jc{You said in an email that the preceding Lemma requires proof -- I
   don't understand, there is a proof!}
+  
+\nf{There is not proof of part (2) but what I meant here is essentially the same I wrote in the previous comment regarding (4.2)}  
 
 \begin{proof}
 Equations (\ref{E:iso-twist}) and (\ref{E:iso-twist-general}) were
@@ -872,7 +876,7 @@ $\zeta=-1$.
 \subsection{Projectively dihedral images}
 Recall that our final objective is to classify the symplectic type of congruences between twists. Clearly this only makes sense if the $p$-torsion modules of the relevant curves do not admit anti-symplectic automorphisms. 
 
-Given an elliptic curve~$E$ over a number field~$K$ and and odd prime~$p$ we say 
+Given an elliptic curve~$E$ over a number field~$K$ and an odd prime~$p$ we say 
 that~$E[p]$ satisfies condition~{\bf (S)} if $E[p]$ does not admit anti-symplectic automorphisms. The following proposition follows from~\cite{FKSym} and gives an equivalent description of condition~{\bf (S)}.
 
 \begin{proposition} \label{P:conditionS}
@@ -916,7 +920,11 @@ in Proposition~\ref{P:conditionS}.
   CM when (S) is satisfied.  For a CM curve to satisfy (S) for a prime
 $p$ which does not ramify in the CM field, the CM cannot be defined
   over the base field?}
+  
+\nf{I agree it is a good idea to separate the CM case. I also agree that (S) implies CM is not defined over the base field otherwise image is abelian. Even for cases where $p$ ramifies in the CM field, if we can show that the diagonal characters are not equal then (S) does not hold. This would follow if $\sqrt{p^*}$ is not in the field for example, but I am not sure it is worth entering such subcases.} 
 
+  
+  
 Also, since $p > 3$, we conclude that $j(E) \neq 0, 1728$, 
 otherwise $E$ has CM by~$\Q(i)$ or $\Q(\sqrt{-3})$ and the image would be in the normalizer of a Cartan. Therefore $E$ only admits quadratic twists and we have $E' = E^d$ for some non-square $d \in K^*$.
 
@@ -934,6 +942,8 @@ The following is a direct consequence of the previous proof, showing that the pr
 
 \jc{Why not include this in the previous Lemma by changing the
   assumptions to $p\ge3$, or $p\ge5$ if $j(E)=0$?  }
+  
+\nf{I actually thought of that when writing this corollary, but I don't know why I decided for the corollary. Now that we are changing the statement of the previous theorem anyway, we can also do this modification. Actually, as I said in the previous comment, showing that the characters are different for $j=0$ and $p=3$ would allow to state everything uniformly starting at $p \geq 3$.}  
 
 \begin{corollary}\label{C:noCyclic}
  Let $E/K$ be an elliptic curve with $j(E) \neq 0$. Let $p \geq 3$ be a prime.
@@ -1060,7 +1070,9 @@ $E$ has CM by $\Q(\sqrt{-1})$ or $\Q(\sqrt{-3})$; moreover, since $p > 3$ the im
 
 \jc{The previous half-sentence is not clear!  Is the point that the CM
 cannot be defined over $K$ (see a previous comment)?}
-  
+
+\nf{Yes, since we assume (S).}
+
 Therefore we can assume $E' = E^d$ 
 is the quadratic twist of~$E$ by a square-free $d\in K$.
 From Lemma~\ref{L:noCyclic} we know that~$\rhobar_{E,p}$ is absolutely irreducible. 
@@ -1172,6 +1184,8 @@ otherwise ({\bf why?}).  \jc{I explained this fully in text commented
   convinced that readers need to see these details: it can be
   commented out again.}
 
+\nf{You are probably right. This corollary now has a long proof compared to the proposition. Maybe add only a single sentence summarizing the required calculation?}  
+  
 The reason for the isogeny degrees is as follows.  We obtain an
 isogeny from~$E$ to its twist by composing the twist isomorphism
 $t:E\to E^{-D}$ with an endomorphism~$\alpha$ of~$E$.  For
@@ -1467,6 +1481,8 @@ so~$E[p]$ would be absolutely irreducible as~$G_L$-module.
   avoid ambiguity I suggest using $\subseteq$, unless we want to say
   that the inclusion is strict, in which case use $\subsetneq$. I have
   replaced $\subset$ with $\subseteq$ accordingly, below.}
+  
+  \nf{Agreed.}
 
 \begin{lemma} \label{L:LinF}
 Let $p > 2$ be a prime and $n \in \{2,4,6\}$.  Let $E/K$ be an
@@ -1485,12 +1501,15 @@ F$, except in the cases \dots.
   sextic twists with projective image~$D_3$ or $C_2\times C_2$ where
   $F$ cannot contain $\root6\of u$.  See the (revised) proofs below.}
 
+ \nf{Agreed. I've done some small changes in the proof for clarity. Do we want to add examples of the exceptions?} 
+  
 \begin{proof} 
 Let $E'$ be the twist of~$E$ by~$u$. Clearly, over $L$ the curves $E$ and $E'$ are isomorphic, so $K\subsetneq L\cap F\subseteq F$
 by Corollary~\ref{C:constraint}.
 We divide the rest of the proof in three cases:
 
-(i) If $[L : K]$ is prime, that is $[L : K] \in \{2, 3\}$, then $L \subseteq F$. This covers the case $n=2$, the cases for $n=6$ where $u$ is a square and the special case $n=4$, $u=-4$ discussed in
+(i) If $[L : K]$ is prime, that is $[L : K] \in \{2, 3\}$, then $L \subseteq F$. This covers the case $n=2$, the cases for $n=6$  where $u$ is a square or a cube, the cases for $n=4$ with $u$ a square
+and also the special case $n=4$, $u=-4$ mod $4$th powers discussed in
 Remark~\ref{R:2-isog}. 
 
 
@@ -1499,31 +1518,34 @@ by~$\Q(\sqrt{-1})$. Also, $\sqrt{-1} \not\in K$ as $E[p]$ is
 absolutely irreducible, and $u \neq -4$ modulo 4th powers, as otherwise
 $[L:K]=2$.
 
-If $u$ is minus a square we can write $u=-4v^2$ and let $E''$ be the
-quartic twist of~$E'$ by~$-4$, which is $2$-isogenous and hence congruent
-to~$E'$, and isomorphic to~$E$ over~$K(\sqrt{v})$.  Applying case (i)
+If $u$ is minus a square we can write $u=-4v^2$ in~$K$. Let $E''$ be the
+quartic twist of~$E'$ by~$-4$, which is $2$-isogenous to~$E'$ and hence $p$-congruent
+to~$E$. Further, $E''$ is the quartic twist of~$E$ by~$u' =  -4u = (-4v)^2$ and thus $[K(\root 4 \of {u'}) : K] = 2$.
+Applying case (i)
 to the pair~$(E,E'')$ shows that $\root4\of{-4u}\in F$, which implies
-that also $\root4\of{u}\in F$ since $\root4\of{-4}=1+\sqrt{-1}\in F$.
-Hence we may assume that $K(\sqrt{u}) \not= K(\sqrt{-1})$.
+that $\root4\of{u}\in F$ since $\root4\of{-4}=1+\sqrt{-1}\in F$.
+Hence we may assume $u \neq -1$ mod squares, that is $K(\sqrt{u}) \not= K(\sqrt{-1})$.
 
 The subfields of~$L$ are $K$, $M=K(\sqrt{u})$ and $L$, and so $M
 \subseteq F \cap L$ because $F \cap L \neq K$.  If $M=F\cap L$ then
 the projective images of~$G_M$ and~$G_L$ are the same, so the
-projective image of~$G_M$ is not absolutely irreducible.  This is only
+projective image of~$G_M$ is not absolutely irreducible by Corollary~\ref{C:constraint}.  This is only
 possible if $[F:K]=4$ with Galois group~$C_2\times C_2$.
 
+\nf{This last claim needs some justification using the fact that the image is $D_n$. I think this is implicitely used in other arguments, so it is good to write it down once even if it is easy.}
 
 (iii) Suppose $n=6$ with $[L : K]=6$. Thus $j(E) = 0$ and $E$ has CM
 by $\Q(\sqrt{-3})$. Also, $\sqrt{-3} \not\in K$ as $E[p]$ is
 absolutely irreducible. We have $L = K(\sqrt{u},\root 3 \of u)$, and
 $u$ is neither a square nor a cube in~$K$.
 
-If $u$ is $-3$ times a square in~$K$, write $u=-27v^2$ and let $E''$
-be the sextic twist of~$E'$ by~$-27$, which is $3$-isogenous and hence
-congruent to~$E'$, and isomorphic to~$E$ over~$K(\root3\of{v})$.
+If $u$ is $-3$ times a square in~$K$ we can write $u=-27v^2$. Let $E''$
+be the sextic twist of~$E'$ by~$-27$, which is $3$-isogenous to~$E'$ and hence
+$p$-congruent to~$E$. 
+Further, $E''$ is the sextic twist of~$E$ by~$u' =  -27u = (-27v)^2$ and thus $[K(\root 6 \of {u'}) : K] = 3$.
 Applying case (i) to the pair~$(E,E'')$ shows that $\root6\of{-27u}\in
 F$, which implies that also $\root6\of{u}\in F$ since
-$\root6\of{-27}=3/\sqrt{-3}\in F$.  Hence we may assume that
+$\root6\of{-27}=3/\sqrt{-3}\in F$.  Hence we may assume that $u \neq -3$ mod squares, that is 
 $K(\sqrt{u}) \not= K(\sqrt{-3})$.
 
 Let $M = F \cap L$.  Since $M\not=K$ we have $M = K(\sqrt{u}), K(\root
@@ -1532,6 +1554,9 @@ of~$G_L$, hence not absolutely irreducible.  In case $M=K(\sqrt{u})$
 this is only possible $[F:K]=4$ with Galois group~$C_2\times C_2$, and
 in case $M=K(\root3\of{u})$ this is only possible $[F:K]=6$ with
 Galois group~$D_3$.
+
+\nf{Same observation as above.}
+
 
 \begin{comment}Suppose $M = K(\root 3 \of{u})$ or $M = K(\sqrt{u}) \neq
 K(\sqrt{-3})$.  Arguing as in case (ii) with $E/M$ gives the desired
@@ -2360,6 +2385,8 @@ in~$\mu_2=\{\pm1\}$ even though $\calO^*$ is larger.
 
 \jc{Please look at the preceding paragraph.}
 
+\nf{Looks good.}
+
 We have $t^\sigma = \psi(\sigma) \cdot t$ for all~$\sigma \in G_K$. 
 Denote by $t_p : E[p] \to E'[p]$ the restriction of~$t$ to the $p$-torsion points of~$E$. Thus,
 \begin{equation}\label{E:cocycle}
@@ -2382,6 +2409,8 @@ equality of matrices
 \jc{The material so far in this section really belongs with Section
   2.1; perhaps we could move it there, then recall it here before
   continuing.}
+ 
+\nf{I agree it belongs to section 2.1. In fact I wrote a similar comment earlier.} 
 
 Assume further that $E$ and $E'$ are $p$-congruent, so there exists an 
 isomorphism of $G_K$-modules $\phi : E[p] \to E'[p]$. Let~$M \in \GL_2(\F_p)$ be the matrix representing~$\phi$ in the basis above, hence
@@ -2389,7 +2418,7 @@ isomorphism of $G_K$-modules $\phi : E[p] \to E'[p]$. Let~$M \in \GL_2(\F_p)$ be
 M \rhobar_{E,p}(\sigma) M^{-1} = \rhobar_{E,p}(\sigma) \cdot \Psi_\sigma 
  \quad \text{ for all } \sigma \in G_K.
 \end{equation}
-The map $\sigma \mapsto \Psi_\sigma$ becomes an homomorphism over an extension $K'/K$ given by $K'=K$ if $n=2$, $K'=K(\sqrt{-1})$ if $n=4$ and $K'=K(\sqrt{-3})$ if $n=6$.
+The map $\Psi : \sigma \mapsto \Psi_\sigma$ becomes an homomorphism over an extension $K'/K$ given by $K'=K$ if $n=2$, $K'=K(\sqrt{-1})$ if $n=4$ and $K'=K(\sqrt{-3})$ if $n=6$.
 
 
 Since the map~$t$ is an isomorphism over~$\Qbar$ it preserves the Weil pairing, therefore the symplectic type of the congruence $E[p] \simeq E'[p]$ is determined by the square class of $\det M$.
@@ -2432,7 +2461,7 @@ Assume $E[p]$ is an absolutely irreducible~$G_K$-module.
 \begin{proof} (1)
 Let~$\delta \in \F_p^*$ be a square if $C$ is split and a non-square
 if $C$ is non-split.  Let $H=G_{K(\sqrt{d})}$ be the index~$2$
-subgroup cut out by the surjective homomorphism~$\Psi:G_K\to\{\pm1\}$.
+subgroup cut out by the surjective homomorphism~$\Psi:G_K\to\{\pm \Id \}$.
 
 \nf{Nuno's version:}
 
@@ -2501,6 +2530,8 @@ $\sigma\in H$.  \eqref{E:PsiM} follows.
   matrices in the Cartan: it seems dangerous to me as we have already
   chosen bases of $E[p]$ and $E'[p]$, but it is OK since after (4.1)
   you start with any basis of $E[p]$.}
+  
+  \nf{It is OK to delete my proof if your prefer to go matrix free.}
 
 (2) Since the determinant of $\rhobar_{E,p}$ is the mod~$p$ cyclotomic
 character, we have $\PP\rhobar_{E,p}(G_K)\subseteq \PSL_2(\F_p)$ if
@@ -2545,9 +2576,11 @@ $\sqrt{p^*} \in K$ or $u = p^*$ mod squares.
 \jc{But then if $\sqrt{p^*}\in K$ there is no condition on~$u$ (other
   than $\pm u$ being non-square).  That seems too strong a result!}
 
+\nf{This is similar to the result in the $D_3$ case below which we have agreed last time in person. Do you think the previous is wrong?}
+  
 \begin{proof} 
 We have $j=j'=1728$ and the curves have~CM by $\Q(\sqrt{-1})$. We have
-$\PP \rhobar_{E,p} \simeq D_4$ by Lemma~?? and, since $u \neq -4$ mod
+$\PP \rhobar_{E,p} \simeq D_4$ by Lemma~\ref{L:dihedral} and, since $u \neq -4$ mod
 4th powers, by Lemma~\ref{L:LinF} the projective $p$-division field is
 $F = K(\sqrt{-1},\root 4 \of u)$.
 
@@ -2556,6 +2589,8 @@ $F = K(\sqrt{-1},\root 4 \of u)$.
   that for a congruence to hold, the projective image has order 8, but
   that is not yet in the paper.)}
 
+\nf{Yes, I meant the lemma that follows -- when I first wrote this proof it wasn't there yet -- and I agree it should be moved up. Actually in an email I think I suggested already that the following lemma and corollary may be included after Lemma 2.14. Note this lemma does prove that the image has order 8.}
+  
 The group~$D_4$ has three normal subgroups of order~$4$: one cyclic corresponding to the projective image of $G_{K(\sqrt{-1})}$ and two isomorphic to~$C_2 \times C_2$ corresponding to the projective images of
 $G_{K(\sqrt{u})}$ and $G_{K(\sqrt{-u})}$.
 
@@ -2571,7 +2606,7 @@ This latter condition means $u = p^*$ mod squares and since $M = K(\sqrt{u})$ th
 
 For the case of cubic and sextic twists we need some auxiliary results first. 
 
-\begin{lemma}
+\begin{lemma}\label{L:dihedral}
 Let~$p$ be an odd prime. Let~$E$ and~$E'$ be quartic or sextic twists which are 
 $p$-congruent. Assume also that $E$ and~$E'$
 are not isomorphic over a quadratic extension.
@@ -2832,11 +2867,11 @@ we conclude that $\rhobar_{E_1,p}(\sigma) = A \rhobar_{E_2,p}(\sigma) A^{-1}$, a
 \section{Finding congruences and determining their symplectic type}\label{S:statistics}
 
 In this section we discuss our systematic study of mod~$p$ congruences
-between elliptic curves in the LMFDB database.  As of September 2019, this
+between elliptic curves in the LMFDB database.  As of April 2019, this
 database contains all elliptic curves defined over~$\Q$ of
-conductor~$N\le\numprint{500000}$, as computed by the first author
-using the methods of~\cite{AMEC}; there are $\numprint{3064704}$
-curves, in $\numprint{2164259}$ isogeny classes.
+conductor~$N\le\numprint{400000}$, as computed by the first author
+using the methods of~\cite{AMEC}; there are $\numprint{2483649}$
+curves, in $\numprint{1741002}$ isogeny classes.
 
 
 Recall first that isogenous curves have mod~$p$ representations which
@@ -2909,7 +2944,7 @@ have the same traces~$a_\ell$, and have mod~$p$ representations with
 isomorphic semisimplifications.
 
 Fix an integer~$B\ge1$.  Let $\calL_B$ be the set of the $B$ smallest
-primes greater than $\numprint{500000}$. All curves in the database
+primes greater than $\numprint{400000}$. All curves in the database
 have good reduction at each prime in~$\calL_B$.  Assume also $B$ is
 large enough that $p\notin\calL_B$.  Hence a necessary condition for
 two curves $E$ and $E'$ in the database to be congruent mod~$p$ is
@@ -2937,8 +2972,8 @@ curves~$E$ (up to isogeny), it is more efficient to compute the hash
 values for several primes in parallel.
 
 {\bf Example.} After carrying out this step for $7\le p\le17$, using
-$B=50$, we find: $\numprint{23735}$ nontrivial subsets for $p=7$;
-$731$ for $p=11$; $177$ for $p=13$; and~$8$ for $p=17$.  There are no
+$B=40$, we find: $\numprint{20138}$ nontrivial subsets for $p=7$;
+$635$ for $p=11$; $150$ for $p=13$; and~$8$ for $p=17$.  There are no
 nontrivial subsets for any primes~$p$ with $19\le p\le97$, so we can
 immediately conclude that there are no congruences in the database
 between non-isogenous curves modulo any prime in this range.  See also
@@ -2962,25 +2997,23 @@ semisimplification.
 
 \begin{remark}
   To avoid false positives, it is necessary to use a value of $B$
-  which is large enough.  In our initial computations with conductor
-  bound~$\numprint{400000}$ we initially used 30 primes
-  above~$\numprint{400000}$. But the curves with labels
-  \lmfdbec{25921}{a}{1} and \lmfdbec{78400}{gw}{1} have traces
+  which is at least~$36$, for the following reason.  The curves with
+  labels \lmfdbec{25921}{a}{1} and \lmfdbec{78400}{gw}{1} have traces
   $a_{\ell}$ which are \emph{equal for all~$\ell\in\calL_{35}$}, that
   is, for all~$\ell$ with $400000\le \ell<400457$ (though not for
   $\ell=400457$).  These curves have CM by the order of
   discriminant~$-7$, and are quadratic twists by~$230$; both have
   $a_\ell=0$ for all $\ell\equiv3,5,6\pmod{7}$, and $230$ is a
   quadratic residue modulo all other primes in~$\calL_{35}$. In our
-  first computational runs (with $N\le\numprint{400000}$), we used
-  $B=30$ and discovered this pair of curves giving rise to a false
-  positive for every~$p$.
+  first computational runs, we used $B=30$ and discovered this pair of
+  curves giving rise to a false positive for every~$p$.
 \end{remark}
 
 The sizes of the subsets of isogeny classes we find after the first
-two steps are as follows: for $p=7$ the~$\numprint{23735}$ subsets
+two steps are as follows: for $p=7$ the~$\numprint{20138}$ subsets
 have sizes between~$2$ and~$76$; for $p=11$, $p=13$ and $p=17$ they
 all have size~$2$.
+
 
 \subsection{Testing reducibility}
 For each set of isogeny classes of curves obtained in the previous
@@ -2989,26 +3022,25 @@ or reducible mod~$p$ representations.  To do this we apply a standard
 test of whether an elliptic curve admits a rational $p$-isogeny.  For
 the curves in the database this information is already known.
 
-{\bf Example (continued).} For $p=7$, of the $\numprint{23735}$
-nontrivial sets from Step~2, we find that $\numprint{23448}$ are
+{\bf Example (continued).} For $p=7$, of the $\numprint{20138}$
+nontrivial sets from Step~2, we find that $\numprint{19883}$ are
 irreducible, {\it i.e.}\@ consist of curves whose mod~$7$
-representations are irreducible, while $287$ are reducible.
+representations are irreducible, while $255$ are reducible.
 
 The irreducible sets have size at most~$5$.  In detail, there are
-$\numprint{21653}$ sets of size~2; $\numprint{1502}$ sets of size~3;
-283 sets of size~4; and 10 sets of size~5.
+$\numprint{18334}$ sets of size~2; $\numprint{1297}$ sets of size~3;
+246 sets of size~4; and 6 sets of size~5.
 
-The reducible sets have size up to~$80$.  In Step~5 below we will further
-partition these sets after testing whether the curves are actually congruent
-mod~7 (not just up to semisimplification), after which the largest subset has
-only~$4$ isogeny classes.
+The reducible sets have size up to~$76$.  In Step~5 below we will
+further partition these sets after testing whether the curves are
+actually congruent mod~7 (not just up to semisimplification), after
+which the largest subset has only~$4$ isogeny classes.
 
-%% Reducible {2: 96, 3: 79, 4: 32, 5: 24, 7: 12, 10: 7, 6: 6, 11: 6,
-%% 8: 4, 9: 4, 19: 4, 12: 2, 15: 2, 21: 2, 33: 1, 80: 1, 17: 1, 50: 1, 22: 1, 36: 1, 38: 1}
+%% Reducible {2: 86, 3: 67, 4: 31, 5: 26, 7: 7, 10: 6, 6: 5, 8: 5, 9: 4, 19: 4, 11:
+%%   3, 16: 2, 18: 2, 32: 1, 35: 1, 76: 1, 13: 1, 14: 1, 45: 1, 36: 1}
 
 For $p=11, 13$, and~$17$, all the nontrivial subsets are of size~$2$,
 and all are irreducible.
-
 
 \subsection{Distinguishing symplectic from antisymplectic: irreducible case}
 After the previous step we have a collection of sets of isogeny
@@ -3117,14 +3149,9 @@ same set have symplectically isomorphic 7-torsion modules; when there
 are two sets, curves in different sets have antisymplectically
 isomorphic 7-torsion.
 
-
-
-
 {\bf Example (continued).}
-Of the $\numprint{23448}$ non-trivial sets of isogeny classes with mutually
+Of the $\numprint{19883}$ non-trivial sets of isogeny classes with mutually
 isomorphic irreducible mod~$7$ representations, we find that in
-\jc{numbers updated for $N\le500000$ up to here: running these now.  The rest of
-the numbers in this example need updating, including the counts for $p=11,13$.}
 $\numprint{12394}$ cases all the isomorphisms are symplectic, while in the
 remaining $\numprint{7489}$ cases antisymplectic isomorphisms occur.
 
@@ -3288,8 +3315,6 @@ are also $2$-{} or $3$-isogenies present we can include these
 appropriately, since the former induce symplectic and the latter
 antisymplectic congruences.
 
-\jc{numbers in this example need updatinged for $N\le500000$}
-
 {\bf Example (continued).} For $p=7$, after Steps 1--3, there
 are~$255$ reducible sets of isogeny classes with isomorphic
 semisimplification, of size up to~$76$.  Step~5 refines these into
@@ -3312,14 +3337,15 @@ general), so we may have a set of mutually $7$-congruent elliptic
 curves in the database, but with one or more of their twists not in
 the database, so the twisted set in our data will be smaller.
 
-Instead, to have a measure of how many congruences we have found up to twist, we
-simply report on how many distinct $j$-invariants we found, excluding as before
-curves which are only congruent to isogenous curves.  For $p=7$ there are
-$\numprint{11761}$ distinct $j$-invariants of curves with irreducible mod~$7$
-representations which are congruent to at least one non-isogenous curve, and
-$358$ \jc{to be updated} distinct $j$-invariants in the reducible case.
+Instead, to have a measure of how many congruences we have found up
+to twist, we simply report on how many distinct $j$-invariants we
+found, excluding as before curves which are only congruent to
+isogenous curves.  For $p=7$ there are $\numprint{10348}$ distinct
+$j$-invariants of curves with irreducible mod~$7$ representations
+which are congruent to at least one non-isogenous curve, and $358$
+distinct $j$-invariants in the reducible case.
 
-For $p=11$ there are $212$ distinct $j$-invariants and for $p=13$
+For $p=11$ there are $191$ distinct $j$-invariants and for $p=13$
 there are $39$.  For $p=17$, all $17$-congruent isogeny classes
 consist of single curves, the eight pairs are quadratic twists, and
 the $j$-invariants of the curves in each pair are
@@ -3333,7 +3359,7 @@ and~$\lmfdbec{3675}{b}{1}$.
 \begin{theorem}
  \label{T:cong19}
  Let $p \geq 19$ be a prime. Let $E/\Q$ and~$E'/\Q$ be elliptic curves
- with conductors at most~$\numprint{500000}$.  Suppose that $E[p]
+ with conductors at most~$\numprint{400000}$.  Suppose that $E[p]
  \simeq E'[p]$ as $G_\Q$-modules. Then $E$ and $E'$ are
  $\Q$-isogenous.
  \end{theorem}
@@ -3379,9 +3405,9 @@ $p$ has to occurs in the second entry of one of the pairs~$(q,p)$ in~$\calM_E$ o
 
 To complete the proof, we carried out the following computations on
 the LMFDB database of all elliptic curves defined over~$\Q$ and
-conductor at most~$\numprint{500000}$:
+conductor at most~$\numprint{400000}$:
 \begin{enumerate}
-\item For each $N\le \numprint{500000}$ and each pair of non-isogenous
+\item For each $N\le \numprint{400000}$ and each pair of non-isogenous
   curves~$E_1,E_2$ of conductor~$N$ (if there are at least two such
   isogeny classes), we computed $\gcd_{\ell\le B,
     \ell\nmid N}(a_{\ell}(E_1)-a_{\ell}(E_2))$ for increasing~$B$
@@ -3412,7 +3438,7 @@ conductor at most~$\numprint{500000}$:
 %% a finite set) and for each~$p$ occuring in a pair of $\calM_E$ we
 %% compute the set of conductors~$\calL_{E,p}$ satisfying the
 %% factorisation~\eqref{E:condE'} and still in the database (i.e. up
-%% to 500000). For each conductor $N_{E'} \in \calL_{E,p}$ we verify
+%% to 400000). For each conductor $N_{E'} \in \calL_{E,p}$ we verify
 %% there is no elliptic curve~$E'$ of conductor $N_{E'}$ congruent
 %% to~$E$ mod~$p$.
 
