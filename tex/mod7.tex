@@ -357,7 +357,7 @@ congruences between the mod~$p$ torsion modules of elliptic curves
 defined over $\Q$, including methods to determine the symplectic type
 of such congruences.  We report on the results of applying our methods
 to the elliptic curves in the LMFDB database, which currently includes
-all elliptic curves of conductor less than~$\numprint{400000}$, for
+all elliptic curves of conductor less than~$\numprint{500000}$, for
 all primes~$p\ge7$.  We also show that while such congruences exist
 for each $p\le17$, there are none for larger values of~$p$, in line
 with a strong form of the Frey-Mazur conjecture.
@@ -476,7 +476,7 @@ do not apply, specifically when the projective images are dihedral;} to
 study congruences between twists; and to systematically identify and
 determine the symplectic type of all congruences between curves in the
 LMFDB (see \cite{lmfdb})
-%%of conductors up to~$\numprint{400000}$
+%%of conductors up to~$\numprint{500000}$
 for all~$p\ge7$.
 
 %% to give a uniform procedure to
@@ -488,7 +488,7 @@ and {\Sage} \cite{sage} the methods from this paper together with
 those from~\cite{FKSym}. We have used our code to classify the
 symplectic types of congruences between curves in the LMFDB, namely
 all elliptic curves defined over~$\Q$ of conductor less
-than~$\numprint{400000}$. More precisely, Theorem~\ref{T:cong19} shows
+than~$\numprint{500000}$. More precisely, Theorem~\ref{T:cong19} shows
 there are no mod~$p$ congruences in LMFDB for $p \geq 19$ and we
 found, for $p$ in the range $7 \leq p \leq 17$, all the congruences in
 the database; we report on the results obtained in
@@ -593,7 +593,7 @@ The Frey-Mazur conjecture states there is a constant $C \geq 18$ such
 that, if $E/\Q$ and $E'/\Q$ satisfy $E[p] \simeq E'[p]$ as
 $G_\Q$-modules for some prime $p > C$, then $E$ and $E'$ are
 $\Q$-isogenous. Theorem~\ref{T:cong19} shows that for curves of
-conductor at most~$\numprint{400000}$, this holds with~$C=18$. In view
+conductor at most~$\numprint{500000}$, this holds with~$C=18$. In view
 of this conjecture, any~$(E,E',p)$ with $p > C$ arises from an
 isogeny, hence its symplectic type is easily determined by the isogeny
 criterion. Thus we are interested in primes $p \leq C$.
@@ -2867,11 +2867,11 @@ we conclude that $\rhobar_{E_1,p}(\sigma) = A \rhobar_{E_2,p}(\sigma) A^{-1}$, a
 \section{Finding congruences and determining their symplectic type}\label{S:statistics}
 
 In this section we discuss our systematic study of mod~$p$ congruences
-between elliptic curves in the LMFDB database.  As of April 2019, this
+between elliptic curves in the LMFDB database.  As of September 2019, this
 database contains all elliptic curves defined over~$\Q$ of
-conductor~$N\le\numprint{400000}$, as computed by the first author
-using the methods of~\cite{AMEC}; there are $\numprint{2483649}$
-curves, in $\numprint{1741002}$ isogeny classes.
+conductor~$N\le\numprint{500000}$, as computed by the first author
+using the methods of~\cite{AMEC}; there are $\numprint{3064704}$
+curves, in $\numprint{2164259}$ isogeny classes.
 
 
 Recall first that isogenous curves have mod~$p$ representations which
@@ -2944,7 +2944,7 @@ have the same traces~$a_\ell$, and have mod~$p$ representations with
 isomorphic semisimplifications.
 
 Fix an integer~$B\ge1$.  Let $\calL_B$ be the set of the $B$ smallest
-primes greater than $\numprint{400000}$. All curves in the database
+primes greater than $\numprint{500000}$. All curves in the database
 have good reduction at each prime in~$\calL_B$.  Assume also $B$ is
 large enough that $p\notin\calL_B$.  Hence a necessary condition for
 two curves $E$ and $E'$ in the database to be congruent mod~$p$ is
@@ -2972,8 +2972,8 @@ curves~$E$ (up to isogeny), it is more efficient to compute the hash
 values for several primes in parallel.
 
 {\bf Example.} After carrying out this step for $7\le p\le17$, using
-$B=40$, we find: $\numprint{20138}$ nontrivial subsets for $p=7$;
-$635$ for $p=11$; $150$ for $p=13$; and~$8$ for $p=17$.  There are no
+$B=50$, we find: $\numprint{23735}$ nontrivial subsets for $p=7$;
+$731$ for $p=11$; $177$ for $p=13$; and~$8$ for $p=17$.  There are no
 nontrivial subsets for any primes~$p$ with $19\le p\le97$, so we can
 immediately conclude that there are no congruences in the database
 between non-isogenous curves modulo any prime in this range.  See also
@@ -2997,23 +2997,25 @@ semisimplification.
 
 \begin{remark}
   To avoid false positives, it is necessary to use a value of $B$
-  which is at least~$36$, for the following reason.  The curves with
-  labels \lmfdbec{25921}{a}{1} and \lmfdbec{78400}{gw}{1} have traces
+  which is large enough.  In our initial computations with conductor
+  bound~$\numprint{400000}$ we initially used 30 primes
+  above~$\numprint{400000}$. But the curves with labels
+  \lmfdbec{25921}{a}{1} and \lmfdbec{78400}{gw}{1} have traces
   $a_{\ell}$ which are \emph{equal for all~$\ell\in\calL_{35}$}, that
   is, for all~$\ell$ with $400000\le \ell<400457$ (though not for
   $\ell=400457$).  These curves have CM by the order of
   discriminant~$-7$, and are quadratic twists by~$230$; both have
   $a_\ell=0$ for all $\ell\equiv3,5,6\pmod{7}$, and $230$ is a
   quadratic residue modulo all other primes in~$\calL_{35}$. In our
-  first computational runs, we used $B=30$ and discovered this pair of
-  curves giving rise to a false positive for every~$p$.
+  first computational runs (with $N\le\numprint{400000}$), we used
+  $B=30$ and discovered this pair of curves giving rise to a false
+  positive for every~$p$.
 \end{remark}
 
 The sizes of the subsets of isogeny classes we find after the first
-two steps are as follows: for $p=7$ the~$\numprint{20138}$ subsets
+two steps are as follows: for $p=7$ the~$\numprint{23735}$ subsets
 have sizes between~$2$ and~$76$; for $p=11$, $p=13$ and $p=17$ they
 all have size~$2$.
-
 
 \subsection{Testing reducibility}
 For each set of isogeny classes of curves obtained in the previous
@@ -3022,25 +3024,26 @@ or reducible mod~$p$ representations.  To do this we apply a standard
 test of whether an elliptic curve admits a rational $p$-isogeny.  For
 the curves in the database this information is already known.
 
-{\bf Example (continued).} For $p=7$, of the $\numprint{20138}$
-nontrivial sets from Step~2, we find that $\numprint{19883}$ are
+{\bf Example (continued).} For $p=7$, of the $\numprint{23735}$
+nontrivial sets from Step~2, we find that $\numprint{23448}$ are
 irreducible, {\it i.e.}\@ consist of curves whose mod~$7$
-representations are irreducible, while $255$ are reducible.
+representations are irreducible, while $287$ are reducible.
 
 The irreducible sets have size at most~$5$.  In detail, there are
-$\numprint{18334}$ sets of size~2; $\numprint{1297}$ sets of size~3;
-246 sets of size~4; and 6 sets of size~5.
+$\numprint{21653}$ sets of size~2; $\numprint{1502}$ sets of size~3;
+283 sets of size~4; and 10 sets of size~5.
 
-The reducible sets have size up to~$76$.  In Step~5 below we will
-further partition these sets after testing whether the curves are
-actually congruent mod~7 (not just up to semisimplification), after
-which the largest subset has only~$4$ isogeny classes.
+The reducible sets have size up to~$80$.  In Step~5 below we will further
+partition these sets after testing whether the curves are actually congruent
+mod~7 (not just up to semisimplification), after which the largest subset has
+only~$4$ isogeny classes.
 
-%% Reducible {2: 86, 3: 67, 4: 31, 5: 26, 7: 7, 10: 6, 6: 5, 8: 5, 9: 4, 19: 4, 11:
-%%   3, 16: 2, 18: 2, 32: 1, 35: 1, 76: 1, 13: 1, 14: 1, 45: 1, 36: 1}
+%% Reducible {2: 96, 3: 79, 4: 32, 5: 24, 7: 12, 10: 7, 6: 6, 11: 6,
+%% 8: 4, 9: 4, 19: 4, 12: 2, 15: 2, 21: 2, 33: 1, 80: 1, 17: 1, 50: 1, 22: 1, 36: 1, 38: 1}
 
 For $p=11, 13$, and~$17$, all the nontrivial subsets are of size~$2$,
 and all are irreducible.
+
 
 \subsection{Distinguishing symplectic from antisymplectic: irreducible case}
 After the previous step we have a collection of sets of isogeny
@@ -3149,9 +3152,14 @@ same set have symplectically isomorphic 7-torsion modules; when there
 are two sets, curves in different sets have antisymplectically
 isomorphic 7-torsion.
 
+
+
+
 {\bf Example (continued).}
-Of the $\numprint{19883}$ non-trivial sets of isogeny classes with mutually
+Of the $\numprint{23448}$ non-trivial sets of isogeny classes with mutually
 isomorphic irreducible mod~$7$ representations, we find that in
+\jc{numbers updated for $N\le500000$ up to here: running these now.  The rest of
+the numbers in this example need updating, including the counts for $p=11,13$.}
 $\numprint{12394}$ cases all the isomorphisms are symplectic, while in the
 remaining $\numprint{7489}$ cases antisymplectic isomorphisms occur.
 
@@ -3315,6 +3323,8 @@ are also $2$-{} or $3$-isogenies present we can include these
 appropriately, since the former induce symplectic and the latter
 antisymplectic congruences.
 
+\jc{numbers in this example need updatinged for $N\le500000$}
+
 {\bf Example (continued).} For $p=7$, after Steps 1--3, there
 are~$255$ reducible sets of isogeny classes with isomorphic
 semisimplification, of size up to~$76$.  Step~5 refines these into
@@ -3337,15 +3347,14 @@ general), so we may have a set of mutually $7$-congruent elliptic
 curves in the database, but with one or more of their twists not in
 the database, so the twisted set in our data will be smaller.
 
-Instead, to have a measure of how many congruences we have found up
-to twist, we simply report on how many distinct $j$-invariants we
-found, excluding as before curves which are only congruent to
-isogenous curves.  For $p=7$ there are $\numprint{10348}$ distinct
-$j$-invariants of curves with irreducible mod~$7$ representations
-which are congruent to at least one non-isogenous curve, and $358$
-distinct $j$-invariants in the reducible case.
+Instead, to have a measure of how many congruences we have found up to twist, we
+simply report on how many distinct $j$-invariants we found, excluding as before
+curves which are only congruent to isogenous curves.  For $p=7$ there are
+$\numprint{11761}$ distinct $j$-invariants of curves with irreducible mod~$7$
+representations which are congruent to at least one non-isogenous curve, and
+$358$ \jc{to be updated} distinct $j$-invariants in the reducible case.
 
-For $p=11$ there are $191$ distinct $j$-invariants and for $p=13$
+For $p=11$ there are $212$ distinct $j$-invariants and for $p=13$
 there are $39$.  For $p=17$, all $17$-congruent isogeny classes
 consist of single curves, the eight pairs are quadratic twists, and
 the $j$-invariants of the curves in each pair are
@@ -3359,7 +3368,7 @@ and~$\lmfdbec{3675}{b}{1}$.
 \begin{theorem}
  \label{T:cong19}
  Let $p \geq 19$ be a prime. Let $E/\Q$ and~$E'/\Q$ be elliptic curves
- with conductors at most~$\numprint{400000}$.  Suppose that $E[p]
+ with conductors at most~$\numprint{500000}$.  Suppose that $E[p]
  \simeq E'[p]$ as $G_\Q$-modules. Then $E$ and $E'$ are
  $\Q$-isogenous.
  \end{theorem}
@@ -3405,9 +3414,9 @@ $p$ has to occurs in the second entry of one of the pairs~$(q,p)$ in~$\calM_E$ o
 
 To complete the proof, we carried out the following computations on
 the LMFDB database of all elliptic curves defined over~$\Q$ and
-conductor at most~$\numprint{400000}$:
+conductor at most~$\numprint{500000}$:
 \begin{enumerate}
-\item For each $N\le \numprint{400000}$ and each pair of non-isogenous
+\item For each $N\le \numprint{500000}$ and each pair of non-isogenous
   curves~$E_1,E_2$ of conductor~$N$ (if there are at least two such
   isogeny classes), we computed $\gcd_{\ell\le B,
     \ell\nmid N}(a_{\ell}(E_1)-a_{\ell}(E_2))$ for increasing~$B$
@@ -3438,7 +3447,7 @@ conductor at most~$\numprint{400000}$:
 %% a finite set) and for each~$p$ occuring in a pair of $\calM_E$ we
 %% compute the set of conductors~$\calL_{E,p}$ satisfying the
 %% factorisation~\eqref{E:condE'} and still in the database (i.e. up
-%% to 400000). For each conductor $N_{E'} \in \calL_{E,p}$ we verify
+%% to 500000). For each conductor $N_{E'} \in \calL_{E,p}$ we verify
 %% there is no elliptic curve~$E'$ of conductor $N_{E'}$ congruent
 %% to~$E$ mod~$p$.
 
