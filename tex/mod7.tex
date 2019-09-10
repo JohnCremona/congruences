@@ -409,6 +409,31 @@ found in the LMFDB (see \cite{lmfdb}).} $\lmfdbec{11}{a}{1}$ and
 $\lmfdbec{1342}{c}{2}$, respectively (see~\cite[Example~5.2]{FKSym}
 for more details).
 
+Given an elliptic curve~$E$ over a number field~$K$ and an odd prime~$p$ we say 
+that~$E[p]$ satisfies condition~{\bf (S)} if $E[p]$ does not admit anti-symplectic automorphisms. The following proposition follows from~\cite{FKSym} and gives an equivalent description of condition~{\bf (S)}.
+
+\begin{proposition} \label{P:conditionS}
+Let $E$ be an elliptic curve over a number field~$K$. Let~$p > 2$ be a prime and $\rhobar_{E,p} : G_K \to \GL_2(\F_p)$ the representation arising from the action of~$G_K$ on $E[p]$. 
+
+Then $E[p]$ satisfies condition~{\bf (S)} if and only if one of the following is satisfied:
+ \begin{itemize}
+ \item[(A)] The image of $\rhobar_{E,p}$ is a non-abelian subgroup of~$\GL_2(\F_p)$ or,
+ \item[(B)] we have $\rhobar_{E,p} \cong \left( \begin{smallmatrix} \chi & * \\ 0 & \chi \end{smallmatrix} \right)$ where $\chi : G_K \to \F_p^*$ is a character
+ and $* \neq 0$.
+ \end{itemize}
+\end{proposition}
+
+
+Note that if $\rhobar_{E,p}$ is absolutely irreducible then $E[p]$
+satisfies condition~{\bf (S)} because it satifies condition~(A) in
+Proposition~\ref{P:conditionS}.  Moreover, in the case $K=\Q$,
+condition~{\bf (S)}is satisfied by $E[p]$ for all~$p\ge7$,
+by~\cite[Corollary~3 and Proposition~2]{FKSym}.
+
+\jc{I commented out the old Prop 1.1 and replaced both cross-references
+  to it (P:auto) to the new one (P:conditionS).}
+
+\begin{comment}
 \begin{proposition}\label{P:auto}
   Let $E$ and~$E'$ be elliptic curves defined over~$\Q$ such that
   $E[p]\cong E'[p]$ as $G_\Q$-modules.
@@ -422,6 +447,7 @@ for more details).
 \end{proposition}
 \begin{proof} See~\cite[Corollary~3 and Proposition~2]{FKSym}
 \end{proof}
+\end{comment}
 
 \begin{comment}
 both have $5$-torsion Galois module isomorphic to $\mu_5
@@ -874,30 +900,16 @@ $\zeta=-1$.
 \end{proof}
 
 \subsection{Projectively dihedral images}
-Recall that our final objective is to classify the symplectic type of congruences between twists. Clearly this only makes sense if the $p$-torsion modules of the relevant curves do not admit anti-symplectic automorphisms. 
+\jc{rephrase this now that condition~{\bf (S)} is defined in the
+  introduction}
 
-Given an elliptic curve~$E$ over a number field~$K$ and an odd prime~$p$ we say 
-that~$E[p]$ satisfies condition~{\bf (S)} if $E[p]$ does not admit anti-symplectic automorphisms. The following proposition follows from~\cite{FKSym} and gives an equivalent description of condition~{\bf (S)}.
-
-\begin{proposition} \label{P:conditionS}
-Let $E$ be an elliptic curve over a number field~$K$. Let~$p > 2$ be a prime and $\rhobar_{E,p} : G_K \to \GL_2(\F_p)$ the representation arising from the action of~$G_K$ on $E[p]$. 
-
-Then $E[p]$ satisfies condition~{\bf (S)} if and only if one of the following is satisfied:
- \begin{itemize}
- \item[(A)] The image of $\rhobar_{E,p}$ is a non-abelian subgroup of~$\GL_2(\F_p)$ or,
- \item[(B)] we have $\rhobar_{E,p} \cong \left( \begin{smallmatrix} \chi & * \\ 0 & \chi \end{smallmatrix} \right)$ where $\chi : G_K \to \F_p^*$ is a character
- and $* \neq 0$.
- \end{itemize}
-\end{proposition}
-
-\nf{The previous proposition and discussion might make more sense in
-  the introduction}
-
-\jc{Agreed: we can replace Prop 1.1}
+Recall that our final objective is to classify the symplectic type of
+congruences between twists. Clearly this only makes sense if the
+$p$-torsion modules of the relevant curves do not admit
+anti-symplectic automorphisms.
 
 
-Note that if $\rhobar_{E,p}$ is absolutely irreducible then $E[p]$ satisfies condition~{\bf (S)} because it satifies 
-condition~(A) in Proposition~\ref{P:conditionS}. Conversely, the next result shows that, in the presence of a $p$-congruence between twists, condition~{\bf (S)} implies that
+Conversely, the next result shows that, in the presence of a $p$-congruence between twists, condition~{\bf (S)} implies that
 $\rhobar_{E,p}$ is absolutely irreducible.
 
 \begin{lemma} \label{L:noCyclic}
@@ -3050,7 +3062,7 @@ After the previous step we have a collection of sets of isogeny
 classes, such that for each pair of curves $E$, $E'$ taken from
 isogeny classes in each set, the $G_{\Q}$-modules $E[p]$ and $E'[p]$
 are isomorphic and irreducible. Moreover, from
-Proposition~\ref{P:auto} we know that all isomorphisms $\phi : E[p]
+Proposition~\ref{P:conditionS} we know that all isomorphisms $\phi : E[p]
 \simeq E'[p]$ have the same symplectic type. We wish to determine
 whether this type is symplectic or anti-symplectic.  We may assume
 that $E$ and~$E'$ are not isogenous, as otherwise we may simply apply
@@ -3132,7 +3144,7 @@ in~\cite{Fisher}.
 We note that it is not necessary to apply both the symplectic and
 antisymplectic tests to a triple $(E,E',7)$ if we know already that
 $E[7]\cong E'[7]$ as $G_\Q$-modules, since one will succeed if and only if the other
-fails (by Proposition~\ref{P:auto}).  However we did apply both
+fails (by Proposition~\ref{P:conditionS}).  However we did apply both
 tests in our computations with the curves in the database as a test of
 our implementation, verifying that precisely one test passes for each
 pair.  We also checked that the results obtained for each pair using
@@ -3326,13 +3338,13 @@ antisymplectic congruences.
 \jc{numbers in this example need updatinged for $N\le500000$}
 
 {\bf Example (continued).} For $p=7$, after Steps 1--3, there
-are~$255$ reducible sets of isogeny classes with isomorphic
-semisimplification, of size up to~$76$.  Step~5 refines these into
+are~$287$ reducible sets of isogeny classes with isomorphic
+semisimplification, of size up to~$80$.  Step~5 refines these into
 smaller subsets which have actually isomorphic $7$-torsion modules, of
-which $337$ are nontrivial: $276$ sets of size~$2$, $52$ of size~$3$
-and~$9$ of size~$4$.  Finally, after considering all the isogenous
-curves (as in Step~4) there are 421 congruent pairs: 262 symplectic
-and 159 antisymplectic.
+which $384$ are nontrivial: $313$ sets of size~$2$, $61$ of size~$3$
+and~$10$ of size~$4$.  Finally, after considering all the isogenous
+curves (as in Step~4) there are 509 congruent pairs: 218 symplectic
+and 291 antisymplectic.
 
 For $p\ge11$ there are no reducible cases to consider.
 
