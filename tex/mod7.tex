@@ -368,11 +368,13 @@ with a strong form of the Frey-Mazur conjecture.
 
 \section{Introduction}
 
-Let $p \geq 3$ be a prime. Write $G_\Q = \Gal(\Qbar/\Q)$ for the
-absolute Galois group of $\Q$.  Let $E$ and $E'$ be elliptic curves defined over $\Q$, and write $E[p]$ and $E'[p]$ for their $p$-torsion $G_\Q$-modules.
+Let $p$ be a prime, $K$ be a number field and $G_K = \Gal(\Kbar/K)$
+the absolute Galois group of $K$.  Let $E$ and $E'$ be elliptic curves
+defined over $K$, and write $E[p]$ and $E'[p]$ for their $p$-torsion
+$G_K$-modules.
 
-Let $\phi : E[p] \to E'[p]$ be an isomorphism of $G_\Q$-modules.
-There is an element $d(\phi) \in \F_p^\times$ such that the Weil 
+Let $\phi : E[p] \to E'[p]$ be an isomorphism of $G_K$-modules.  There
+is an element $d(\phi) \in \F_p^\times$ such that the Weil
 pairings~$e_{E,p}$ and~$e_{E',p}$ satisfy
 \[
 e_{E',p}(\phi(P), \phi(Q)) = e_{E,p}(P, Q)^{d(\phi)}
@@ -386,8 +388,8 @@ mod~$p$ {\em congruence} between them, or that they are {\em
 
 For example, suppose that~$\phi$ is induced by an isogeny (also
 denoted~$\phi$) from $E$ to $E'$, of degree $\deg(\phi)$ coprime
-to~$p$. Then, using Weil reciprocity, 
-we have 
+to~$p$. Then, using Weil reciprocity,
+we have
 \[
   e_{E',p}(\phi(P), \phi(Q)) = e_{E,p}(P, \hat\phi\phi(Q)) =
   e_{E,p}(P, \deg(\phi)(Q)) = e_{E,p}(P, Q)^{\deg(\phi)},
@@ -398,19 +400,13 @@ we have
 is a quadratic residue or nonresidue mod~$p$, respectively.  We will refer to
 this condition as the \emph{isogeny criterion}.
 
-Given $G_\Q$-isomorphic modules $E[p]$ and~$E'[p]$, it is possible
-they admit isomorphisms with both symplectic types; this occurs if and only if $E[p]$ admits an anti-symplectic automorphism. 
-The following proposition shows this phenomenon can occur only 
-for $p < 7$ hence, when a $G_\Q$-isomorphism $\phi : E[p] \simeq E'[p]$ exists, normally there is only one possible symplectic type for any such~$\phi$; in particular, this will be the case for all the isomorphisms we consider in this work. 
-For an example where both types exist, take $p=5$ and
-$E$, $E'$ to be the curves\footnote{Throughout the paper we use
-Cremona labels for elliptic curves over~$\Q$; these curves may be
-found in the LMFDB (see \cite{lmfdb}).} $\lmfdbec{11}{a}{1}$ and
-$\lmfdbec{1342}{c}{2}$, respectively (see~\cite[Example~5.2]{FKSym}
-for more details).
-
-Given an elliptic curve~$E$ over a number field~$K$ and an odd prime~$p$ we say 
-that~$E[p]$ satisfies condition~{\bf (S)} if $E[p]$ does not admit anti-symplectic automorphisms. The following proposition follows from~\cite{FKSym} and gives an equivalent description of condition~{\bf (S)}.
+Given $G_K$-isomorphic modules $E[p]$ and~$E'[p]$, it is possible they
+admit isomorphisms with both symplectic types; this occurs if and only
+if $E[p]$ admits an anti-symplectic automorphism.  We say that
+\emph{~$E[p]$ satisfies condition~{\bf (S)}} if $E[p]$ does not admit
+anti-symplectic automorphisms. The following proposition follows
+from~\cite{FKSym} and gives an equivalent description of
+condition~{\bf (S)}.
 
 \begin{proposition} \label{P:conditionS}
 Let $E$ be an elliptic curve over a number field~$K$. Let~$p > 2$ be a prime and $\rhobar_{E,p} : G_K \to \GL_2(\F_p)$ the representation arising from the action of~$G_K$ on $E[p]$. 
@@ -424,12 +420,16 @@ Then $E[p]$ satisfies condition~{\bf (S)} if and only if one of the following is
 If $\rhobar_{E,p}$ is absolutely irreducible then $E[p]$ satisfies
 condition~(A) and hence condition~{\bf (S)}.  \end{proposition}
 
-
 In the case $K=\Q$, condition~{\bf (S)} is satisfied by $E[p]$ for
-all~$p\ge7$, by~\cite[Corollary~3 and Proposition~2]{FKSym}.
-
-\jc{I commented out the old Prop 1.1 and replaced both cross-references
-  to it (P:auto) to the new one (P:conditionS).}
+all~$p\ge7$, by~\cite[Corollary~3 and Proposition~2]{FKSym}.  Hence,
+when a $G_\Q$-isomorphism $\phi : E[p] \simeq E'[p]$ exists, normally
+there is only one possible symplectic type for any such~$\phi$.  For
+an example where both types exist, take $p=5$ and $E$, $E'$ to be the
+curves\footnote{Throughout the paper we use Cremona labels for
+  elliptic curves over~$\Q$; these curves may be found in the LMFDB
+  (see \cite{lmfdb}).} $\lmfdbec{11}{a}{1}$ and
+$\lmfdbec{1342}{c}{2}$, respectively (see~\cite[Example~5.2]{FKSym}
+for more details).
 
 \begin{comment}
 \begin{proposition}\label{P:auto}
@@ -458,14 +458,14 @@ $\alpha(P) = P$ and $\alpha(Q) = 2Q$ is anti-symplectic because $2$ is
 not a square modulo~$5$.
 \end{comment}
 
-It is then natural to consider triples $(E,E',p)$ where $E/\Q$ and $E'/\Q$ are elliptic
-curves with isomorphic $p$-torsion such that the $G_\Q$-modules
-isomorphisms $\phi : E[p] \rightarrow E'[p]$ are either all symplectic
-or all anti-symplectic.  In this case, we will say that the {\em
-  symplectic type} of $(E,E',p)$ is respectively symplectic or
+It is then natural to consider triples $(E,E',p)$ where $E/K$ and
+$E'/K$ are elliptic curves with isomorphic $p$-torsion such that the
+$G_K$-modules isomorphisms $\phi : E[p] \rightarrow E'[p]$ are either
+all symplectic or all anti-symplectic.  In this case, we will say that
+the {\em symplectic type} of $(E,E',p)$ is respectively symplectic or
 anti-symplectic.  The problem of determining the symplectic of
 $(E,E',p)$ was extensively studied by the second author and Alain
-Kraus in~\cite{FKSym}.
+Kraus in~\cite{FKSym}.\jc{Do you want to add ``over $\Q$'' here?}
 
 The isogeny criterion gives an easy solution when $(E,E',p)$
 arises from an isogeny $h \colon E \to E'$ of degree~$n$ coprime
@@ -478,9 +478,9 @@ could compute the $p$-torsion fields of $E$ and $E'$,
 write down the Galois action on $E[p]$ and $E'[p]$ and check if they
 are symplectically or anti-symplectically isomorphic. However, the
 degree of the $p$-torsion fields grows very fast with~$p$ making this
-method not practical already for $p = 5$.
+method not practical already over~$\Q$ for $p = 5$.
 
-One way to circumvent this computational problem is to use the methods
+One way to circumvent this computational problem, at last over~$\Q$, is to use the methods
 presented in~\cite{FKSym}. Indeed, the main objective of {\it loc. cit.} was to establish a complete list of {\em local symplectic criteria},
 allowing one to determine the symplectic type of $(E,E',p)$ using only
 standard information about the local curves $E/\Q_\ell$ and
@@ -549,11 +549,11 @@ curves.
 The modular curve $X(p)$ parametrizes elliptic curves with full
 level~$p$ structure. It has genus~$0$ for $p=2,3,5$, genus~$3$ for
 $p=7$ and genus~$\ge26$ for $p\ge11$.  Fixing an elliptic
-curve~$E/\Q$, the curve $X_E(p)$, which is a twist of~$X(p)$ (and
+curve~$E/K$, the curve $X_E(p)$, which is a twist of~$X(p)$ (and
 hence has the same genus), parametrizes pairs $(E',\phi)$ such that
 $\phi$ is a symplectic isomorphism~$E[p]\cong E'[p]$; similarly
 $X_E^-(p)$ parametrizes antisymplectic isomorphisms. Note that the pair $(E,\id)$ constituted by $E$ itself and the identity map
-gives a base point defined over~$\Q$ on~$X_E(p)$, while $X_E^-(p)$ may have no rational points.
+gives a base point defined over~$K$ on~$X_E(p)$, while $X_E^-(p)$ may have no $K$-rational points.
 
 It follows that congruences modulo~$p$ for $p\le 5$ are common.  There
 are certainly many mod~$3$ and mod~$5$ congruences in the database,
@@ -669,18 +669,34 @@ in practice, it is usually easy to find such a prime~$\ell$ after
 trying a few small primes.  There are no reducible mod~$13$ congruences in the LMFDB database, so instead we refer to \cite[Example~31.2]{FKSym} for
 an example with $p=7$ analogous to the discussion in this paragraph.
 
+\subsection{Notation} \label{S:notation}
+For $p$ an odd prime, define $p^*=\pm p\equiv1\pmod4$, so that
+$\Q(\sqrt{p^*})$ is the quadratic subfield of the cyclotomic
+field~$\Q(\zeta_p)$.
+
+Let $D_{n}$ denote the dihedral group with~$2n$ elements and $C_n
+\subset D_{n}$ for a normal cyclic subgroup of order~$n$; note that
+$C_n$ is unique unless $n=2$, in which case $D_{n} \simeq C_2 \times
+C_2$ and there are three such subgroups.  We will also denote by $C
+\subset \GL_2(\F_p)$ a Cartan subgroup (either split or non-split) and
+by $N$ its normalizer in $\GL_2(\F_p)$.
+
+For a number field~$K$ we denote by~$G_K$ the absolute Galois group
+of~$K$.
+
+Let $\eps_d$ be the quadratic character of $G_K$ associated to the
+extension $K(\sqrt{d})/K$.
+
+For $a, b \in K$, we write $E_{a,b}$ for the elliptic
+curve defined over~$K$ by the short Weierstrass equation
+$Y^2=X^3+aX+b$; every elliptic curve over~$K$ has such a model, unique
+up to replacing $(a,b)$ by~$(au^4,bu^6)$ with $u\in K^*$.
+
 \section{Congruences between Twists}\label{S:cong-twist}
 
 Congruences between elliptic curves which are twists of each other arise in a number of ways in our study; in this and the next two sections we look into this situation in detail.
 
-Let $p$ be an odd prime. Let $D_{n}$ denote the dihedral group
-with~$2n$ elements and $C_n \subset D_{n}$ for a normal cyclic
-subgroup of order~$n$; note that $C_n$ is unique unless $n=2$, in
-which case $D_{n} \simeq C_2 \times C_2$ and there are three such
-subgroups.  We will also denote by $C \subset \GL_2(\F_p)$ a Cartan
-subgroup (either split or non-split) and by $N$ its normalizer in
-$\GL_2(\F_p)$.  
-
+Let $p$ be an odd prime.
 
 %{\bf In what follows we will use standard facts about
 %subgroups of $\GL_2(\F_p)$ and $\PGL_2(\F_p)$: see, for example,
@@ -706,11 +722,7 @@ in~??.
 \subsection{Twists of elliptic curves}
 
 Let $E$ be an elliptic curve defined over any field~$K$ of
-characteristic~$0$, and let $G_K$ denote as usual the absolute Galois
-group of~$K$.  For $a, b \in K$, we write $E_{a,b}$ for the elliptic
-curve defined over~$K$ by the short Weierstrass equation
-$Y^2=X^3+aX+b$; every elliptic curve over~$K$ has such a model, unique
-up to replacing $(a,b)$ by~$(au^4,bu^6)$ with $u\in K^*$.
+characteristic~$0$.
 
 The twists of $E$ over $K$ are parametrized by $H^1(G_K,\Aut(E))$.  If
 $E'$ is a twist of~$E$, then by definition there exists an isomorphism
@@ -910,15 +922,10 @@ pairing, therefore the symplectic
 type of $\phi : E[p] \simeq
 E'[p]$ is determined by the square class of $\det M$ (see \cite[Lemma~6]{FKSym}).
 
-For $p$ an odd prime, define $p^*=\pm p\equiv1\pmod4$, so that
-$\Q(\sqrt{p^*})$ is the quadratic subfield of the cyclotomic
-field~$\Q(\zeta_p)$.
-
 \begin{lemma}\label{L:twist-rep}
   \begin{enumerate}
     \item
-  Let $E$ and $E^d$ be quadratic twists defined over~$K$, and let
-  $\eps_d$ denote the associated quadratic character of~$G_K$.  Then
+  Let $E$ and $E^d$ be quadratic twists defined over~$K$.  Then
   there is an isomorphism $t :E\to E^d$ defined over $K(\sqrt{d})$
   satisfying
 \begin{equation}\label{E:iso-twist}
@@ -1150,8 +1157,7 @@ Therefore we can assume $E' = E^d$ is the quadratic twist of~$E$ by a
 non-square $d\in K^*$.  From Lemma~\ref{L:noCyclic} we know
 that~$\rhobar_{E,p}$ is absolutely irreducible.
 
-Let $\eps_d$ be the quadratic character of $G_K$ associated to the
-extension $K(\sqrt{d})/K$. By (\ref{E:rho-twist}), for primes~$\frq$
+By (\ref{E:rho-twist}), for primes~$\frq$
 of~$K$ where both curves have good reduction (so excluding only
 finitely many primes), we have
 \[
@@ -1485,7 +1491,7 @@ is, $E$ and~$E'$ are isomorphic over~$K$ itself.
 \begin{proof}
 Let $t :E\to E'$ be an isomorphism defined over~$L$ satisfying
 $t ^\sigma=\psi(\sigma)t $ as in Lemma~\ref{L:twist-rep},
-where $\psi$ is a cocycle trivial on~$G_L$.  Let $t _p$ denote the
+where $\psi$ is a cocycle trivial on~$G_L$.  Let $t_p$ denote the
 induced map $E[p]\to E'[p]$, which is $\F_p$-linear and also satisfies
 the twist relation $t _p^\sigma=\psi(\sigma)t _p$, so
 $t _p$ is $G_L$-equivariant.  We are also given a
