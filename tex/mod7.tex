@@ -695,104 +695,99 @@ up to replacing $(a,b)$ by~$(au^4,bu^6)$ with $u\in K^*$.
 
 \section{Congruences between Twists}\label{S:cong-twist}
 
-Congruences between elliptic curves which are twists of each other arise in a number of ways in our study; in this and the next two sections we look into this situation in detail.
+Congruences between elliptic curves which are twists of each other
+arise in a number of ways in our study; in this and the next two
+sections we look into this situation in detail.
 
 Let $p$ be an odd prime.
 
-%{\bf In what follows we will use standard facts about
-%subgroups of $\GL_2(\F_p)$ and $\PGL_2(\F_p)$: see, for example,
-%\cite[Theorem XI.2.3]{LangModForms}.}
-
 Let $K$ be a number field and $E/K$ an elliptic curve. If the
-representation $\rhobar_{E,p}$ has image contained in $N \subset
-\GL_2(\F_p)$ but not in the Cartan subgroup~$C$, then the projective
-image $\PP \rhobar_{E,p}(G_K)$ is~$D_{n}$ for some~$n$ (see, for
-example, \cite[Theorem XI.2.3]{LangModForms}). Then there is a
-quadratic extension~$M = K(\sqrt{d})$ corresponding to a
-subgroup~$C_n$ as above, i.e. $\PP \rhobar_{E,p}(G_M) \simeq C_n$.  We
-will see in Proposition~\ref{P:twist} below that in this setting there
-is a mod~$p$ congruence between~$E$ and its quadratic twist by~$d$.
-This kind of construction is the main source of congruences between
-twisted curves and it appeared already in~??; our main objective in
-this context is then to describe the symplectic type of such
-congruences (see Theorem~\ref{T:quadratic}). There are also
-congruences between curves which are higher order twists of each other
-and we describe them in Theorems~?? and respective symplectic types
-in~??.
+representation $\rhobar_{E,p}$ has image contained in the
+normaliser~$N$ of a Cartan subgroup~$C$ of~$\GL_2(\F_p)$ but not
+in~$C$ itself, then the projective image $\PP \rhobar_{E,p}(G_K)$ is
+isomorphic to~$D_{n}$ for some~$n$ (see, for example, \cite[Theorem
+  XI.2.3]{LangModForms}).  The preimage of~$C$ in~$G_K$ then cuts out
+a quadratic extension~$M = K(\sqrt{d})$, with $\PP \rhobar_{E,p}(G_M)
+\simeq C_n$.  We will see in Proposition~\ref{P:twist} below that in
+this setting there is a mod~$p$ congruence between~$E$ and its
+quadratic twist by~$d$.  This kind of construction is the main source
+of congruences between twisted curves and it appeared already in~??;
+our main objective in this context is then to describe the symplectic
+type of such congruences (see Theorem~\ref{T:quadratic}). There are
+also congruences between curves which are higher order twists of each
+other and we describe them in Theorems~?? and respective symplectic
+types in~??.
 
 \subsection{Twists of elliptic curves}
 
 Let $E$ be an elliptic curve defined over any field~$K$ of
 characteristic~$0$.
 
+\jc{I have shortened this subsection, cutting out repetition and
+  highlighting equation \eqref{E:twist} for future reference.}
+
 The twists of $E$ over $K$ are parametrized by $H^1(G_K,\Aut(E))$.  If
 $E'$ is a twist of~$E$, then by definition there exists an isomorphism
 $t:E\to E'$ defined over $\Kbar$, so that\footnote{We use left group
   actions throughout.  Here ${}^{\sigma}t$ is the map such that
-  $\sigma(t(P))={}^{\sigma}t(\sigma(P))$.}
-for $\sigma\in G_K$ we have
-${}^{\sigma}t=\psi(\sigma)t$ (that is,
+  $\sigma(t(P))={}^{\sigma}t(\sigma(P))$.}  for $\sigma\in G_K$ we
+have ${}^{\sigma}t=\psi(\sigma)t$ (that is,
 $\sigma(t(P))=\psi(\sigma)t(\sigma(P))$ for all $P\in E(\Kbar)$) for
 some cocycle~$\psi:G_K\to\Aut(E')\cong\Aut(E)$.  Here,
 $\Aut(E)\cong\mu_n$ is cyclic of order~$n=2$, $4$ or $6$ according as
 $j(E)\not\in\{0,1728\}$, $j(E)=1728$ and $j(E)=0$ respectively.  By
 Kummer theory, $H^1(G_K,\Aut(E))\cong H^1(G_K,\mu_n)\cong
-K^*/(K^*)^n$.
+K^*/(K^*)^n$; hence each $n$-twist is determined by a parameter~$u\in
+K^*$ whose image in $K^*/(K^*)^n$ determines the isomorphism class of
+the twist.
 
-In the cases where $\Aut(E)\not=\{\pm1\}$, we make two seemingly
-trivial, but important, observations. First, $G_K$ acts non-trivially
-on~$\Aut(E)$, unless $-1$ or $-3$ (respectively for the cases $n=4$
-and $n=6$) are squares in~$K$, so the cocycle is not a homomorphism;
+In the cases where $\Aut(E)\not=\{\pm1\}$, we make two elementary, but
+important, observations. First, $G_K$ acts non-trivially on~$\Aut(E)$,
+unless $-1$ or $-3$ (respectively for the cases $n=4$ and $n=6$) are
+squares in~$K$, so the cocycle is usually not a homomorphism;
 secondly, there are \emph{two} isomorphisms
 $\calO=\Z[\zeta_n]\cong\End(E)$ (differing by complex conjugation in
 $\calO$), when $n=4$ or~$6$, and hence two actions of
-$\calO^*\cong\Aut(E)$ on~$E$.
+$\calO^*\cong\Aut(E)$ on~$E$.  We fix isomorphisms $\calO\cong\End(E)$
+and $\calO\cong\End(E')$, and hence isomorphisms
+$\mu_n=\calO^*\cong\Aut(E)\cong\Aut(E')$, which are normalised (in the
+sense of \cite[Prop.~I.1.1]{SilvermanII}), so that $\zeta\cdot
+t(P)=t(\zeta\cdot P)$ for $P\in E(\Kbar)$ and $\zeta\in\calO^*$. Then
+the twist isomorphism~$t$ is an isomorphism of~$\calO$-modules, and we
+may view the twisting cocycle~$\psi$ as taking values in~$\calO^*$.
 
-\subsubsection{$j\not=0,1728$}
-In this case $\Aut(E)=\Aut(E')=\{\pm1\}$, with trivial Galois
-action. The cocycle~$\psi$ is simply the quadratic character
-$\psi:G_K\to\{\pm1\}$ associated to a quadratic extension
-$K(\sqrt{d})/K$ for some $d\in K^*/(K^*)^2$, in accordance with the
-Kummer isomorphism $H^1(G_K,\Aut(E))\cong K^*/(K^*)^2$.  The twist
-of~$E$ by $d$ is denoted $E^d$ and is called a \emph{quadratic twist}.
-A model for $E^d$ when , and we have a bijection between the set of
-quadratic twists of~$E$ and the nontrivial elements
-of~$K^*/(K^*)^2$. An isomorphism $E_{a,b}\to E_{ad^2,bd^3}$ defined
-over~$K(\sqrt{d})$ is given by $(x,y) \mapsto (dx,d\sqrt{d}y)$
+Explicitly, in terms of a short Weierstrass equation~$E_{a,b}$, we fix
+the action of~$\zeta\in\calO^*$ to be
+$(x,y)\mapsto(\zeta^2x,\zeta^3y)$, and the $n$-twist by~$u\in K^*$ by
+$t:(x,y)\mapsto(v^2x,v^3y)$ where $v^n=u$, with associated cocycle
+$\psi(\sigma)=\sigma(v)/v$.  Then the basic relation may be written as
+\begin{equation}\label{E:twist}
+  \sigma(t(P)) = \psi(\sigma)t(\sigma(P)) = t(\psi(\sigma)\sigma(P))
+   \quad \text{ for all } \sigma \in G_K,
+  \; P \in E(\Kbar).
+\end{equation}
 
-\subsubsection{$j=1728$}
-Now $\End(E)\cong\calO=\Z[\zeta_4]$ and
-$\Aut(E)\cong\calO^*\cong\mu_4$ as Galois modules.  The twists of $E$
-are parametrized by $H^1(G_K,\mu_4)\cong K^*/(K^*)^4$ and are called
-\emph{quartic twists}.  The curve~$E$ has a model~$E=E_{a,0}$, and its
-twist by~$u\in K^*$ is $E_{au,0}$, which is isomorphic to~$E_{a,0}$ if
-and only if $u\in (K^*)^4$.
+The elliptic curve~$E$ and its $n$-twist by~$u$ become isomorphic
+over~$K(\root n\of u)$, which is an extension of~$K$ of degree
+dividing~$n$.
 
-We fix isomorphisms $\calO\cong\End(E)$ and $\calO\cong\End(E')$, and
-hence isomorphisms $\mu_4=\calO^*\cong\Aut(E)\cong\Aut(E')$, which are
-normalised (in the sense of \cite[Prop.~I.1.1]{SilvermanII}), so that
-$\zeta\cdot t(P)=t(\zeta\cdot P)$ for $P\in E(\Kbar)$ and
-$\zeta\in\calO^*$. Then the twist isomorphism~$t$ is an isomorphism
-of~$\calO$-modules, and we may view the twisting cocycle~$\psi$ as
-taking values in~$\calO^*$, given by $\psi(\sigma) =
-\sigma(u^{1/4})/u^{1/4} \in \mu_4$.
+For \emph{quadratic twists}, $n=2$: we usually denote the twist
+parameter by~$d$ instead of~$u$, and use the notation $E^d$ for the
+quadratic twist of~$E$ by~$d\in K^*$.  If $E=E_{a,b}$ then
+$E^d=E_{ad^2,bd^3}$.
 
-An isomorphism $t:E_{a,0}\to E_{au,0}$ is given by
-$(x,y)\mapsto(v^2x,v^3y)$ for some fixed choice of
-$v=u^{1/4}\in\Kbar$, and a normalised action of $\zeta\in\mu_4$ is
-given by $(x,y)\mapsto(\zeta^2x,\zeta^3y)$ on both $E_{a,0}$
-and~$E_{au,0}$.  We have ${}^{\sigma}t = \psi(\sigma)t = t\psi(\sigma)$
-for all $\sigma\in G_K$.
+\emph{Quartic twists} only exist when $j(E)=1728$.  The short
+Weierstrass model of such a curve has the form~$E_{a,0}$, and its
+quartic twist by~$u$ is $E_{au,0}$.
 
 As a special case, when $u=d^2\in(K^*)^2$, with $\pm d\notin(K^*)^2$,
 the quartic twist by~$u$ is the same as the quadratic twist by~$d$.
 These are just the quartic twists for which the cocycle takes values
-in $\{\pm1\}$.  For what follows it is important to note the
-following: for elliptic curves with $j$-invariant~$1728$, the
-quadratic twists by~$+d$ and by~$-d$ are exactly the same, and in
-particular the twist by~$-1$ is trivial.  This is simplest to see from
-the explicit model $E_{ad^2,0}$ for the twisted curve, which only
-involves~$d^2$.  When $-1$ is a square in~$K$ then it is obvious that
+in $\{\pm1\}$.  Note that for elliptic curves with
+$j$-invariant~$1728$, the quadratic twists by~$+d$ and by~$-d$ are
+exactly the same, and in particular the twist by~$-1$ is trivial.
+This is simplest to see from the explicit model $E_{ad^2,0}$ for the
+twisted curve.  When $-1$ is a square in~$K$ then it is obvious that
 the quadratic twist by~$-1$ is trivial, but this is also true when
 $K(\sqrt{-1})\not=K$.  A more intrinsic explanation of this fact is
 that the inflation map $H^1(G_K,\mu_2)\to H^1(G_K,\mu_4)$ is not
@@ -816,34 +811,21 @@ $\psi(\sigma)=\sigma(1+\sqrt{-1})/(1+\sqrt{-1})=-\sqrt{-1}$ when
 $\sigma$ does not fix~$\sqrt{-1}$.
 \end{remark}
 
-\subsubsection{$j=0$}
-Now $\End(E)\cong\calO=\Z[\zeta_6]$ and
-$\Aut(E)\cong\calO^*\cong\mu_6$ as Galois modules.  The twists of $E$
-parametrized by $H^1(G_K,\mu_6)\cong K^*/(K^*)^6$ and are called
-\emph{sextic twists}.  The curve~$E$ has a model~$E=E_{0,b}$, and its
-twist by~$u\in K^*$ is $E_{0,bu}$, which is isomorphic to~$E_{0,b}$ if
-and only if $u\in (K^*)^6$.
-
-Again we fix normalised isomorphisms $\calO\cong\End(E)\cong\End(E')$
-and hence isomorphisms $\mu_6=\calO^*\cong\Aut(E)\cong\Aut(E')$ so
-that again, $\zeta\cdot t(P)=t(\zeta\cdot P)$ for $P\in E(\Kbar)$ and
-$\zeta\in\calO^*$.  The cocycle is given by $\psi(\sigma) =
-\sigma(u^{1/6})/u^{1/6} \in \mu_6$.
-
-An isomorphism $t:E_{0,b}\to E_{0,bu}$ is given by
-$(x,y)\mapsto(v^2x,v^3y)$ for some fixed choice of
-$v=u^{1/6}\in\Kbar$, and a normalised action of $\zeta\in\mu_6$ is
-given by $(x,y)\mapsto(\zeta^2x,\zeta^3y)$ on both $E_{0,b}$
-and~$E_{0,bu}$.  Again we have ${}^{\sigma}t = \psi(\sigma)t =
-t\psi(\sigma)$ for all $\sigma\in G_K$.
-
-As a special case, when $u=d^3\in(K^*)^3$, with $d\notin(K^*)^2$, we
-again obtain the quadratic twist by~$d$ as a special case of a sextic
-twist.  Again, these are just the sextic twists for which the cocycle
-takes values in $\{\pm1\}$.  Unlike the case of $j(E)=1728$ we obtain
-each quadratic twist exactly once, since the inflation map
-$H^1(G_K,\mu_2)\to H^1(G_K,\mu_6)$ is now injective, as is the cubing
-map $K^*/(K^*)^2 \to K^*/(K^*)^6$.
+\emph{Sextic twists} only exist when $j(E)=0$.  The short Weierstrass
+model of such a curve has the form~$E_{0,b}$, and its sextic twist
+by~$u$ is $E_{0,bu}$.  The sextic twist of~$E$ is isomorphic to~$E$
+over~$K(\root6\of u)$, which in general has degree~$6$, but special
+cases arise when $u$ is either a square or a cube in~$K$.  When
+$u=d^3\in(K^*)^3$, with $d\notin(K^*)^2$, we again obtain the
+quadratic twist by~$d$ as a special case of a sextic twist; these are
+the sextic twists for which the cocycle takes values in $\{\pm1\}$.
+(Unlike the case of $j(E)=1728$ we obtain each quadratic twist exactly
+once, since the inflation map $H^1(G_K,\mu_2)\to H^1(G_K,\mu_6)$ is
+now injective, as is the cubing map $K^*/(K^*)^2 \to K^*/(K^*)^6$.)
+When $u\in(K^*)^2$, the sextic twist by~$u$ may be called a
+\emph{cubic twist}; these are sextic twists for which the cocycle
+takes values in $\mu_3$, and the curve and its twist become isomorphic
+over an extension of~$K$ of degree~$3$.
 
 \begin{remark}\label{R:3-isog}
 The sextic twist by~$u=-27$ is the quadratic twist by~$-3$, and is
@@ -878,14 +860,14 @@ cases:
   \item[(iii)] for $j = 0$ only: $m=d\in\{3,6\}$ (cubic or sextic twists).
 \end{itemize}
 
-When $n=4$, the case $d=2$ occurs only for the special
+When $m=4$, the case $d=2$ occurs only for the special
 quartic twist by~$-4$ as in Remark~\ref{R:2-isog}.
 
 Denote by $t_p : E[p] \to E'[p]$ the restriction of~$t$ to the
-$p$-torsion points of~$E$. Then
+$p$-torsion. Then~\eqref{E:twist} becomes
 \begin{equation}\label{E:cocycle}
   \sigma(t_p(P)) = \psi(\sigma) \cdot t_p(\sigma(P))
-                 = t_p(\sigma(P)) \cdot \psi(\sigma)
+                 = t_p(\psi(\sigma)\cdot\sigma(P)) 
    \quad \text{ for all } \sigma \in G_K,
   \; P \in E[p].
 \end{equation}
@@ -893,8 +875,8 @@ Let $P_1, P_2$ be a basis of~$E[p]$, so that $t_p(P_1), t_p(P_2)$ is a
 basis of~$E'[p]$.  With respect to these bases, the map~$t_p$ is
 represented by the identity matrix in~$\GL_2(\F_p)$ and~$\psi(\sigma)$
 by a matrix~$\Psi_\sigma$ (the same matrix on both $E[p]$
-and~$E'[p]$).  Thus we obtain, for all $\sigma \in G_K$, the equality
-of matrices
+and~$E'[p]$).  Then~\eqref{E:cocycle} implies, for all $\sigma \in
+G_K$, the matrix equation
 \begin{equation} \label{E:PsiMatrix}
  \rhobar_{E',p}(\sigma) = \rhobar_{E,p}(\sigma) \cdot \Psi_\sigma. 
 \end{equation}
@@ -911,46 +893,45 @@ $\Psi$ is the quadratic character~$\varepsilon_d$ associated to the
 quadratic extension~$K(\sqrt{d})$ of~$K$ over which the curves become
 isomorphic.
 
+In general, the representation attached to the twist of~$E$ is
+obtained from that of~$E$ itself twisting by the cocycle~$\Psi$, with
+values in~$\GL_2(\F_p)$.  For quadratic twists this is just the twist
+by a quadratic character.
+
 We summarize this discussion in the following.
 
 \begin{lemma}\label{L:twist-rep}
   \begin{enumerate}
 \item Let $E'$ be the twist of~$E$ by a cocycle~$\psi$. Then there is
   an isomorphism $t :E\to E'$, defined over an extension of $K$ of
-  degree at most~$6$, satisfying
-\begin{equation}\label{E:iso-twist-general}
-\sigma(t(P)) = \psi(\sigma)t(\sigma(P)) %%% = t(\sigma(P))\psi(\sigma)
-\qquad \text{for all~$\sigma\in G_K$ and $P\in E(\Kbar)$}.
-  \end{equation}
-\item
-  In the case of a quadratic twist with $E'=E^d$, the isomorphism $t
-  :E\to E^d$ is defined over $K(\sqrt{d})$ and satisfies
+  degree at most~$6$, satisfying~\eqref{E:twist}.
+  In the case of a quadratic twist with $E'=E^d$, the isomorphism $t$
+  is defined over $K(\sqrt{d})$ and satisfies
 \begin{equation}\label{E:iso-twist}
 \sigma(t (P)) = \eps_d(\sigma)t (\sigma(P)) \qquad\text{for
   all~$\sigma\in G_K$ and $P\in E(\Kbar)$}.
 \end{equation}
-For all primes~$p$ we have
-\begin{equation} \label{E:rho-twist}
+\item For all primes~$p$ we have in general the matrix
+  equation~\eqref{E:PsiMatrix}.
+In the case of quadratic twists this simplifies to
+  \begin{equation} \label{E:rho-twist}
   \rhobar_{E^d,p} \cong \rhobar_{E,p}\otimes\eps_d.
 \end{equation}
-
-\item
-There is no simple relation of the form~(\ref{E:rho-twist}) when the
-twist is not quadratic.  Instead we have the matrix
-version~\eqref{E:PsiMatrix}.
 \end{enumerate}
 \end{lemma}
 
+\jc{Since the Lemma was announced as a summary of what preceded it, I
+  don't think a Proof is required -- but it is in the file, commented
+  out, just in case.}
+\begin{comment}
 \begin{proof}
-Equations and (\ref{E:iso-twist-general}) was given above and
-(\ref{E:iso-twist}) is a special case.  Relation (\ref{E:rho-twist})
-follows immediately from (\ref{E:iso-twist}); in matrix form this is
-just~\eqref{E:PsiMatrix} since $\Psi_{\sigma}=\varepsilon_d(\sigma)I$.
-For non-quadratic twists, the representation attached to $E'$ is
-obtained from that of~$E$ by twisting by a cocycle~$\psi$, and instead
-of the relation~(\ref{E:rho-twist}) we have the matrix
-version \eqref{E:PsiMatrix}.
+Equation (\ref{E:iso-twist}) is a special case
+of~\eqref{E:twist}. Relation (\ref{E:rho-twist}) follows immediately
+from (\ref{E:iso-twist}) and also from the matrix
+equation~\eqref{E:PsiMatrix} since
+$\Psi_{\sigma}=\varepsilon_d(\sigma)I$.
 \end{proof}
+\end{comment}
 
 \begin{lemma} \label{L:faithful}
   For all $p\ge3$, the action of $\Aut(E)$ on $E[p]$ is faithful.
@@ -1016,13 +997,13 @@ Lemma~\ref{L:twist-rep} and~\eqref{E:absRed} it follows that $\chi_1
 line. This contradicts ~$\eps_d \neq 1$.
 \end{proof}
 
-Under the natural \condS, the previous lemma tells us we
-can assume that $\rhobar_{E,p}$ is absolutely irreducible for our
-study. In fact more is true: the next proposition says that
-congruences between twists arise when the projective image is dihedral
-of order at least~4; equivalently (except when the image is very small
-or reducible), when the image is contained in the normaliser of a
-Cartan subgroup but not in the Cartan itself.
+Under the natural \condS, the previous lemma tells us we can assume
+that $\rhobar_{E,p}$ is absolutely irreducible for our study of
+congruences between twists. In fact more is true: the next proposition
+says that congruences between twists arise when the projective image
+is dihedral of order at least~4; equivalently (unless the image is
+very small or reducible), when the image is contained in the
+normaliser of a Cartan subgroup but not in the Cartan itself.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{comment} %% about 100 lines!
@@ -1290,8 +1271,10 @@ and we have omitted these from consideration.
 
 
 Note that if $\PP\rhobar_{E,p} (G_K)$ has order~$1$ or~$2$, then the image
-$\rhobar_{E,p} (G_K)$ is cyclic of order dividing~$2(p-1)$ and so not absolutely irreducible. In particular, the smallest projective images occurring in our context 
-are $\rhobar_{E,p} (G_K) \simeq D_2 \simeq C_2 \times C_2$. The next result will be useful in Section~\ref{S:type} when determining the symplectic type of congruences in the presence of this kind of image.
+$\rhobar_{E,p} (G_K)$ is cyclic of order dividing~$2(p-1)$ and so not absolutely irreducible. In particular, the smallest projective images occurring in our context
+are $\rhobar_{E,p} (G_K) \simeq D_2 \simeq C_2 \times C_2$. The next
+result will be useful later when determining the symplectic type of
+congruences in the presence of this kind of image.
 
 \begin{lemma}\label{L:C2xC2}
 Let $p$ be an odd prime.  Let $N$ be a subgroup of~$\PGL_2(\F_p)$
@@ -1616,10 +1599,7 @@ possible $[F:K]=6$ with Galois group~$D_3$, by
 Lemma~\ref{L:dihedral-to-reducible}.
 \end{proof}
 
-As examples of the exceptions in the previous lemma, we have the
-following:
-
-\jc{to be completed}.
+\jc{to be completed: so far I have not succeeded!}.
 
 Assuming that $E$ and $E'$ are $p$-congruent, there exists an
 isomorphism of $G_K$-modules $\phi : E[p] \to E'[p]$.  Choosing
@@ -1634,9 +1614,6 @@ A \rhobar_{E,p}(\sigma) A^{-1} = \rhobar_{E',p}(\sigma) =
 Recall that $\Psi_\sigma$ is the matrix of~$\psi(\sigma)\in
 \Aut(E)\cong\calO^*$ acting on~$E[p]$, where $\psi$ is the cocycle
 associated to the twist.
-
-\jc{I changed $M$ to $A$ since we have just been using $M$ to denote a
-  field.  I don't think we have used $A$ for anything else!}
 
 This equation implies a tight restriction on the size of the
 projective image when there is a congruence with a higher twist.
@@ -1659,7 +1636,7 @@ $K'=K(\sqrt{-3})$ in the case of cubic or sextic twists. Our
 hypothesis guarantees that the curves are neither quadratic twists nor
 the special quartic twist by~$-4$.  Let $m\in\{4,3,6\}$ be the order
 of the twist.  Then the map $\sigma \mapsto \Psi_\sigma$
-where~$\Psi_\sigma$ is as in~\eqref{E:PsiMatrix} is a homomorphism
+where~$\Psi_\sigma$ is as in~\eqref{E:PsiMatrix} restricts to a homomorphism
 $G_{K'}\to\SL_2(\F_p)$ of order~$m$.  Let $F'/K'$ be the fixed field
 of its kernel.  Then $F'=K'(\root m\of u)$ where $E'$ is the twist
 of~$E$ by~$u$, with Galois groups $\Gal(F'/K')\cong C_m$ and
@@ -1671,17 +1648,20 @@ $\rhobar_{E,p}(G_{K'})$ is in a Cartan subgroup~$C$, we conclude that
 $A \not\in C$. Restricting~\eqref{E:PsiM} to~$G_{F'}$ shows that $A$
 commutes with $\rhobar_{E,p}(G_{F'}) \subset C$, hence
 $\rhobar_{E,p}(G_{F'})$ is scalar and so projectively trivial.  Hence
-$F'$ contains the projective division field~$F$.
+$F'$ contains the projective division field~$F$.  To complete the
+proof we must determine the degree~$[F':F]$.
 
 Let $\overline{\Psi}_{\sigma}$ denote the image of~$\Psi_{\sigma}$
 in~$\PSL_2(\F_p)$.  The map $\sigma \mapsto \overline{\Psi}_\sigma$ is
 a homomorphism $G_{K'}\to\PSL_2(\F_p)$ of order~$2$ when $n=4$ and~$3$
 when $n=3,6$, since the only scalar matrix~$\Psi_{\sigma}$ is $-I$
-when $n$ is even.  The fixed field of its kernel is $F/K'$, so
-$\Gal(F/K)\cong D_2$ or~$D_3$.
+when $n$ is even.
 
-\jc{Now I seem to have reached the conclusion that the projective
-  image of $G_K$ is either $D_2$ or $D_3$.  What is wrong?!}
+%% The fixed field of its kernel is $F/K'$, so $\Gal(F/K)\cong D_2$
+%% or~$D_3$.
+
+\jc{Now we need to say why $-I$ is not in the image when $n=4$, and
+  may not be when $n=6$.}
 
 This already implies the result in the cases of quartic and cubic
 twists; to show the case~$D_6$ occurs we observe that the Galois
@@ -1689,6 +1669,10 @@ closure of the field~$L=K(\sqrt{u},\root 3 \of u)$ appearing in case
 (iii) in the proof of Lemma~\ref{L:LinF} is precisely~$F$ as defined
 above.
 \end{proof}
+
+\jc{Notation in the following does not match what we used above where
+  I used ``$n$-twist'' to mean a twist of order~$n$.  See the start of
+subsection 2.2, where this order was denoted $m$.}
 
 \begin{corollary}
 Let~$p$ be an odd prime and $n \in \{4,6 \}$. Let~$E/K$ and~$E'/K$ be $n$-twists by~$u \in K$ which are $p$-congruent. 
@@ -1709,42 +1693,80 @@ and $\Gal(F/K) \simeq D_6$ if $n=6$ and $u$ is not a square.
 \begin{proof} This follows directly from the proof of Lemma~\ref{L:LinF} and the previous lemma.
 \end{proof}
 
-\subsection{John's new way of thinking\dots}
+\subsection{New subsection}
 
-Let $j(E)=0, 1728$ and $p\not=3$ in case $j=0$ so the projective image
-is dihedral $D_n$ for some $n\ge2$.  Let $K'=K(\sqrt{-3})$ or
-$K(\sqrt{-1})$ respectively, so the projective image of $G_{K'}$ is
-$C_n$.
+Let $j=0$ or~$1728$ and let $p$ be an odd prime, with $p\not=3$ in
+case $j=0$.  Let $E$ be an elliptic curve defined over the number
+field~$K$ with $j(E)=j$.  Let $K'=K(\sqrt{-3})$ or $K(\sqrt{-1})$
+respectively, and assume that $K'\not=K$.
 
-Over $\overline{\F}_p$ we can diagonalise the $C_n$, so for $\sigma\in
-G_{K'}$ we have
+\begin{lemma}
+\begin{enumerate}
+  \item
+The projective image $\PP\rhobar_{E,p}(G_K)$ is dihedral $D_n$ for
+some $n\ge2$, and the projective image of $G_{K'}$ is $C_n$.
+\item
+After extending scalars from~$\F_p$ to~$\F_{p^2}$ if necessary, there
+is a basis for~$E[p]$ with respect to which for $\sigma\in G_{K'}$ we
+have
 \[
 \rhobar_{E,p}(\sigma) = c_\sigma\cdot\diag(1,\eps(\sigma))
 \]
 with $c_\sigma\in\overline{\F}_p^*$ and
 $\eps:G_{K'}\to\overline{\F}_p^*$ a character of exact order~$n$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+(1) is standard, as is (2) by diagonalising the Cartan over $\F_p$ in
+  the split case and over~$\F_{p^2}$ in the non-split case.
+\end{proof}
 
+\begin{lemma}
 Let $E'$ be the order~$m\in\{3,4,6\}$ twist of~$E$ by $u\in K^*$, with
-cocycle $\psi$.  The matrices $\Psi_\sigma$ are now also diagonal, say
+cocycle $\psi$.  The matrices $\Psi_\sigma$ with respect to the same
+basis are also diagonal, of the form
 \[
 \Psi_\sigma = \diag(\eta(\sigma),\eta(\sigma)^{-1})
 \]
 where $\eta:G_K\to \overline{\F}_p^*$ is a map whose restriction to
 $G_{K'}$ is a homomorphism of order exactly~$m$.
+\end{lemma}
+\begin{proof}
+Recall that we have fixed isomorphisms $\End(E)\cong\calO$ and
+$\End(E')\cong\calO$.  Hence $\calO$ acts on both $E[p]$ and~$E'[p]$,
+via matrices which are in the Cartan subgroup since the endomorphisms
+are all defined over~$K'$ and hence their action commutes with that
+of~$G_{K'}$, which is not scalar.  The matrix of an
+endomorphism~$\alpha$ has determinant~$\deg(\alpha)$, so in
+particular. $\calO^*$ acts via diagonal matrices of determinant~$1$ as
+stated.
 
-[Explicitly: $\psi(\sigma)\in\Aut(E)\cong\calO^*$ with a fixed (once
-  and for all) isomorphism $\Aut(E)\cong\calO^*$.  In the split case
-  $p\calO=\frp\overline{\frp}$ and $\eta(\sigma)$ is the image of
-  $\psi(\sigma)$ under this isomorphism followed by the reduction
-  $\calO\to\calO/\frp\cong\F_p$ which induces a reduction homomorphism
-  $\calO^*\to\F_p^*$.  In the non-split case $p\calO=\frp$ and
-  $\eta(\sigma)$ is the image of $\psi(\sigma)$ under the isomorphism
-  followed by the reduction $\calO\to\calO/\frp\cong\F_{p^2}$ which
-  induces a reduction homomorphism $\calO^*\to\F_{p^2}^*$.]
+The map~$\eta$ is obtained as follows.  In the split case
+$p\calO=\frp\overline{\frp}$ and $\eta(\sigma)$ is the image of
+$\psi(\sigma)$ under this isomorphism followed by the reduction
+$\calO\to\calO/\frp\cong\F_p$ which induces a reduction homomorphism
+$\eta:\ \calO^*\to\F_p^*$.  Interchanging~$\frp$ and~$\overline{\frp}$
+has the effect of replacing~$\eta$ by its inverse; we make an
+arbitrary but fixed choice.
 
-Now suppose that $E$ and $E'$ are $p$-congruent.  By \eqref{E:PsiM} we
-have, for $\sigma\in G_{K'}$, after cancelling the scalar
-factor~$c_\sigma$ from each side,
+In the non-split case, $p\calO=\frp$ and $\eta(\sigma)$ is the image
+of $\psi(\sigma)$ under the isomorphism followed by the reduction
+$\calO\to\calO/\frp\cong\F_{p^2}$ which induces a reduction
+homomorphism $\eta:\ \calO^*\to\F_{p^2}^*$.  Again there are two
+choices for~$\eta$, since we may compose with the nontrivial
+automorphism of~$\F_{p^2}$.
+\end{proof}
+
+\begin{lemma}
+  With notation as above, suppose that $E$ and $E'$ are $p$-congruent.
+  Then $\eps(\sigma)=\eta(\sigma)$ for all $\sigma\in G_{K'}$.  Also,
+  $m=n$ and the projective image is $D_n$ where $n\in\{3,4,6\}$ is the
+  order of the twist.
+\end{lemma}
+\begin{proof}
+  Let $A\in\GL_2(\F_p$ be the matrix of the isomorphism~$E[p]\to
+  E'[p]$.  For $\sigma\in G_{K'}$ we have, from \eqref{E:PsiM} and
+  after cancelling the scalar factor~$c_\sigma$ from each side,
 \[
 A\ \diag(1,\eps(\sigma))\ A^{-1} = \diag(1,\eps(\sigma)) \diag(\eta(\sigma),\eta(\sigma)^{-1}).
 \]
@@ -1755,22 +1777,36 @@ all $\sigma\in G_{K'}$, so $A$ is anti-diagonal.  Conjugating any
 diagonal matrix by~$A$ just interchanges the two diagonal entries, so
 the equation becomes
 \[
-\diag(\eps(\sigma),1) = \diag(1,\eps(\sigma)) \diag(\eta(\sigma),\eta(\sigma)^{-1})
+\diag(\eps(\sigma),1) = \diag(1,\eps(\sigma)) \diag(\eta(\sigma),\eta(\sigma)^{-1}).
 \]
-and hence $\eps(\sigma)=\eta(\sigma)$ for all $\sigma\in G_{K'}$.
-Hence $m=n$ and the projective image is $D_n$ where $n\in\{3,4,6\}$ is
-the order of the twist.
+Hence $\eps(\sigma)=\eta(\sigma)$ for all $\sigma\in G_{K'}$ , and the
+statement of the lemma follows.
+\end{proof}
 
-\jc{So far this is another way of proving things we have other proofs
-  for, but is possibly simpler.  However it gets more interesting now.}
+The preceding lemma shows that, for $n\in\{4,3,6\}$, a necessary
+condition for the existence of a congruence with a twist of order~$n$
+is that the projective image is isomorphic to $D_n$.  We next show
+that this condition is sufficient, by constructing explicitly a
+matrix~$A\in\GL_2(\F_p)$ mapping $E[p]\to E'[p]$.
 
-Conversely, let $E$ and $p$ be as above with projective image~$D_n$
-where $n=4$ if $j(E)=1728$ and $n\in\{3,6\}$ if $j(E)=0$.  Then the
-projective $p$-division field is $F=K'(\root n\of u)$ for some $u\in
-K^*$, unique up to multiplication by an element of~$K^*\cap(K'^*)^n$ or
-replacing $u$ by~$u^{-1}$, the latter since $(\Z/n\Z)^*=\{\pm1\}$.  Up
-to $n$th powers in~$K$ we have either four or two possible choices
-for~$u$, replacing $u$ by one of
+\begin{proposition}
+Let $E$ and $p$ be as above with projective image~$D_n$ where $n=4$ if
+$j(E)=1728$ and $n\in\{3,6\}$ if $j(E)=0$.
+
+Then $E$ is $p$-congruent to an $n$-twist.  For $n=3$ there is a
+unique such twist, while for $n=4$ there are two which are
+$2$-isogenous to each other and for $n=6$ there are two which are
+$3$-isogenous to each other.
+\end{proposition}
+
+\begin{proof}
+The projective $p$-division field of~$E$ is $F=K'(\root n\of u)$ for
+some $u\in K^*$, unique up to either multiplication by an element
+of~$K^*\cap(K'^*)^n$, or replacing $u$ by~$u^{-1}$, since by Kummer
+theory the extension $F/K'$ is determined by a specific cyclic subgroup
+of order~$n$ in~$K'^*/(K'^*)^n$, and $\Aut(C_n)\cong\{\pm1\}$ for
+$n\in\{4,3,6\}$.  Up to $n$th powers in~$K$ we have either four or two
+possible choices for~$u$, replacing $u$ by one of
 \begin{itemize}
   \item $\{u, u^{-1}, -4u, -4u^{-1}\}$ if $n=4$;
   \item $\{u, u^{-1}, -27u, -27u^{-1}\}$ if $n=6$;
@@ -1778,42 +1814,69 @@ for~$u$, replacing $u$ by one of
 \end{itemize}
 Diagonalising as before, the character $\eps:G_{K'} \to
 \overline{\F}_p^*$ has exact order~$n$ and cuts out the extension
-$F/K'$.  \emph{Replacing $u$ by $u^{-1}$ if necessary}, comparing
-characters gives
-\[
-\eps(\sigma) = \eta(\sigma)
-\]
-where (as above) $\eta(\sigma)$ is the image of
-\[
-\sigma(\root n\of u)/\root n\of u \in \mu_n(K')\subseteq\calO^*
-\]
-under the reduction map $\calO^* \to\overline{\F}_p^*$.
+$F/K'$.
 
-Now let $E'$ be the order~$n$ twist of~$E$ by~$u$, with cocycle $\psi$
-having matrix $\Psi_{\sigma}$.  For any anti-diagonal matrix~$A$, the
-same computation as before gives
+Now let~$\psi:G_K\to \mu_n\subseteq\calO^*$ be the cocycle associated
+to~$u$, namely
+\[
+\sigma\mapsto \psi(\sigma) = \sigma(\root n\of u)/\root n\of u.
+\]
+The restriction of~$\psi$ to~$G_{K'}$ is a character of order~$n$
+which cuts out the same extension $F/K'$, so is either~$\eps$ or its
+inverse.  Replacing $u$ by $u^{-1}$ if necessary, we may assume that
+$\left.\psi\right|_{G_{K'}} = \eps$.
+
+Now let $E'$ be the order~$n$ twist of~$E$ by~$u$.  As before, we have
+$\Psi_{\sigma}=\diag(\eta(\sigma),\eta^{-1}(\sigma))$ where
+$\left.\eta\right|_{G_{K'}} = \left.\psi\right|_{G_{K'}} = \eps$.
+Thus, for $\sigma\in G_{K'}$, we have
+\[
+\Psi_{\sigma} = \diag(\eps(\sigma),\eps(\sigma)^{-1}),
+\]
+so for any anti-diagonal matrix~$A$, the same computation as before
+gives (still only for $\sigma\in G_{K'}$)
 \[
 A\ \diag(1,\eps(\sigma))\ A^{-1} = \diag(\eps(\sigma),1) =
-\diag(1,\eps(\sigma)) \diag(\eta(\sigma),\eta(\sigma)^{-1}).
+\diag(1,\eps(\sigma)) \Psi_{\sigma}.
 \]
-and hence \eqref{E:PsiM} holds for $\sigma\in G_{K'}$.  To show that
-\eqref{E:PsiM} holds for all $\sigma\in G_{K}$, it suffices, since
-both sides are homomorphisms $G_K\to \GL_2(\F_p)$, to do so for a
-single $\tau\in G_K\setminus G_{K'}$.
+Hence \eqref{E:PsiM} holds for $\sigma\in G_{K'}$.
 
-Let $\tau\in G_K$ be an automorphism of order~$2$ such that its
-restriction to $K'$ is non-trivial but $\tau$ fixes~$\root n\of u$.
-Then $\tau\notin G_{K'}$, and $\psi(\tau)=1$ so $\Psi_\tau=I$.
-Setting $A=\rhobar_{E,p}(\tau)$, \eqref{E:PsiM} is trivially
-satisfied.
+To show that \eqref{E:PsiM} holds for all $\sigma\in G_{K}$, it
+suffices, since both sides are homomorphisms $G_K\to \GL_2(\F_p)$, to
+do so for a single $\tau\in G_K\setminus G_{K'}$.
 
-Since this construction only works for one out of each inverse
-pair~$u,u^{-1}$ we have thus constructed two quartic or sextic twists
-when $n=4$ or $n=6$ respectively, and just one cubic twist when $n=3$.
-The two quartic twists differ by the quartic twist by~$-4$, so by a
-$2$-isogeny, while the two sextic twists differ by the sextic twist
-by~$-27$, so by a $3$-isogeny.
+Let $\tau\in G_K$ be an automorphism such that its restriction to $K'$
+is non-trivial but $\tau$ fixes~$\root n\of u$.  Then $\tau\notin
+G_{K'}$, and $\psi(\tau)=1$ so $\Psi_\tau=I$.  Setting
+$A=\rhobar_{E,p}(\tau)$, \eqref{E:PsiM} is trivially satisfied.
 
+For the last part, we note that this construction only works for
+exactly one out of each inverse pair~$u,u^{-1}$, so we have two
+quartic or sextic twists when $n=4$ or $n=6$ respectively, and just
+one cubic twist when $n=3$.  The two quartic twists differ by the
+quartic twist by~$-4$, so by a $2$-isogeny, while the two sextic
+twists differ by the sextic twist by~$-27$, so by a $3$-isogeny.
+\end{proof}
+
+\begin{corollary}
+In the notation of the proposition:
+\begin{enumerate}
+\item If $\sqrt{p^*}\in K$ then all the congruences between higher
+  order twists are symplectic; moreover, $p\equiv\pm1\pmod{2n}$.
+\item If $\sqrt{p^*}\notin K$ then:
+\begin{enumerate}
+\item when $n=3$, the cubic twist is anti-symplectic;
+\item when $n=4$, the quartic twist by $u$ is symplectic if
+  $\sqrt{up^*}\in K$, and then the quartic twist by~$-4u$ is
+  antisymplectic; moreover, $p\equiv\pm3\pmod8$;
+\item when $n=6$, the sextic twist by $u$ is symplectic if
+  $\sqrt{up^*}\in K$, and then the sextic twist by~$-27u$ is
+  antisymplectic; moreover, $p\equiv\pm5\pmod{12}$.
+\end{enumerate}
+\end{enumerate}
+\end{corollary}
+
+\begin{proof}
 To determine the symplectic type of these twists we need to consider
 $\det(A)=\det\rhobar_{E,p}(\tau)=\chi_p(\tau)$ modulo~$(\F_p^*)^2$,
 where $\chi_p$ denotes the $p$'th cyclotomic character.  Recall that
@@ -1821,38 +1884,28 @@ the $p$-division field of~$E$ contains the $p$th roots of unity, and
 the projective $p$-division field contains~$\sqrt{p^*}$.  Hence the
 congruence is symplectic if and only if $\tau$ fixes~$\sqrt{p^*}$.
 
-Hence if $\sqrt{p^*}\in K$ these congruences between higher order
-twists are always symplectic.  If $\sqrt{p^*}\notin K$ then
-$K(\sqrt{p^*})$ is a quadratic subfield of~$F$ and hence either
-$K(\sqrt{p^*})=K(\sqrt{u})$ or (when $n=4$)
-$K(\sqrt{p^*})=K(\sqrt{-4u})$ or (when $n=6$)
-$K(\sqrt{p^*})=K(\sqrt{-4u})$.  The congruence is symplectic if and
-only if $K(\sqrt{p^*})=K(\sqrt{u})$; that is, if and only if $u$ is
-$p^*$ times a square.
+If $\sqrt{p^*}\in K$ it immediately follows that these congruences
+between higher order twists are always symplectic.
 
-Remark: when $n=4,6$ the two quartic twists are $2$-isogenous
-(respectively $3$-isogenous) to each other and are antisymplectically
-congruence to each other by the previous argument.  It follows that the
-hypothesis that the projective image is $D_4$ (respectively $D_6$)
-implies that $2$ is a quadratic residue of~$p$, \textit{i.e.}
-$p\equiv\pm1\pmod8$ (respectively, $3$ is a quadratic residue of~$p$,
-\textit{i.e.}  $p\equiv\pm1\pmod{12}$).
+Suppose that $\sqrt{p^*}\notin K$.  Then $K(\sqrt{p^*})$ is a
+quadratic subfield of~$F$ and hence \emph{either}
+$K(\sqrt{p^*})=K(\sqrt{u})$, and the congruence with the twist by~$u$
+is symplectic; \emph{or} $K(\sqrt{p^*})=K(\sqrt{-4u})$ (when $n=4$),
+or $K(\sqrt{p^*})=K(\sqrt{-4u})$ (when $n=6$), and the congruence is
+anti-symplectic.  Thus the congruence is symplectic if and only if
+$up^*$ is a square in~$K$.
 
-To summarize: for the cases $n=4,6,3$ there are respectively $2,2,1$
-congruences from $E$ to a twist by~$u$ (for some $u$) of order~$n$.
-If $\sqrt{p^*}\in K$ these congruences are all symplectic.  If
-$\sqrt{p^*}\notin K$ the congruences are symplectic if and only if
-$n=4$ or~$6$ and $u=p^*$ (modulo squares in~$K$), and for $n=4,6$ one
-congruence is symplectic and the other anti-symplectic.
+For the congruence condition on~$p$ (which are only nontrivial when
+$n=4,6$), recall that when $n=4,6$ the two quartic (respectively,
+sextic) twists are $2$-isogenous (respectively $3$-isogenous) to each
+other.  When $\sqrt{p^*}\in K$ these isogenies induce symplectic
+congruences, since both the twists of~$E$ are symplectically
+congruent, so $p\equiv\pm1\pmod{2n}$.  When $\sqrt{p^*}\notin K$ these
+isogenies induce anti-symplectic congruences, so
+$p\not\equiv\pm1\pmod{2n}$.
+\end{proof}
 
- \jc{this agrees with Theorem~\ref{T:cubicM} and with
-   Theorem~\ref{T:quarticM} for quartic twists and
-   Theorem~\ref{T:sexticM} for sextic twists}
-
-\jc{Examples moved from Section 3 with essentially no change except to
-  give the symplectic type}
-
-\begin{example}
+\begin{example}\label{Ex:j1728p3}
 $K=\Q$, $p=3$, $j=1728$.  Denote the curve $E_{a,0}:\ Y^2=X^3+aX$
   simply by~$E_a$.  The projective image is the normaliser of a
   non-split Cartan, isomorphic to~$D_4$.  One can check that up to
@@ -1869,7 +1922,7 @@ $K=\Q$, $p=3$, $j=1728$.  Denote the curve $E_{a,0}:\ Y^2=X^3+aX$
   %% is $\Z[\zeta_4]$-anti-linear.
 \end{example}
 
-\begin{example}
+\begin{example}\label{Ex:j1728p5}
 $K=\Q$, $p=5$, $j=1728$.  The projective image is the normaliser of a
   split Cartan, isomorphic to~$D_4$.  One can check that up to $4$th
   powers, the subgroup of $\Q^*/(\Q^*)^4$ which become $4$th powers in
@@ -1885,8 +1938,9 @@ $K=\Q$, $p=5$, $j=1728$.  The projective image is the normaliser of a
   %% $\Z[\zeta_4]$-anti-linear.
 \end{example}
 
-\begin{example}
-$K=\Q$, $p=5$, $j=0$.  The projective image is the normaliser of a
+\begin{example}\label{Ex:j0p5}
+$K=\Q$, $p=5$, $j=0$.  Denote the curve $E_{0,b}:\ Y^2=X^3+b$
+  simply by~$E_b$. The projective image is the normaliser of a
   non-split Cartan, isomorphic to~$D_6$.  We expect a
   $5$-congruence between $E_b$ and $E_{bu}$ where $u\equiv5$ (modulo
   squares) and $u\equiv b/10$ or~$10/b$ (modulo cubes), since one may
@@ -1899,7 +1953,7 @@ $K=\Q$, $p=5$, $j=0$.  The projective image is the normaliser of a
   $E_{-108/(5b)}$.
 \end{example}
 
-\begin{example}
+\begin{example}\label{Ex:j0p7}
 $K=\Q$, $p=7$, $j=0$.  The projective image is the normaliser of a
   split Cartan, isomorphic to~$D_6$.  We expect a $7$-congruence
   between $E_b$ and $E_{bu}$ where $u\equiv-7$ (modulo squares) and
@@ -3348,13 +3402,11 @@ isomorphic 7-torsion.
 
 
 
-{\bf Example (continued).}
-Of the $\numprint{23448}$ non-trivial sets of isogeny classes with mutually
-isomorphic irreducible mod~$7$ representations, we find that in
-\jc{numbers updated for $N\le500000$ up to here: running these now.  The rest of
-the numbers in this example need updating, including the counts for $p=11,13$.}
-$\numprint{12394}$ cases all the isomorphisms are symplectic, while in the
-remaining $\numprint{7489}$ cases antisymplectic isomorphisms occur.
+{\bf Example (continued).}  Of the $\numprint{23448}$ non-trivial sets
+of isogeny classes with mutually isomorphic irreducible mod~$7$
+representations, we find that in $\numprint{16285}$ cases all the
+isomorphisms are symplectic, while in the remaining $\numprint{7163}$
+cases antisymplectic isomorphisms occur.
 
 Using the local criteria of \cite{FKSym} for $p=11, 13, 17$ we find:
 for $p=11$, of the $731$ congruent pairs of isogeny classes, $519$ are
@@ -3516,21 +3568,20 @@ are also $2$-{} or $3$-isogenies present we can include these
 appropriately, since the former induce symplectic and the latter
 antisymplectic congruences.
 
-\jc{numbers in this example need updating for $N\le500000$}
-
 {\bf Example (continued).} For $p=7$, after Steps 1--3, there
 are~$287$ reducible sets of isogeny classes with isomorphic
 semisimplification, of size up to~$80$.  Step~5 refines these into
 smaller subsets which have actually isomorphic $7$-torsion modules, of
 which $384$ are nontrivial: $313$ sets of size~$2$, of which the
-congruence is symplectic in 131 cases and anti-symplectic in 182
+congruence is symplectic in $131$ cases and anti-symplectic in $182$
 cases; $61$ of size~$3$, of which all the congruences are symplectic
-in just 6 cases, and in the remaining 55 cases, only one congruence is
-symplectic; and~$10$ of size~$4$, in all of which there are two pairs
-of symplectically congruent curves while the congruences between
-curves in different pairs is anti-symplectic.  In all, therefore,
-there are 556 symplectic pairs, of which 224 are symplectic and 332
-antisymplectic. \jc{I added a little more detail here than before}
+in just $6$ cases, and in the remaining $55$ cases, only one
+congruence is symplectic; and~$10$ of size~$4$, in all of which there
+are two pairs of symplectically congruent curves while the congruences
+between curves in different pairs is anti-symplectic.  In all,
+therefore, there are $556$ symplectic pairs, of which $224$ are
+symplectic and $332$ antisymplectic. \jc{I added a little more detail
+  here than before}
 
 For $p\ge11$ there are no reducible cases to consider.
 
@@ -3545,12 +3596,15 @@ general), so we may have a set of mutually $7$-congruent elliptic
 curves in the database, but with one or more of their twists not in
 the database, so the twisted set in our data will be smaller.
 
-Instead, to have a measure of how many congruences we have found up to twist, we
-simply report on how many distinct $j$-invariants we found, excluding as before
-curves which are only congruent to isogenous curves.  For $p=7$ there are
-$\numprint{11761}$ distinct $j$-invariants of curves with irreducible mod~$7$
-representations which are congruent to at least one non-isogenous curve, and
-$358$ \jc{to be updated} distinct $j$-invariants in the reducible case.
+Instead, to have a measure of how many congruences we have found up to
+twist, we simply report on how many distinct $j$-invariants we found,
+excluding as before curves which are only congruent to isogenous
+curves.  For $p=7$ there are $\numprint{11761}$ distinct
+$j$-invariants of curves with irreducible mod~$7$ representations
+which are congruent to at least one non-isogenous curve, and $154$
+distinct $j$-invariants in the reducible case.
+% 154 becomes 382 if we include congruences up to semisimplification
+% only.
 
 For $p=11$ there are $212$ distinct $j$-invariants and for $p=13$
 there are $39$.  For $p=17$, all $17$-congruent isogeny classes
