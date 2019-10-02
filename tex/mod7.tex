@@ -339,7 +339,7 @@ Gran Via de les Corts Catalanes 585,
 \keywords{Elliptic curves, Weil pairing, Galois representations, symplectic isomorphisms}
 %\subjclass[2010]{Primary 11D41; Secondary 11G10, 11F80.}
 
-\thanks{JEC is supported by EPSRC Programme Grant EP/K034383/1
+\thanks{JEC was supported by EPSRC Programme Grant EP/K034383/1
   \textit{LMF: L-Functions and Modular Forms}, and the Horizon 2020
   European Research Infrastructures project \textit{OpenDreamKit}
   (\#676541)}
@@ -349,10 +349,6 @@ Gran Via de les Corts Catalanes 585,
 
 
 \begin{abstract}
-%% We describe a procedure to determine the symplectic type of
-%% isomorphisms between the $7$- or $11$-torsion modules of elliptic
-%% curves over~$\Q$.  We apply it to classify all the congruences in
-%% LMFDB.
 We describe a systematic investigation into the existence of
 congruences between the mod~$p$ torsion modules of elliptic curves
 defined over $\Q$, including methods to determine the symplectic type
@@ -540,8 +536,11 @@ determine whether $E[p]$ and~$E'[p]$ are isomorphic (ignoring the
 symplectic structure) in both the irreducible and reducible
 cases. 
 
+\begin{comment}
 \nf{I don't see the point of this previous work section. We already mention Fisher later.}
-
+\jc{agreed -- all that is here is mentioned also later except for my
+  comment (with the wrong date) that I discovered the mod-17
+  congruence in 2017 -- it was 2007!}
 \subsection{Previous work}
 Our study of congruences between curves in the database follows on
 from previous work by a number of authors.  The current first author
@@ -555,7 +554,7 @@ second author.  Fisher lists $11$-congruences for conductors up to
 includes congruences between curves in this range and curves outside
 the current LMFDB range, found by finding rational points on the associated modular
 curves.
-
+\end{comment}
 
 \subsection{Modular parametrizations}
 The modular curve $X(p)$ parametrizes elliptic curves with full
@@ -654,7 +653,7 @@ the local methods imply that either $E$ has Complex Multiplication
  \item[(v)] $p=11,17$ or $37$, and $j(E)$ is listed
  in \cite[Table~2.1]{DahmenPhD}; in particular, $\rhobar_{E,p}$ is reducible.
 \end{itemize}
-The method we describe in Section~\ref{S:statistics} for $p=7$ can be
+The method we describe in Section~\ref{S:statistics} for $p=7$ could be
 adapted by replacing the modular curves~$X_E(7)$ by $X_E(p)$ when
 explicit equations for the latter are known, which is the case for
 $p=3,5$ and~$11$. This method works independently of the image
@@ -682,6 +681,8 @@ trying a few small primes.  There are no reducible mod~$13$ congruences in the L
 an example with $p=7$ analogous to the discussion in this paragraph.
 
 \nf{Maybe we should move the paragraph above about which cases our method covers to here? This should highlight more what is our contribution: i.e. among the cases left it covers essentially all of them. }
+
+\jc{OK: please do that.}
 
 \subsection{Notation} \label{S:notation}
 For $p$ an odd prime, define $p^*=\pm p\equiv1\pmod4$, so that
@@ -711,7 +712,7 @@ We will denote by~$I$ the identity matrix in~$\GL_2(\F_p)$.
 \section{Congruences between Twists}\label{S:cong-twist}
 
 Congruences between elliptic curves which are twists of each other
-arise in a number of ways in our study; these are often between quadratic twists but they also occur between higher order twists. In this sectoin we study all types of congruences in detail.
+arise in a number of ways in our study; these are often between quadratic twists but they also occur between higher order twists. In this section we study all types of congruences in detail.
 
 Let $p$ be an odd prime.
 
@@ -719,16 +720,21 @@ Let $K$ be a number field and $E/K$ an elliptic curve. If the
 representation $\rhobar_{E,p}$ has image contained in the
 normaliser~$N$ of a Cartan subgroup~$C$ of~$\GL_2(\F_p)$ but not
 in~$C$ itself, then the projective image $\PP \rhobar_{E,p}(G_K)$ is
-isomorphic to~$D_{n}$ for some~$n \geq 2$ (see~\cite[Theorem~XI.2.3]{LangModForms}). The preimage of~$C$ in~$G_K$ then cuts out a quadratic 
-extension~$M = K(\sqrt{d})$ satisfying 
-$\PP \rhobar_{E,p}(G_M)
-\simeq C_n$.  We will see in Proposition~\ref{P:twist} that in
-this setting there is a mod~$p$ congruence between~$E$ and its
-quadratic twist by~$d$. This  construction is the main source
-of congruences between twists and it appeared already in~??;
-our main contribution for this type of congruences is then to describe their symplectic type in Theorem~\ref{T:quadratic}. The second contribution of this section is to classify congruences between higher order twists in Proposition~\ref{P:higherTwists} 
-and describe their symplectic
-type in~Theorem~\ref{T:typeHigher}.
+isomorphic to~$D_{n}$ for some~$n \geq 2$
+(see~\cite[Theorem~XI.2.3]{LangModForms}). The preimage of~$C$
+in~$G_K$ then cuts out a quadratic extension~$M = K(\sqrt{d})$
+satisfying $\PP \rhobar_{E,p}(G_M) \simeq C_n$.  We will see in
+Proposition~\ref{P:twist} that in this setting there is a mod~$p$
+congruence between~$E$ and its quadratic twist by~$d$. This
+construction is the main source of congruences between twists and it
+appeared already in~\cite[\S2]{Halberstadt-11nonsplit}, including a
+determination of the symplectic type of the congruence; our
+contribution for this type of congruences is to show that congruences
+between quadratic twists only occur via this construction, when the
+projective image is dihedral: see Theorem~\ref{T:quadratic}. The
+second contribution of this section is to classify congruences between
+higher order twists in Proposition~\ref{P:higherTwists} and describe
+their symplectic type in~Theorem~\ref{T:typeHigher}.
 
 \subsection{Twists of elliptic curves}
 \label{S:twists}
@@ -885,22 +891,21 @@ $p$-torsion. Then~\eqref{E:twist} becomes
 Let $P_1, P_2$ be a basis of~$E[p]$, so that $t_p(P_1), t_p(P_2)$ is a
 basis of~$E'[p]$.  With respect to these bases, the map~$t_p$ is
 represented by the identity matrix in~$\GL_2(\F_p)$ and~$\psi(\sigma)$
-by a matrix~$\Psi_\sigma$ (the same matrix on both $E[p]$
+by a matrix~$\Psi(\sigma)$ (the same matrix on both $E[p]$
 and~$E'[p]$).  Then~\eqref{E:cocycle} implies, for all $\sigma \in
 G_K$, the matrix equation
 \begin{equation} \label{E:PsiMatrix}
- \rhobar_{E',p}(\sigma) = \rhobar_{E,p}(\sigma) \cdot \Psi_\sigma. 
+ \rhobar_{E',p}(\sigma) = \rhobar_{E,p}(\sigma) \cdot \Psi(\sigma). 
 \end{equation}
-For quadratic twists, $\Psi_\sigma=\pm I$, but in general the
-matrices~$\Psi_\sigma$ are not scalar.  Note that
-$\det\Psi_\sigma=1$ in all cases, since the determinants
-of~$\rhobar_{E,p}$ and~$\rhobar_{E',p}$ are both given by the
-cyclotomic character.
+For quadratic twists, $\Psi(\sigma)=\pm I$, but in
+general~$\Psi(\sigma)$ is not scalar.  Note that $\det\Psi(\sigma)=1$
+in all cases, since the determinants of~$\rhobar_{E,p}$
+and~$\rhobar_{E',p}$ are both given by the cyclotomic character.
 
-The map $\Psi : \sigma \mapsto \Psi_\sigma$ becomes a homomorphism
-over an extension $K'/K$ given by $K'=K$ if $m=2$, $K'=K(\sqrt{-1})$
-if $m=4$ and $K'=K(\sqrt{-3})$ if $m=3,6$. In the quadratic case,
-$\Psi$ matches the quadratic character~$\varepsilon_d$ associated to the
+The map $\Psi:G_K\to\SL_2(\F_p)$ becomes a homomorphism over an
+extension $K'/K$ given by $K'=K$ if $m=2$, $K'=K(\sqrt{-1})$ if $m=4$
+and $K'=K(\sqrt{-3})$ if $m=3,6$. In the quadratic case, $\Psi$
+matches the quadratic character~$\varepsilon_d$ associated to the
 quadratic extension~$K(\sqrt{d})$ of~$K$ over which the curves become
 isomorphic.
 
@@ -939,7 +944,7 @@ compatible bases for~$E[p]$ and~$E'[p]$ as above, let~$A \in
 Then, using~\eqref{E:PsiMatrix}, we have
 \begin{equation}\label{E:PsiM}
 A \rhobar_{E,p}(\sigma) A^{-1} = \rhobar_{E',p}(\sigma) =
-\rhobar_{E,p}(\sigma) \cdot \Psi_\sigma \quad \text{ for all } \sigma
+\rhobar_{E,p}(\sigma) \cdot \Psi(\sigma) \quad \text{ for all } \sigma
 \in G_K
 \end{equation}
 and the 
@@ -952,7 +957,7 @@ Equation (\ref{E:iso-twist}) is a special case
 of~\eqref{E:twist}. Relation (\ref{E:rho-twist}) follows immediately
 from (\ref{E:iso-twist}) and also from the matrix
 equation~\eqref{E:PsiMatrix} since
-$\Psi_{\sigma}=\varepsilon_d(\sigma)I$.
+$\Psi(\sigma)=\varepsilon_d(\sigma)I$.
 \end{proof}
 \end{comment}
 
@@ -1022,11 +1027,12 @@ Under the natural \condS, the previous lemma tells us we can assume
 that $\rhobar_{E,p}$ is absolutely irreducible for our study of
 congruences between twists. In fact more is true: the next proposition
 says that congruences between twists arise when the projective image
-is dihedral of order at least~4; equivalently {\bf (unless the image is
-very small or reducible)}, when the image is contained in the
-normaliser of a Cartan subgroup but not in the Cartan itself.
+is dihedral of order at least~4; equivalently, when the image is
+contained in the normaliser of a Cartan subgroup but not in the Cartan
+itself.
 
-\nf{Do we need whats in bold? The equivalence, being under (S) avoids the small images.}
+%% \nf{Do we need whats in bold? The equivalence, being under (S) avoids the small images.}
+%% \jc{agreed, deleted}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{comment} %% about 100 lines!
@@ -1116,6 +1122,9 @@ congruent quadratic twist.
 \end{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\jc{Part (2) of the following is essentially the same as Halberstadt's
+  Proposition.  But part (1) -- the converse -- and the count are new.}
+
 \begin{proposition}\label{P:twist}
 Let $E/K$ be an elliptic curve and $p \geq 5$ a prime. Suppose
 that~$E[p]$ satisfies \condS.
@@ -1128,7 +1137,7 @@ $\PP \rhobar_{E,p} \simeq D_n$ for some $n \geq 2$.
 2) Conversely, if the image of~$\rhobar_{E,p}$ is absolutely irreducible and contained in the
 normaliser of a Cartan subgroup of $\GL_2(\F_p)$ but not in the Cartan
 subgroup itself, 
-then we have $E[p]\cong E'[p]$ where $E'$ is the (non-trival) twist associated to
+then we have $E[p]\cong E'[p]$ where $E'$ is the (non-trivial) twist associated to
 the quadratic extension~$K(\sqrt{d})$ cut out by the Cartan subgroup.
 This is the quadratic twist~$E^d$ unless $j(E)=1728$ and $d=-1$, in
 which case it is the quartic twist by~$-4$.
@@ -1348,6 +1357,8 @@ image is dihedral (by Proposition~\ref{P:twist}), this
 is a situation where the local methods from~\cite{FKSym} may not
 apply, as is illustrated by Example~\ref{Ex:LocalFail7} below.
 
+\jc{Part (1) is in Halberstadt again; part (2) is new.}
+
 \begin{theorem}\label{T:quadratic} 
 Let $p > 2$ be a prime. 
 Let $E/K$ be an elliptic curve 
@@ -1499,11 +1510,9 @@ in~\cite{FKSym} applies for this case.
 
 \begin{example} \label{Ex:3twists}
   For an example with projective image~$C_2\times C_2$, let $E$ be the
-  elliptic curve with LMFDB label~\lmfdbec{6534}{a}{1}, of conductor
+  elliptic curve with label~\lmfdbec{6534}{a}{1}, of conductor
   $6534=2\cdot3^3\cdot11^2$.  
-  
-  \nf{Don't you mean Cremona label?}
-  
+
   The image of the mod~$3$ Galois representation is the normalizer of the split Cartan, which
   is projectively isomorphic to $D_2 = C_2\times C_2$.  The three quadratic
   subfields of the projective $3$-division field are $\Q(\sqrt{-3})$,
@@ -1813,10 +1822,10 @@ compatible bases as in subsection~\ref{SS:GalRepTwist},  let~$A \in
 Then, using~\eqref{E:PsiMatrix}, we have
 \begin{equation}\label{E:PsiM}
 A \rhobar_{E,p}(\sigma) A^{-1} = \rhobar_{E',p}(\sigma) =
-\rhobar_{E,p}(\sigma) \cdot \Psi_\sigma \quad \text{ for all } \sigma
+\rhobar_{E,p}(\sigma) \cdot \Psi(\sigma) \quad \text{ for all } \sigma
 \in G_K.
 \end{equation}
-Recall that $\Psi_\sigma$ is the matrix of~$\psi(\sigma)\in
+Recall that $\Psi(\sigma)$ is the matrix of~$\psi(\sigma)\in
 \Aut(E)\cong\calO^*$ acting on~$E[p]$, where $\psi$ is the cocycle
 associated to the twist.
 
@@ -1840,15 +1849,15 @@ Let $K'=K(\sqrt{-1})$ in the case of quartic twists and
 $K'=K(\sqrt{-3})$ in the case of cubic or sextic twists. Our
 hypothesis guarantees that the curves are neither quadratic twists nor
 the special quartic twist by~$-4$.  Let $m\in\{4,3,6\}$ be the order
-of the twist.  Then the map $\sigma \mapsto \Psi_\sigma$
-where~$\Psi_\sigma$ is as in~\eqref{E:PsiMatrix} restricts to a homomorphism
+of the twist.  Then the map $\sigma \mapsto \Psi(\sigma)$
+where~$\Psi(\sigma)$ is as in~\eqref{E:PsiMatrix} restricts to a homomorphism
 $G_{K'}\to\SL_2(\F_p)$ of order~$m$.  Let $F'/K'$ be the fixed field
 of its kernel.  Then $F'=K'(\root m\of u)$ where $E'$ is the twist
 of~$E$ by~$u$, with Galois groups $\Gal(F'/K')\cong C_m$ and
 $\Gal(F'/K)\cong D_m$.
 
 Equation~\eqref{E:PsiM} holds for some matrix~$A$, which is non-scalar
-since $\Psi_{\sigma}$ is non-trivial, and, since
+since $\Psi(\sigma)$ is non-trivial, and, since
 $\rhobar_{E,p}(G_{K'})$ is in a Cartan subgroup~$C$, we conclude that
 $A \not\in C$. Restricting~\eqref{E:PsiM} to~$G_{F'}$ shows that $A$
 commutes with $\rhobar_{E,p}(G_{F'}) \subset C$, hence
@@ -1856,10 +1865,10 @@ $\rhobar_{E,p}(G_{F'})$ is scalar and so projectively trivial.  Hence
 $F'$ contains the projective division field~$F \supset K'$.  To complete the
 proof we must determine the degree~$[F':F]$.
 
-Let $\overline{\Psi}_{\sigma}$ denote the image of~$\Psi_{\sigma}$
-in~$\PSL_2(\F_p)$.  The map $\sigma \mapsto \overline{\Psi}_\sigma$ is
+Let $\overline{\Psi}(\sigma)$ denote the image of~$\Psi(\sigma)$
+in~$\PSL_2(\F_p)$.  The map $\sigma \mapsto \overline{\Psi}(\sigma)$ is
 a homomorphism $G_{K'}\to\PSL_2(\F_p)$ of order~$2$ when $n=4$ and~$3$
-when $n=3,6$, since the only scalar matrix~$\Psi_{\sigma}$ is $-I$
+when $n=3,6$, since the only scalar matrix~$\Psi(\sigma)$ is $-I$
 when $n$ is even.
 
 %% The fixed field of its kernel is $F/K'$, so $\Gal(F/K)\cong D_2$
@@ -1903,7 +1912,7 @@ and $\Gal(F/K) \simeq D_6$ if $n=6$ and $u$ is not a square.
 \subsection{Congruences between higher order twists} \label{SS:higherCong}
 In this section we will study, under condition~{\bf (S)}, the congruences between an elliptic curve~$E/K$ and its quartic, cubic or sextic twists by~$u \in K$.
 
-Note that if $u = -s^2$ then $u = -4(s/2)^2$ and the quartic twist by~$u$ is obtained by composing the quartic twist by $-4$ with a quadratic twist and, similarly, if $u = -3s^2$ then $u = -27(s/3)^2$ and the sextic twist by~$u$ is obtained by composing the quadratic twist by $-27$ with a cubic twist. Since the quartic twist by~$-4$ and the quadratic twist by~$-27$ correspond to isogenies (see Remarks~\ref{R:2-isog} and~\ref{R:3-isog}) their effect on the symplectic type is well understood;
+Note that if $u = -s^2$ then $u = -4(s/2)^2$ and the quartic twist by~$u$ is obtained by composing the quartic twist by $-4$ with a quadratic twist; similarly, if $u = -3s^2$ then $u = -27(s/3)^2$ and the sextic twist by~$u$ is obtained by composing the quadratic twist by $-27$ with a cubic twist. Since the quartic twist by~$-4$ and the quadratic twist by~$-27$ correspond to isogenies (see Remarks~\ref{R:2-isog} and~\ref{R:3-isog}) their effect on the symplectic type is known;
 observe also that both these cases are covered by the theory in sections~\ref{SS:dihedral} and~\ref{SS:typeQuadratic}. 
 In view of this, we fix the following natural assumptions for this and the next section. 
 
@@ -1918,6 +1927,8 @@ with $j(E) = 0, 1728$ and let~$u \in K$.
 $p\not=3$. 
 \end{itemize}
 \nf{I think we need these extra assumptions on~$u$ for defining~$A$ in the proof of Prop.~\ref{P:higherTwists}, otherwise we have to consider these cases within the proof; see changes there for details. I don't think we need to add that~$u$ is not a 4th or 6th power because this is implied by the hypothesis in the results that follow.}
+
+\jc{agreed}
 \begin{lemma} \label{L:diagonalC}
 Let~$E/K$ be as above. 
 \begin{enumerate}
@@ -1930,9 +1941,9 @@ is a basis for~$E[p]$ with respect to which for $\sigma\in G_{K'}$ we
 have
 \begin{equation}
  \label{E:diagonalC}
-\rhobar_{E,p}(\sigma) = c_\sigma\cdot\diag(1,\eps(\sigma))
+\rhobar_{E,p}(\sigma) = c(\sigma)\cdot\diag(1,\eps(\sigma))
 \end{equation}
-with $c_\sigma\in\overline{\F}_p^*$ and
+with $c(\sigma)\in\overline{\F}_p^*$ and
 $\eps:G_{K'}\to\overline{\F}_p^*$ a character of exact order~$n$.
 \end{enumerate}
 \end{lemma}
@@ -1940,17 +1951,22 @@ $\eps:G_{K'}\to\overline{\F}_p^*$ a character of exact order~$n$.
 Part (1) follows from standard facts on~CM curves plus our running assumptions and~(2) follows by diagonalising the Cartan over $\F_p$ in
   the split case and over~$\F_{p^2}$ in the non-split case.
 \end{proof}
-\nf{Isn't $c_\sigma$ a character? Wouldn't be better a notation looking more like a character? $c(\sigma)$?}
+%% \nf{Isn't $c_\sigma$ a character? Wouldn't be better a notation
+%%   looking more like a character? $c(\sigma)$?}  \jc{You are right and
+%%   I changed it.  I was using notation usual for cocycles, but that is
+%%   not necessary since $c()$ is only defined on $G_{K'}$}.
+\jc{For consistency I changed $\Psi_{\sigma}$ to $\Psi(\sigma)$ below,
+  and also around (2.3) above.}
 \begin{lemma}\label{L:DiagonalPsi}
-Let $E'$ be the order~$m\in\{3,4,6\}$ twist of~$E$ by $u\in K^*$, with
-cocycle $\psi$. Fix basis 
-so that~\eqref{E:PsiMatrix} holds.
-Then, after extending scalars to~$\Fbar_p^*$ and changing basis so that  
-\eqref{E:diagonalC} holds, 
-the matrices $\Psi_\sigma$ in~\eqref{E:PsiMatrix} become diagonal. 
-More precisely,
+Let~$E/K$ and~$u\in K^*$ be as above.  For $m\in\{3,4,6\}$, let $\psi$
+be the order~$m$ cocycle associated to~$u$, with values
+in~$\Aut(E)\cong\calO^*$ where $\calO\cong\Z[\zeta_m]$.
+
+After extending scalars to~$\Fbar_p^*$ and changing basis so that
+\eqref{E:diagonalC} holds, the matrices $\Psi(\sigma)$
+in~\eqref{E:PsiMatrix} become diagonal.  More precisely,
 \[
-\Psi_\sigma = \diag(\eta(\sigma),\eta(\sigma)^{-1})
+\Psi(\sigma) = \diag(\eta(\sigma),\eta(\sigma)^{-1})
 \]
 where $\eta:G_K\to \overline{\F}_p^*$ is a map whose restriction to
 $G_{K'}$ is a homomorphism of order exactly~$m$.
@@ -1962,7 +1978,7 @@ that $\rhobar_{E,p}(G_{K'}) \subset C$ for some Cartan subgroup~$C \in \GL_2(\F_
 Hence $\calO$ acts on $E[p]$ 
 via matrices which are in~$C$ since the endomorphisms
 are all defined over~$K'$ and so their action commutes with that
-of~$G_{K'}$, which is not scalar. Note that the basis giving~\eqref{E:diagonalC} diagonalizes the whole of~$C$, therefore~$\Psi_\sigma$ is diagonal. Finally,  
+of~$G_{K'}$, which is not scalar. Note that the basis giving~\eqref{E:diagonalC} diagonalizes the whole of~$C$, therefore~$\Psi(\sigma)$ is diagonal. Finally,  
 an endomorphism~$\alpha$ acts via a matrix of determinant~$\deg(\alpha)$ so $\calO^*$ acts via diagonal matrices of determinant~$1$ as stated.
 
 The map~$\eta$ is obtained as follows.  In the split case
@@ -1989,28 +2005,33 @@ of section~\ref{SS:GalRepTwist}, given that we have excluded the special quartic
 
 \nf{eliminated reference to~$E'$ in the above proof. Did I overlooked something?}
 
+\jc{you were right, so I also eliminated reference to $E'$ in the
+  statement, so I also had to define $E'$ in the following Lemma.
+  Please review these changes!}
+
 \begin{lemma}\label{L:EpsEta}
-  Keeping the notation of Lemmas~\ref{L:diagonalC} and~\ref{L:DiagonalPsi}, suppose also that $E$ and $E'$ are $p$-congruent.
-  Then $\eps(\sigma)=\eta(\sigma)$ for all $\sigma\in G_{K'}$.  Moreover, 
-  we have $\PP \rhobar_{E,p}(G_K) \simeq D_n$
-  with $n=m \in \{3,4,6\}$  
-   is the  order of the twist.
+  Keeping the notation of Lemmas~\ref{L:diagonalC}
+  and~\ref{L:DiagonalPsi}, let $E'$ be the order~$m$ twist of~$E$
+  by~$u$ with~$m \in \{3,4,6\}$, and suppose also that $E$ and $E'$
+  are $p$-congruent.  Then $\eps(\sigma)=\eta(\sigma)$ for all
+  $\sigma\in G_{K'}$, and $\PP \rhobar_{E,p}(G_K) \simeq D_n$ where
+  $n=m$.
 \end{lemma}
 \begin{proof}
   Let $A\in\GL_2(\F_p)$ be the matrix of an isomorphism~$E[p]\to
   E'[p]$.  For $\sigma\in G_{K'}$ we have, from \eqref{E:PsiM} and
-  after cancelling the scalar factor~$c_\sigma$ from each side,
+  after cancelling the scalar factor~$c(\sigma)$ from each side,
 \[
-A\ \diag(1,\eps(\sigma))\ A^{-1} = \diag(1,\eps(\sigma)) \diag(\eta(\sigma),\eta(\sigma)^{-1}).
+A\ \diag(1,\eps(\sigma))\ A^{-1} = \diag(1,\eps(\sigma))\; \diag(\eta(\sigma),\eta(\sigma)^{-1}).
 \]
 Now since $A$ conjugates a non-scalar diagonal matrix into another
 diagonal matrix, it is either itself diagonal or is anti-diagonal.
 But $A$ cannot be diagonal since that would imply $\eta(\sigma)=1$ for
 all $\sigma\in G_{K'}$ (which is not the case because we have excluded the special quartic twist), so $A$ is anti-diagonal.  Therefore, conjugating any
-diagonal by~$A$ just interchanges the two diagonal entries, so
+diagonal matrix by~$A$ just interchanges the two diagonal entries, so
 the previous equation becomes
 \[
-\diag(\eps(\sigma),1) = \diag(1,\eps(\sigma)) \diag(\eta(\sigma),\eta(\sigma)^{-1}).
+\diag(\eps(\sigma),1) = \diag(1,\eps(\sigma))\; \diag(\eta(\sigma),\eta(\sigma)^{-1}).
 \]
 Hence $\eps(\sigma)=\eta(\sigma)$ for all $\sigma\in G_{K'}$, thus $n=m$ and the
 statement of the lemma follows.
@@ -2041,12 +2062,29 @@ some $u\in K^*$.
 
 \nf{Does the fact that $u$ is in~$K$ follows only from the group structure of the Galois group?}
 
-By Kummer theory the extension $F/K'$ is determined by a specific cyclic subgroup
-of order~$n$ in~$K'^*/(K'^*)^n$
-hence, noting that $\Aut(C_n)\cong\{\pm1\}$ for $n\in\{4,3,6\}$, we conclude 
-that~$u \in K^*$ is unique up to
-replacing $u$ by~$u^{-1}$ and multiplication by an element
-of~$K^*\cap(K'^*)^n$.
+\jc{Here's a partial proof.}
+
+[\def\rnu{\root n\of u} \def\rnub{\root n\of {\overline{u}}} Write
+  $\Gal(F/K)=\left<\sigma,\tau\mid\sigma^n=\tau^2=1,
+  \tau\sigma\tau=\sigma^{-1}\right>$.  The fixed field of $\sigma$
+  is~$K'$ and since $K'$ contains the $n$th roots of unity, by Kummer
+  Theory, $F=K'(\rnu)$ for some $u\in K'$.  Now
+  $\sigma(\rnu)=\zeta\rnu$ with $\zeta$ a primitive $n$th root of
+  unity, and either $\tau(u)=u$ or $\tau(u)=\overline{u}$ (the
+  $K'/K$-conjugate of~$u$).  In the first case, $u\in K$.
+
+  In the second case, I can prove that $\rnu/\rnub$ is fixed by $G$,
+  hence $\overline{u}/u=v^n$ with $v\in K$ such that $v^{2n}=1$.  For
+  $n=4$ this forces $v^n=1$ so $\overline{u}=u$ s $u\in K$.  For $n=3$
+  we might have $\overline{u}=-u$, then replace $u$ by
+  $u'=u\sqrt{-3}^3\in K$.  When $n=6$ it's OK unless $\sqrt{-1}\in K$
+  when I am stuck.  ]
+
+By Kummer theory the extension $F/K'$ is determined by a specific
+cyclic subgroup of order~$n$ in~$K'^*/(K'^*)^n$ hence, noting that
+$\Aut(C_n)\cong\{\pm1\}$ for $n\in\{4,3,6\}$, we conclude that~$u \in
+K^*$ is unique up to replacing $u$ by~$u^{-1}$ and multiplication by
+an element of~$K^*\cap(K'^*)^n$.
 
 Keeping the notations from the previous  lemmas, to prove the first part of the theorem we will construct a
 matrix~$A\in\GL_2(\F_p)$ giving
@@ -2065,18 +2103,18 @@ which cuts out the same extension $F/K'$, so it is either~$\eps$ or~$\eps^{-1}$.
 $\left.\psi\right|_{G_{K'}} = \eps$.
 
 Now let $E'$ be the order~$n$ twist of~$E$ by~$u$.  As before, we have
-$\Psi_{\sigma}=\diag(\eta(\sigma),\eta^{-1}(\sigma))$ where
+$\Psi(\sigma)=\diag(\eta(\sigma),\eta^{-1}(\sigma))$ where
 $\left.\eta\right|_{G_{K'}} = \left.\psi\right|_{G_{K'}} = \eps$ by Lemma~\ref{L:EpsEta}.
 Thus, for $\sigma\in G_{K'}$, we have
 \[
-\Psi_{\sigma} = \diag(\eps(\sigma),\eps(\sigma)^{-1}),
+\Psi(\sigma) = \diag(\eps(\sigma),\eps(\sigma)^{-1}),
 \]
 and so, the same computation as in the proof of Lemma~\ref{L:EpsEta} 
 gives that, for any anti-diagonal matrix~$A$
 and all $\sigma\in G_{K'}$, we have
 \[
 A\ \diag(1,\eps(\sigma))\ A^{-1} = \diag(\eps(\sigma),1) =
-\diag(1,\eps(\sigma)) \Psi_{\sigma},
+\diag(1,\eps(\sigma)) \Psi(\sigma),
 \]
 that is~\eqref{E:PsiM} holds for $\sigma\in G_{K'}$.
 To show that~\eqref{E:PsiM} holds for all $\sigma\in G_{K}$, it
@@ -2084,13 +2122,13 @@ suffices, since both sides of~\eqref{E:PsiM} are homomorphisms $G_K\to \GL_2(\F_
 do so for a single $\sigma \in G_K\setminus G_{K'}$.
 
 Note that $K' \cap K(\root n\of u) = K$; this follows from coprimality of the degrees for $n=3$ and by our running assumption on~$u$ for $n \in \{4,6\}$.
-We can thus choose $\tau\in G_K$ such that it fixes~$\root n\of u$ and is non-trivial when restriced to~$K'$. 
+We can thus choose $\tau\in G_K$ such that it fixes~$\root n\of u$ and is non-trivial when restricted to~$K'$. 
 Let $A=\rhobar_{E,p}(\tau)$. 
 Since $\tau\notin G_{K'}$ 
 the matrix~$A \not\in C$ is anti-diagonal 
 because we have diagonalized the 
 Cartan~$C$ and $\rhobar_{E,p}(\tau)$ is in its normalizer. Moreover, we have 
-$\psi(\tau)=1$ so $\Psi_\tau=I$ 
+$\psi(\tau)=1$ so $\Psi(\tau)=I$ 
 and~\eqref{E:PsiM} 
 with $\sigma = \tau$ is trivially satisfied.
 
@@ -2099,6 +2137,13 @@ $A \in \GL_2(\F_{p})$; in the non-split case we have proved that it holds for an
 we obtain that \eqref{E:PsiM} holds in~$\GL_2(\F_p)$.
 
 \nf{Does this last paragraph make sense? Is it even necessary?}
+
+\jc{It does make sense.  We are not precise about whether (e.g.)
+  $\rhobar(\sigma)$ means the matrix of the operator itself, which is
+  a bit confusing since we have changed basis to diagonalise.  But I
+  wrote our an explicit calculation and it is fine since all the
+  conjugations cancel out.  I did not need to use that $A$ normalises
+  $C$.  I'll write it out here if you like...}
 
 We will now prove the second statement. First, recall from the first paragraph that $u \in K$ is unique up to inverse and
 multiplication by an element
@@ -2111,7 +2156,13 @@ possible choices for~$u$, namely
   \item $\{u, u^{-1}\}$ if $n=3$.
 \end{itemize}
 
+This follows from the elementary observation that the natural map
+$K^*/(K^*)^n \to (K'^*)/(K'^*)^n$ is injective when $n=3$ and has
+kernel $\{1,-4\}$ for $n=4$ and $\{1,-27\}$ for $n=6$.
+
 \nf{Maybe it is better to include more details proving of one of the cases above? I don't find this so clear. For example, why aren't there other elements of~$K'$ whose~$n$th power is in $K$?}
+
+\jc{I hope that what I have added helps here.}
 
 Secondly, observe that the construction in the first part of the proof 
 only works for
@@ -2137,6 +2188,8 @@ This is given by the following result.
 
 \nf{I wonder if we should repeat all the hypothesis in this theorem to make it self contained and easier to use, since this is the main objective of this section.}
 
+\jc{Yes, definitely.  (Not done yet)}
+
 \begin{theorem}\label{T:typeHigher}
  Keep all the running assumptions and notations from section~\ref{SS:higherCong}. 
  Let $E'/K$ be the order~$n \in \{3,4,6\}$ twist of~$E/K$ by~$u \in K^*$. 
@@ -2158,8 +2211,8 @@ moreover, $p\equiv\pm3\pmod8$;
 
 \begin{proof}
 This proof builds on the proof of Proposition~\ref{P:higherTwists}.
-Indeed, we have choosen $\tau\in G_K$ to be such that it fixes~$\root n\of u$ and 
-is non-trivial when restriced to~$K'$ and 
+Indeed, we have chosen $\tau\in G_K$ to be such that it fixes~$\root n\of u$ and 
+is non-trivial when restricted to~$K'$ and 
 we let $A = \rhobar_{E,p}(\tau)$. We have shown that~$A$ satisfies~\eqref{E:PsiM} and so, by the discussion following~\eqref{E:PsiM}, 
 the symplectic type of the congruence is given by the square class of~$\det A$. 
 
@@ -2179,7 +2232,7 @@ We divide into cases:
 (a) Suppose $n=3$. 
 We have $\Gal(F/K) \simeq D_3$ and so $K'$ is the unique quadratic subfield of~$F$, therefore $\sqrt{p^*} \in K'$. Since~$\tau$ acts non-trivially on~$K'$ the congruence is anti-symplectic.
 
-(b) Suppose $n=4$. We have $\Gal(F/K) \simeq D_4$ and there are exactly three quadratic subextensions of~$F/K$.
+(b) Suppose $n=4$. We have $\Gal(F/K) \simeq D_4$ and there are exactly three quadratic sub-extensions of~$F/K$.
 Furthermore, the fields 
 $K'=K(\sqrt{-1})$, $K(\sqrt{p^*})$, $K(\sqrt{u})$ 
 are quadratic extensions of~$K$ satisfying
@@ -2198,7 +2251,7 @@ note that in this case~$\sqrt{up^*} \not\in K$.
 Recall from Proposition~\ref{P:higherTwists} there is also a $p$-congruence between~$E$ and its quartic twist by~$-4u$. Applying the previous argument to this congruence  gives that it is symplectic if and only 
 if $\sqrt{-4up^*} \in K$. Thus the two congruences are of the same type if and only if~$\sqrt{-1} \in K$ which is not the case by assumption.
 
-(c) Suppose $n=6$. We have $\Gal(F/K) \simeq D_6$ and again there are exactly three quadratic subextensions of~$F/K$.
+(c) Suppose $n=6$. We have $\Gal(F/K) \simeq D_6$ and again there are exactly three quadratic sub-extensions of~$F/K$.
 Furthermore, the fields 
 $K'=K(\sqrt{-3})$, $K(\sqrt{p^*})$, $K(\sqrt{u})$ 
 are quadratic extensions of~$K$ satisfying
@@ -2207,15 +2260,33 @@ The rest of the argument follows similarly to~(b).
 
 \nf{I am confused by the following paragraph. Why do we give the congruence conditions? Can you rewrite their proof?}
 
-For the congruence condition on~$p$ (which are only nontrivial when
-$n=4,6$), recall that when $n=4,6$ the two quartic (respectively,
-sextic) twists are $2$-isogenous (respectively $3$-isogenous) to each
-other.  When $\sqrt{p^*}\in K$ these isogenies induce symplectic
-congruences, since both the twists of~$E$ are symplectically
-congruent, so $p\equiv\pm1\pmod{2n}$.  When $\sqrt{p^*}\notin K$ these
-isogenies induce anti-symplectic congruences, so
-$p\not\equiv\pm1\pmod{2n}$.
+\jc{I thought it was an interesting corollary that the situation we
+  are describing can only happen for half the primes (when $n=4,6$).
+  I revised the proof.  Note that we only get two twists, which
+  are isogenous to each other, when $n=4,6$ not $n=3$ so there is no
+  congruence condition when $n=3$, as you can see directly in (2)(b)
+  and implicitly in (2)(a) since all primes $p>3$ are $\pm1\pmod6$!
+}
+
+For the congruence conditions on~$p$, which are only non-trivial when
+$n=4$ or~$6$ (since $p>3$ implies $p\equiv\pm1\pmod6$), recall that
+when $n=4$ or~$6$ the two quartic (respectively, sextic) twists are
+$2$-isogenous (respectively $3$-isogenous) to each other.  When
+$\sqrt{p^*}\in K$ these isogenies induce symplectic congruences, since
+both the twists of~$E$ are symplectically congruent.  By the isogeny
+criterion, this implies that $2$ (respectively~$3$) is a quadratic
+residue, so $p\equiv\pm1\pmod{8}$ (respectively, mod~$12$).  When
+$\sqrt{p^*}\notin K$ these isogenies induce anti-symplectic
+congruences, so $p\not\equiv\pm1\pmod{8}$ (respectively, mod~$12$).
 \end{proof}
+
+\jc{See my answer to your question below about cutting out some
+  examples for why I added the following.  It can go (or be reworded)
+  if we do cut some of the examples.}
+
+We end this section with four families of examples, giving all
+possibilities for quartic and sextic twist congruences over~$\Q$< with
+$p=3$ or~$5$ in the quartic case and $p=5$ or~$7$ in the sextic case.
 
 \begin{example}\label{Ex:j1728p3}
 Let $K=\Q$, $p=3$, $j=1728$ and 
@@ -2225,11 +2296,23 @@ the mod~$3$ projective image is the normaliser of a non-split Cartan, isomorphic
 
 \nf{Before there was no assumption $3 \nmid a$. Was the claim about the group structure still true and verified by explicit calculation?}
 
+\jc{I don't remember adding this condition myself.  Perhaps I did.
+  But looking at the LMFDB for curves with j=1728, they are all
+  maximal at 3, so I think the condition is unnecessary for the
+  projective image to be D4.}
+
 Following the proof of Proposition~\ref{P:higherTwists}, one checks that up to $4$th powers, the subgroup of $\Q^*/(\Q^*)^4$ which become $4$th
   powers in the projective $3$-division field of~$E_a$ is generated
   by~$-3/a^2$ and~$-4$.  
   
-\nf{How was this checked for arbitrary~$a$?}  
+  \nf{How was this checked for arbitrary~$a$?}
+
+  \jc{I think I did a generic computation to show that the 4th root of
+    $-3a^2$ is in there, but I cannot remember.  I think the wording
+    ``one checks that'' was supposed to tell the reader that they can
+    check for themselves if they do not believe us.  If some referee
+    complains then I'll go through it again (and for the following
+    examples, whichever we keep.)}
   
 Hence, from Proposition~\ref{P:higherTwists} we expect a $3$-congruence between $E_a$
   and either $E_{-3/a}$ (twisting by~$u=-3/a^2$) or $E_{-a^3/3}$
@@ -2237,13 +2320,25 @@ Hence, from Proposition~\ref{P:higherTwists} we expect a $3$-congruence between 
   
  \nf{How was this checked for arbitrary~$a$? Do we need to check for 
  a single~$a$ and apply the proposition for simultaneous twisting? I've removed it from this version to keep the paper under 30 pages, but maybe this is enough reason to keep it?}   
-  
+
+ \jc{One motivation for me to have the simultaneous twisting result
+   was to make statements like this only requiring to be checked for
+   one value of $a$, such as $a=1$.  Even then, to be honest we never
+   (I think) prove that these quartic and sextic twists are
+   anti-linear, though that surely follows from the fact that the
+   isomorphism matrix $A$ is in the normaliser but not the Cartan.}
+ 
 Finally, we have $p^* = -3$ and $u=-3/a^2$, hence $\sqrt{p^*u} = 1/a \in \Q$
 and the congruence is symplectic by Theorem~\ref{T:typeHigher}.
 Moreover, there is a congruence with the quartic twist by $-4u=12/a^2$ which is antisymplectic.
 \end{example}
 
 \nf{The following example is analogous to the previous one. We should keep only one. I think it is better to keep the one for $p=3$ as this requires $j=1728$. In any case, my comments as in the previous example also apply.}
+
+\jc{You are right.  The reason for having all four examples is that
+  this gives a complete list of what can happen over~$\Q$, which I
+  thought was worth recording.  Can we keep them in unless asked to
+  cut hem out?}
 
 \begin{example}\label{Ex:j1728p5}
 $K=\Q$, $p=5$, $j=1728$.  The projective image is the normaliser of a
@@ -2293,6 +2388,8 @@ $K=\Q$, $p=7$, $j=0$.  The projective image is the normaliser of a
 
 \nf{I am not so sure the following examples still make sense. We start with two congruent curves (one of them with $j=1728$) and twist them, but the twists are different: one is the quartic twist by $-4$ and the other is the quadratic twist by $-1$. The reason why the twisted curves are still congruent is different from the case of taking simultaneous quadratic twists and seems like an accident. Indeed, it is
 is because the tensoring by $\chi_{-1}$ does not affect the mod~$p$ representations of the $j=1728$ curve and its $-4$ quartic twist is an isogenous curve..in general, if we take a simultaneous non-quadratic twist, we do not have a congruence on the twisted curves -- we need to twist one of them by the inverse to keep the congruence. (These made sense when we had the previous definition of quadratic twists.)}
+
+\jc{I agree!  Cut them both out.}
 
 \begin{example}
 Let $E_1=\lmfdbec{288}{a}{1}$ and $E_2=\lmfdbec{32544}{b}{1}$, of
@@ -2355,10 +2452,10 @@ $p$-congruence $\varphi:E_1[p]\to E_2[p]$.
 \item
   Suppose that $j(E_1)=j(E_2)=1728$, with $E_1=E_{a_1,0}$ and
   $E_2=E_{a_2,0}$.  If $\varphi$ is an $\calO$-linear congruence, then
-  for all $u\in K^*$ we also have a $p$-congruence $E_{ua_1,0}\cong
-  E_{ua_2,0}$, while if $\varphi$ is $\calO$-anti-linear, then for all
+  for all $u\in K^*$ we also have a $p$-congruence $E_{au_1,0}\cong
+  E_{au_2,0}$, while if $\varphi$ is $\calO$-anti-linear, then for all
   $u\in K^*$ we also have a $p$-congruence $E_{u^{-1}a_1,0}\cong
-  E_{ua_2,0}$.
+  E_{au_2,0}$.
 \item
   Suppose that $j(E_1)=j(E_2)=0$, with $E_1=E_{0,b_1}$ and
   $E_2=E_{0,b_2}$.  If $\varphi$ is an $\calO$-linear, then for all
@@ -2483,7 +2580,7 @@ $\legendre{2}{7}=+1$.
 
 \begin{example} \label{Ex:3twists}
   For an example with projective image~$C_2\times C_2$, let $E$ be the
-  elliptic curve with LMFDB label~\lmfdbec{6534}{a}{1}, of conductor
+  elliptic curve with label~\lmfdbec{6534}{a}{1}, of conductor
   $6534=2\cdot3^3\cdot11^2$.  The image of the projective mod~$3$
   Galois representation is the normalizer of the split Cartan, which
   is isomorphic to $D_4 = C_2\times C_2$.  The three quadratic
@@ -2873,7 +2970,7 @@ $-\det(M)$ is square if and only if the Cartan is split, so (without
 loss of generality) we may take $\delta=-\det(M)$.
 
 Since $M$ is central in $\rhobar_{E,p}(G_K)$ modulo scalars, for all
-$g\in\rhobar_{E,p}(G_K)$ we have $MgM^{-1}=\lambda(g)g$ with a scalar
+$g\in\rhobar_{E,p}(G_K)$ we have $GM^{-1}=\lambda(g)g$ with a scalar
 $\lambda(g)=\pm1$ (comparing determinants).  Now $\lambda(g)=1$ if and
 only if $g$ commutes with~$M$ which---since $M$ is a non-scalar element
 of the Cartan subgroup---is if and only if $g$ is itself in the Cartan
@@ -2955,7 +3052,7 @@ Let~$E$ and~$E'$ be non-trivial cubic twists over~$K$, i.e. sextic twists by a s
 
 Fix bases for $E[p]$ and~$E'[p]$ as above so that the matrix equality \eqref{E:PsiMatrix} holds. Then 
 $\rhobar_{E,p}(G_K) = \rhobar_{E',p}(G_K)$ 
-as subgroups of~$\GL_2(\F_p)$. In particular, the common image contains $\{ \Psi_\sigma \}_{\sigma \in G_K}$.
+as subgroups of~$\GL_2(\F_p)$. In particular, the common image contains $\{ \Psi(\sigma) \}_{\sigma \in G_K}$.
 \end{proposition}
 \jc{I hope you have some notes for this!  I cannot remember the argument.}
 
@@ -2974,10 +3071,10 @@ Since all automorphisms of~$D_3$ are inner,
 there is $\tau \in G_K$ such that 
 $M = \rhobar_{E,p}(\tau) \neq \Id$ in~$\PGL_2(\F_p)$.
 
-If $\Psi_\tau \neq \Id$, then   
+If $\Psi(\tau) \neq \Id$, then   
 taking~$\sigma = \tau$ in~\eqref{E:PsiM} 
 gives
-$\rhobar_{E,p}(\tau) = \rhobar_{E,p}(\tau) \cdot \Psi_\tau$, a contradiction. We conclude that
+$\rhobar_{E,p}(\tau) = \rhobar_{E,p}(\tau) \cdot \Psi(\tau)$, a contradiction. We conclude that
 $\tau \in G_{K(\root3\of{u})}$. 
 Moreover, by hypothesis
 $F = K(\sqrt{-3},\root3\of{u})$ is
@@ -3020,154 +3117,6 @@ $\sqrt{p^*} \in K(\sqrt{u})$, that is when
 $\sqrt{p^*} \in K$ or $K(\sqrt{u}) = K(\sqrt{p^*})$, as desired.
 \end{proof}
 \end{comment}
-
-\section{Auxiliary results for the reducible case}
-
-\nf{Shouldn't this section be a subsection of \S4 instead or even be inside \S4.5 ?}
-
-Some of the mod~$7$ congruences 
-$E[7] \simeq E'[7]$ in the LMFDB database occur 
-when these Galois modules are reducible. Compared to the irreducible case, establishing reducible congruences requires extra work because when working with the semisimplifications $E[7]^{ss}$ and $E'[7]^{ss}$ important information is lost.
-The objective of this section is to establish Theorem~\ref{T:reducible} which will allow us to rigorously prove congruences in the reducible case.
-
-
-Let $B \subset \GL_2(\F_p)$ be the standard Borel subgroup, i.e. the
-upper triangular matrices. Let $H \subset B$ be a subgroup of order
-divisible by~$p$.  We can write~$H = D\cdot U$ where $D \subset B$ is
-a subgroup of diagonal matrices and $U$ is cyclic generated by
-$\left(\begin{smallmatrix} 1 & 1 \\ 0 & 1
-                            \end{smallmatrix} \right)$.   
-Moreover, $U$ is a normal subgroup of~$H$ 
-and we write $\pi : H \to H/U \simeq D$ for the quotient map.
-
-\begin{proposition} \label{P:inner}
-Let $H = D \cdot U \subset B$ and $\pi$ be as above. 
-Let $\phi$ be an automorphism of~$H$. Assume that  
-$\pi(x) = \pi(\phi(x))$ for all $x \in H$. 
-
-Then $\phi$ is given by conjugation in $B$, i.e. there is $A \in B$ such that $\phi(x) = AxA^{-1}$. 
-\end{proposition}
-\begin{proof}
-Let $x \in H$ and write it as $x = du$ with $d \in D, u \in U$.
-Note that $U$ is the unique normal subgroup with order~$p$, so 
-$\phi(U) = U$ and $\phi(D)=D$ for all $\phi \in \Aut H$.
-By hypothesis, we have 
-\[
- \pi(x) = \pi(\phi(x)) = \pi(\phi(d))\pi(\phi(u)) \iff dU = \phi(d)U
- \iff d\phi(d)^{-1} \in U.
-\]
-Since $d, \phi(d) \in D$ we have $d\phi(d)^{-1} \in D \cap U = \{ I_2\}$ therefore $d\phi(d)^{-1} = I_2$, where $I_2$ is the identity in $\GL_2(\F_p)$.
-Thus $d = \phi(d)$ and we conclude that any $\phi$ 
-as in the statement is the same as an automorphism of~$U$ (extended to~$H$ by $\phi(d)=d$ for all $d\in D$). 
-
-Write $N_B(U)$  for the normaliser of $U$ in $B$ and $C_B(U)$ for its centralizer. 
-We have $N_B(U) = B$ 
-and $C_B(U)$ are the matrices of the form $\left(\begin{smallmatrix}
-                            \lambda & b \\
-                            0 & \lambda
-                            \end{smallmatrix} \right)$
-with $\lambda \neq 0$. Thus $\# N_B(U)/C_B(U) = p-1$. 
-Since  we also have 
-\[
- N_B(U)/C_B(U) \hookrightarrow \Aut U \simeq \F_p^*
-\]
-it follows that $\Aut U \simeq N_B(U)/C_B(U)$, as desired.
-\end{proof}
-
-\begin{proposition} \label{P:fieldF}
-Let $p > 2$ be a prime. Let $E/K$ be an elliptic curve such that 
-$\rhobar_{E,p}$ is reducible. Assume there is an element of order~$p$ 
-in the image of~$\rhobar_{E,p}$. 
-
-Then, there is a field $F \supset K$ such that $[F : K] = p$ and $E$ acquires a 
-second isogeny over~$F$.
-\end{proposition}
-\begin{proof} We can choose a basis of $E[p]$ where
-\[
-\rhobar_{E,p} =  \begin{pmatrix}
-                            \chi& h \\
-                            0 & \chi'
-                            \end{pmatrix}.
-\]
-
-Let $H$ be the set of elements $\sigma \in  G_K$ such 
-that $h(\sigma) = 0$. Since $\rhobar_{E,p}$ is a homomorphism it follows 
-that $H$ is a subgroup of $G_K$. 
-We let $F \subset K(E[p])$ to be the field fixed by $H$.
-Since there is an element of order~$p$ in the image of~$\rhobar_{E,p}$ and 
-$\left(\begin{smallmatrix}
-                            \chi & 0 \\
-                            0 & \chi'
-                            \end{smallmatrix} \right)$
-has order coprime to~$p$, 
-it follows that $[F : K] =p$.
-\end{proof}
-
-
-\begin{theorem} \label{T:reducible}
-Let $p > 2$ be a prime. Let $E_1, E_2$ be elliptic curves 
-over~$K$ such that 
-\begin{itemize}
- \item[(i)] $\rhobar_{E_1,p}^{ss} \simeq \rhobar_{E_2,p}^{ss} \simeq \chi \oplus \chi'$,  where $\chi, \chi' : G_K \to \F_p^*$ are characters;
- \item[(ii)] both $\rhobar_{E_1,p}$ and $\rhobar_{E_2,p}$ have an element of
- order~$p$ in their image.
-\end{itemize}
-For $i=1,2$, let $F_i/K$ be a degree~$p$ extension where $E_i$
-acquires a second isogeny, as given by Proposition~\ref{P:fieldF}.
-
-After replacing $E_2$ by a $p$-isogenous curve if necessary, we have
-$\rhobar_{E_1,p} \simeq \rhobar_{E_2,p}$ if and only if $F_1 \simeq
-F_2$.
-\end{theorem}
-\begin{proof} Clearly, 
-if $\rhobar_{E_1,p} \simeq \rhobar_{E_2,p}$ 
-then $F_1 \simeq F_2$. We now prove the opposite direction.
-
-From (i) it follows that $\rhobar_{E_i,p}$ is reducible and that, after replacing $E_2$ by a $p$-isogenous curve if necessary (to swap 
-$\chi$ with $\chi'$), 
-we have 
-\[
-\rhobar_{E_i,p} =  \begin{pmatrix}
-                            \chi & h_i \\
-                            0 & \chi'
-                            \end{pmatrix} \quad \text{ with } \quad  h_i : G_K \to \F_p.  
-\]
-Let $L$ be the field cut out 
-by $\chi \oplus \chi'$. 
-It follows from (ii) that $h_i|_{G_L} \neq 0$, and
-hence the matrix $\left(\begin{smallmatrix}
-                            1 & 1 \\
-                            0 & 1
-                            \end{smallmatrix} \right)$  
-is in the image of $\rhobar_{E_i,p}$ for $i=1,2$.
-                            
-Write $K_i = K(E_i[p])$. 
-We have $[K_i : K] = [K_i : L][L : K] = p [L : K]$. 
-Since the degree $[L : K]$ divides $(p-1)^2$ it is coprime 
-to $p = [F_i : K]$ therefore we have $K_i = L F_i$.
-
-Suppose $F_1 \simeq F_2$. Since $K_1$ is Galois, we have $F_2 \subset K_1$ and therefore $K_p := K_1 = K_2$ is the field cut out by both
-$\rhobar_{E_1,p}$ and $\rhobar_{E_2,p}$, i.e. these representations have the same kernel.
-
-Write $G = \Gal(K_p / K)$. From now on we think of $\rhobar_{E_i,p}$ as an injective representation of~$G$. Note that the images of $\rhobar_{E_1,p}$ and $\rhobar_{E_2,p}$
-is the same subgroup~$H$ of the Borel.
-
-All the elements in $H$ are of the form $\rhobar_{E_2,p}(\sigma)$ for $\sigma \in G$, so we can consider the map $\phi = \rhobar_{E_1,p} \circ \rhobar_{E_2,p}^{-1} : H \to H$. It is an automorphism of~$H = D\cdot U$ satisfying the hypothesis of Proposition~\ref{P:inner}, where $D$ are 
-the matrices $\left(\begin{smallmatrix}
-                            \chi & 0 \\
-                            0 & \chi'
-                            \end{smallmatrix} \right)$.  
-Then, $\phi$ is given by conjugation, that is
-\[
- \phi(\rhobar_{E_2,p}(\sigma)) = A \rhobar_{E_2,p}(\sigma) A^{-1}.
-\]
-Since we also have
-\[ 
-\phi(\rhobar_{E_2,p}(\sigma)) 
-=  \rhobar_{E_1,p} \circ \rhobar_{E_2,p}^{-1}(\rhobar_{E_2,p}(\sigma)) = \rhobar_{E_1,p}(\sigma)
-\]
-we conclude that $\rhobar_{E_1,p}(\sigma) = A \rhobar_{E_2,p}(\sigma) A^{-1}$, as desired.
-\end{proof}
 
 \section{Finding congruences and determining their symplectic type}\label{S:statistics}
 
@@ -3425,6 +3374,17 @@ for $j'=0$ when there may be four by Proposition~\ref{P:higherTwists}.
 
 \nf{I am not sure the counting of the pre-images over~$\Q$ is correct or at least needs further details. Can't we have mod~$7$ projective image $C_2 \times C_2$ for curves over~$\Q$ with bad reduction at~7? Still, in that case, not all the congruences would be symplectic and so the amount of pre-images seems to still be at most 2 by part (2) of Theorem~\ref{T:quadratic}. For the case $j'=0,1728$ by Proposition 2.15 one gets 3 pre-images and for $j'=0$ we also have the quadratic twist by $-3$ and for $j'=1728$ the quartic twist by $-4$; however, not all symplectic.}
 
+\jc{You are probably right.  I am not sure that it is worth the
+  trouble to get the exact count.  It is surely the same question as
+  ``Given $E/\Q$, how many twists of $E$ can be symplectically
+  $7$-congruent to $E$?''.  However your sketch seems almost complete
+  (taking into account that we only want symplectic congruences).
+  Note also that the answer to the same question for antisymplectic
+  congruences (the number of pre-images of $j'$ in $X_E^-(7)$) must be
+  the same, since any two are symplectically congruent to each other.
+  To make this correct we would also have make sure about all the
+  reducible cases.  Perhaps not worth it.}
+
 If there are no preimages of~$j'$, we conclude that the isomorphism
 $E[7]\cong E'[7]$ is not symplectic.  Otherwise, for each preimage
 $P\in X_E(7)(\Q)$ we compute the curve associated to~$P$, which may be
@@ -3523,14 +3483,167 @@ $\lmfdbec{11025}{c}{1}$ are sextic (but  not quadratic or cubic) twists
 and illustrate Proposition~\ref{P:higherTwists}.
 \end{example}
 
+\subsection{Auxiliary results for the reducible case}
+
+\hfill\break\nf{Shouldn't this section be a subsection of \S4 instead or even be inside \S4.5 ?}
+
+\jc{I moved it here as a new subsection}
+
+Compared to the irreducible case, establishing reducible congruences
+requires extra work because when working with the semisimplifications
+$E[7]^{ss}$ and $E'[7]^{ss}$ important information is lost.  The
+objective of this section is to establish Theorem~\ref{T:reducible}
+which will allow us to rigorously prove congruences in the reducible
+case.
+
+
+Let $B \subset \GL_2(\F_p)$ be the standard Borel subgroup, i.e. the
+upper triangular matrices. Let $H \subset B$ be a subgroup of order
+divisible by~$p$.  We can write~$H = D\cdot U$ where $D \subset B$ is
+a subgroup of diagonal matrices and $U$ is cyclic generated by
+$\left(\begin{smallmatrix} 1 & 1 \\ 0 & 1
+                            \end{smallmatrix} \right)$.   
+Moreover, $U$ is a normal subgroup of~$H$ 
+and we write $\pi : H \to H/U \simeq D$ for the quotient map.
+
+\begin{proposition} \label{P:inner}
+Let $H = D \cdot U \subset B$ and $\pi$ be as above. 
+Let $\phi$ be an automorphism of~$H$. Assume that  
+$\pi(x) = \pi(\phi(x))$ for all $x \in H$. 
+
+Then $\phi$ is given by conjugation in $B$, i.e. there is $A \in B$ such that $\phi(x) = AxA^{-1}$. 
+\end{proposition}
+\begin{proof}
+Let $x \in H$ and write it as $x = du$ with $d \in D, u \in U$.
+Note that $U$ is the unique normal subgroup with order~$p$, so 
+$\phi(U) = U$ and $\phi(D)=D$ for all $\phi \in \Aut H$.
+By hypothesis, we have 
+\[
+ \pi(x) = \pi(\phi(x)) = \pi(\phi(d))\pi(\phi(u)) \iff dU = \phi(d)U
+ \iff d\phi(d)^{-1} \in U.
+\]
+Since $d, \phi(d) \in D$ we have $d\phi(d)^{-1} \in D \cap U = \{ I_2\}$ therefore $d\phi(d)^{-1} = I_2$, where $I_2$ is the identity in $\GL_2(\F_p)$.
+Thus $d = \phi(d)$ and we conclude that any $\phi$ 
+as in the statement is the same as an automorphism of~$U$ (extended to~$H$ by $\phi(d)=d$ for all $d\in D$). 
+
+Write $N_B(U)$  for the normaliser of $U$ in $B$ and $C_B(U)$ for its centralizer. 
+We have $N_B(U) = B$ 
+and $C_B(U)$ are the matrices of the form $\left(\begin{smallmatrix}
+                            \lambda & b \\
+                            0 & \lambda
+                            \end{smallmatrix} \right)$
+with $\lambda \neq 0$. Thus $\# N_B(U)/C_B(U) = p-1$. 
+Since  we also have 
+\[
+ N_B(U)/C_B(U) \hookrightarrow \Aut U \simeq \F_p^*
+\]
+it follows that $\Aut U \simeq N_B(U)/C_B(U)$, as desired.
+\end{proof}
+
+\begin{proposition} \label{P:fieldF}
+Let $p > 2$ be a prime. Let $E/K$ be an elliptic curve such that 
+$\rhobar_{E,p}$ is reducible. Assume there is an element of order~$p$ 
+in the image of~$\rhobar_{E,p}$. 
+
+Then, there is a field $F \supset K$ such that $[F : K] = p$ and $E$ acquires a 
+second isogeny over~$F$.
+\end{proposition}
+\begin{proof} We can choose a basis of $E[p]$ where
+\[
+\rhobar_{E,p} =  \begin{pmatrix}
+                            \chi& h \\
+                            0 & \chi'
+                            \end{pmatrix}.
+\]
+
+Let $H$ be the set of elements $\sigma \in  G_K$ such 
+that $h(\sigma) = 0$. Since $\rhobar_{E,p}$ is a homomorphism it follows 
+that $H$ is a subgroup of $G_K$. 
+We let $F \subset K(E[p])$ to be the field fixed by $H$.
+Since there is an element of order~$p$ in the image of~$\rhobar_{E,p}$ and 
+$\left(\begin{smallmatrix}
+                            \chi & 0 \\
+                            0 & \chi'
+                            \end{smallmatrix} \right)$
+has order coprime to~$p$, 
+it follows that $[F : K] =p$.
+\end{proof}
+
+
+\begin{theorem} \label{T:reducible}
+Let $p > 2$ be a prime. Let $E_1, E_2$ be elliptic curves 
+over~$K$ such that 
+\begin{itemize}
+ \item[(i)] $\rhobar_{E_1,p}^{ss} \simeq \rhobar_{E_2,p}^{ss} \simeq \chi \oplus \chi'$,  where $\chi, \chi' : G_K \to \F_p^*$ are characters;
+ \item[(ii)] both $\rhobar_{E_1,p}$ and $\rhobar_{E_2,p}$ have an element of
+ order~$p$ in their image.
+\end{itemize}
+For $i=1,2$, let $F_i/K$ be a degree~$p$ extension where $E_i$
+acquires a second isogeny, as given by Proposition~\ref{P:fieldF}.
+
+After replacing $E_2$ by a $p$-isogenous curve if necessary, we have
+$\rhobar_{E_1,p} \simeq \rhobar_{E_2,p}$ if and only if $F_1 \simeq
+F_2$.
+\end{theorem}
+\begin{proof} Clearly, 
+if $\rhobar_{E_1,p} \simeq \rhobar_{E_2,p}$ 
+then $F_1 \simeq F_2$. We now prove the opposite direction.
+
+From (i) it follows that $\rhobar_{E_i,p}$ is reducible and that, after replacing $E_2$ by a $p$-isogenous curve if necessary (to swap 
+$\chi$ with $\chi'$), 
+we have 
+\[
+\rhobar_{E_i,p} =  \begin{pmatrix}
+                            \chi & h_i \\
+                            0 & \chi'
+                            \end{pmatrix} \quad \text{ with } \quad  h_i : G_K \to \F_p.  
+\]
+Let $L$ be the field cut out 
+by $\chi \oplus \chi'$. 
+It follows from (ii) that $h_i|_{G_L} \neq 0$, and
+hence the matrix $\left(\begin{smallmatrix}
+                            1 & 1 \\
+                            0 & 1
+                            \end{smallmatrix} \right)$  
+is in the image of $\rhobar_{E_i,p}$ for $i=1,2$.
+                            
+Write $K_i = K(E_i[p])$. 
+We have $[K_i : K] = [K_i : L][L : K] = p [L : K]$. 
+Since the degree $[L : K]$ divides $(p-1)^2$ it is coprime 
+to $p = [F_i : K]$ therefore we have $K_i = L F_i$.
+
+Suppose $F_1 \simeq F_2$. Since $K_1$ is Galois, we have $F_2 \subset K_1$ and therefore $K_p := K_1 = K_2$ is the field cut out by both
+$\rhobar_{E_1,p}$ and $\rhobar_{E_2,p}$, i.e. these representations have the same kernel.
+
+Write $G = \Gal(K_p / K)$. From now on we think of $\rhobar_{E_i,p}$ as an injective representation of~$G$. Note that the images of $\rhobar_{E_1,p}$ and $\rhobar_{E_2,p}$
+is the same subgroup~$H$ of the Borel.
+
+All the elements in $H$ are of the form $\rhobar_{E_2,p}(\sigma)$ for $\sigma \in G$, so we can consider the map $\phi = \rhobar_{E_1,p} \circ \rhobar_{E_2,p}^{-1} : H \to H$. It is an automorphism of~$H = D\cdot U$ satisfying the hypothesis of Proposition~\ref{P:inner}, where $D$ are 
+the matrices $\left(\begin{smallmatrix}
+                            \chi & 0 \\
+                            0 & \chi'
+                            \end{smallmatrix} \right)$.  
+Then, $\phi$ is given by conjugation, that is
+\[
+ \phi(\rhobar_{E_2,p}(\sigma)) = A \rhobar_{E_2,p}(\sigma) A^{-1}.
+\]
+Since we also have
+\[ 
+\phi(\rhobar_{E_2,p}(\sigma)) 
+=  \rhobar_{E_1,p} \circ \rhobar_{E_2,p}^{-1}(\rhobar_{E_2,p}(\sigma)) = \rhobar_{E_1,p}(\sigma)
+\]
+we conclude that $\rhobar_{E_1,p}(\sigma) = A \rhobar_{E_2,p}(\sigma) A^{-1}$, as desired.
+\end{proof}
+
+
+
 \subsection{Distinguishing symplectic from antisymplectic: reducible
   case}
 
-One additional complication arises in this case.  Indeed, from Steps
-1--3 we have $E[7]^{\sss} \simeq E'[7]^{\sss}$ but this is
-insufficient to conclude $E[7] \simeq E'[7]$ when these are reducible
-$G_\Q$-modules.  To achieve this we will apply
-Theorem~\ref{T:reducible} and its proof.
+From Steps 1--3 we have (for certain pairs~$(E,E')$ established that
+$E[7]^{\sss} \simeq E'[7]^{\sss}$ but this is insufficient to conclude
+$E[7] \simeq E'[7]$ when these are reducible $G_\Q$-modules.  To
+achieve this we will apply Theorem~\ref{T:reducible} and its proof.
 
 Recall that $E[7]$ is reducible if and only if $E$ admits a rational
 $7$-isogeny.  Over $\Q$ there is only ever at most one $7$-isogeny,
@@ -3637,7 +3750,7 @@ smaller subsets which have actually isomorphic $7$-torsion modules, of
 which $384$ are nontrivial.  Among these there are $38$ classes also
 admitting a $2$-isogeny and $22$ classes admitting a $3$-isogeny,
 making a total of $849$ curves, partitioned into mutually
-$7$-congruent subsets of sze $2$, $3$ or~$4$: there are $263$ sets of
+$7$-congruent subsets of size $2$, $3$ or~$4$: there are $263$ sets of
 size~$2$, of which the congruence is symplectic in $142$ cases and
 anti-symplectic in $121$ cases; $101$ of size~$3$, of which all the
 congruences are symplectic in $56$ cases, and in the remaining $45$
@@ -3826,6 +3939,10 @@ LMS J.\ Comput.\ Math.\ {\bf 17} (2014), no. 1, 536--564.
 Enrique Gonz\'{a}lez-Jim\'{e}nez and \'{A}lvaro Lozano-Robledo,
 \newblock Elliptic curves with abelian division fields.
 \newblock {\em Math. Z.}, 283(3-4):835--859, 2016.
+
+\bibitem{Halberstadt-11nonsplit}
+Emmanuel Halberstadt, \emph{Sur la courbe modulaire {$X_{\text{nd\'ep}}(11)$}},
+  Ex[.|Math.. \textbf{7}:1 (1998), 163--174.
 
 \bibitem{Halberstadt-Kraus-YE7}
 Emmanuel Halberstadt and Alain Kraus, \emph{On the modular curves {$Y_E(7)$}},
