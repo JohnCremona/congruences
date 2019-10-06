@@ -622,7 +622,7 @@ $X_E^{\pm}(11)$, in~\cite{Fisher}.
 We finish this introduction with a discussion on how the methods of
 this paper complement the local methods in~\cite{FKSym}.
 
-From the discussion so far we know that triples $(E,E',p)$ as above give rise to $\Q$-points on at least one of the modular curves~$X_E(p)$ or $X_E^-(p)$. 
+From the discussion so far we know that triples $(E,E',p)$ as above give rise to $\Q$-points on one of the modular curves~$X_E(p)$ or $X_E^-(p)$. 
 
 The Frey-Mazur conjecture states there is a constant $C \geq 18$ such
 that, if $E/\Q$ and $E'/\Q$ satisfy $E[p] \simeq E'[p]$ as
@@ -653,12 +653,6 @@ the local methods imply that either $E$ has Complex Multiplication
  \item[(v)] $p=11,17$ or $37$, and $j(E)$ is listed
  in \cite[Table~2.1]{DahmenPhD}; in particular, $\rhobar_{E,p}$ is reducible.
 \end{itemize}
-The method we describe in Section~\ref{S:statistics} for $p=7$ could be
-adapted by replacing the modular curves~$X_E(7)$ by $X_E(p)$ when
-explicit equations for the latter are known, which is the case for
-$p=3,5$ and~$11$. This method works independently of the image
-of~$\rhobar_{E,p}$, so covers cases (i), ~(ii) entirely and case (v) with $p=11$.
-
 In \cite[Corollary~1.9]{BarinderCrem} there is a list of~$3$ rational
 $j$-invariants of elliptic curves over~$\Q$ satisfying~(iv); it has
 recently been shown (see~\cite{BDMTV-S4}) that the associated
@@ -669,20 +663,25 @@ curves is mod~$13$ congruent to a twist of another of them
 (including itself); the same is true for the curves and values of~$p$
 in case~(v). Thus no examples arise in cases (iv) and (v).
 
-The remaining case~(iii) includes the infinitely many curves with
-$\rhobar_{E,13}$ reducible (recall that $X_0(13)$ has genus~0). In
-spite of the lack of helpful bounds as mentioned above, a congruence
+The case~(iii) includes the infinitely many curves with
+$\rhobar_{E,13}$ reducible (recall that $X_0(13)$ has genus~0). However, 
+to our knowleadge, there are no known reducible mod~$13$ congruences between rational elliptic curves, so there are no known examples in this case either. Nevertheless, in spite of the lack of helpful bounds as mentioned above, a putative congruence
 between such curves will often be addressed by local methods in
 practice. Indeed, the bounds are very large as they depend on
 Tchebotarev density theorem to predict a prime~$\ell$ of good
-reduction for~$E$ where Frobenius has order multiple of~$p$; however,
+reduction for~$E$ where Frobenius has order multiple of~$p$ but,
 in practice, it is usually easy to find such a prime~$\ell$ after
-trying a few small primes.  There are no reducible mod~$13$ congruences in the LMFDB database, so instead we refer to \cite[Example~31.2]{FKSym} for
+trying a few small primes.
+We refer to \cite[Example~31.2]{FKSym} for
 an example with $p=7$ analogous to the discussion in this paragraph.
 
-\nf{Maybe we should move the paragraph above about which cases our method covers to here? This should highlight more what is our contribution: i.e. among the cases left it covers essentially all of them. }
+\nf{Changed the previous paragraph a bit.}
 
-\jc{OK: please do that.}
+Our method described in Section~\ref{S:statistics} for $p=7$ could be
+adapted by replacing the modular curves~$X_E(7)$ by $X_E(p)$ when
+explicit equations for the latter are known, which is the case for
+$p=3,5$ and~$11$. This method works independently of the image
+of~$\rhobar_{E,p}$, so covers the remaining cases (i),~(ii) entirely and also case (v) with $p=11$.
 
 \subsection{Notation} \label{S:notation}
 For $p$ an odd prime, define $p^*=\pm p\equiv1\pmod4$, so that
@@ -1124,6 +1123,8 @@ congruent quadratic twist.
 
 \jc{Part (2) of the following is essentially the same as Halberstadt's
   Proposition.  But part (1) -- the converse -- and the count are new.}
+  
+\nf{There is already a summary of H work above, but we can remind the reader of it again either here or in a remark after the proof.}  
 
 \begin{proposition}\label{P:twist}
 Let $E/K$ be an elliptic curve and $p \geq 5$ a prime. Suppose
@@ -1358,6 +1359,8 @@ is a situation where the local methods from~\cite{FKSym} may not
 apply, as is illustrated by Example~\ref{Ex:LocalFail7} below.
 
 \jc{Part (1) is in Halberstadt again; part (2) is new.}
+
+\nf{My previous comment applies here too. Also, maybe we can say something about case (2) is mostly a phenomenon over number fields as it only occurs over~$\Q$ for very small $p$? After giving H credit for part (1) this may help to highlight our generalization.}
 
 \begin{theorem}\label{T:quadratic} 
 Let $p > 2$ be a prime. 
@@ -1926,9 +1929,7 @@ with $j(E) = 0, 1728$ and let~$u \in K$.
  $u \neq -3$ modulo squares and
 $p\not=3$. 
 \end{itemize}
-\nf{I think we need these extra assumptions on~$u$ for defining~$A$ in the proof of Prop.~\ref{P:higherTwists}, otherwise we have to consider these cases within the proof; see changes there for details. I don't think we need to add that~$u$ is not a 4th or 6th power because this is implied by the hypothesis in the results that follow.}
 
-\jc{agreed}
 \begin{lemma} \label{L:diagonalC}
 Let~$E/K$ be as above. 
 \begin{enumerate}
@@ -1955,8 +1956,6 @@ Part (1) follows from standard facts on~CM curves plus our running assumptions a
 %%   looking more like a character? $c(\sigma)$?}  \jc{You are right and
 %%   I changed it.  I was using notation usual for cocycles, but that is
 %%   not necessary since $c()$ is only defined on $G_{K'}$}.
-\jc{For consistency I changed $\Psi_{\sigma}$ to $\Psi(\sigma)$ below,
-  and also around (2.3) above.}
 \begin{lemma}\label{L:DiagonalPsi}
 Let~$E/K$ and~$u\in K^*$ be as above.  For $m\in\{3,4,6\}$, let $\psi$
 be the order~$m$ cocycle associated to~$u$, with values
@@ -2002,12 +2001,6 @@ automorphism of~$\F_{p^2}$.
 By definition, the map~$\eta$ becomes a homomorphism of order~$m$ when restricted to~$G_{K'}$ because this is the case for~$\psi$ by cases (ii) and (iii) 
 of section~\ref{SS:GalRepTwist}, given that we have excluded the special quartic twist by~$u=-4$.
 \end{proof}
-
-\nf{eliminated reference to~$E'$ in the above proof. Did I overlooked something?}
-
-\jc{you were right, so I also eliminated reference to $E'$ in the
-  statement, so I also had to define $E'$ in the following Lemma.
-  Please review these changes!}
 
 \begin{lemma}\label{L:EpsEta}
   Keeping the notation of Lemmas~\ref{L:diagonalC}
@@ -2080,6 +2073,9 @@ some $u\in K^*$.
   $u'=u\sqrt{-3}^3\in K$.  When $n=6$ it's OK unless $\sqrt{-1}\in K$
   when I am stuck.  ]
 
+\nf{I have not thought about this. Maybe looking first into the database~$D_n$  extensions of $\Q(i)$ may save us some time in case there is an example..in any case, if we decide to leave this it should appear as an auxiliary proposition first.}
+  
+  
 By Kummer theory the extension $F/K'$ is determined by a specific
 cyclic subgroup of order~$n$ in~$K'^*/(K'^*)^n$ hence, noting that
 $\Aut(C_n)\cong\{\pm1\}$ for $n\in\{4,3,6\}$, we conclude that~$u \in
@@ -2145,6 +2141,8 @@ we obtain that \eqref{E:PsiM} holds in~$\GL_2(\F_p)$.
   conjugations cancel out.  I did not need to use that $A$ normalises
   $C$.  I'll write it out here if you like...}
 
+\nf{OK, you can write it down. If it looks trivial then we can simply summarize in one sentence.}  
+  
 We will now prove the second statement. First, recall from the first paragraph that $u \in K$ is unique up to inverse and
 multiplication by an element
 in~$K^*\cap(K'^*)^n$. Therefore, up to $n$th powers in~$K^*$,  
@@ -2159,10 +2157,6 @@ possible choices for~$u$, namely
 This follows from the elementary observation that the natural map
 $K^*/(K^*)^n \to (K'^*)/(K'^*)^n$ is injective when $n=3$ and has
 kernel $\{1,-4\}$ for $n=4$ and $\{1,-27\}$ for $n=6$.
-
-\nf{Maybe it is better to include more details proving of one of the cases above? I don't find this so clear. For example, why aren't there other elements of~$K'$ whose~$n$th power is in $K$?}
-
-\jc{I hope that what I have added helps here.}
 
 Secondly, observe that the construction in the first part of the proof 
 only works for
@@ -2258,18 +2252,14 @@ are quadratic extensions of~$K$ satisfying
 $K' \neq K(\sqrt{p^*})$, $K(\sqrt{u})$. 
 The rest of the argument follows similarly to~(b).
 
-\nf{I am confused by the following paragraph. Why do we give the congruence conditions? Can you rewrite their proof?}
-
-\jc{I thought it was an interesting corollary that the situation we
-  are describing can only happen for half the primes (when $n=4,6$).
-  I revised the proof.  Note that we only get two twists, which
-  are isogenous to each other, when $n=4,6$ not $n=3$ so there is no
-  congruence condition when $n=3$, as you can see directly in (2)(b)
-  and implicitly in (2)(a) since all primes $p>3$ are $\pm1\pmod6$!
-}
+\nf{The following is more clear now, but it still needs work. Note the congruence conditions in the statement are only for the symplectic case but now we also have anti-symplectic mentioned in the statement. Maybe we should write a Corollary with the congruence conditions instead?}
 
 For the congruence conditions on~$p$, which are only non-trivial when
-$n=4$ or~$6$ (since $p>3$ implies $p\equiv\pm1\pmod6$), recall that
+$n=4$ or~$6$ (since $p>3$ implies $p\equiv\pm1\pmod6$) 
+
+\nf{Isn't the previous observation only valid for part (1), at least from the way the congruences are stated?}
+
+recall that
 when $n=4$ or~$6$ the two quartic (respectively, sextic) twists are
 $2$-isogenous (respectively $3$-isogenous) to each other.  When
 $\sqrt{p^*}\in K$ these isogenies induce symplectic congruences, since
@@ -2280,12 +2270,8 @@ $\sqrt{p^*}\notin K$ these isogenies induce anti-symplectic
 congruences, so $p\not\equiv\pm1\pmod{8}$ (respectively, mod~$12$).
 \end{proof}
 
-\jc{See my answer to your question below about cutting out some
-  examples for why I added the following.  It can go (or be reworded)
-  if we do cut some of the examples.}
-
 We end this section with four families of examples, giving all
-possibilities for quartic and sextic twist congruences over~$\Q$< with
+possibilities for quartic and sextic twist congruences over~$\Q$ with
 $p=3$ or~$5$ in the quartic case and $p=5$ or~$7$ in the sextic case.
 
 \begin{example}\label{Ex:j1728p3}
@@ -2300,6 +2286,8 @@ the mod~$3$ projective image is the normaliser of a non-split Cartan, isomorphic
   But looking at the LMFDB for curves with j=1728, they are all
   maximal at 3, so I think the condition is unnecessary for the
   projective image to be D4.}
+  
+\nf{I added the condition $3 \nmid a$ to have a proof of the claim about $D_4$. I remember we did that check at the LMFDB together but this is not a proof for arbitrary~$a$. I think we should prove as much as possible for general $a$. If we don't know how to prove it without $3 \nmid a$ then we can add a remark after the example about the observation in the LMFDB?}  
 
 Following the proof of Proposition~\ref{P:higherTwists}, one checks that up to $4$th powers, the subgroup of $\Q^*/(\Q^*)^4$ which become $4$th
   powers in the projective $3$-division field of~$E_a$ is generated
@@ -2313,7 +2301,9 @@ Following the proof of Proposition~\ref{P:higherTwists}, one checks that up to $
     check for themselves if they do not believe us.  If some referee
     complains then I'll go through it again (and for the following
     examples, whichever we keep.)}
-  
+ 
+ \nf{OK. Then just add that we use the 3-division polynomial depending on~$a$ for the checking.}
+ 
 Hence, from Proposition~\ref{P:higherTwists} we expect a $3$-congruence between $E_a$
   and either $E_{-3/a}$ (twisting by~$u=-3/a^2$) or $E_{-a^3/3}$
   (twisting by~$u=-a^2/3$).  Only the first holds.  
@@ -2327,6 +2317,8 @@ Hence, from Proposition~\ref{P:higherTwists} we expect a $3$-congruence between 
    (I think) prove that these quartic and sextic twists are
    anti-linear, though that surely follows from the fact that the
    isomorphism matrix $A$ is in the normaliser but not the Cartan.}
+   
+ \nf{If there is no other way of proving these kind of claims then let's add the proposition. Maybe rephrasing it giving less importance to the linear and anti-linear part of it?}  
  
 Finally, we have $p^* = -3$ and $u=-3/a^2$, hence $\sqrt{p^*u} = 1/a \in \Q$
 and the congruence is symplectic by Theorem~\ref{T:typeHigher}.
@@ -2340,6 +2332,8 @@ Moreover, there is a congruence with the quartic twist by $-4u=12/a^2$ which is 
   thought was worth recording.  Can we keep them in unless asked to
   cut hem out?}
 
+\nf{I was trying to keep the page under 30 pages, but this will not be possible particularly if we add the twisting proposition. So we can keep all the examples, but we need to justify that there are no more cases over~$\Q$ (why is this true?) and have proofs (even if not written) for all the claims on them.}  
+  
 \begin{example}\label{Ex:j1728p5}
 $K=\Q$, $p=5$, $j=1728$.  The projective image is the normaliser of a
   split Cartan, isomorphic to~$D_4$.  One can check that up to $4$th
@@ -2355,8 +2349,6 @@ $K=\Q$, $p=5$, $j=1728$.  The projective image is the normaliser of a
   %% and~$E_{5/a}$ are $5$-congruent via a congruence which is
   %% $\Z[\zeta_4]$-anti-linear.
 \end{example}
-
-\nf{As above I think we should keep only one of the following two examples. Similar comments as above apply.}
 
 \begin{example}\label{Ex:j0p5}
 $K=\Q$, $p=5$, $j=0$.  Denote the curve $E_{0,b}:\ Y^2=X^3+b$
@@ -2386,6 +2378,8 @@ $K=\Q$, $p=7$, $j=0$.  The projective image is the normaliser of a
   anti-symplectic congruence between $E_b$ and $E_{756/b}$.
 \end{example}
 
+\begin{comment}
+ 
 \nf{I am not so sure the following examples still make sense. We start with two congruent curves (one of them with $j=1728$) and twist them, but the twists are different: one is the quartic twist by $-4$ and the other is the quadratic twist by $-1$. The reason why the twisted curves are still congruent is different from the case of taking simultaneous quadratic twists and seems like an accident. Indeed, it is
 is because the tensoring by $\chi_{-1}$ does not affect the mod~$p$ representations of the $j=1728$ curve and its $-4$ quartic twist is an isogenous curve..in general, if we take a simultaneous non-quadratic twist, we do not have a congruence on the twisted curves -- we need to twist one of them by the inverse to keep the congruence. (These made sense when we had the previous definition of quadratic twists.)}
 
@@ -2414,7 +2408,7 @@ $\legendre{2}{7}=+1$.
   antisymplectic, so in this case applying the twists reverses the
   symplectic type, as expected since $\legendre{2}{5}=-1$.
 \end{example}
-
+\end{comment}
 
 \begin{comment}
  \section{Congruences between quartic and sextic twists}\label{S:cong-twist-46}
@@ -3385,6 +3379,8 @@ for $j'=0$ when there may be four by Proposition~\ref{P:higherTwists}.
   To make this correct we would also have make sure about all the
   reducible cases.  Perhaps not worth it.}
 
+  \nf{I agree it is not worth it. The most we coud do is just to say there are only a few over~$\Q$ and as footnote give the counting in the irredicible case -- it is certainly not worth it entering in the reducible setting -- otherwise you can remove any attempt to give an upper bound even over~$\Qbar$ if you want} 
+  
 If there are no preimages of~$j'$, we conclude that the isomorphism
 $E[7]\cong E'[7]$ is not symplectic.  Otherwise, for each preimage
 $P\in X_E(7)(\Q)$ we compute the curve associated to~$P$, which may be
@@ -3484,11 +3480,6 @@ and illustrate Proposition~\ref{P:higherTwists}.
 \end{example}
 
 \subsection{Auxiliary results for the reducible case}
-
-\hfill\break\nf{Shouldn't this section be a subsection of \S4 instead or even be inside \S4.5 ?}
-
-\jc{I moved it here as a new subsection}
-
 Compared to the irreducible case, establishing reducible congruences
 requires extra work because when working with the semisimplifications
 $E[7]^{ss}$ and $E'[7]^{ss}$ important information is lost.  The
@@ -3941,8 +3932,7 @@ Enrique Gonz\'{a}lez-Jim\'{e}nez and \'{A}lvaro Lozano-Robledo,
 \newblock {\em Math. Z.}, 283(3-4):835--859, 2016.
 
 \bibitem{Halberstadt-11nonsplit}
-Emmanuel Halberstadt, \emph{Sur la courbe modulaire {$X_{\text{nd\'ep}}(11)$}},
-  Ex[.|Math.. \textbf{7}:1 (1998), 163--174.
+Emmanuel Halberstadt, \emph{Sur la courbe modulaire {$X_{\text{nd\'ep}}(11)$}}, Experimental Math.\ \textbf{7} (1998), no. 2, 163--174.
 
 \bibitem{Halberstadt-Kraus-YE7}
 Emmanuel Halberstadt and Alain Kraus, \emph{On the modular curves {$Y_E(7)$}},
