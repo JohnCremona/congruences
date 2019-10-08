@@ -603,11 +603,7 @@ We finish this introduction with a discussion on how the methods of
 this paper complement the local methods in~\cite{FKSym}.
 
 From the discussion so far we know that triples $(E,E',p)$ as above
-give rise to $\Q$-points on at least one of the modular curves~$X_E(p)$ or $X_E^-(p)$. 
-\jc{I put back ``at least'' here since just saying ``one of'' implies
-  that a triple never gives a point on both, but that would only be
-  true if we excluded triples whose symplectic type is not
-  well-defined, which is not the case at this exact point.}
+give rise to $\Q$-points on one of the modular curves~$X_E(p)$ or $X_E^-(p)$. 
 
 The Frey-Mazur conjecture states there is a constant $C \geq 18$ such
 that, if $E/\Q$ and $E'/\Q$ satisfy $E[p] \simeq E'[p]$ as
@@ -1103,9 +1099,6 @@ itself), and only then.  The converse part of the following result is
 already contained in~\cite[\S2]{Halberstadt-11nonsplit}, with a
 different proof and without the uniqueness statement.
 
-\jc{Added the previous sentence}
-
-
 \begin{proposition}\label{P:twist}
 Let $E/K$ be an elliptic curve and $p \geq 5$ a prime. Suppose
 that~$E[p]$ satisfies \condS.
@@ -1344,8 +1337,6 @@ with essentially the same proof; we include it here in order to
 include the second part, which describes a situation that cannot occur
 over~$\Q$ except for very small primes. See Example~\ref{Ex:3twists}
 below for an example with $p=3$.
-
-\jc{Inserted previous two sentences.}
 
 \begin{theorem}\label{T:quadratic} 
 Let $p > 2$ be a prime. 
@@ -1915,9 +1906,6 @@ with $j(E) = 0, 1728$ and let~$u \in K$.
 $p\not=3$. 
 \end{itemize}
 
-\jc{I deleted ``$u \neq -4$ modulo~$4$-th powers and `` since if $u$
-  is -4 times a 4th power then it is -1 times a square!}
-
 \begin{lemma} \label{L:diagonalC}
 Let~$E/K$ be as above. 
 \begin{enumerate}
@@ -2054,12 +2042,37 @@ some $u\in K^*$.
   unity, and either $\tau(u)=u$ or $\tau(u)=\overline{u}$ (the
   $K'/K$-conjugate of~$u$).  In the first case, $u\in K$.
 
-  In the second case, I can prove that $\rnu/\rnub$ is fixed by $G$,
-  hence $\overline{u}/u=v^n$ with $v\in K$ such that $v^{2n}=1$.  For
-  $n=4$ this forces $v^n=1$ so $\overline{u}=u$ s $u\in K$.  For $n=3$
-  we might have $\overline{u}=-u$, then replace $u$ by
-  $u'=u\sqrt{-3}^3\in K$.  When $n=6$ it's OK unless $\sqrt{-1}\in K$
-  when I am stuck.  ]
+  In the second case, we have $\tau(\rnu)=\rnub$ (without loss); using
+  $\tau\sigma\tau=\sigma^{-1}$ gives $\sigma(\rnub)=\zeta\rnub$.
+  Hence $v=\rnub/\rnu\in K'$, and $\overline{u}=uv^n$.  Conjugating
+  imples that $(v\overline{v})^n=1$ and hence $v\overline{v}=\pm$,
+  and even $v\overline{v}=1$ for $n=3$ since the only $n$th roots of
+  unity in~$K$ are (by hypothesis $K'\not=K$)~$\pm1$ for $n=4,6$ and
+  just~$1$ for $n=3$.
+
+  In case $v\overline{v}=1$ we have $v(1+\overline{v})=1+v$ and it
+  follows that $u_1=u(1+v)^n\in K$.  Replacing $u$ by $u_1$ completes
+  the argument in this case.
+
+  If $v\overline{v}=-1$ then we cannot replace $u$ by an eleent
+  of~$K$.  For if $u_1=uw^n\in K$ then
+  $v^n=(w/\overline{w})^n)\implies v=\zeta^kw/\overline{w}\implies
+  v\overline{v}=1$ (for some~$k$), while if $u_1=u^{-1}w^n\in K$ then
+  $u\overline{w}^n\in K$ and we again deduce that $v\overline{v}=1$.
+
+  The formula for the norm from $K'$ to~$K$ gives
+  $-1=v\overline{v}=x^2+y^2$ or $x^2+3y^2$ for some $x,y\in K$ for
+  $n=4$, $n=6$ respectively.  Hence it is impossible to have
+  $v\overline{v}=-1$ unless $K$ is totally complex; in particular our
+  claim is true over~$\Q$.
+]
+
+\jc{That is as far as I got (note that I have made some corrections
+  since last time).  I also thought that the rest of the proof would
+  work OK if we allowed $u\in K'$ (not in~$K$).  But no: we rely on
+  $\rnu$ being fixed by some $\tau$ of order $2$ in the other coset!
+  However, I have an alternative for the last part which does not
+  require this: see below.}
 
 \nf{I have not thought about this. Maybe looking first into the database~$D_n$  extensions of $\Q(i)$ may save us some time in case there is an example..in any case, if we decide to leave this it should appear as an auxiliary proposition first.}
   
@@ -2100,10 +2113,13 @@ and all $\sigma\in G_{K'}$, we have
 A\ \diag(1,\eps(\sigma))\ A^{-1} = \diag(\eps(\sigma),1) =
 \diag(1,\eps(\sigma)) \Psi(\sigma),
 \]
-that is~\eqref{E:PsiM} holds for $\sigma\in G_{K'}$.
-To show that~\eqref{E:PsiM} holds for all $\sigma\in G_{K}$, it
-suffices, since both sides of~\eqref{E:PsiM} are homomorphisms $G_K\to \GL_2(\F_p)$, to
-do so for a single $\sigma \in G_K\setminus G_{K'}$.
+that is~\eqref{E:PsiM} holds for $\sigma\in G_{K'}$.  To show
+that~\eqref{E:PsiM} holds for all $\sigma\in G_{K}$, it suffices,
+since both sides of~\eqref{E:PsiM} are homomorphisms $G_K\to
+\GL_2(\F_p)$, to do so for a single element~$\tau\in G_K\setminus
+G_{K'}$.
+
+\jc{First version, fine when $u\in K$}
 
 Note that $K' \cap K(\root n\of u) = K$; this follows from coprimality of the degrees for $n=3$ and by our running assumption on~$u$ for $n \in \{4,6\}$.
 We can thus choose $\tau\in G_K$ such that it fixes~$\root n\of u$ and is non-trivial when restricted to~$K'$. 
@@ -2116,15 +2132,30 @@ $\psi(\tau)=1$ so $\Psi(\tau)=I$
 and~\eqref{E:PsiM} 
 with $\sigma = \tau$ is trivially satisfied.
 
+\jc{New version which does not rely on the existence of a $\tau\in
+  G_K\setminus G_{K'}$ fixing $\rnu$:}
+
+Let~$\tau\in G_K\setminus G_{K'}$ be arbitrary, and write
+$\Psi(\tau)=\diag(w,w^{-1})$.  Define
+\[
+A=\rhobar_{E,p}(\tau)\diag(w,1)=\diag(1,w)\rhobar_{E,p}(\tau),
+\]
+the second equality following since~$\rhobar_{E,p}(\tau)$ is
+antidiagonal.  Then $\rhobar_{E,p}(\tau)A^{-1}=\diag(1,w^{-1})$, so
+\[
+A \rhobar_{E,p}(\tau) A^{-1} = \rhobar_{E,p}(\tau)\Psi(\tau)
+\]
+as required.
+
 In the case of the split Cartan we are done, as the diagonalization
 of~$C$ occurs in~$\GL_2(\F_p)$ and so~\eqref{E:PsiM} holds with $A \in
-\GL_2(\F_{p})$.
+\GL_2(\F_{p})$.  In the non-split case, we have shown that
+equaton~\eqref{E:PsiM} holds over $\GL_2(\F_{p^2})$. By undoing the
+initial change of coordinates we obtain that \eqref{E:PsiM} holds
+in~$\GL_2(\F_p)$.
 
-In the non-split case, we have shown that equaton~\eqref{E:PsiM} holds
-over $\GL_2(\F_{p^2})$. By undoing the initial change of coordinates
-we obtain that \eqref{E:PsiM} holds in~$\GL_2(\F_p)$.
-
-In detail in the non-split case.  Change notation so that for
+\begin{comment}
+  In detail in the non-split case.  Change notation so that for
 $\sigma\in G_K$, $\rhobar_{E,p}(\sigma)$ and $\Psi(\sigma)$ denote
 matrices with respect to an $\F_p$-basis, and let the change of basis
 matrix~$C\in\GL_2(\F_{p^2})$ be such that
@@ -2145,10 +2176,16 @@ which simplifies to give
 \[
 B\rhobar_{E,p}(\sigma)B^{-1} = \rhobar_{E,p}(\sigma)\Psi(\sigma)
 \]
-for all $\sigma\in G_K$, giving ~\eqref{E:PsiM}.
+for all $\sigma\in G_{K'}$, giving~\eqref{E:PsiM} in this case.  When
+$\sigma=\tau$, both sides of the preceding equation are equal to
+$C^{-1}BC$, so~\eqref{E:PsiM} also holds in that case.
 
 \nf{OK, you can write it down. If it looks trivial then we can simply summarize in one sentence.}
+\end{comment}
 
+\jc{The rest of the proof is still only for the case $u\in K$.  As
+  already observed, this may always be assumed unless (possibly) $K$
+  is toally complex.}
 
 We will now prove the second statement. First, recall from the first paragraph that $u \in K$ is unique up to inverse and
 multiplication by an element
@@ -2187,9 +2224,9 @@ This is given by the following result.
   curve, and $u\in K^*$.  Assume that
   \begin{itemize}
     \item \emph{either:} $j(E)=1728$, $\sqrt{-1}\notin K$, $u\not=\pm1$
-      (modulo~$K^*^2$), and $n=4$;
+      modulo squares, and $n=4$;
     \item \emph{or:} $j(E)=0$, $\sqrt{-3}\notin K$, $u\not=1,-3$
-      (modulo~$K^*^2$), and $n=3$ or~$6$.
+      modulo squares, and $n=3$ or~$6$.
   \end{itemize}
 
  %  Keep all the running assumptions and notations from section~\ref{SS:higherCong}.
@@ -2259,18 +2296,8 @@ are quadratic extensions of~$K$ satisfying
 $K' \neq K(\sqrt{p^*})$, $K(\sqrt{u})$. 
 The rest of the argument follows similarly to~(b).
 
-\jc{You will have to explain to me what is not clear about these
-  congruences!  I think the statement is completely correct as it is
-  and that the lines below prove the congruences exactly as stated.}
-
-\nf{The following is more clear now, but it still needs work. Note the congruence conditions in the statement are only for the symplectic case but now we also have anti-symplectic mentioned in the statement. Maybe we should write a Corollary with the congruence conditions instead?}
-
 For the congruence conditions on~$p$, which are only non-trivial when
-$n=4$ or~$6$ (since $p>3$ implies $p\equiv\pm1\pmod6$) 
-
-\nf{Isn't the previous observation only valid for part (1), at least from the way the congruences are stated?}
-
-recall that
+$n=4$ or~$6$ (since $p>3$ implies $p\equiv\pm1\pmod6$) recall that
 when $n=4$ or~$6$ the two quartic (respectively, sextic) twists are
 $2$-isogenous (respectively $3$-isogenous) to each other.  When
 $\sqrt{p^*}\in K$ these isogenies induce symplectic congruences, since
@@ -3357,14 +3384,16 @@ curve~$E'$ at each point~$P$.
 We make use of this model and formulas as follows, given curves $E$,
 $E'$ with $E[7]\cong E'[7]$.  Using one curve~$E$ we write down the
 model for $X_E(7)$.  Then we find all preimages (if any) of $j'=j(E')$
-under the map $X_E(7)\to X(1)$.  
-While over an algebraically closed
+under the map $X_E(7)\to X(1)$.  While over an algebraically closed
 field there are $168$ distinct preimages of each $j'$, except that the
 ramification points $j=0$ and $j=1728$ have $56$ and $84$ preimages,
-over $\Q$, there are at most two 
-by Proposition~\ref{P:twist}, except
-for $j'=0$ when there may be four by Proposition~\ref{P:higherTwists}.
+over $\Q$, there are fewer: in the irreducible case there are at
+most~$4$ by the results of Section~\ref{S:cong-twist}.
+%% at most two 
+%% by Proposition~\ref{P:twist}, except
+%% for $j'=0$ when there may be four by Proposition~\ref{P:higherTwists}.
 
+\begin{comment}
 \nf{I am not sure the counting of the pre-images over~$\Q$ is correct or at least needs further details. Can't we have mod~$7$ projective image $C_2 \times C_2$ for curves over~$\Q$ with bad reduction at~7? Still, in that case, not all the congruences would be symplectic and so the amount of pre-images seems to still be at most 2 by part (2) of Theorem~\ref{T:quadratic}. For the case $j'=0,1728$ by Proposition 2.15 one gets 3 pre-images and for $j'=0$ we also have the quadratic twist by $-3$ and for $j'=1728$ the quartic twist by $-4$; however, not all symplectic.}
 
 \jc{You are probably right.  I am not sure that it is worth the
@@ -3379,7 +3408,8 @@ for $j'=0$ when there may be four by Proposition~\ref{P:higherTwists}.
   reducible cases.  Perhaps not worth it.}
 
   \nf{I agree it is not worth it. The most we coud do is just to say there are only a few over~$\Q$ and as footnote give the counting in the irredicible case -- it is certainly not worth it entering in the reducible setting -- otherwise you can remove any attempt to give an upper bound even over~$\Qbar$ if you want} 
-  
+\end{comment}
+
 If there are no preimages of~$j'$, we conclude that the isomorphism
 $E[7]\cong E'[7]$ is not symplectic.  Otherwise, for each preimage
 $P\in X_E(7)(\Q)$ we compute the curve associated to~$P$, which may be
