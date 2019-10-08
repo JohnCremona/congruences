@@ -536,26 +536,6 @@ determine whether $E[p]$ and~$E'[p]$ are isomorphic (ignoring the
 symplectic structure) in both the irreducible and reducible
 cases. 
 
-\begin{comment}
-\nf{I don't see the point of this previous work section. We already mention Fisher later.}
-\jc{agreed -- all that is here is mentioned also later except for my
-  comment (with the wrong date) that I discovered the mod-17
-  congruence in 2017 -- it was 2007!}
-\subsection{Previous work}
-Our study of congruences between curves in the database follows on
-from previous work by a number of authors.  The current first author
-himself found many such congruences as his database expanded,
-including the congruences mod~$17$ which were found in around~2017,
-but these results were only circulated informally and not published.
-The mod~$17$ congruence was rediscovered by Billerey
-\cite{Billerey17}, who also determined its symplectic type, as had the
-second author.  Fisher lists $11$-congruences for conductors up to
-130,000, up to twist and isogeny, in \cite{FisherList}; that list also
-includes congruences between curves in this range and curves outside
-the current LMFDB range, found by finding rational points on the associated modular
-curves.
-\end{comment}
-
 \subsection{Modular parametrizations}
 The modular curve $X(p)$ parametrizes elliptic curves with full
 level~$p$ structure. It has genus~$0$ for $p=2,3,5$, genus~$3$ for
@@ -622,7 +602,12 @@ $X_E^{\pm}(11)$, in~\cite{Fisher}.
 We finish this introduction with a discussion on how the methods of
 this paper complement the local methods in~\cite{FKSym}.
 
-From the discussion so far we know that triples $(E,E',p)$ as above give rise to $\Q$-points on one of the modular curves~$X_E(p)$ or $X_E^-(p)$. 
+From the discussion so far we know that triples $(E,E',p)$ as above
+give rise to $\Q$-points on at least one of the modular curves~$X_E(p)$ or $X_E^-(p)$. 
+\jc{I put back ``at least'' here since just saying ``one of'' implies
+  that a triple never gives a point on both, but that would only be
+  true if we excluded triples whose symplectic type is not
+  well-defined, which is not the case at this exact point.}
 
 The Frey-Mazur conjecture states there is a constant $C \geq 18$ such
 that, if $E/\Q$ and $E'/\Q$ satisfy $E[p] \simeq E'[p]$ as
@@ -643,8 +628,8 @@ only the local criteria at primes of multiplicative or good reduction may
 succeed and often the bounds on a prime~$\ell$ for which a local
 criterion at~$\ell$ applies may not be useful in practice.  From the
 strong form of Serre's uniformity conjecture, these `bad' cases for
-the local methods imply that either $E$ has Complex Multiplication
-(CM) or one of the following holds:
+the local methods imply that either $E$ has complex multiplication
+(CM), or one of the following holds:
 \begin{itemize}
  \item[(i)] $p=3,5,7$ and $\rhobar_{E,p}$ is reducible or has image the normalizer of a Cartan subgroup;
  \item[(ii)] $p=11$ and $\rhobar_{E,p}$ has image the normalizer of non-split Cartan subgroup;
@@ -665,7 +650,7 @@ in case~(v). Thus no examples arise in cases (iv) and (v).
 
 The case~(iii) includes the infinitely many curves with
 $\rhobar_{E,13}$ reducible (recall that $X_0(13)$ has genus~0). However, 
-to our knowleadge, there are no known reducible mod~$13$ congruences between rational elliptic curves, so there are no known examples in this case either. Nevertheless, in spite of the lack of helpful bounds as mentioned above, a putative congruence
+we know of no reducible mod~$13$ congruences between rational elliptic curves, so there are no known examples in this case either. Nevertheless, in spite of the lack of helpful bounds as mentioned above, a putative congruence
 between such curves will often be addressed by local methods in
 practice. Indeed, the bounds are very large as they depend on
 Tchebotarev density theorem to predict a prime~$\ell$ of good
@@ -674,8 +659,6 @@ in practice, it is usually easy to find such a prime~$\ell$ after
 trying a few small primes.
 We refer to \cite[Example~31.2]{FKSym} for
 an example with $p=7$ analogous to the discussion in this paragraph.
-
-\nf{Changed the previous paragraph a bit.}
 
 Our method described in Section~\ref{S:statistics} for $p=7$ could be
 adapted by replacing the modular curves~$X_E(7)$ by $X_E(p)$ when
@@ -1022,17 +1005,6 @@ Lemma~\ref{L:twist-rep} and~\eqref{E:absRed} it follows that $\chi_1
 line. This contradicts ~$\eps_d \neq 1$.
 \end{proof}
 
-Under the natural \condS, the previous lemma tells us we can assume
-that $\rhobar_{E,p}$ is absolutely irreducible for our study of
-congruences between twists. In fact more is true: the next proposition
-says that congruences between twists arise when the projective image
-is dihedral of order at least~4; equivalently, when the image is
-contained in the normaliser of a Cartan subgroup but not in the Cartan
-itself.
-
-%% \nf{Do we need whats in bold? The equivalence, being under (S) avoids the small images.}
-%% \jc{agreed, deleted}
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{comment} %% about 100 lines!
 In the rest of this section we will study elliptic curves whose
@@ -1121,10 +1093,18 @@ congruent quadratic twist.
 \end{comment}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\jc{Part (2) of the following is essentially the same as Halberstadt's
-  Proposition.  But part (1) -- the converse -- and the count are new.}
-  
-\nf{There is already a summary of H work above, but we can remind the reader of it again either here or in a remark after the proof.}  
+Under the natural \condS, the previous lemma tells us we can assume
+that $\rhobar_{E,p}$ is absolutely irreducible for our study of
+congruences between twists. In fact more is true: the next proposition
+says that congruences between twists arise when the projective image
+is dihedral of order at least~4 (equivalently, when the image is
+contained in the normaliser of a Cartan subgroup but not in the Cartan
+itself), and only then.  The converse part of the following result is
+already contained in~\cite[\S2]{Halberstadt-11nonsplit}, with a
+different proof and without the uniqueness statement.
+
+\jc{Added the previous sentence}
+
 
 \begin{proposition}\label{P:twist}
 Let $E/K$ be an elliptic curve and $p \geq 5$ a prime. Suppose
@@ -1147,10 +1127,12 @@ Moreover, there is a unique such twist~$E'$ which is $p$-congruent to~$E$, excep
 projective image has order~$4$, in which case there are three (non-trivial) such
 twists.
 \end{proposition}
-\begin{proof} 1) Let $E'$ be a $p$-congruent twist of~$E$. If $E'$ is a quartic or sextic twist of~$E$ then $j(E)=0,1728$ and $E$ has CM (not defined over~$K$) by $\Q(\sqrt{-1})$ or
-  $\Q(\sqrt{-3})$; moreover, since $p > 3$ it is not ramified in the
-  CM field and hence the projective image is absolutely irreducible
-  and isomorphic to $D_n$ for some $n \geq 2$.
+\begin{proof} 1) Let $E'$ be a $p$-congruent twist of~$E$. If $E'$ is
+  a quartic or sextic twist of~$E$ then $j(E)=0,1728$ and $E$ has CM
+  (not defined over~$K$, since the proective image is not abelian) by
+  $\Q(\sqrt{-1})$ or $\Q(\sqrt{-3})$; moreover, since $p > 3$ it is
+  not ramified in the CM field and hence the projective image is
+  absolutely irreducible and isomorphic to $D_n$ for some $n \geq 2$.
 
 Therefore we can assume $E' = E^d$ is the quadratic twist of~$E$ by a
 non-square $d\in K^*$.  From Lemma~\ref{L:noCyclic} we know
@@ -1352,15 +1334,18 @@ split.
 %square class of $\det A$, where $A$ is the matrix of~$\phi$ (see
 %\cite[Lemma~6]{FKSym}).
 
-The next theorem describes the symplectic type of congruences between general quadratic twists. 
-Since the projective
-image is dihedral (by Proposition~\ref{P:twist}), this
-is a situation where the local methods from~\cite{FKSym} may not
-apply, as is illustrated by Example~\ref{Ex:LocalFail7} below.
+The next theorem describes the symplectic type of congruences between
+general quadratic twists.  Since the projective image is dihedral (by
+Proposition~\ref{P:twist}), this is a situation where the local
+methods from~\cite{FKSym} may not apply, as is illustrated by
+Example~\ref{Ex:LocalFail7} below.  The first part of the theorem
+(with $K=\Q$) is again already in~\cite[\S2]{Halberstadt-11nonsplit},
+with essentially the same proof; we include it here in order to
+include the second part, which describes a situation that cannot occur
+over~$\Q$ except for very small primes. See Example~\ref{Ex:3twists}
+below for an example with $p=3$.
 
-\jc{Part (1) is in Halberstadt again; part (2) is new.}
-
-\nf{My previous comment applies here too. Also, maybe we can say something about case (2) is mostly a phenomenon over number fields as it only occurs over~$\Q$ for very small $p$? After giving H credit for part (1) this may help to highlight our generalization.}
+\jc{Inserted previous two sentences.}
 
 \begin{theorem}\label{T:quadratic} 
 Let $p > 2$ be a prime. 
@@ -1924,11 +1909,14 @@ Let $E/K$ be an elliptic curve
 with $j(E) = 0, 1728$ and let~$u \in K$.
 \begin{itemize}
  \item If $j(E) = 1728$, assume also $K'=K(\sqrt{-1}) \neq K$, 
- $u \neq -4$ modulo~$4$-th powers and $u \neq -1$ modulo squares;
+ $u \neq -1$ modulo squares;
  \item If $j(E) = 0$, assume also $K'=K(\sqrt{-3}) \neq K$, 
  $u \neq -3$ modulo squares and
 $p\not=3$. 
 \end{itemize}
+
+\jc{I deleted ``$u \neq -4$ modulo~$4$-th powers and `` since if $u$
+  is -4 times a 4th power then it is -1 times a square!}
 
 \begin{lemma} \label{L:diagonalC}
 Let~$E/K$ be as above. 
@@ -2128,21 +2116,40 @@ $\psi(\tau)=1$ so $\Psi(\tau)=I$
 and~\eqref{E:PsiM} 
 with $\sigma = \tau$ is trivially satisfied.
 
-In the case of the split Cartan we are done, as the diagonalization of~$C$ occurs in~$\GL_2(\F_p)$ and so~\eqref{E:PsiM} holds with 
-$A \in \GL_2(\F_{p})$; in the non-split case we have proved that it holds for an $A \in \GL_2(\F_{p^2})$. However, since $A$ is in the normalizer of~$C$, by undoing the initial change of coordinates
+In the case of the split Cartan we are done, as the diagonalization
+of~$C$ occurs in~$\GL_2(\F_p)$ and so~\eqref{E:PsiM} holds with $A \in
+\GL_2(\F_{p})$.
+
+In the non-split case, we have shown that equaton~\eqref{E:PsiM} holds
+over $\GL_2(\F_{p^2})$. By undoing the initial change of coordinates
 we obtain that \eqref{E:PsiM} holds in~$\GL_2(\F_p)$.
 
-\nf{Does this last paragraph make sense? Is it even necessary?}
+In detail in the non-split case.  Change notation so that for
+$\sigma\in G_K$, $\rhobar_{E,p}(\sigma)$ and $\Psi(\sigma)$ denote
+matrices with respect to an $\F_p$-basis, and let the change of basis
+matrix~$C\in\GL_2(\F_{p^2})$ be such that
+\begin{itemize}
+\item $C^{-1}\rhobar_{E,p}(\sigma)C = c(\sigma)\diag(1,\eps(\sigma))$
+  for $\sigma\in G_{K'}$;
+\item $C^{-1}\rhobar_{E,p}(\tau)C$ is anti-diagonal for $\tau\in
+  G_K\setminus G_{K'}$;
+\item $C^{-1}\Psi(\sigma)C = \diag(\eps(\sigma),\eps(\sigma)^{-1})$
+  for $\sigma\in G_{K'}$.
+\end{itemize}
+Let $B=\rhobar_{E,p}(\tau)\in\GL_2(\F_p)$, so that $A=C^{-1}BC$ is
+antidiagonal.  Now the last displayed equation becomes
+\[
+(C^{-1}BC)(C^{-1}\rhobar_{E,p}(\sigma)C)(C^{-1}B^{-1}C) = (C^{-1}\rhobar_{E,p}(\sigma)C)(C^{-1}\Psi(\sigma)C)
+\]
+which simplifies to give
+\[
+B\rhobar_{E,p}(\sigma)B^{-1} = \rhobar_{E,p}(\sigma)\Psi(\sigma)
+\]
+for all $\sigma\in G_K$, giving ~\eqref{E:PsiM}.
 
-\jc{It does make sense.  We are not precise about whether (e.g.)
-  $\rhobar(\sigma)$ means the matrix of the operator itself, which is
-  a bit confusing since we have changed basis to diagonalise.  But I
-  wrote our an explicit calculation and it is fine since all the
-  conjugations cancel out.  I did not need to use that $A$ normalises
-  $C$.  I'll write it out here if you like...}
+\nf{OK, you can write it down. If it looks trivial then we can simply summarize in one sentence.}
 
-\nf{OK, you can write it down. If it looks trivial then we can simply summarize in one sentence.}  
-  
+
 We will now prove the second statement. First, recall from the first paragraph that $u \in K$ is unique up to inverse and
 multiplication by an element
 in~$K^*\cap(K'^*)^n$. Therefore, up to $n$th powers in~$K^*$,  
@@ -2175,18 +2182,18 @@ See Examples~\ref{Ex:j1728p3} and~\ref{Ex:j0p5} in section~\ref{SS:typeHigher} f
 We have classified above, under condition~{\bf (S)}, exactly when congruences between twists occur. To complete this part of our study we are left to describe the symplectic type of congruences between higher order twists. 
 This is given by the following result. 
 
-%We recall our runnig assumptions. 
-%Let $E$ be an elliptic curve defined over the number field~$K$ with $j(E) = 0, 1728$. Let $K'=K(\sqrt{-3})$ or $K(\sqrt{-1})$
-%respectively, and assume that $K'\not=K$.
-%If $j(E)=1728$ and~$E'$ is the quartic twist of~$E$ by~$u$ assume also $u \neq -4$; finally, $p$ is an odd prime and in case $j(E)=0$ suppose also $p\not=3$. 
-
-\nf{I wonder if we should repeat all the hypothesis in this theorem to make it self contained and easier to use, since this is the main objective of this section.}
-
-\jc{Yes, definitely.  (Not done yet)}
-
 \begin{theorem}\label{T:typeHigher}
- Keep all the running assumptions and notations from section~\ref{SS:higherCong}. 
- Let $E'/K$ be the order~$n \in \{3,4,6\}$ twist of~$E/K$ by~$u \in K^*$. 
+  Let $p$ be an odd prime, $K$ a number field, $E/K$ an elliptic
+  curve, and $u\in K^*$.  Assume that
+  \begin{itemize}
+    \item \emph{either:} $j(E)=1728$, $\sqrt{-1}\notin K$, $u\not=\pm1$
+      (modulo~$K^*^2$), and $n=4$;
+    \item \emph{or:} $j(E)=0$, $\sqrt{-3}\notin K$, $u\not=1,-3$
+      (modulo~$K^*^2$), and $n=3$ or~$6$.
+  \end{itemize}
+
+ %  Keep all the running assumptions and notations from section~\ref{SS:higherCong}.
+ Let $E'/K$ be the order~$n$ twist of~$E/K$ by~$u$.
  Suppose that $E$ and~$E'$ are $p$-congruent.
 \begin{enumerate}
 \item If $\sqrt{p^*}\in K$ then $E[p]$ and~$E'[p]$ are symplectically isomorphic
@@ -2252,6 +2259,10 @@ are quadratic extensions of~$K$ satisfying
 $K' \neq K(\sqrt{p^*})$, $K(\sqrt{u})$. 
 The rest of the argument follows similarly to~(b).
 
+\jc{You will have to explain to me what is not clear about these
+  congruences!  I think the statement is completely correct as it is
+  and that the lines below prove the congruences exactly as stated.}
+
 \nf{The following is more clear now, but it still needs work. Note the congruence conditions in the statement are only for the symplectic case but now we also have anti-symplectic mentioned in the statement. Maybe we should write a Corollary with the congruence conditions instead?}
 
 For the congruence conditions on~$p$, which are only non-trivial when
@@ -2275,38 +2286,26 @@ possibilities for quartic and sextic twist congruences over~$\Q$ with
 $p=3$ or~$5$ in the quartic case and $p=5$ or~$7$ in the sextic case.
 
 \begin{example}\label{Ex:j1728p3}
-Let $K=\Q$, $p=3$, $j=1728$ and 
-write $E_a := E_{a,0}:\ Y^2=X^3+aX$, 
-$a \in \Q$. Assume $p \nmid a$ so that~$E_a$ has good reduction at~$3$ and
-the mod~$3$ projective image is the normaliser of a non-split Cartan, isomorphic to~$D_4$.  
+Let $K=\Q$, $p=3$, $j=1728$ and write $E_a := E_{a,0}:\ Y^2=X^3+aX$,
+$a \in \Q^*$.  The mod~$3$ projective image is the normaliser of a
+non-split Cartan, isomorphic to~$D_4$, since the projective division
+field~$F$ is obtained by adjoining the roots of the $3$-division
+polynomial $3X^4+6aX^2-a^2$, and $F=\Q(\sqrt{-1},\root4\of u)$
+where~$u=-a^2/3$ and it is not hard to see that $a/\sqrt{-3}$ is not a
+square in $\Q(\sqrt{-1},\sqrt{-3})$.  The roots of the polynomial are
+$\frac{1-\sqrt{3}}{1-i}\root4\of{u}$ and its conjugates.
 
-\nf{Before there was no assumption $3 \nmid a$. Was the claim about the group structure still true and verified by explicit calculation?}
+Following the proof of Proposition~\ref{P:higherTwists}, one checks
+that up to $4$th powers, the subgroup of $\Q^*/(\Q^*)^4$ which become
+$4$th powers in~$F$ is generated by~$-3/a^2$ and~$-4$: the maps
+$\Q^*/(\Q^*)^4 \to \Q(\sqrt{-1})^*/(\Q(\sqrt{-1})^*)^4$ and
+$\Q(\sqrt{-1})^*/(\Q(\sqrt{-1})^*)^4 \to F^*/(F^*)^4$ have kernels
+generated by~$-4$ and~$u$ respectively.
 
-\jc{I don't remember adding this condition myself.  Perhaps I did.
-  But looking at the LMFDB for curves with j=1728, they are all
-  maximal at 3, so I think the condition is unnecessary for the
-  projective image to be D4.}
-  
-\nf{I added the condition $3 \nmid a$ to have a proof of the claim about $D_4$. I remember we did that check at the LMFDB together but this is not a proof for arbitrary~$a$. I think we should prove as much as possible for general $a$. If we don't know how to prove it without $3 \nmid a$ then we can add a remark after the example about the observation in the LMFDB?}  
-
-Following the proof of Proposition~\ref{P:higherTwists}, one checks that up to $4$th powers, the subgroup of $\Q^*/(\Q^*)^4$ which become $4$th
-  powers in the projective $3$-division field of~$E_a$ is generated
-  by~$-3/a^2$ and~$-4$.  
-  
-  \nf{How was this checked for arbitrary~$a$?}
-
-  \jc{I think I did a generic computation to show that the 4th root of
-    $-3a^2$ is in there, but I cannot remember.  I think the wording
-    ``one checks that'' was supposed to tell the reader that they can
-    check for themselves if they do not believe us.  If some referee
-    complains then I'll go through it again (and for the following
-    examples, whichever we keep.)}
- 
- \nf{OK. Then just add that we use the 3-division polynomial depending on~$a$ for the checking.}
- 
-Hence, from Proposition~\ref{P:higherTwists} we expect a $3$-congruence between $E_a$
-  and either $E_{-3/a}$ (twisting by~$u=-3/a^2$) or $E_{-a^3/3}$
-  (twisting by~$u=-a^2/3$).  Only the first holds.  
+Hence, from Proposition~\ref{P:higherTwists} we expect a
+$3$-congruence between $E_a$ and either $E_{-3/a}$ (twisting
+by~$u^{-1}=-3/a^2$) or $E_{-a^3/3}$ (twisting by~$u$).  Only the first
+holds.
   
  \nf{How was this checked for arbitrary~$a$? Do we need to check for 
  a single~$a$ and apply the proposition for simultaneous twisting? I've removed it from this version to keep the paper under 30 pages, but maybe this is enough reason to keep it?}   
