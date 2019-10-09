@@ -1122,7 +1122,7 @@ twists.
 \end{proposition}
 \begin{proof} 1) Let $E'$ be a $p$-congruent twist of~$E$. If $E'$ is
   a quartic or sextic twist of~$E$ then $j(E)=0,1728$ and $E$ has CM
-  (not defined over~$K$, since the proective image is not abelian) by
+  (not defined over~$K$, since the projective image is not abelian) by
   $\Q(\sqrt{-1})$ or $\Q(\sqrt{-3})$; moreover, since $p > 3$ it is
   not ramified in the CM field and hence the projective image is
   absolutely irreducible and isomorphic to $D_n$ for some $n \geq 2$.
@@ -2007,9 +2007,46 @@ statement of the lemma follows.
 \end{proof}
 
 The preceding lemma shows that, for $n\in\{4,3,6\}$, a necessary
-condition for the existence of a $p$-congruence between~$E$ with a twist~$E'$ of order~$n$ 
-is that the projective mod~$p$ image is isomorphic to $D_n$.  We next show
-that this condition is also sufficient.
+condition for the existence of a $p$-congruence between~$E$ with a
+twist~$E'$ of order~$n$ is that the projective mod~$p$ image is
+isomorphic to $D_n$.  We next show that this condition is also
+sufficient.  First we have an elementary lemma.
+
+\begin{lemma}
+Let $n\in\{4,3,6\}$, and let $K$ be a number field not containing the
+$n$th roots of unity.  Let $F/K$ be a Galois extension with
+$\Gal(F/K)\cong D_n$, and assume that the subfield $K'$ of $K$ fixed
+by the unique cyclic subgroup of order~$n$ is $K'=K(\sqrt{-1})$ if
+$n=4$ and $K'=K(\sqrt{-3})$ if $n=3,6$, and $[K':K]=2$.
+
+Then there exists $u\in K$ such that $F$ is the splitting field of~$X^n-u$.
+\end{lemma}
+
+\def\rnu{\root n\of u} \def\rnub{\root n\of {\overline{u}}}
+
+\begin{proof}\label{L:Dn}
+Write $\Gal(F/K)=\left<\sigma,\tau\mid\sigma^n=\tau^2=1,
+\tau\sigma\tau=\sigma^{-1}\right>$.  The fixed field of $\sigma$
+is~$K'$.  Since $K'$ contains the $n$th roots of unity, by Kummer
+Theory, $F=K'(\rnu)$ for some $u\in K'$.  Now $\sigma(\rnu)=\zeta\rnu$
+with $\zeta$ a primitive $n$th root of unity, and either $\tau(u)=u$
+or $\tau(u)=\overline{u}$ (the $K'/K$-conjugate of~$u$).  In the first
+case, $u\in K$ and the result follows.
+
+Suppose that $\tau(u)=\overline{u}\not=u$.  Since
+$(\tau(\rnu))^n=\tau(u)=\overline{u}$, we may set $\rnub=\tau(\rnu)$.
+Using $\sigma=\tau\sigma^{-1}\tau$ we find that
+$\sigma(\rnub)=\zeta\rnub$.  Hence $v=\rnub/\rnu\in K'$, and
+$\overline{u}=uv^n$.  Hence $\rnub=\rnu v\zeta^k$ for some~$k$;
+applying~$\tau$ gives
+\[
+\rnu = \rnub\;\overline{v}\zeta^{-k} = \rnu v\overline{v},
+\]
+so $v\overline{v}=1$.  Then $v(1+\overline{v})=1+v$ and it follows
+that $u_1=u(1+v)^n\in K$.  Replacing $u$ by $u_1$ completes the
+argument.
+\end{proof}
+
 
 \begin{proposition} \label{P:higherTwists}
 Let $E/K$ and $p$ be as above. Suppose that $\PP \rhobar_{E,p}(G_K) \simeq D_n$ where $n=4$ if
@@ -2023,69 +2060,16 @@ $3$-isogenous to each other.
 \end{proposition}
 
 \begin{proof} 
-The projective $p$-division field of~$E$ 
-is the Galois extension~$F/K$ fixed by
-$\PP \rhobar_{E,p}$ and satisfies 
-$\Gal(F/K) \simeq D_n$. Thus we can write it as $F=K'(\root n\of u)$ for
-some $u\in K^*$. 
+The projective $p$-division field of~$E$ is the Galois extension~$F/K$
+fixed by $\PP \rhobar_{E,p}$ and satisfies $\Gal(F/K) \simeq D_n$. By
+Lemma~\ref{L:Dn} we can write it as $F=K'(\root n\of u)$ for some
+$u\in K^*$, which is unique up to replacing $u$ by~$u^{-1}$ and
+multiplication by an element of~$K^*\cap(K'^*)^n$.  (Here we use that
+fact that~$\Aut(C_n)\cong\{\pm1\}$ for $n\in\{4,3,6\}$.)
 
-\nf{Does the fact that $u$ is in~$K$ follows only from the group structure of the Galois group?}
-
-\jc{Here's a partial proof.}
-
-[\def\rnu{\root n\of u} \def\rnub{\root n\of {\overline{u}}} Write
-  $\Gal(F/K)=\left<\sigma,\tau\mid\sigma^n=\tau^2=1,
-  \tau\sigma\tau=\sigma^{-1}\right>$.  The fixed field of $\sigma$
-  is~$K'$ and since $K'$ contains the $n$th roots of unity, by Kummer
-  Theory, $F=K'(\rnu)$ for some $u\in K'$.  Now
-  $\sigma(\rnu)=\zeta\rnu$ with $\zeta$ a primitive $n$th root of
-  unity, and either $\tau(u)=u$ or $\tau(u)=\overline{u}$ (the
-  $K'/K$-conjugate of~$u$).  In the first case, $u\in K$.
-
-  In the second case, we have $\tau(\rnu)=\rnub$ (without loss); using
-  $\tau\sigma\tau=\sigma^{-1}$ gives $\sigma(\rnub)=\zeta\rnub$.
-  Hence $v=\rnub/\rnu\in K'$, and $\overline{u}=uv^n$.  Conjugating
-  imples that $(v\overline{v})^n=1$ and hence $v\overline{v}=\pm$,
-  and even $v\overline{v}=1$ for $n=3$ since the only $n$th roots of
-  unity in~$K$ are (by hypothesis $K'\not=K$)~$\pm1$ for $n=4,6$ and
-  just~$1$ for $n=3$.
-
-  In case $v\overline{v}=1$ we have $v(1+\overline{v})=1+v$ and it
-  follows that $u_1=u(1+v)^n\in K$.  Replacing $u$ by $u_1$ completes
-  the argument in this case.
-
-  If $v\overline{v}=-1$ then we cannot replace $u$ by an eleent
-  of~$K$.  For if $u_1=uw^n\in K$ then
-  $v^n=(w/\overline{w})^n)\implies v=\zeta^kw/\overline{w}\implies
-  v\overline{v}=1$ (for some~$k$), while if $u_1=u^{-1}w^n\in K$ then
-  $u\overline{w}^n\in K$ and we again deduce that $v\overline{v}=1$.
-
-  The formula for the norm from $K'$ to~$K$ gives
-  $-1=v\overline{v}=x^2+y^2$ or $x^2+3y^2$ for some $x,y\in K$ for
-  $n=4$, $n=6$ respectively.  Hence it is impossible to have
-  $v\overline{v}=-1$ unless $K$ is totally complex; in particular our
-  claim is true over~$\Q$.
-]
-
-\jc{That is as far as I got (note that I have made some corrections
-  since last time).  I also thought that the rest of the proof would
-  work OK if we allowed $u\in K'$ (not in~$K$).  But no: we rely on
-  $\rnu$ being fixed by some $\tau$ of order $2$ in the other coset!
-  However, I have an alternative for the last part which does not
-  require this: see below.}
-
-\nf{I have not thought about this. Maybe looking first into the database~$D_n$  extensions of $\Q(i)$ may save us some time in case there is an example..in any case, if we decide to leave this it should appear as an auxiliary proposition first.}
-  
-  
-By Kummer theory the extension $F/K'$ is determined by a specific
-cyclic subgroup of order~$n$ in~$K'^*/(K'^*)^n$ hence, noting that
-$\Aut(C_n)\cong\{\pm1\}$ for $n\in\{4,3,6\}$, we conclude that~$u \in
-K^*$ is unique up to replacing $u$ by~$u^{-1}$ and multiplication by
-an element of~$K^*\cap(K'^*)^n$.
-
-Keeping the notations from the previous  lemmas, to prove the first part of the theorem we will construct a
-matrix~$A\in\GL_2(\F_p)$ giving
-the $G_K$-isomorphism $E[p]\to E'[p]$.
+Keeping the notations from the previous lemmas, to prove the first
+part of the theorem we will construct a matrix~$A\in\GL_2(\F_p)$
+giving the $G_K$-isomorphism $E[p]\to E'[p]$.
 
 Indeed, the character $\eps:G_{K'} \to
 \overline{\F}_p^*$ has exact order~$n$ and cuts out the extension
@@ -2119,24 +2103,24 @@ since both sides of~\eqref{E:PsiM} are homomorphisms $G_K\to
 \GL_2(\F_p)$, to do so for a single element~$\tau\in G_K\setminus
 G_{K'}$.
 
-\jc{First version, fine when $u\in K$}
+\begin{comment}
+\jc{First version}
 
-Note that $K' \cap K(\root n\of u) = K$; this follows from coprimality of the degrees for $n=3$ and by our running assumption on~$u$ for $n \in \{4,6\}$.
-We can thus choose $\tau\in G_K$ such that it fixes~$\root n\of u$ and is non-trivial when restricted to~$K'$. 
-Let $A=\rhobar_{E,p}(\tau)$. 
-Since $\tau\notin G_{K'}$ 
-the matrix~$A \not\in C$ is anti-diagonal 
-because we have diagonalized the 
-Cartan~$C$ and $\rhobar_{E,p}(\tau)$ is in its normalizer. Moreover, we have 
-$\psi(\tau)=1$ so $\Psi(\tau)=I$ 
-and~\eqref{E:PsiM} 
-with $\sigma = \tau$ is trivially satisfied.
+Note that $K' \cap K(\root n\of u) = K$; this follows from coprimality
+of the degrees for $n=3$ and by our running assumption on~$u$ for $n
+\in \{4,6\}$.  We can thus choose $\tau\in G_K$ such that it
+fixes~$\root n\of u$ and is non-trivial when restricted to~$K'$.  Let
+$A=\rhobar_{E,p}(\tau)$.  Since $\tau\notin G_{K'}$ the matrix~$A
+\not\in C$ is anti-diagonal because we have diagonalized the
+Cartan~$C$ and $\rhobar_{E,p}(\tau)$ is in its normalizer. Moreover,
+we have $\psi(\tau)=1$ so $\Psi(\tau)=I$ and~\eqref{E:PsiM} with
+$\sigma = \tau$ is trivially satisfied.
 
-\jc{New version which does not rely on the existence of a $\tau\in
-  G_K\setminus G_{K'}$ fixing $\rnu$:}
+\jc{New version}
+Let~$\tau\in G_K\setminus G_{K'}$ be arbitrary, and
+\end{comment}
 
-Let~$\tau\in G_K\setminus G_{K'}$ be arbitrary, and write
-$\Psi(\tau)=\diag(w,w^{-1})$.  Define
+Write $\Psi(\tau)=\diag(w,w^{-1})$ with $w\in\F_{p^2}^*$.  Define
 \[
 A=\rhobar_{E,p}(\tau)\diag(w,1)=\diag(1,w)\rhobar_{E,p}(\tau),
 \]
@@ -2150,7 +2134,7 @@ as required.
 In the case of the split Cartan we are done, as the diagonalization
 of~$C$ occurs in~$\GL_2(\F_p)$ and so~\eqref{E:PsiM} holds with $A \in
 \GL_2(\F_{p})$.  In the non-split case, we have shown that
-equaton~\eqref{E:PsiM} holds over $\GL_2(\F_{p^2})$. By undoing the
+equation~\eqref{E:PsiM} holds over $\GL_2(\F_{p^2})$. By undoing the
 initial change of coordinates we obtain that \eqref{E:PsiM} holds
 in~$\GL_2(\F_p)$.
 
@@ -2183,10 +2167,6 @@ $C^{-1}BC$, so~\eqref{E:PsiM} also holds in that case.
 \nf{OK, you can write it down. If it looks trivial then we can simply summarize in one sentence.}
 \end{comment}
 
-\jc{The rest of the proof is still only for the case $u\in K$.  As
-  already observed, this may always be assumed unless (possibly) $K$
-  is toally complex.}
-
 We will now prove the second statement. First, recall from the first paragraph that $u \in K$ is unique up to inverse and
 multiplication by an element
 in~$K^*\cap(K'^*)^n$. Therefore, up to $n$th powers in~$K^*$,  
@@ -2198,9 +2178,9 @@ possible choices for~$u$, namely
   \item $\{u, u^{-1}\}$ if $n=3$.
 \end{itemize}
 
-This follows from the elementary observation that the natural map
-$K^*/(K^*)^n \to (K'^*)/(K'^*)^n$ is injective when $n=3$ and has
-kernel $\{1,-4\}$ for $n=4$ and $\{1,-27\}$ for $n=6$.
+This follows from the observation that the natural map $K^*/(K^*)^n
+\to (K'^*)/(K'^*)^n$ is injective when $n=3$ and has kernel $\{1,-4\}$
+for $n=4$ and $\{1,-27\}$ for $n=6$.
 
 Secondly, observe that the construction in the first part of the proof 
 only works for
@@ -2308,9 +2288,12 @@ $\sqrt{p^*}\notin K$ these isogenies induce anti-symplectic
 congruences, so $p\not\equiv\pm1\pmod{8}$ (respectively, mod~$12$).
 \end{proof}
 
-We end this section with four families of examples, giving all
+We end this section with four families of examples.  These include all
 possibilities for quartic and sextic twist congruences over~$\Q$ with
-$p=3$ or~$5$ in the quartic case and $p=5$ or~$7$ in the sextic case.
+$p=3$ or~$5$ in the quartic case and $p=5$ or~$7$ in the sextic case,
+in the case where the elliptic curve has good reduction at~$p$, so
+that the projective image is maximal, namely $D_{p-1}$ (respectively,
+$D_{p+1}$) in the split (respectively, non-split) case.
 
 \begin{example}\label{Ex:j1728p3}
 Let $K=\Q$, $p=3$, $j=1728$ and write $E_a := E_{a,0}:\ Y^2=X^3+aX$,
@@ -3407,7 +3390,7 @@ most~$4$ by the results of Section~\ref{S:cong-twist}.
   To make this correct we would also have make sure about all the
   reducible cases.  Perhaps not worth it.}
 
-  \nf{I agree it is not worth it. The most we coud do is just to say there are only a few over~$\Q$ and as footnote give the counting in the irredicible case -- it is certainly not worth it entering in the reducible setting -- otherwise you can remove any attempt to give an upper bound even over~$\Qbar$ if you want} 
+  \nf{I agree it is not worth it. The most we could do is just to say there are only a few over~$\Q$ and as footnote give the counting in the irreducible case -- it is certainly not worth it entering in the reducible setting -- otherwise you can remove any attempt to give an upper bound even over~$\Qbar$ if you want} 
 \end{comment}
 
 If there are no preimages of~$j'$, we conclude that the isomorphism
