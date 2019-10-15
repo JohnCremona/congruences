@@ -1928,10 +1928,7 @@ $\eps:G_{K'}\to\overline{\F}_p^*$ a character of exact order~$n$.
 Part (1) follows from standard facts on~CM curves plus our running assumptions and~(2) follows by diagonalising the Cartan over $\F_p$ in
   the split case and over~$\F_{p^2}$ in the non-split case.
 \end{proof}
-%% \nf{Isn't $c_\sigma$ a character? Wouldn't be better a notation
-%%   looking more like a character? $c(\sigma)$?}  \jc{You are right and
-%%   I changed it.  I was using notation usual for cocycles, but that is
-%%   not necessary since $c()$ is only defined on $G_{K'}$}.
+
 \begin{lemma}\label{L:DiagonalPsi}
 Let~$E/K$ and~$u\in K^*$ be as above.  For $m\in\{3,4,6\}$, let $\psi$
 be the order~$m$ cocycle associated to~$u$, with values
@@ -2162,8 +2159,6 @@ B\rhobar_{E,p}(\sigma)B^{-1} = \rhobar_{E,p}(\sigma)\Psi(\sigma)
 for all $\sigma\in G_{K'}$, giving~\eqref{E:PsiM} in this case.  When
 $\sigma=\tau$, both sides of the preceding equation are equal to
 $C^{-1}BC$, so~\eqref{E:PsiM} also holds in that case.
-
-\nf{OK, you can write it down. If it looks trivial then we can simply summarize in one sentence.}
 \end{comment}
 
 We will now prove the second statement. First, recall from the first paragraph that $u \in K$ is unique up to inverse and
@@ -2452,37 +2447,6 @@ $K=\Q$, $p=7$, $j=0$.  The projective image is the normaliser of a
   anti-symplectic congruence between $E_b$ and $E_{756/b}$.
 \end{example}
 
-\begin{comment}
- 
-\nf{I am not so sure the following examples still make sense. We start with two congruent curves (one of them with $j=1728$) and twist them, but the twists are different: one is the quartic twist by $-4$ and the other is the quadratic twist by $-1$. The reason why the twisted curves are still congruent is different from the case of taking simultaneous quadratic twists and seems like an accident. Indeed, it is
-is because the tensoring by $\chi_{-1}$ does not affect the mod~$p$ representations of the $j=1728$ curve and its $-4$ quartic twist is an isogenous curve..in general, if we take a simultaneous non-quadratic twist, we do not have a congruence on the twisted curves -- we need to twist one of them by the inverse to keep the congruence. (These made sense when we had the previous definition of quadratic twists.)}
-
-\jc{I agree!  Cut them both out.}
-
-\begin{example}
-Let $E_1=\lmfdbec{288}{a}{1}$ and $E_2=\lmfdbec{32544}{b}{1}$, of
-which only the first has $j=1728$.  We have $E_1[7]\cong E_2[7]$, with
-a symplectic isomorphism.  Twisting both curves as in the previous
-paragraph gives the pair $E_1'=\lmfdbec{288}{a}{2}$ and
-$E_2^{-1}=\lmfdbec{32544}{c}{1}$, which again have symplectically
-isomorphic mod~$7$ representations as expected since
-$\legendre{2}{7}=+1$.
-\end{example}
-
-\begin{example}
-  $E_1=\lmfdbec{32}{a}{1}$ has $j$-invariant $1728$, its $2$-isogenous
-  twist is $E_1'=\lmfdbec{32}{a}{2}$, and these are antisymplectically
-  congruent mod~$5$ since $\legendre{2}{5}=-1$.  They are also
-  congruent mod~$5$ to $E_2=\lmfdbec{608}{b}{1}$ and its $-1$-twist
-  $E_2^{-1}=\lmfdbec{608}{e}{1}$, which are symplectically
-  $5$-congruent to each other in accordance with
-  Theorem~??.  The mod~$5$ congruence between
-  $\lmfdbec{32}{a}{1}$ and $\lmfdbec{608}{b}{1}$ is symplectic while
-  that between $\lmfdbec{32}{a}{2}$ and $\lmfdbec{608}{e}{1}$ is
-  antisymplectic, so in this case applying the twists reverses the
-  symplectic type, as expected since $\legendre{2}{5}=-1$.
-\end{example}
-\end{comment}
 
 \begin{comment}
  \section{Congruences between quartic and sextic twists}\label{S:cong-twist-46}
@@ -3437,26 +3401,6 @@ field there are $168$ distinct preimages of each $j'$, except that the
 ramification points $j=0$ and $j=1728$ have $56$ and $84$ preimages,
 over $\Q$, there are fewer: in the irreducible case there are at
 most~$4$ by the results of Section~\ref{S:cong-twist}.
-%% at most two 
-%% by Proposition~\ref{P:twist}, except
-%% for $j'=0$ when there may be four by Proposition~\ref{P:higherTwists}.
-
-\begin{comment}
-\nf{I am not sure the counting of the pre-images over~$\Q$ is correct or at least needs further details. Can't we have mod~$7$ projective image $C_2 \times C_2$ for curves over~$\Q$ with bad reduction at~7? Still, in that case, not all the congruences would be symplectic and so the amount of pre-images seems to still be at most 2 by part (2) of Theorem~\ref{T:quadratic}. For the case $j'=0,1728$ by Proposition 2.15 one gets 3 pre-images and for $j'=0$ we also have the quadratic twist by $-3$ and for $j'=1728$ the quartic twist by $-4$; however, not all symplectic.}
-
-\jc{You are probably right.  I am not sure that it is worth the
-  trouble to get the exact count.  It is surely the same question as
-  ``Given $E/\Q$, how many twists of $E$ can be symplectically
-  $7$-congruent to $E$?''.  However your sketch seems almost complete
-  (taking into account that we only want symplectic congruences).
-  Note also that the answer to the same question for antisymplectic
-  congruences (the number of pre-images of $j'$ in $X_E^-(7)$) must be
-  the same, since any two are symplectically congruent to each other.
-  To make this correct we would also have make sure about all the
-  reducible cases.  Perhaps not worth it.}
-
-  \nf{I agree it is not worth it. The most we could do is just to say there are only a few over~$\Q$ and as footnote give the counting in the irreducible case -- it is certainly not worth it entering in the reducible setting -- otherwise you can remove any attempt to give an upper bound even over~$\Qbar$ if you want} 
-\end{comment}
 
 If there are no preimages of~$j'$, we conclude that the isomorphism
 $E[7]\cong E'[7]$ is not symplectic.  Otherwise, for each preimage
