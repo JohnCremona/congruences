@@ -5,14 +5,14 @@ from XE7 import test_isom
 import sys
 
 try:
-    hashtab7_30 = load('hashtab7_30')
+    hashtab7_50 = load('hashtab7_50')
 except IOError:
-    hashtab7_30 = make_hash(7,11,400000,30)
-    hashtab7_30 = dict([(k,v) for k,v in hashtab7_30.items() if len(v)>1])
-    save(hashtab7_30, 'hashtab7_30')
-    len(hashtab7_30)
+    hashtab7_50 = make_hash(7,11,500000,50)
+    hashtab7_50 = dict([(k,v) for k,v in hashtab7_50.items() if len(v)>1])
+    save(hashtab7_50, 'hashtab7_50')
+    len(hashtab7_50)
 
-def find_bad_pairs(ht=hashtab7_30):
+def find_bad_pairs(ht=hashtab7_50):
     bad_pairs = []
     for s in ht.values():
         if len(s)>1:
@@ -25,26 +25,17 @@ def find_bad_pairs(ht=hashtab7_30):
                     bad_pairs.append([s[0],r])
     return bad_pairs
 
-# bad_pairs = find_bad_pairs(hashtab7_30)
+# bad_pairs = find_bad_pairs(hashtab7_50)
 # previous cell takes ages; this is the output
 
-bad_pairs = [['25921a1', '78400gw1']]
-isom_sets = [s for s in hashtab7_30.values() if len(s)>1]
+bad_pairs = []
+isom_sets = [s for s in hashtab7_50.values() if len(s)>1]
 len(isom_sets)
 isom_sets_red = []
 isom_sets_irred = []
 for s in isom_sets:
     isom_sets_irred.append(s) if test_irred(s) else isom_sets_red.append(s)
 print("{} irreducible sets, {} reducible sets".format(len(isom_sets_irred),len(isom_sets_red)))
-bad_s = [s for s in isom_sets_red if '25921a1' in s][0]
-bad_s
-bad_s_ok = [bad_s[i] for i in 0,2,3]
-bad_s_ok
-ind = isom_sets_red.index(bad_s)
-#ind = 165
-isom_sets_red[ind] == bad_s
-isom_sets_red[ind]=bad_s_ok
-assert not  [s for s in isom_sets_red if '78400gw1' in s]
 
 from collections import Counter
 red_sizes = Counter()
@@ -52,11 +43,11 @@ irred_sizes = Counter()
 
 for s in isom_sets_irred:
         irred_sizes[len(s)] += 1
-print("irred sizes: {}".format(irred_sizes))
+print("irred sizes: {}".format(irred_sizes, max(s for s in irred_sizes)))
 
 for s in isom_sets_red:
         red_sizes[len(s)] += 1
-print("red sizes: {}".format(red_sizes))
+print("red sizes: {} (max = {})".format(red_sizes, max(s for s in red_sizes)))
 
 def test7(lab1, lab2):
     E1 = EllipticCurve(lab1)
@@ -105,5 +96,74 @@ for i,s in enumerate(isom_sets_irred):
 
 assert irred_pairs_bad == []
 assert irred_pairs_none == []
-assert len(irred_pairs_symp) ==  16822
-assert len(irred_pairs_anti) == 6939
+#assert len(irred_pairs_symp) ==  16822
+#assert len(irred_pairs_anti) == 6939
+print("{}      symplectic mod 7 irreducible pairs".format(len(irred_pairs_symp)))
+print("{} anti-symplectic mod 7 irreducible pairs".format(len(irred_pairs_anti)))
+
+# Count how many sets are all symplectic and how many include anti-symplectic congruences:
+
+n_irred_sets_symp=0
+n_irred_sets_anti=0
+for s in isom_sets_irred:
+    if any([lab1,lab2] in irred_pairs_anti for lab1 in s for lab2 in s):
+        n_irred_sets_anti +=1
+    else:
+        n_irred_sets_symp +=1
+
+print("Out of {} irreducible sets, {} consts of symplectic congruences only, while {} include at least one anti-symplectic congruence".format(len(isom_sets_irred),n_irred_sets_symp,n_irred_sets_anti))
+
+# Output symp pairs for Magma
+
+np = 0
+fp = "mod7_symppairs.m"
+out = open(fp, "w")
+out.write('pairs := [\\\n')
+for s in irred_pairs_symp[:-1]:
+        #print(s[0],s[1])
+        out.write('["{}", "{}"],\\\n'.format(s[0],s[1]))
+        np += 1
+s = irred_pairs_symp[-1]
+out.write('["{}", "{}"]\\\n'.format(s[0],s[1]))
+np += 1
+out.write('];\n')
+out.close()
+print("Wrote {} pairs to {}".format(np, fp))
+
+# Output anti pairs for Magma
+
+np = 0
+fp = "mod7_antipairs.m"
+out = open(fp, "w")
+out.write('pairs := [\\\n')
+for s in irred_pairs_anti[:-1]:
+        #print(s[0],s[1])
+        out.write('["{}", "{}"],\\\n'.format(s[0],s[1]))
+        np += 1
+s = irred_pairs_anti[-1]
+out.write('["{}", "{}"]\\\n'.format(s[0],s[1]))
+np += 1
+out.write('];\n')
+out.close()
+print("Wrote {} pairs to {}".format(np, fp))
+
+def class_js(lab):
+    E = EllipticCurve(lab)
+    return Set([E1.j_invariant() for E1 in E.isogeny_class()])
+
+def set_js(s):
+    return sum([class_js(lab) for lab in s], Set())
+
+irred_js = Set()
+JS = irred_js_by_size = {2:Set(), 3:Set(), 4:Set(),5:Set()}
+for s in isom_sets_irred:
+    js = set_js(s)
+    irred_js = irred_js + Set(js)
+    irred_js_by_size[len(s)] += Set(js)
+
+print("{} distinct j-invariants in irreducible isogeny classes".format(len(irred_js)))
+# 11761
+print("By size: {}".format([(n,len(irred_js_by_size[n])) for n in irred_js_by_size.keys()]))
+# [(2, 11135), (3, 1455), (4, 340), (5, 36)]
+
+
