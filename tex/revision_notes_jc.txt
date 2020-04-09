@@ -1,0 +1,262 @@
+Comments For The Authors [+ comments by JC]
+
+• On page 1, I had not seen this property of the Weil pairing called
+“Weil reciprocity” before.  Please check this is standard terminology.
+
+JC: the fact that phi-hat is adjoint to phi w.r.t. the
+Weil pairing is proved using Weil reciprocity, and that is what I
+meant.  We could say instead "using standard properties of the Weil
+pairing".
+
+• Section 2 accounts for nearly half the paper, but only gets a brief
+mention in the introduction.  If the results are too technical to
+state in the introduction, perhaps you could give some of the examples
+to motivate your work instead?
+
+JC: we should add to the two "main objectives" listed
+on page 3.  Also we could add, late in the introduction, a brief
+symopsis of the contents of the following section.
+
+• I found Section 2 (especially Lemma 2.4) much easier to read when I
+realized that “condition (S)” is simply the condition that the image G
+of the mod p Galois representation is not contained in a (split or
+nonsplit) Cartan subgroup. This is easy to prove directly. Indeed for
+the non-trivial implication, if h ∈ GL 2 (F p ) centralizes G, and det
+h is not a square, then h is not a scalar matrix, and it has distinct
+eigenvalues (in F p ). Then G is contained in the centralizer of h,
+which is a Cartan subgroup. Proposition 1.1 (if still needed) is then
+a corollary.
+
+JC: Shall we replace our definition by the one suggested
+(image not contained in a Cartan) and reword Prop 1.1 to give 3
+equivalent conditions for this, the two we already do and also
+(C) E[p] admits an antisymplectic automorphism
+
+• On page 4, ”They may be found in [21]”. This reference only gives
+  equations for the + case.
+
+JC: Ref [21] (Rubin and Silverberg) only give equations for c4, c6 in the
++ case.   True: let see if both are in one of Fisher's papers.
+
+• I suggest shortening Sections 2.1 and 2.2. The first few paragraphs
+of Section 2.1 give useful background, and the numbered equations will
+obviously be useful later on, but the discussion of one type of twist
+being a special case of another seems overdone. Surely the usual
+convention is that an elliptic curve is a quadratic twist of itself?
+If the authors have a different convention then this should be
+explained. The attempt to define the order of a twist is somewhat
+unhelpful, since the definition given might depend on the choice of t.
+
+JC: Currently under 3 pages.
+
+    For 2.1: we can try replacing the entire paragraph in the quartic
+twist section starting "As a special case" by just the first sentence,
+and deleting Remark 2.1.  Under Sextic twists, delete from "which in
+general" to the end of the paragraph except (perhaps?) for very short
+mention that the sextic twist by u=d^3 is the same as a quadratic
+twist by d.  And delete Remark 2.2.  But check first in case either
+remark is referred to later. [Rmk 2.1 is referred to in the proof of
+Cor.2.6.]
+
+    For 2.2: I think we can leave this alone.
+
+• The proof of Lemma 2.4 in the case j = 0 and p = 3 currently makes
+no use of the hypotheses that E is p-congruent to a twist. This cannot
+be correct, since if E/Q is the elliptic curve y 2 = x 3 + 1 then E[3]
+satisfies condition (S), but is reducible. Also the sentence before
+the lemma appears to ignore the possibility (condition (B) in
+Proposition 1.1) that (S) is satisfied, but the image of Galois is
+abelian. In the proof you could be a bit more explicit when you write
+“contradicting (2.7)”, i.e. what is the contradiction? In the final
+paragraph of the proof it might be worth highlighting the importance
+of the assumption that p is odd.
+
+JC: look into this later!
+
+• The proof of (1) on page 10 seems to take an unnecessary excursion
+via Frobenius elements.  Can’t you just take traces in (2.5) directly?
+
+JC: I think this must refer to the proof on page 10 of part (1) of
+Prop 2.5.  Yes, the first 6 lines + displays on page 10 do follow
+immediately from (2.5) by taking traces.  We must have written this
+proof out before stating (2.5) like this.
+
+• In the proof of Corollary 2.6, and again before Example 2.18, you
+quote a fact about the image of Galois for a CM elliptic curve with
+good reduction. Could you give a reference for this?
+
+JC: Serre?
+
+• In the proof of Corollary 2.6, why do you want a cyclic isogeny? For
+D / = 4 it seems the case-by-case computation could be replaced by the
+observation that the order of discriminant √ −D contains −D and this
+has norm D.
+
+JC: OK, the suggested argument is simpler.  The isogeny from E to its
+twist is the composite of the twist isomorphism and the endomorphism
+\sqrt{-D}, which has degree N(\sqrt{-D})=D. I suppose that the point
+of the extra detail that I worked out was just to show that \sqrt{-D}
+was the only endomorphism which works.  Hence the last paragraph can
+be deleted altogether, and in the one before we only need say
+"... while for D\neq4 there is an isogeny of degree D from E to E^{-D}
+obtained by composing the twist isomorphism with the endomorphism
+\sqrt{-D}."  This leaves unexplained why this isogeny is defined over
+Q (we could say "It is easy to see that this is defined over Q.")  And
+we do refer to Remark 2.1 here!
+
+• Paragraph before Lemma 2.8. In the first sentence I do not see the
+conclusion that the image of Galois is cyclic. For example, it could
+be C 2 × C 2 generated by −I and an antidiagonal matrix. Does “in our
+context” mean “in the context of Proposition 2.5”?
+
+JC: OK, we need a condition for this claim to be true.
+
+• Theorem 2.9 allows p = 3, but refers in its statement to Proposition
+2.5 which does not. You might consider re-wording Lemma 2.8 so that
+you can refer to its statement rather than its proof.
+
+JC: [I seem to remember that we kept on including and excluding p=3,
+and we have been caught out.]  Looking back at Prop 2.5, we only need
+to exclude p=3 in the sextic twist case since we want p to be
+unramified in the CM field.  I suggest that we allow p>=3 in Prop 2.5
+except when j=0?  Or in part (1) exclude sextic twists when p=3?
+There seems to be no problem with the converse.
+
+JC: At the end of the proof of Thm 2.9 we say "see the proof of Lemma
+2.8".  We need to add a sentence at the end of the statement of Lemma
+2.8.  What we need is that in the second case of that Lemma (N not
+contained in PSL), precisely one of the C's is contained in PSL.  But
+it is rather obvious that this is the case.  Perhaps we can just
+delete the reference to the proof of Lemma 2.8? It was only the
+previous page.
+
+JC: !! No comments made between pages 13 and 20 !!
+
+• At the top of page 20 you write “determine the symplectic type” and
+towards the end of page 22 “by the results of Section 2”. The comment
+about condition (S) in the case K = Q, which is made immediately
+following Proposition 1.1, would surely be worth repeating somewhere
+in Section 3.
+
+JC: The suggestion is that we remind the reader that
+Condition (S) is satified for all p>=7 over Q.  Fair enough.
+
+We can insert "Note that, as remarked in the Introduction, Condition
+(S) is satisfied for $p\ge7$ for all elliptic curves defined
+over~$\Q$."  Perhaps in the last paragrah before subsection 3.1,
+though that is after the phrase "determine the symplectic type" is
+used (line 3 of p.20).  So perhaps better to put it on p.19 just
+before "We first outline the steps..."?
+
+• Proposition 3.4 is correct, but its proof is not. The problem is
+with the claim in the second line of the proof that φ(D) = D. A
+counterexample would be to take H = B and φ to be conjugation by a
+generator for U . It might be helpful to note that the image of D in
+PGL 2 (F p ) is cyclic, and start the proof by picking a generator for
+that.
+
+JC: proof needs fixing, the comment suggests how.
+
+• In Proposition 3.5 and Theorem 3.6, why do you exclude p = 2?
+
+JC: the case p=2 is trivially true, but our proof works fine for p=2
+so we can just delete ">2" in the statement.
+
+• The proof of Theorem 3.6 begins “Clearly”. One method would be to
+check that all index p subgroups in H are conjugate. However the
+comments on the next page about fields of definitions of isogenies
+give a simpler proof. Perhaps these comments should be made sooner?
+
+JC: One solution is to insert "unique" into "there is a field F" in
+Prop 3.5, the proof being (as suggested) that all index p subgroups of
+the image are conjugate.  (So we'll need to be concinved of that!).
+Then the "Clearly..." at the start of the proof of Thm 3.6 can be
+replaced by "By the uniqueness statement of Prop 3.5".
+
+    The referee thinks that the argument on the next page is simpler,
+but I am a little worried about using this p=7 argument in the general
+case.  We would be saying that the preimage of j in X_0(p) consists of
+p+1 points over Q-bar (OK: they are distict when j!=0,1728), including
+one rational point together with a Galois orbit of size p.  The fact
+that there is an orbit of size p follows from the *projective* image
+having order divisible by p.  But I think this is a more complicated
+argument?
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+Smaller Comments And Type Errors
+
+• p1, standardize F^×_p and F^*_p .
+
+JC: OK, I vote for *
+
+• p2, Proposition 1.1, “or if and only if” → “equivalently if and only
+if”. Second paragraph after the proof, “symplectic” → “symplectic
+type”.
+
+JC: OK*2
+
+• p3, “in LMFDB” → “in the LMFDB”
+
+JC: OK
+
+• p4, Since in the statement of Frey-Mazur you specify p strictly
+bigger than C, surely it is expected to hold for C = 17 (and not just C
+= 18). Same comment at the bottom of page 27.
+
+JC: OK, we need to check > vs. >= .
+
+• p4, “of order multiple of p” → “of order p”
+
+JC: OK
+
+• p4, “not be useful in practice”. You could be more specific – is it
+that the bounds are hard to compute, or end up being too large? Near
+the top of the next page are “the bounds” on ell?
+
+JC: (para. 4 of subsec. 1.2) -Nuno (for both)?
+
+• p5, The second sentence of Section 2 is too vague to be helpful –
+  “all types” in what sense?
+
+JC: I'm sure we mean quartic and sextice twists, not just quadratic.
+We could replace this with "In this sectionm, we consider all
+congruences between twists." but in view of the section title, we
+could also delete the sentence.
+
+• p7, “This is most easily seen”. This is also easily seen by
+considering the long exact sequence of 1 → μ 2 → μ 4 → μ 2 → 1.
+
+JC: we'll be deleting this anyway, but it is clearly dangerous to ever
+say "most easily"!
+
+• p8, “twisting by the cocycle” → “by twisted by the cocycle”, “so
+symplectic type” → “so the symplectic type”.
+
+JC: OK ( but "by twisting by the cocycle") and OK
+
+• p14, Lemma 2.13, “extending scalars to”. No need for the
+star. Second line of proof, “∈” → “⊂”. 4th line of proof, what is not
+a scalar?
+
+JC: OK (delete *), OK, and ... obviously a Galois action is scalar if
+it acts via scalar matrices!
+
+• p14-15, standardize {3, 4, 6} and {4, 3, 6}.
+
+JC: OK.   Which?  3 and 6 go together but perhaps the first looks better.
+
+• p20, “Assume also B is large enough that p ∈ / L_B ”. If p ∈ L_B
+then increasing B isn’t going to change this.
+
+JC: ?! Perhaps we just say "Assume $p\notin \L_B".
+
+• p21, “sizes between 2 and 76” and “sizes up to 80”. Why are these
+  numbers different?
+
+JC: I'll check -- probably 80 is right but 76 was right when the
+conductors only went up to 400000.
+
+• p28, “has to occurs” → “has to occur”
+
+JC: OK.
