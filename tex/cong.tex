@@ -405,7 +405,7 @@ Given $G_K$-isomorphic modules $E[p]$ and~$E'[p]$ as above, it is
 possible they admit isomorphisms with both symplectic types.  This
 occurs if and only if $E[p]$ admits an anti-symplectic automorphism;
 and the following proposition, which follows from results
-in~\cite{FKSym}, gives several equivalent conditions.
+in~\cite{FKSym}, gives several equivalent conditions for this property.
 
 \begin{proposition} \label{P:conditionS}
 Let $E$ be an elliptic curve over a number field~$K$. Let~$p$ be an
@@ -495,21 +495,23 @@ the LMFDB database of elliptic curves over~$\Q$ (see \cite{lmfdb}):
 \end{itemize}
 
 Towards (i), we give in Section~\ref{S:statistics} a complete
-resolution for~$p=7$ using modular curves.  For (ii), in
+resolution for the case~$p=7$ using modular curves; this is the most relevant case as explained in~\S\ref{S:motivation}.
+For~(ii), in
 Section~\ref{S:cong-twist} we give, for general~$p$, global criteria
-for the existence of congruences, and their symplectic type, when $E$
+for the existence of congruences, and to decide their symplectic type, when $E$
 and~$E'$ are twists of each other; Theorem~\ref{T:twist} shows that
-(under Condition~(S)) congruences between quadratic twists occur if
+(under condition~{\bf(S)}) congruences between quadratic twists occur if
 and only if the projective image is dihedral, and
 Theorem~\ref{T:quadratic} establishes the symplectic type of such
 congruences. Theorems~\ref{T:higherTwists} and~\ref{T:typeHigher}
 study the existence and the symplectic type of congruences between
-higher order twists.  As a special case of the latter result, we prove
+higher order twists.  As a special case of the latter results, we prove
 the following.
 
 \begin{theorem}
 \label{T:higherTwistsQ}
-Over~$\Q$ we have the following $p$ congruences between higher twists:
+Over~$\Q$ we have the following 
+$p$-congruences between higher twists:
 \begin{itemize}
 \item Quartic twists between curves of the form $E_a:\ Y^2=X^3+aX$,
   with $a \in \Q^*$, which have $j$-invariant~$1728$:
@@ -526,7 +528,7 @@ Over~$\Q$ we have the following $p$ congruences between higher twists:
       former.
   \end{itemize}
 \item Sextic twists between curves of the form $E_b:\ Y^2=X^3+b$, with
-  $b \in \Q^*$, which have $j=0$:
+  $b \in \Q^*$, which have $j$-invariant~$0$:
   \begin{itemize}
     \item
       $E_b$ is symplectically $5$-congruent to $E_{-4/5b}$, and also
@@ -560,7 +562,7 @@ and~$E'[p]$ are isomorphic (ignoring the symplectic structure) in both
 the irreducible and reducible cases. Finally, in
 Section~\ref{S:Frey-Mazur}, we prove the following:
 
-\begin{theorem}[${}={}$Theorem 4.1]
+\begin{theorem}[Theorem 4.1]
  \label{T:cong19intro}
  Let $p > 17$ be a prime. Let $E/\Q$ and~$E'/\Q$ be elliptic curves
  with conductors at most~$\numprint{500000}$.  Suppose that $E[p]
@@ -717,7 +719,7 @@ up to replacing $(a,b)$ by~$(au^4,bu^6)$ with $u\in K^*$.
 We will denote by~$I$ the identity matrix in~$\GL_2(\Fp)$.
 
 \subsection{Acknowledgments} We thank Alain Kraus and Samir Siksek for helpful conversations. We also thank Tom Fisher for pointing 
-us to the work of Halberstadt~\cite{Halberstadt-11nonsplit}.
+us to the work of Halberstadt~\cite{Halberstadt-11nonsplit}. We also thank the anonnymous referee for the careful reading of the paper and various helpful comments.
 
 \section{Congruences between Twists}\label{S:cong-twist}
 
@@ -984,7 +986,9 @@ CM field, as otherwise the image is abelian.
 
 \begin{lemma} \label{L:noCyclic}
 Let $E/K$ be an elliptic curve and $p$ an odd prime such that~$E[p]$
-satisfies \condS.  If $E$ is $p$-congruent to a
+satisfies \condS. Assume further that $j(E) \neq 0$ if $p=3$.  
+
+If $E$ is $p$-congruent to a
 twist~$E'$ then $\rhobar_{E,p}$ is absolutely irreducible.
 \end{lemma}
 \begin{proof}
@@ -995,17 +999,16 @@ For a contradiction, suppose $\rhobar_{E,p}$ is absolutely reducible. Thus
  \chi_1 & h \\ 0 &\chi_2
  \end{pmatrix} \quad \text{ with } \; h \neq 0, 
 \end{equation} 
-where $h \neq 0$ follows from 
-the description of the two cases
-in Proposition~\ref{P:conditionS}.
+where $h \neq 0$ follows from directly
+Proposition~\ref{P:conditionS} part (4).
 
-Suppose that $j(E)=0$ and $p=3$.  Then $\chi_1$ and $\chi_2$ are
-quadratic, their product is the cyclotomic character which is not
-trivial since by \condS, $K$ does not contain the CM field
-$K(\sqrt{-3})$.  But then $\chi_1\not=\chi_2$, contradicting
-\condS, by Proposition~\ref{P:conditionS}.
+%Suppose that $j(E)=0$ and $p=3$.  Then $\chi_1$ and $\chi_2$ are
+%quadratic, their product is the cyclotomic character which is not
+%trivial since by \condS, $K$ does not contain the CM field
+%$K(\sqrt{-3})$.  But then $\chi_1\not=\chi_2$, contradicting
+%\condS, by Proposition~\ref{P:conditionS}.
 
-Similarly, we cannot have $j(E) = 1728$ or $j=0$ and $p\ge5$, as then
+Note that we cannot have $j(E) =0$ or $1728$, as then
 $E$ would have CM by~$\Q(i)$ or $\Q(\sqrt{-3})$, and the hypothesis
 on~$p$ would imply that the image would be in the normalizer of a
 Cartan, contradicting~\eqref{E:absRed}. Therefore $E$ only admits
@@ -1016,7 +1019,7 @@ Let $\eps_d$ be the quadratic character associated to the extension
 $K(\sqrt{d})/K$. From the hypothesis $E[p] \simeq E^d[p]$, part 2) of
 Lemma~\ref{L:twist-rep} and~\eqref{E:absRed} it follows that $\chi_1
 =\chi_1\eps_d$ since both give the Galois action on the unique fixed
-line. This contradicts ~$\eps_d \neq 1$.
+line. This contradicts ~$\eps_d \neq 1$ as $p \neq 2$.
 \end{proof}
 
 
@@ -1031,10 +1034,13 @@ already contained in~\cite[\S2]{Halberstadt-11nonsplit}, with a
 different proof and without the uniqueness statement.
 
 \begin{theorem}\label{T:twist}
-Let $E/K$ be an elliptic curve and $p \geq 5$ a prime. Suppose
-that~$E[p]$ satisfies \condS.
+Let $E/K$ be an elliptic curve and $p$ an odd prime such that~$E[p]$
+satisfies \condS. 
 
-1) If $E$ is $p$-congruent to a twist, 
+%Let $E/K$ be an elliptic curve and $p \geq 5$ a prime. Suppose
+%that~$E[p]$ satisfies \condS.
+
+1) Assume further $j(E) \neq 0$ if $p=3$. If $E$ is $p$-congruent to a twist, 
 then the image of~$\rhobar_{E,p}$ is contained in the normaliser of a
 Cartan subgroup of $\GL_2(\Fp)$ but not in the Cartan itself and
 $\PP \rhobar_{E,p} \simeq D_n$ for some $n \geq 2$.
@@ -1053,10 +1059,10 @@ twists.
 \end{theorem}
 \begin{proof} 1) Let $E'$ be a $p$-congruent twist of~$E$. If $E'$ is
   a quartic or sextic twist of~$E$ then $j(E)=0,1728$ and $E$ has CM
-  (not defined over~$K$, since the projective image is not abelian) by
-  $\Q(\sqrt{-1})$ or $\Q(\sqrt{-3})$; moreover, since $p > 3$ it is
-  not ramified in the CM field and hence the projective image is
-  absolutely irreducible and isomorphic to $D_n$ for some $n \geq 2$.
+  (not defined over~$K$, since the image is not in a Cartan by condition~{\bf (S)}) by
+  $\Q(\sqrt{-1})$ or $\Q(\sqrt{-3})$, respectively; moreover, since $p$ is
+  not ramified in the CM field, the image is inside the normalizer of a Cartan and is projectively
+   isomorphic to~$D_n$ for some $n \geq 2$.
 
 Therefore we can assume $E' = E^d$ is the quadratic twist of~$E$ by a
 non-square $d\in K^*$.  From Lemma~\ref{L:noCyclic} we know
@@ -1159,9 +1165,10 @@ occur) all such mod~$p$ isomorphisms occur within an isogeny class,
 and we have omitted these from consideration.
 \end{remark}
 
-Note that if $\PP\rhobar_{E,p} (G_K)$ has order~$1$ or~$2$, then the image
-$\rhobar_{E,p} (G_K)$ is cyclic of order dividing~$2(p-1)$ and so not absolutely irreducible. In particular, the smallest projective images occurring in our context
-are $\rhobar_{E,p} (G_K) \simeq D_2 \simeq C_2 \times C_2$. The next
+Note that if $\PP\rhobar_{E,p} (G_K)$ is cyclic  then 
+$\rhobar_{E,p} (G_K)$ is abelian. 
+In particular, the smallest projective image occurring when $\rhobar_{E,p}$ is absolutely irreducible is 
+$\PP\rhobar_{E,p} (G_K) \simeq D_2 \simeq C_2 \times C_2$. The next
 result will be used below to determine the symplectic type of
 congruences in the presence of this kind of image.
 
@@ -1218,10 +1225,10 @@ over~$\Q$ except for very small primes. See Example~\ref{Ex:3twists}
 below for an example with $p=3$.
 
 \begin{theorem}\label{T:quadratic} 
-Let $p > 2$ be a prime. 
+Let $p$ be an odd prime. 
 Let $E/K$ be an elliptic curve 
 $p$-congruent to some quadratic twist~$E^d$.
-Assume $E[p]$ is an absolutely irreducible~$G_K$-module.
+Assume $E[p]$ is an absolutely irreducible~$G_K$-module, so that $j(E) \neq 0$ if $p=3$.
 
 \begin{enumerate}
 %% \item In the case of the special quadratic twist, the congruence is
