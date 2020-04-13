@@ -1,18 +1,6 @@
 \documentclass[12pt, reqno]{amsart}
 \usepackage{fullpage,url,amssymb,enumerate,colonequals, numprint}
-
-\usepackage{mathrsfs} % for \mathscr (script letters)
-\usepackage{lscape}
-\usepackage[all,cmtip]{xy}
-
-\usepackage{color}
-
-\usepackage[
-%       draft,
-        colorlinks, citecolor=darkgreen,
-        backref,
-        pdfauthor={Nuno Freitas}, % add other authors
-]{hyperref}
+\usepackage{hyperref}
 \usepackage{comment}
 
 % label and link to an elliptic curve /Q:
@@ -23,300 +11,49 @@
 % label and link to an elliptic curve isogeny class /Q:
 \newcommand{\lmfdbeciso}[2]{\href{http://www.lmfdb.org/EllipticCurve/Q/#1/#2}{\text{\rm#1#2}}}
 
+\newcommand{\Sage}{{\sc SageMath}}
+\newcommand{\Magma}{{\sc Magma}}
 
-\newcommand{\dashedarrow}{\dashrightarrow}
+\newcommand{\condS}{condition~{\bf (S)}}
 
-% Characters
-\newcommand{\Aff}{\mathbb{A}}
-\newcommand{\C}{\mathbb{C}}
 \newcommand{\F}{\mathbb{F}}
 \newcommand{\Fp}{\mathbb{F}_p}
 \newcommand{\Fpstar}{\mathbb{F}_p^*}
 \newcommand{\Fbar}{{\overline{\F}}}
-\newcommand{\G}{\mathbb{G}}
-\newcommand{\Gm}{\mathbb{G}_{\mathrm{m}}}
-\newcommand{\bbH}{\mathbb{H}}
 \newcommand{\PP}{\mathbb{P}}
 \newcommand{\Q}{\mathbb{Q}}
-\newcommand{\R}{\mathbb{R}}
 \newcommand{\Z}{\mathbb{Z}}
-\newcommand{\Qbar}{{\overline{\Q}}}
-\newcommand{\Zhat}{{\hat{\Z}}}
-\newcommand{\Ebar}{{\overline{E}}}
-\newcommand{\Zbar}{{\overline{\Z}}}
-\newcommand{\kbar}{{\overline{k}}}
 \newcommand{\Kbar}{{\overline{K}}}
 \newcommand{\rhobar}{{\overline{\rho}}}
-\newcommand{\ksep}{{k^{\operatorname{sep}}}}
-
 \newcommand{\frp}{{\mathfrak p}}
-\newcommand{\frq}{{\mathfrak q}}
-
-\newcommand{\Adeles}{\mathbf{A}}
-\newcommand{\kk}{\mathbf{k}}
-
-\newcommand{\mm}{\mathfrak{m}}
-
 \newcommand{\eps}{\varepsilon}
-
-\newcommand{\uom}{\underline{\omega}}
-
-% bold characters
-\newcommand{\boldf}{\mathbf{f}}
-\newcommand{\boldl}{\ensuremath{\boldsymbol\ell}}
-\newcommand{\boldL}{\mathbf{L}}
-\newcommand{\boldr}{\mathbf{r}}
-\newcommand{\boldw}{\mathbf{w}}
-\newcommand{\boldzero}{\mathbf{0}}
-\newcommand{\boldomega}{\ensuremath{\boldsymbol\omega}}
-
-
-% mathcal characters
-\newcommand{\calA}{\mathcal{A}}
-\newcommand{\calB}{\mathcal{B}}
-\newcommand{\calC}{\mathcal{C}}
-\newcommand{\calD}{\mathcal{D}}
-\newcommand{\calE}{\mathcal{E}}
-\newcommand{\calF}{\mathcal{F}}
-\newcommand{\calG}{\mathcal{G}}
-\newcommand{\calH}{\mathcal{H}}
-\newcommand{\calI}{\mathcal{I}}
-\newcommand{\calJ}{\mathcal{J}}
-\newcommand{\calK}{\mathcal{K}}
 \newcommand{\calL}{\mathcal{L}}
 \newcommand{\calM}{\mathcal{M}}
-\newcommand{\calN}{\mathcal{N}}
 \newcommand{\calO}{\mathcal{O}}
-\newcommand{\calP}{\mathcal{P}}
-\newcommand{\calQ}{\mathcal{Q}}
-\newcommand{\calR}{\mathcal{R}}
-\newcommand{\calS}{\mathcal{S}}
-\newcommand{\calT}{\mathcal{T}}
-\newcommand{\calU}{\mathcal{U}}
-\newcommand{\calV}{\mathcal{V}}
-\newcommand{\calW}{\mathcal{W}}
-\newcommand{\calX}{\mathcal{X}}
-\newcommand{\calY}{\mathcal{Y}}
-\newcommand{\calZ}{\mathcal{Z}}
-
-%mathfrak characters
-
-\newcommand{\ff}{\mathfrak{f}}
-\newcommand{\fm}{\mathfrak{m}}
-\newcommand{\fM}{\mathfrak{M}}
-\newcommand{\fp}{\mathfrak{p}}
-\newcommand{\fP}{\mathfrak{P}}
-\newcommand{\fq}{\mathfrak{q}}
-\newcommand{\fN}{\mathfrak{N}}
-
-\newcommand{\CC}{\mathscr{C}}
-\newcommand{\FF}{\mathscr{F}}
-\newcommand{\GG}{\mathscr{G}}
-\newcommand{\II}{\mathscr{I}}
-\newcommand{\JJ}{\mathscr{J}}
-\newcommand{\LL}{\mathscr{L}}
-\newcommand{\NN}{\mathscr{N}}
-\newcommand{\OO}{\mathscr{O}}
-\newcommand{\WW}{\mathscr{W}}
-\newcommand{\XX}{\mathscr{X}}
-\newcommand{\ZZ}{\mathscr{Z}}
-
-% Math operators
-\DeclareMathOperator{\Ann}{Ann}
 \DeclareMathOperator{\Aut}{Aut}
-\DeclareMathOperator{\Br}{Br}
-\DeclareMathOperator{\cd}{cd}
-\DeclareMathOperator{\Card}{Card}
-\DeclareMathOperator{\Char}{char}
-\DeclareMathOperator{\Cl}{Cl}
-\DeclareMathOperator{\codim}{codim}
-\DeclareMathOperator{\coker}{coker}
-\DeclareMathOperator{\Cor}{Cor}
-\DeclareMathOperator{\divv}{div}
-\DeclareMathOperator{\Div}{Div}
-\DeclareMathOperator{\Det}{Det}
-\DeclareMathOperator{\Dic}{Dic}
-
 \DeclareMathOperator{\End}{End}
-\newcommand{\END}{{\EE}\!nd}
-\DeclareMathOperator{\Eq}{Eq}
-\DeclareMathOperator{\Ext}{Ext}
-\newcommand{\EXT}{{\E}\!xt}
-\DeclareMathOperator{\Fix}{\tt Fix}
-\DeclareMathOperator{\Frac}{Frac}
-\DeclareMathOperator{\Frob}{Frob}
 \DeclareMathOperator{\Gal}{Gal}
-\DeclareMathOperator{\Gr}{Gr}
-\DeclareMathOperator{\Hom}{Hom}
-\newcommand{\HOM}{{\HH}\!om}
-\DeclareMathOperator{\im}{im}
-\DeclareMathOperator{\Ind}{Ind}
-\DeclareMathOperator{\inv}{inv}
-\DeclareMathOperator{\Jac}{Jac}
-\DeclareMathOperator{\JL}{JL}
-\DeclareMathOperator{\lcm}{lcm}
-\DeclareMathOperator{\Lie}{Lie}
-\DeclareMathOperator{\Log}{Log}
-\DeclareMathOperator{\MakeDecentModel}{\tt MakeDecentModel}
-\DeclareMathOperator{\nil}{nil}
-\DeclareMathOperator{\Norm}{Norm}
-\DeclareMathOperator{\NP}{NP}
-\DeclareMathOperator{\Num}{Num}
-\DeclareMathOperator{\odd}{odd}
-\DeclareMathOperator{\ord}{ord}
-\DeclareMathOperator{\Pic}{Pic}
-\DeclareMathOperator{\PIC}{\bf Pic}
-\DeclareMathOperator{\Prob}{\bf P}
-\DeclareMathOperator{\Proj}{Proj}
-\DeclareMathOperator{\PROJ}{\bf Proj}
-\DeclareMathOperator{\rank}{rank}
-\DeclareMathOperator{\rec}{rec}
-\DeclareMathOperator{\re}{Re}
-\DeclareMathOperator{\reg}{reg}
-\DeclareMathOperator{\res}{res}
-\DeclareMathOperator{\Res}{Res}
-\DeclareMathOperator{\rk}{rk}
-\DeclareMathOperator{\scd}{scd}
-\DeclareMathOperator{\Sel}{Sel}
-\DeclareMathOperator{\Sp}{Sp}
-\DeclareMathOperator{\Spec}{Spec}
-\DeclareMathOperator{\SPEC}{\bf Spec}
-\DeclareMathOperator{\Spf}{Spf}
 \DeclareMathOperator{\sss}{ss}
-\DeclareMathOperator{\supp}{supp}
-\DeclareMathOperator{\Sym}{Sym}
-\DeclareMathOperator{\tr}{tr}
-\DeclareMathOperator{\T}{\mathbb{T}}
 \DeclareMathOperator{\Tr}{Tr}
-\DeclareMathOperator{\tw}{tw}
-\DeclareMathOperator{\trdeg}{tr deg}
-\DeclareMathOperator{\WD}{WD}
-
-% Categories
-\newcommand{\Ab}{\operatorname{\bf Ab}}
-\newcommand{\Groups}{\operatorname{\bf Groups}}
-\newcommand{\Schemes}{\operatorname{\bf Schemes}}
-\newcommand{\Sets}{\operatorname{\bf Sets}}
-
-% Text subscripts, superscripts
-\newcommand{\ab}{{\operatorname{ab}}}
-\newcommand{\an}{{\operatorname{an}}}
-\newcommand{\Az}{{\operatorname{Az}}}
-\newcommand{\CS}{\operatorname{\bf CS}}
-\newcommand{\et}{{\operatorname{et}}}
-\newcommand{\ET}{{\operatorname{\bf \acute{E}t}}}
-\newcommand{\fl}{{\operatorname{f\textcompwordmark l}}}
-\newcommand{\good}{{\operatorname{good}}}
-\newcommand{\op}{{\operatorname{op}}}
-\newcommand{\perf}{{\operatorname{perf}}}
-\newcommand{\red}{{\operatorname{red}}}
-\newcommand{\regular}{{\operatorname{regular}}}
-\newcommand{\sing}{{\operatorname{sing}}}
-\newcommand{\smooth}{{\operatorname{smooth}}}
-\newcommand{\tH}{{\operatorname{th}}}
-\newcommand{\tors}{{\operatorname{tors}}}
-\newcommand{\nontors}{{\operatorname{non-tors}}}
-\newcommand{\unr}{{\operatorname{unr}}}
-\newcommand{\Zar}{{\operatorname{Zar}}}
-\newcommand{\ns}{{\operatorname{ns}}}
-\renewcommand{\sp}{{\operatorname{sp}}}
 \newcommand{\vv}{\upsilon}
-\newcommand{\Cech}{\v{C}ech}
-\newcommand{\E}{{\operatorname{\bf E}}}
-\newcommand{\GalQ}{{\Gal}(\Qbar/\Q)}
 \newcommand{\GL}{\operatorname{GL}}
-\newcommand{\HH}{{\operatorname{H}}}
-\newcommand{\HHcech}{{\check{\HH}}}
-\newcommand{\HHat}{{\hat{\HH}}}
-\newcommand{\M}{\operatorname{M}}
 \newcommand{\PGL}{\operatorname{PGL}}
 \newcommand{\PSL}{\operatorname{PSL}}
 \newcommand{\SL}{\operatorname{SL}}
-
-\newcommand{\del}{\partial}
-\newcommand{\directsum}{\oplus} % binary direct sum
-\newcommand{\Directsum}{\bigoplus} % direct sum of a collection
-\newcommand{\injects}{\hookrightarrow}
-\newcommand{\intersect}{\cap} % binary intersection
-\newcommand{\Intersection}{\bigcap} % intersection of a collection
-\newcommand{\isom}{\simeq}
-\newcommand{\notdiv}{\nmid}
-\newcommand{\surjects}{\twoheadrightarrow}
-\newcommand{\tensor}{\otimes} % binary tensor product
-\newcommand{\Tensor}{\bigotimes} % tensor product of a collection
-\newcommand{\union}{\cup} % binary union
-\newcommand{\Union}{\bigcup} % union of a collection
-
-\newcommand{\Algorithm}{\textbf{Algorithm}\ }
-\newcommand{\Subroutine}{\textbf{Subroutine}\ }
-
-\newcommand{\isomto}{\overset{\sim}{\rightarrow}}
-\newcommand{\isomfrom}{\overset{\sim}{\leftarrow}}
-\newcommand{\leftexp}[2]{{\vphantom{#2}}^{#1}{#2}}
-\newcommand{\rholog}{\rho \log}
-\newcommand{\sigmaiota}{{\leftexp{\sigma}{\iota}}}
-\newcommand{\sigmaphi}{{\leftexp{\sigma}{\phi}}}
-\newcommand{\sigmatauphi}{{\leftexp{\sigma\tau}{\phi}}}
-\newcommand{\tauphi}{{\leftexp{\tau}{\phi}}}
-\newcommand{\To}{\longrightarrow}
-\newcommand{\floor}[1]{\left\lfloor #1 \right\rfloor}
-
-% imported from JC's file
 \DeclareMathOperator{\id}{id}
-\DeclareMathOperator{\Id}{Id}
-\def\w{\omega}
-\def\r3{\sqrt{-3}}
-\def\pibar{\overline{\pi}}
 \def\legendre#1#2{\left(\displaystyle\frac{#1}{#2}\right)}
 \newcommand{\diag}{{\operatorname{diag}}}
 \newcommand{\mat}[4]{{\left(\begin{smallmatrix} #1 & #2 \\ #3 & #4 \end{smallmatrix} \right)}}
 
 \numberwithin{equation}{section}
-
-%\newtheorem{theorem}{Theorem}
-%\newtheorem{lemma}{Lemma}
-%\newtheorem{corollary}{Corollary}
-%\newtheorem{proposition}{Proposition}
-
-%\theoremstyle{definition}
-%\newtheorem{definition}[equation]{Definition}
-%\newtheorem{question}[equation]{Question}
-%\newtheorem{conjecture}[equation]{Conjecture}
-%\newtheorem{example}[equation]{Example}
-%\newtheorem{examples}[equation]{Examples}
-
-%\theoremstyle{remark}
-%\newtheorem{remark}[equation]{Remark}
-%\newtheorem{remarks}[equation]{Remarks}
-
-
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{corollary}[theorem]{Corollary}
 \newtheorem{proposition}[theorem]{Proposition}
-
-\theoremstyle{definition}
-\newtheorem{definition}[theorem]{Definition}
-\newtheorem{question}[theorem]{Question}
-\newtheorem{conjecture}[theorem]{Conjecture}
 \newtheorem{example}[theorem]{Example}
-\newtheorem{examples}[theorem]{Examples}
-
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
-\newtheorem{remarks}[theorem]{Remarks}
 
-\newcommand{\Sage}{{\sc SageMath}}
-\newcommand{\Magma}{{\sc Magma}}
-
-\setlength{\parindent}{0mm}
-\setlength{\parskip}{1ex plus 0.5ex}
-\definecolor{darkgreen}{rgb}{0,0.5,0}
-
-\newcommand{\nf}[1]{{\color{blue} \textsf{[NF: #1]}}}
-\newcommand{\jc}[1]{{\color{darkgreen} \textsf{[JC: #1]}}}
-
-\newcommand{\condS}{condition~{\bf (S)}}
 \begin{document}
 
 \title{Global methods for the symplectic type of congruences between elliptic curves} % modulo small primes}
@@ -1210,12 +947,6 @@ split.
   $\PSL_2(\Fp)$, while for $p\equiv3\pmod4$ the reverse is the case.
   The result follows.
 \end{proof}
-
-%% Since the map~$t$ is an isomorphism over~$\Qbar$ it preserves the Weil
-%% pairing, therefore
-%The symplectic type of $\phi : E[p] \simeq E'[p]$ is determined by the
-%square class of $\det A$, where $A$ is the matrix of~$\phi$ (see
-%\cite[Lemma~6]{FKSym}).
 
 The next theorem describes the symplectic type of congruences between
 general quadratic twists.  Since the projective image is dihedral (by
