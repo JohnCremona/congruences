@@ -210,8 +210,8 @@ this condition as the \emph{isogeny criterion}.
 
 Given $G_K$-isomorphic modules $E[p]$ and~$E'[p]$ as above, it is
 possible they admit isomorphisms with both symplectic types.  This
-occurs if and only if $E[p]$ admits an anti-symplectic automorphism;
-and the following proposition, which follows from results
+occurs if and only if $E[p]$ admits an anti-symplectic automorphism.
+The following proposition, which follows from results
 in~\cite{FKSym}, gives several equivalent conditions for this property.
 
 \begin{proposition} \label{P:conditionS}
@@ -236,7 +236,7 @@ absolutely irreducible, since then condition~(A) holds.
 \begin{proof} See Lemmas~6, 7, and~8 and the proof of Corollary~3 in~\cite{FKSym}.
  \end{proof}
 
-We say that \emph{~$E[p]$ satisfies \condS} if and only if or if and
+We say that \emph{~$E[p]$ satisfies \condS} if and
 only if one of the equivalent conditions of
 Proposition~\ref{P:conditionS} is satisfied.  In the case $K=\Q$,
 \condS\ is satisfied by $E[p]$ for all~$p\ge7$, by Corollary~3
@@ -268,7 +268,7 @@ Given a generic triple $(E, E', p)$, in principle, one
 could compute the $p$-torsion fields of $E$ and $E'$,
 write down the Galois action on $E[p]$ and $E'[p]$ and check if they
 are symplectically or anti-symplectically isomorphic. However, the
-degree of the $p$-torsion fields grows very fast with~$p$ making this
+degree of the $p$-torsion fields grows very fast with~$p$, making this
 method not practical already over~$\Q$ for $p = 5$.
 
 One way to circumvent this computational problem, at least over~$\Q$, is to use the methods
@@ -867,7 +867,7 @@ A special case of the situation described
 in Theorem~\ref{T:twist} is the case
 of elliptic curves with~CM.  Here, the quadratic twists are isogenous
 to the original curve so we may already determine the symplectic nature
-of the congruence.  For simplicity we state such result over~$\Q$.
+of the congruence.  For simplicity we state such a result only over~$\Q$.
 
 \begin{corollary}\label{C:CM-twist}
   Let $E/\Q$ be an elliptic curve with CM by the imaginary quadratic
@@ -1065,7 +1065,7 @@ which the image of the mod~$7$ Galois representation is contained in
 the normalizer of a non-split Cartan subgroup; we verified by explicit
 computation that the mod~7 image is equal to the full normalizer and that the Cartan subgroup cuts out the field $\Q(\sqrt{d})$ where $d = -7 \cdot 134177$. 
 
-Consider~$E^d$ the quadratic twist
+Consider~$E^d$, the quadratic twist
 of~$E$ by~$d$. 
 From Theorem~\ref{T:twist} we have that $E[7] \simeq E^d[7]$ as $G_\Q$-modules and part (1) of Theorem~\ref{T:quadratic} yields that $E[7]$ and $E^d[7]$ are
 symplectically isomorphic (and not anti-symplectically
@@ -1105,13 +1105,13 @@ by $-27$ with a cubic twist. Since the quartic twist by~$-4$ and the
 quadratic twist by~$-27$ correspond to isogenies (see
 Remark~\ref{R:2-3-isog}) their effect on the symplectic type is
 known; observe also that both these cases are covered by the theory in
-sections~\ref{SS:dihedral} and~\ref{SS:typeQuadratic}.  In view of
+Sections~\ref{SS:dihedral} and~\ref{SS:typeQuadratic}.  In view of
 this, we fix the following natural assumptions for this and the next
 section.
 
 Let $p$ be an odd prime. 
 Let $E/K$ be an elliptic curve 
-with $j(E) = 0, 1728$ and let~$u \in K$.
+with $j(E) = 0, 1728$ and let~$u \in K^*$.
 \begin{itemize}
  \item If $j(E) = 1728$, assume also $K'=K(\sqrt{-1}) \neq K$, 
  $u \neq -1$ modulo squares;
@@ -1189,7 +1189,7 @@ choices since we may compose with the nontrivial
 automorphism of~$\F_{p^2}$.
 
 By definition, the map~$\eta$ becomes a homomorphism of order~$m$ when restricted to~$G_{K'}$ because this is the case for~$\psi$ by cases (ii) and (iii) 
-of section~\ref{SS:GalRepTwist}, given that we have excluded the special quartic twist by~$u=-4$.
+of Section~\ref{SS:GalRepTwist}, given that we have excluded the special quartic twist by~$u=-4$.
 \end{proof}
 
 \begin{lemma}\label{L:EpsEta}
@@ -1274,7 +1274,7 @@ $3$-isogenous to each other.
 
 \begin{proof} 
 The projective $p$-division field of~$E$ is the Galois extension~$F/K$
-fixed by $\PP \rhobar_{E,p}$ and satisfies $\Gal(F/K) \simeq D_n$. By
+fixed by $\PP \rhobar_{E,p}$ with $\Gal(F/K) \simeq D_n$. By
 Lemma~\ref{L:Dn} we can write it as $F=K'(\root n\of u)$ for some
 $u\in K^*$, which is unique up to replacing $u$ by~$u^{-1}$ and
 multiplication by an element of~$K^*\cap(K'^*)^n$.  (Here we use that
@@ -1327,14 +1327,14 @@ A \rhobar_{E,p}(\tau) A^{-1} = \rhobar_{E,p}(\tau)\Psi(\tau)
 \]
 as required.
 
-In the case of the split Cartan we are done, as the diagonalization
+In the split Cartan case we are done, as the diagonalization
 of~$C$ occurs in~$\GL_2(\Fp)$ and so~\eqref{E:PsiM} holds with $A \in
 \GL_2(\F_{p})$.  In the non-split case, we have shown that
 equation~\eqref{E:PsiM} holds over $\GL_2(\F_{p^2})$. By undoing the
 initial change of coordinates we obtain that \eqref{E:PsiM} holds
 in~$\GL_2(\Fp)$.
 
-We will now prove the second statement. First, recall from the first paragraph that $u \in K$ is unique up to inverse and
+We will now prove the second statement. First, recall from the first paragraph that $u \in K^*$ is unique up to inverse and
 multiplication by an element
 in~$K^*\cap(K'^*)^n$. Therefore, up to $n$th powers in~$K^*$,  
 we have either four or two
@@ -1346,7 +1346,7 @@ possible choices for~$u$, namely
 \end{itemize}
 
 This follows from the observation that the natural map from
-$K^*/(K^*)^n$ to $(K'^*)/(K'^*)^n$ is injective when $n=3$ and has
+$K^*/(K^*)^n$ to $(K'^*)/(K'^*)^n$ is injective when $n=3$, and has
 kernel $\{1,-4\}$ for $n=4$ and $\{1,-27\}$ for $n=6$.
 
 Secondly, observe that the construction in the first part of the proof
@@ -1424,26 +1424,28 @@ $K'=K(\sqrt{-1})$, $K(\sqrt{p^*})$, $K(\sqrt{u})$
 are quadratic extensions of~$K$ satisfying
 $K' \neq K(\sqrt{p^*})$, $K(\sqrt{u})$. 
 
-(b1) Suppose $K(\sqrt{p^*})=K(\sqrt{u})$.
-By definition $\tau$ fixes~$\sqrt{u}$ thus  it fixes~$\sqrt{p^*}$ and the congruence is symplectic; note that in this case~$\sqrt{up^*} \in K$. 
+(b1) Suppose $K(\sqrt{p^*})=K(\sqrt{u})$.  By definition, $\tau$
+fixes~$\sqrt{u}$, thus it also fixes~$\sqrt{p^*}$, and the congruence
+is symplectic; note that in this case~$\sqrt{up^*} \in K$.
  
 (b2) Suppose $K(\sqrt{p^*}) \neq K(\sqrt{u})$. Then
 $K(\sqrt{p^*})=K(\sqrt{-4u})$.  The congruence is anti-symplectic
 since $\tau(\sqrt{-4u}) = - \sqrt{-4u}$; note that in this
 case~$\sqrt{up^*} \not\in K$.
 
-Recall from Theorem~\ref{T:higherTwists} there is also a
+Recall from Theorem~\ref{T:higherTwists} that there is also a
 $p$-congruence between~$E$ and its quartic twist by~$-4u$. Applying
-the previous argument to this congruence  gives that it is symplectic
-if and only
-if $\sqrt{-4up^*} \in K$. Thus the two congruences are of the same type if and only if~$\sqrt{-1} \in K$ which is not the case by assumption.
+the previous argument to this congruence gives that it is symplectic
+if and only if $\sqrt{-4up^*} \in K$. Thus the two congruences are of
+the same type if and only if~$\sqrt{-1} \in K$, which is not the case
+by assumption.
 
 (c) Suppose $n=6$. We have $\Gal(F/K) \simeq D_6$ and again there are exactly three quadratic sub-extensions of~$F/K$.
 Furthermore, the fields 
 $K'=K(\sqrt{-3})$, $K(\sqrt{p^*})$, $K(\sqrt{u})$ 
 are quadratic extensions of~$K$ satisfying
 $K' \neq K(\sqrt{p^*})$, $K(\sqrt{u})$. 
-The rest of the argument follows similarly to~(b).
+The rest of the argument follows similarly to case~(b).
 
 For the congruence conditions on~$p$, which are only non-trivial when
 $n=4$ or~$6$ (since $p>3$ implies $p\equiv\pm1\pmod6$) recall that
@@ -1600,7 +1602,7 @@ consider each in detail in the following subsections.
 \end{enumerate}
 Next we will explain each step in further detail.  For the first three
 steps, $p$ is arbitrary, and we have carried these steps out for $7\le
-p\le97$.  According to Theorem~\ref{T:cong19} below, no congruences
+p\le97$.  According to Theorem~\ref{T:cong19}, no congruences
 (other than those induced by isogenies) exist for larger~$p$.  For the
 last two steps, we restrict to $p=7$ which is the most interesting
 case, as remarked in the Introduction.
@@ -1648,7 +1650,7 @@ $731$ for $p=11$; $177$ for $p=13$; and~$8$ for $p=17$.  There are no
 nontrivial subsets for any primes~$p$ with $19\le p\le97$, so we can
 immediately conclude that there are no congruences in the database
 between non-isogenous curves modulo any prime in this range.  See also
-Theorem~\ref{T:cong19} below.
+Theorem~\ref{T:cong19}.
 
 \subsection{Proving isomorphism up to semisimplification}
 
@@ -1917,7 +1919,7 @@ Finally, we have $\phi(\mat{1}{1}{0}{1}) = \mat{1}{r}{0}{1}$ for
 some~$r\in\Fpstar$.
 
 Now set $A=\mat{r}{b(1-a)^{-1}}{0}{1}$ (or $A=\mat{r}{0}{0}{1}$ if
-$a=1$ and $b=1$).  A simple check shows that conjugation by~$A$ has
+$a=1$ and $b=0$).  A simple check shows that conjugation by~$A$ has
 the same effect as~$\phi$ on both $\mat{a}{0}{0}{1}$ and
 $\mat{1}{1}{0}{1}$.  Since $H$ is generated by these, together with
 scalar matrices, the result follows.
@@ -2025,17 +2027,17 @@ we conclude that $\rhobar_{E_1,p}(\sigma) = A \rhobar_{E_2,p}(\sigma) A^{-1}$, a
 \subsection{Distinguishing symplectic from antisymplectic: reducible
   case}
 
-From Steps 1--3 we have (for certain pairs~$(E,E')$ established that
-$E[7]^{\sss} \simeq E'[7]^{\sss}$ but this is insufficient to conclude
+From Steps 1--3 we have (for certain pairs~$(E,E')$) established that
+$E[7]^{\sss} \simeq E'[7]^{\sss}$, but this is insufficient to conclude
 $E[7] \simeq E'[7]$ when these are reducible $G_\Q$-modules.  To
-achieve this we will apply Theorem~\ref{T:reducible} and its proof.
+decide this we will apply Theorem~\ref{T:reducible} and its proof.
 
 Recall that $E[7]$ is reducible if and only if $E$ admits a rational
 $7$-isogeny.  Over $\Q$ there is only ever at most one $7$-isogeny,
 since otherwise the image of the mod~$7$
 representation~$\rhobar_{E,7}$ attached to~$E$ is contained in a split
 Cartan subgroup of $\GL(2,\F_7)$, and this cannot occur over~$\Q$
-(see Theorem~1.1of~\cite{GL}).  Furthermore, it is well known that the
+(see Theorem~1.1 of~\cite{GL}).  Furthermore, it is well known that the
 size of the $\Q$-isogeny class of~$E$ is either $2$, consisting of two
 $7$-isogenous curves, or $4$, consisting of two pairs of $7$-isogenous
 curves linked by $2$-{} or $3$-isogenies (but not both). Examples of
@@ -2084,7 +2086,7 @@ $\rhobar_{E,7}$. From Theorem~\ref{T:reducible} we have that
 $E[7]\cong E'[7]$ if and only if $F_1 \simeq F_2$, where $F_i$ are the
 fields in the statement of Theorem~\ref{T:reducible}.
 
-The field $F_1$ is the common field of definition of all of the other
+The field $F_1$ is the field of definition of one of the other
 seven $7$-isogenies from~$E$ (see also Proposition~\ref{P:fieldF}).
 The map from $X_0(7)$ to the $j$-line is given by the classical
 rational function (see Fricke)
