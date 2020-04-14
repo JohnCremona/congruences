@@ -140,8 +140,8 @@ this condition as the \emph{isogeny criterion}.
 
 Given $G_K$-isomorphic modules $E[p]$ and~$E'[p]$ as above, it is
 possible they admit isomorphisms with both symplectic types.  This
-occurs if and only if $E[p]$ admits an anti-symplectic automorphism;
-and the following proposition, which follows from results
+occurs if and only if $E[p]$ admits an anti-symplectic automorphism.
+The following proposition, which follows from results
 in~\cite{FKSym}, gives several equivalent conditions for this property.
 
 \begin{proposition} \label{P:conditionS}
@@ -167,7 +167,7 @@ absolutely irreducible, since then condition~(A) holds.
   and the proof of~\cite[Corollary~3]{FKSym}.
  \end{proof}
 
-We say that \emph{~$E[p]$ satisfies \condS} if and only if or if and
+We say that \emph{~$E[p]$ satisfies \condS} if and
 only if one of the equivalent conditions of
 Proposition~\ref{P:conditionS} is satisfied.  In the case $K=\Q$,
 \condS\ is satisfied by $E[p]$ for all~$p\ge7$, by~\cite[Corollary~3
@@ -199,7 +199,7 @@ Given a generic triple $(E, E', p)$, in principle, one
 could compute the $p$-torsion fields of $E$ and $E'$,
 write down the Galois action on $E[p]$ and $E'[p]$ and check if they
 are symplectically or anti-symplectically isomorphic. However, the
-degree of the $p$-torsion fields grows very fast with~$p$ making this
+degree of the $p$-torsion fields grows very fast with~$p$, making this
 method not practical already over~$\Q$ for $p = 5$.
 
 One way to circumvent this computational problem, at least over~$\Q$, is to use the methods
@@ -267,7 +267,7 @@ $p$-congruences between higher twists:
   $b \in \Q^*$, which have $j$-invariant~$0$:
   \begin{itemize}
     \item
-      $E_b$ is symplectically $5$-congruent to $E_{-4/5b}$, and also
+      $E_b$ is symplectically $5$-congruent to $E_{4/5b}$, and also
       anti-symplectically $5$-congruent to both $E_{-27b}$
       and~$E_{-108/5b}$, the latter two curves being $3$-isogenous to
       the former.
@@ -847,7 +847,7 @@ A special case of the situation described
 in Theorem~\ref{T:twist} is the case
 of elliptic curves with~CM.  Here, the quadratic twists are isogenous
 to the original curve so we may already determine the symplectic nature
-of the congruence.  For simplicity we state such result over~$\Q$.
+of the congruence.  For simplicity we state such a result only over~$\Q$.
 
 \begin{corollary}\label{C:CM-twist}
   Let $E/\Q$ be an elliptic curve with CM by the imaginary quadratic
@@ -1086,7 +1086,7 @@ which the image of the mod~$7$ Galois representation is contained in
 the normalizer of a non-split Cartan subgroup; we verified by explicit
 computation that the mod~7 image is equal to the full normalizer and that the Cartan subgroup cuts out the field $\Q(\sqrt{d})$ where $d = -7 \cdot 134177$. 
 
-Consider~$E^d$ the quadratic twist
+Consider~$E^d$, the quadratic twist
 of~$E$ by~$d$. 
 From Theorem~\ref{T:twist} we have that $E[7] \simeq E^d[7]$ as $G_\Q$-modules and part (1) of Theorem~\ref{T:quadratic} yields that $E[7]$ and $E^d[7]$ are
 symplectically isomorphic (and not anti-symplectically
@@ -1126,13 +1126,13 @@ by $-27$ with a cubic twist. Since the quartic twist by~$-4$ and the
 quadratic twist by~$-27$ correspond to isogenies (see
 Remark~\ref{R:2-3-isog}) their effect on the symplectic type is
 known; observe also that both these cases are covered by the theory in
-sections~\ref{SS:dihedral} and~\ref{SS:typeQuadratic}.  In view of
+Sections~\ref{SS:dihedral} and~\ref{SS:typeQuadratic}.  In view of
 this, we fix the following natural assumptions for this and the next
 section.
 
 Let $p$ be an odd prime. 
 Let $E/K$ be an elliptic curve 
-with $j(E) = 0, 1728$ and let~$u \in K$.
+with $j(E) = 0, 1728$ and let~$u \in K^*$.
 \begin{itemize}
  \item If $j(E) = 1728$, assume also $K'=K(\sqrt{-1}) \neq K$, 
  $u \neq -1$ modulo squares;
@@ -1208,7 +1208,7 @@ choices since we may compose with the nontrivial
 automorphism of~$\F_{p^2}$.
 
 By definition, the map~$\eta$ becomes a homomorphism of order~$m$ when restricted to~$G_{K'}$ because this is the case for~$\psi$ by cases (ii) and (iii) 
-of section~\ref{SS:GalRepTwist}, given that we have excluded the special quartic twist by~$u=-4$.
+of Section~\ref{SS:GalRepTwist}, given that we have excluded the special quartic twist by~$u=-4$.
 \end{proof}
 
 \begin{lemma}\label{L:EpsEta}
@@ -1293,7 +1293,7 @@ $3$-isogenous to each other.
 
 \begin{proof} 
 The projective $p$-division field of~$E$ is the Galois extension~$F/K$
-fixed by $\PP \rhobar_{E,p}$ and satisfies $\Gal(F/K) \simeq D_n$. By
+fixed by $\PP \rhobar_{E,p}$ with $\Gal(F/K) \simeq D_n$. By
 Lemma~\ref{L:Dn} we can write it as $F=K'(\root n\of u)$ for some
 $u\in K^*$, which is unique up to replacing $u$ by~$u^{-1}$ and
 multiplication by an element of~$K^*\cap(K'^*)^n$.  (Here we use that
@@ -1363,8 +1363,8 @@ A \rhobar_{E,p}(\tau) A^{-1} = \rhobar_{E,p}(\tau)\Psi(\tau)
 \]
 as required.
 
-In the case of the split Cartan we are done, as the diagonalization
-of~$C$ occurs in~$\GL_2(\Fp)$ and so~\eqref{E:PsiM} holds with $A \in
+In the split Cartan case we are done, as the diagonalization of~$C$
+occurs in~$\GL_2(\Fp)$ and so~\eqref{E:PsiM} holds with $A \in
 \GL_2(\F_{p})$.  In the non-split case, we have shown that
 equation~\eqref{E:PsiM} holds over $\GL_2(\F_{p^2})$. By undoing the
 initial change of coordinates we obtain that \eqref{E:PsiM} holds
@@ -1397,7 +1397,7 @@ $\sigma=\tau$, both sides of the preceding equation are equal to
 $C^{-1}BC$, so~\eqref{E:PsiM} also holds in that case.
 \end{comment}
 
-We will now prove the second statement. First, recall from the first paragraph that $u \in K$ is unique up to inverse and
+We will now prove the second statement. First, recall from the first paragraph that $u \in K^*$ is unique up to inverse and
 multiplication by an element
 in~$K^*\cap(K'^*)^n$. Therefore, up to $n$th powers in~$K^*$,  
 we have either four or two
@@ -1409,7 +1409,7 @@ possible choices for~$u$, namely
 \end{itemize}
 
 This follows from the observation that the natural map $K^*/(K^*)^n
-\to (K'^*)/(K'^*)^n$ is injective when $n=3$ and has kernel $\{1,-4\}$
+\to (K'^*)/(K'^*)^n$ is injective when $n=3$, and has kernel $\{1,-4\}$
 for $n=4$ and $\{1,-27\}$ for $n=6$.
 
 Secondly, observe that the construction in the first part of the proof
@@ -1488,8 +1488,9 @@ $K'=K(\sqrt{-1})$, $K(\sqrt{p^*})$, $K(\sqrt{u})$
 are quadratic extensions of~$K$ satisfying
 $K' \neq K(\sqrt{p^*})$, $K(\sqrt{u})$. 
 
-(b1) Suppose $K(\sqrt{p^*})=K(\sqrt{u})$.
-By definition $\tau$ fixes~$\sqrt{u}$ thus  it fixes~$\sqrt{p^*}$ and the congruence is symplectic; note that in this case~$\sqrt{up^*} \in K$. 
+(b1) Suppose $K(\sqrt{p^*})=K(\sqrt{u})$.  By definition, $\tau$
+fixes~$\sqrt{u}$, thus it also fixes~$\sqrt{p^*}$, and the congruence
+is symplectic; note that in this case~$\sqrt{up^*} \in K$.
  
 (b2) Suppose $K(\sqrt{p^*}) \neq K(\sqrt{u})$. Then 
 $K(\sqrt{p^*})=K(\sqrt{-4u})$ and 
@@ -1498,18 +1499,19 @@ since $\tau(\sqrt{-4u}) = - \sqrt{-4u}$
 the congruence is anti-symplectic;
 note that in this case~$\sqrt{up^*} \not\in K$. 
 
-Recall from Theorem~\ref{T:higherTwists} there is also a
+Recall from Theorem~\ref{T:higherTwists} that there is also a
 $p$-congruence between~$E$ and its quartic twist by~$-4u$. Applying
-the previous argument to this congruence  gives that it is symplectic
-if and only
-if $\sqrt{-4up^*} \in K$. Thus the two congruences are of the same type if and only if~$\sqrt{-1} \in K$ which is not the case by assumption.
+the previous argument to this congruence gives that it is symplectic
+if and only if $\sqrt{-4up^*} \in K$. Thus the two congruences are of
+the same type if and only if~$\sqrt{-1} \in K$, which is not the case
+by assumption.
 
 (c) Suppose $n=6$. We have $\Gal(F/K) \simeq D_6$ and again there are exactly three quadratic sub-extensions of~$F/K$.
 Furthermore, the fields 
 $K'=K(\sqrt{-3})$, $K(\sqrt{p^*})$, $K(\sqrt{u})$ 
 are quadratic extensions of~$K$ satisfying
 $K' \neq K(\sqrt{p^*})$, $K(\sqrt{u})$. 
-The rest of the argument follows similarly to~(b).
+The rest of the argument follows similarly to case~(b).
 
 For the congruence conditions on~$p$, which are only non-trivial when
 $n=4$ or~$6$ (since $p>3$ implies $p\equiv\pm1\pmod6$) recall that
@@ -1527,31 +1529,94 @@ We end this section by proving Theorem~\ref{T:higherTwistsQ} from the
 Introduction, as an illustration of how Theorems~\ref{T:higherTwists}
 and~\ref{T:typeHigher} may be applied.  These include all
 possibilities for quartic and sextic twist congruences over~$\Q$ with
-$p=3$ or~$5$ in the quartic case and $p=5$ or~$7$ in the sextic case,
-in the case where the elliptic curve has good reduction at~$p$, so
-that the projective image is maximal, namely $D_{p-1}$ (respectively,
-$D_{p+1}$) in the split (respectively, non-split) case.
+$p=3$ or~$5$ in the quartic case and $p=5$ or~$7$ in the sextic case.
 
-\begin{proof}[Proof of Theorem~\ref{T:higherTwistsQ}] Let $K=\Q$.
+\begin{proof}[Proof of Theorem~\ref{T:higherTwistsQ}] Let $K=\Q$.  We
+  consider curves with $j$-invariant~$1728$ and~$0$ in turn.
 
-First consider the curves $E_a := E_{a,0}:\ Y^2=X^3+aX$, for $a \in
-\Q^*$, which have $j$-invariant~$1728$.  The mod~$3$ projective image
-is the normaliser of a non-split Cartan subgroup, isomorphic to~$D_4$, since
-the projective division field~$F$ is obtained by adjoining the roots
-of the $3$-division polynomial $3X^4+6aX^2-a^2$, and
-$F=\Q(\sqrt{-1},\root4\of u)$ where~$u=-a^2/3$ and it is not hard to
-see that $a/\sqrt{-3}$ is not a square in $\Q(\sqrt{-1},\sqrt{-3})$.
+\subsubsection*{$j=1728$}
+  First consider the curves $E_a := E_{a,0}:\ Y^2=X^3+aX$, for $a \in
+  \Q^*$, which have $j$-invariant~$1728$.
+
+  By Proposition~1.14(ii)
+  in~\cite{Zywina}, the mod~$3$ projective image is the normaliser of
+  a non-split Cartan subgroup, isomorphic to~$D_4$.  The projective
+  division field~$F$ is obtained by adjoining the roots of the
+  $3$-division polynomial $3X^4+6aX^2-a^2$, and
+  $F=\Q(\sqrt{-1},\root4\of u)$ where~$u=-a^2/3$ and it is not hard to
+  see that $a/\sqrt{-3}$ is not a square in $\Q(\sqrt{-1},\sqrt{-3})$.
 
 Following the proof of Theorem~\ref{T:higherTwists}, one checks
 that up to $4$th powers, the subgroup of $\Q^*/(\Q^*)^4$ which become
-$4$th powers in~$F$ is generated by~$u$ and~$-4$: the maps
+$4$th powers in~$F$ is generated by~$u$ and~$-4$: the two maps
 $\Q^*/(\Q^*)^4 \to \Q(\sqrt{-1})^*/(\Q(\sqrt{-1})^*)^4$ and
 $\Q(\sqrt{-1})^*/(\Q(\sqrt{-1})^*)^4 \to F^*/(F^*)^4$ have kernels
 generated by~$-4$ and~$u$ respectively.  Hence, from
-Theorem~\ref{T:higherTwists} we expect a $3$-congruence between
+Theorem~\ref{T:higherTwists}, we expect a $3$-congruence between
 $E_a$ and either $E_{-1/(3a)}$ (twisting by~$u$) or $E_{-3/a}$
 (twisting by~$u^{-1}=-3/a^2$).  An explicit computation shows that
 only the first holds.
+
+Finally, we have $p^* = -3$ and $u=-a^2/3$, hence $\sqrt{p^*u} = a \in
+\Q$ and the congruence is symplectic by Theorem~\ref{T:typeHigher}.
+Moreover, there is a congruence with the quartic twist by $-4u=4a^2/3$
+which is antisymplectic.
+
+In summary, $E_a$ is symplectically $3$-congruent to $E_{-1/3a}$ and
+anti-symplectically $3$-congruent to both $E_{-4a}$ and $E_{4/3a}$.
+Note that in passing from the special case of the $3$-congruence
+between $E_1$ and $E_{-1/3}$ to the general case of the congruence
+between $E_{a}$ and $E_{-1/3a}$, we apply the quartic twist by~$a$ to
+the first curve, but the inverse twist (by~$a^{-1}$) to the second.
+
+Now let $p=5$.  The projective image is the normaliser of a split
+Cartan subgroup, isomorphic to~$D_4$, by Proposition 1.14(i)
+of~\cite{Zywina}.  One can check that up to $4$th powers, the subgroup
+of $\Q^*/(\Q^*)^4$ which become $4$th powers in the projective
+$5$-division field of~$E_a$ is generated by~$5/a^2$ and~$-4$.  Hence
+we expect $5$-congruences between $E_a$ and either $E_{5/a}$ (twisting
+by~$u=5/a^2$) or $E_{a^3/5}$ (twisting by~$u=a^2/5$).  Only the first
+holds (by a computation similar to the previous example, though a
+little simpler since we are in the split case so do not need to extend
+scalars).  Since $u=5/a^2$ is $5$ times a square, and~$p^*=5$, the
+congruence is symplectic.  There is also a congruence with the quartic
+twist by $-4u=-20/a^2$, which is antisymplectic.
+
+\subsubsection*{$j=0$}
+Next consider the family of curves $E_b:=E_{0,b}:\ Y^2=X^3+b$, which
+have $j$-invariant~$0$.
+
+For $p=5$, we can apply Proposition 1.14(iv) of~\cite{Zywina} to see
+that the projective image is the normaliser of a non-split Cartan
+subgroup, isomorphic to~$D_6$, unless $b/10$ is a cube, in which case
+the projective image is~$D_2$.  In the case where $b/10$ is not a
+cube, we expect a $5$-congruence between $E_b$ and $E_{bu}$ where
+$u\equiv5$ (modulo squares) and $u\equiv b/10$ or~$10/b$ (modulo
+cubes), since one may check that $b/10$ is a cube in $\Q(E_b[5])$.
+Hence, modulo $6$th powers, we have either $u\equiv 4/5b^2$ or
+$u\equiv 5b^2/4$.  The first works, hence $E_b$ and $E_{4/(5b)}$ are
+$5$-congruent.  This congruence is symplectic; composing with the
+$3$-isogeny we also have an anti-symplectic congruence between $E_b$
+and $E_{-108/(5b)}$.  In case $b/10$ is a cube, the sextic twist
+by~$b/10$ is a quadratic twist, and we have three different
+$5$-congruent quadratic twists, as expected when the projective image
+is~$D_2$.
+
+When $p=7$, by Proposition 1.14(iii) of~\cite{Zywina}, the projective
+image is the normaliser of a split Cartan subgroup, isomorphic
+to~$D_6$, unless $7b/2$ is a cube, in which case the projective image
+is again~$D_2$.  In the general case, we expect a $7$-congruence
+between $E_b$ and $E_{bu}$ where $u\equiv-7$ (modulo squares) and
+$u\equiv 7b/2$ or~$2/(7b)$ (modulo cubes), since one may check that
+$7b/2$ is a cube in $\Q(E_b[7])$.  Hence, modulo $6$th powers, we have
+either $u\equiv -28/b^2$ or $u\equiv -b^2/28$.  The first works, hence
+$E_b$ and $E_{-28/b}$ are $7$-congruent.  This congruence is
+symplectic; composing with the $3$-isogeny we also have an
+anti-symplectic congruence between $E_b$ and $E_{756/b}$. In case
+$7b/2$ is a cube, the sextic twist by~$7b/2$ is a quadratic twist, and
+we have three different $7$-congruent quadratic twists, as expected
+when the projective image is~$D_2$.
+\end{proof}
 
 \begin{comment}
 \jc{Details:}
@@ -1629,58 +1694,7 @@ Hence the characters $\eps,\eta:\Gal(F/K')\to\F_9^*$ agree.
 \jc{End of details.}
 \end{comment}
 
-Finally, we have $p^* = -3$ and $u=-a^2/3$, hence $\sqrt{p^*u} = a \in
-\Q$ and the congruence is symplectic by Theorem~\ref{T:typeHigher}.
-Moreover, there is a congruence with the quartic twist by $-4u=4a^2/3$
-which is antisymplectic.
-
-In summary, $E_a$ is symplectically $3$-congruent to $E_{-1/3a}$ and
-anti-symplectically $3$-congruent to both $E_{-4a}$ and $E_{4/3a}$.
-Note that in passing from the special case of the $3$-congruence
-between $E_1$ and $E_{-1/3}$ to the general case of the congruence
-between $E_{a}$ and $E_{-1/3a}$, we apply the quartic twist by~$a$ to
-the first curve, but the inverse twist (by~$a^{-1}$) to the second.
-
-Now let $p=5$.  The projective image is the normaliser of a split
-Cartan subgroup, isomorphic to~$D_4$.  One can check that up to $4$th powers,
-the subgroup of $\Q^*/(\Q^*)^4$ which become $4$th powers in the
-projective $5$-division field of~$E_a$ is generated by~$5/a^2$
-and~$-4$.  Hence we expect $5$-congruences between $E_a$ and either
-$E_{5/a}$ (twisting by~$u=5/a^2$) or $E_{a^3/5}$ (twisting
-by~$u=a^2/5$).  Only the first holds (by a computation similar to the
-previous example, though a little simpler since we are in the split
-case so do not need to extend scalars).  Since $u=5/a^2$ is $+5$ times
-a square the congruence is symplectic.  There is also a congruence
-with the quartic twist by $-4u=-20/a^2$, which is antisymplectic.
-  %% We may also check that $E_a$
-  %% and~$E_{5/a}$ are $5$-congruent via a congruence which is
-  %% $\Z[\zeta_4]$-anti-linear.
-
-Next consider the family of curves $E_b:=E_{0,b}:\ Y^2=X^3+b$, which
-have $j=0$. For $p=5$, the projective image is the normaliser of a
-non-split Cartan subgroup, isomorphic to~$D_6$.  We expect a $5$-congruence
-between $E_b$ and $E_{bu}$ where $u\equiv5$ (modulo squares) and
-$u\equiv b/10$ or~$10/b$ (modulo cubes), since one may check that
-$b/10$ is a cube in $\Q(E_b[5])$.  Hence, modulo $6$th powers, we have
-either $u\equiv 4/5b^2$ or $u\equiv 5b^2/4$.  The first works, hence
-$E_b$ and $E_{4/(5b)}$ are $5$-congruent.  This congruence is
-symplectic; composing with the $3$-isogeny we also have an
-anti-symplectic congruence between $E_b$ and $E_{-108/(5b)}$.
-
-When $p=7$, the projective image is the normaliser of a split Cartan subgroup,
-isomorphic to~$D_6$.  We expect a $7$-congruence between $E_b$ and
-$E_{bu}$ where $u\equiv-7$ (modulo squares) and $u\equiv 7b/2$
-or~$2/(7b)$ (modulo cubes), since one may check that $7b/2$ is a cube
-in $\Q(E_b[7])$.  Hence, modulo $6$th powers, we have either $u\equiv
--28/b^2$ or $u\equiv -b^2/28$.  The first works,
-  %% Testing with
-  %% $b=1$, we find that $E_1$ and $E_{-28}$ are indeed $7$-congruent,
-  hence $E_b$ and $E_{-28/b}$ are $7$-congruent.  This congruence is
-  symplectic; composing with the $3$-isogeny we also have an
-  anti-symplectic congruence between $E_b$ and $E_{756/b}$.
-\end{proof}
-
-\section{Finding congruences and determining their symplectic type}\label{S:statistics}
+\section{Finding congruences and their symplectic type}\label{S:statistics}
 
 In this section we discuss our systematic study of mod~$p$ congruences
 between elliptic curves in the LMFDB database.  As of September 2019, this
@@ -1747,7 +1761,7 @@ consider each in detail in the following subsections.
 \end{enumerate}
 Next we will explain each step in further detail.  For the first three
 steps, $p$ is arbitrary, and we have carried these steps out for $7\le
-p\le97$.  According to Theorem~\ref{T:cong19} below, no congruences
+p\le97$.  According to Theorem~\ref{T:cong19}, no congruences
 (other than those induced by isogenies) exist for larger~$p$.  For the
 last two steps, we restrict to $p=7$ which is the most interesting
 case, as remarked in the Introduction.
@@ -1795,7 +1809,7 @@ $731$ for $p=11$; $177$ for $p=13$; and~$8$ for $p=17$.  There are no
 nontrivial subsets for any primes~$p$ with $19\le p\le97$, so we can
 immediately conclude that there are no congruences in the database
 between non-isogenous curves modulo any prime in this range.  See also
-Theorem~\ref{T:cong19} below.
+Theorem~\ref{T:cong19}.
 
 \subsection{Proving isomorphism up to semisimplification}
 
@@ -2070,7 +2084,7 @@ Finally, we have $\phi(\mat{1}{1}{0}{1}) = \mat{1}{r}{0}{1}$ for
 some~$r\in\Fpstar$.
 
 Now set $A=\mat{r}{b(1-a)^{-1}}{0}{1}$ (or $A=\mat{r}{0}{0}{1}$ if
-$a=1$ and $b=1$).  A simple check shows that conjugation by~$A$ has
+$a=1$ and $b=0$).  A simple check shows that conjugation by~$A$ has
 the same effect as~$\phi$ on both $\mat{a}{0}{0}{1}$ and
 $\mat{1}{1}{0}{1}$.  Since $H$ is generated by these, together with
 scalar matrices, the result follows.
@@ -2206,10 +2220,10 @@ we conclude that $\rhobar_{E_1,p}(\sigma) = A \rhobar_{E_2,p}(\sigma) A^{-1}$, a
 \subsection{Distinguishing symplectic from antisymplectic: reducible
   case}
 
-From Steps 1--3 we have (for certain pairs~$(E,E')$ established that
+From Steps 1--3 we have (for certain pairs~$(E,E')$) established that
 $E[7]^{\sss} \simeq E'[7]^{\sss}$ but this is insufficient to conclude
 $E[7] \simeq E'[7]$ when these are reducible $G_\Q$-modules.  To
-achieve this we will apply Theorem~\ref{T:reducible} and its proof.
+decide this we will apply Theorem~\ref{T:reducible} and its proof.
 
 Recall that $E[7]$ is reducible if and only if $E$ admits a rational
 $7$-isogeny.  Over $\Q$ there is only ever at most one $7$-isogeny,
@@ -2619,14 +2633,7 @@ Graduate Texts in Mathematics {\bf 151}, Springer-Verlag, New York, 1994.
 \newblock David J. Zywina,
 \newblock {\em  On the possible images of the mod $\ell$ representations
 associated to elliptic curves over $\Q$} (preprint),
-  \url{https://arxiv.org/abs/1508.07660}.
-
-
-%% \bibitem{Sutherland}
-%% Andrew V. Sutherland.
-%% \newblock Computing images of Galois representations attached to elliptic curves.
-%% \newblock {\em Forum of Mathematics}, Sigma {\bf 4} (2016), e4, 79 pp.
-
+  \url{https://arxiv.org/abs/1508.07660v1}.
 
 \end{thebibliography}
 
